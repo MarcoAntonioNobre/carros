@@ -20,14 +20,14 @@ include_once("./func/funcoes.php");
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-2">
-            <div onclick="carregarConteudo('listarCarros')">
-                Cad. de Carro
+            <div>
+                <button type="button" onclick="carregarConteudo('listarCarros')">Cad. de Carro</button>
             </div>
-            <div onclick="carregarConteudo('listarProprietarios')">
-                Proprietários
+            <div>
+                <button type="button" onclick="carregarConteudo('listarProprietarios')">Proprietários</button>
             </div>
-            <div onclick="carregarConteudo('listarCliente')">
-                Cliente
+            <div>
+                <button type="button" onclick="carregarConteudo('listarCliente')">Cliente</button>
             </div>
         </div>
         <div class="col-lg-10">

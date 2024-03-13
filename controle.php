@@ -13,8 +13,8 @@ if (!empty($controle) && isset($controle)) {
             include_once ('listarProprietarios.php');
             break;
             case 'listarCarros';
-            include_once ('listarCarros.php');
-
+            include_once ('carros.php');
+            break;
     }
 
 } else {
