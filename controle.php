@@ -6,10 +6,13 @@ include_once("func/funcoes.php");
 $controle = filter_input(INPUT_POST, 'controle', FILTER_SANITIZE_STRING);
 if (!empty($controle) && isset($controle)) {
     switch ($controle) {
-        case 'listaCarros':
-            include_once('carros.php');
-            break;
 
+        case 'listarCliente':
+            include_once ('listarCliente.php');
+        break;
+        case 'listarProprietarios';
+            include_once ('listarProprietarios.php');
+        break;
     }
 
 } else {

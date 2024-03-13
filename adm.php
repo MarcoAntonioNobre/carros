@@ -20,9 +20,15 @@ include_once("./func/funcoes.php");
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-2">
-            <div>Cad. de Carro</div>
-            <div>Proprietários</div>
-            <div>Cliente</div>
+            <div>
+                <button type="button" onclick="carregarConteudo('listarCarros')">Cad. de Carro</button>
+            </div>
+            <div>
+                <button type="button" onclick="carregarConteudo('listarProprietarios')">Proprietários</button>
+            </div>
+            <div>
+                <button type="button" onclick="carregarConteudo('listarCliente')">Cliente</button>
+            </div>
         </div>
         <div class="col-lg-10">
 
@@ -37,5 +43,6 @@ include_once("./func/funcoes.php");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+<script src=""></script>
 </body>
 </html>
