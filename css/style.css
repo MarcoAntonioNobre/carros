@@ -1,0 +1,8 @@
+::selection{
+    background-color: #000000 !important;
+    color: #fff !important;
+}
+.legenda::selection{
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
