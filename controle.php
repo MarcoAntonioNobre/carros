@@ -6,9 +6,14 @@ include_once("func/funcoes.php");
 $controle = filter_input(INPUT_POST, 'controle', FILTER_SANITIZE_STRING);
 if (!empty($controle) && isset($controle)) {
     switch ($controle) {
-        case 'Algo':
-            include_once('Direção.php');
+        case 'listarCliente':
+            include_once ('listarCliente.php');
             break;
+            case 'listarProprietarios';
+            include_once ('listarProprietarios.php');
+            break;
+            case 'listarCarros';
+            include_once ('listarCarros.php');
 
     }
 
