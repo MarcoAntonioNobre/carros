@@ -6,7 +6,7 @@ include_once("func/funcoes.php");
 $controle = filter_input(INPUT_POST, 'controle', FILTER_SANITIZE_STRING);
 if (!empty($controle) && isset($controle)) {
     switch ($controle) {
-        case 'carros':
+        case 'listaCarros':
             include_once('carros.php');
             break;
 

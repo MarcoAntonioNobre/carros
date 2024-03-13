@@ -1,33 +1,49 @@
 <table class="table table-striped table-hover">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Proprietário</th>
-        <th scope="col">Carro</th>
-        <th scope="col">Valor</th>
-        <th scope="col">Ação</th>
+    <thead >
+    <tr class="text-center ">
+        <th scope="col" class="bg-black text-light legenda">#</th>
+        <th scope="col" class="bg-black text-light legenda">Proprietário</th>
+        <th scope="col" class="bg-black text-light legenda">Carro</th>
+        <th scope="col" class="bg-black text-light legenda">Valor</th>
+        <th scope="col" class="bg-black text-light legenda">Ação</th>
     </tr>
     </thead>
     <tbody>
     <?php
-    $carros = listarTabelaInnerJoin('*', 'carros', 'proprietario', 'idcarro', 'idproprietario', 'carro', 'ASC');
     $contar = 1;
-    foreach ($carros as $carro) {
-        $idcarro = $carro->idcarro;
-        $idpropietario = $carro->idpropietario;
-        $nomeCarro = $carro->carro;
-        $modelo = $carro->modelo;
-        $valor = $carro->valor;
-        ?>
-        <tr>
-            <th scope="row"><?php echo $contar ?></th>
-            <td colspan="2"><?php echo $idpropietario ?></td>
-            <td>@twitter</td>
-        </tr>
+    $carros = listarTabelaInnerJoin('*', 'carro', 'proprietario', 'idcarro', 'idproprietario', 'carro', 'ASC');
 
+    if ($carros !== 'Vazio') {
+
+        foreach ($carros as $carro) {
+
+            $idcarro = $carro->idcarro;
+            $proprietario = $carro->nome;
+            $foto = $carro->foto;
+            $nomeCarro = $carro->carro;
+            $modelo = $carro->modelo;
+            $valor = $carro->valor;
+            ?>
+            <tr class="text-center">
+                <th scope="row"><?php echo $contar ?></th>
+                <td><?php echo $proprietario ?></td>
+                <td><?php echo $nomeCarro ?></td>
+                <td><?php echo $valor ?></td>
+                <td><button class="btn btn-outline-primary">Ver Mais</button></td>
+            </tr>
+
+            <?php
+            ++$contar;
+        }
+    } else {
+        ?>
+        <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
+            <h1>Página Vazia, Retorne. </h1><sup>Error 404</sup>
+            <img src="./img/vazio.gif" alt="ERROR 404">
+        </div>
         <?php
-        ++$contar;
     }
+
     ?>
 
     </tbody>
