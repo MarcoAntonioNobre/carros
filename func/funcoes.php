@@ -1,10 +1,10 @@
 <?php
-function listarTabela($campos, $tabela, $campoOrdem)
+function listarTabela($campos, $tabela)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
-        $sqlListaTabelas = $conn->prepare("SELECT $campos FROM $tabela ORDER BY $campoOrdem ");
+        $sqlListaTabelas = $conn->prepare("SELECT $campos FROM $tabela");
         //$sqlListaTabelas->bindValue(1, $campos, PDO::PARAM_INT);
         $sqlListaTabelas->execute();
         $conn->commit();
