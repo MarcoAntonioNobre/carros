@@ -34,13 +34,16 @@ CREATE TABLE `adm` (
   `cadastro` datetime NOT NULL,
   `alteracao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`idadm`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `adm`
 --
 
 /*!40000 ALTER TABLE `adm` DISABLE KEYS */;
+INSERT INTO `adm` (`idadm`,`cpf`,`senha`,`ativo`,`cadastro`,`alteracao`) VALUES 
+ (1,'123456789','$2y$12$F9ZyjQDhlDphE/F94tOjXeHJh/hDbqrYP3yXBHVvrmBXd0RimO3mm','A','2024-03-14 12:32:32','2024-03-14 12:32:32'),
+ (2,'1234567891','123456789','A','2024-03-14 12:32:32','2024-03-14 12:32:32');
 /*!40000 ALTER TABLE `adm` ENABLE KEYS */;
 
 
