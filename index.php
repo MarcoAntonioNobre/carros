@@ -47,38 +47,43 @@ include_once("func/funcoes.php");
                         <button type="button" class="btn" onclick="fazerLogin()">Login</button>
                     </form>
                 </div>
-                <?php
-                $senha = "123456789";
-                $options = [
-                    'cost' => 12,
-                ];
-                $senhaHash = password_hash($senha, PASSWORD_BCRYPT, $options);
-                echo $senhaHash;
-                ?>
             </div>
         </div>
     </div>
-    <footer>
-        <div class="card text-center bg-dark text-white " style="margin-top: 8%;">
-            <div class="card-header">
-                <img src="./img/icon.jpg" alt="icon" width="50px">
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-            </div>
 
-        </div>
-    </footer>
     <!--<button onclick=" carregarConteudo('carros')">clica</button>-->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js" integrity="sha512-oJCa6FS2+zO3EitUSj+xeiEN9UTr+AjqlBZO58OPadb2RfqwxHpjTU8ckIC8F4nKvom7iru2s8Jwdo+Z8zm0Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./js/script.js"></script>
+    </script>
+    </head>
     <script src="./js/formatacoes.js"></script>
     <script src="./js/js.js"></script>
+    <script src="http://www.geradorcpf.com/scripts.js"></script>
+    <script src="http://www.geradorcpf.com/jquery-1.2.6.pack.js"></script>
+    <script src="http://www.geradorcpf.com/jquery.maskedinput-1.1.4.pack.js"></script>
 
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".cpf").mask("999.999.999-99");
+
+            $("#cpf").blur(function() {
+                if ($("#cpf").val() == '') {
+                    $("#saida").html("Informe um CPF");
+                    return false;
+                }
+                if (validarCPF($("#cpf").val())) {
+                    $(".cpf").css('border-color', 'limegreen');
+                } else {
+                    $(".cpf").css('border-color', 'red');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
