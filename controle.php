@@ -19,18 +19,19 @@ if (!empty($controle) && isset($controle)) {
         case 'addProprietario';
             include_once('cadProprietario.php');
             break;
+        case 'clienteAdd';
+            include_once('cadCliente.php');
+            break;
     }
-
 } else {
-    ?>
+?>
     <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
         <h1>Página Vazia, Retorne. </h1><sup>Error 404</sup>
         <img src="./img/vazio.gif" alt="ERROR 404">
     </div>
-    <?php
+<?php
 }
 
 //$acao = filter_input(INPUT_POST, 'ação', FILTER_SANITIZE_STRING);
 //$acaoId = filter_input(INPUT_POST, 'acaoId', FILTER_SANITIZE_NUMBER_INT);
 //$controleGet = filter_input(INPUT_GET, 'controleGet', FILTER_SANITIZE_STRING);
-
