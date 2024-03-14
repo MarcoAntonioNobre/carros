@@ -13,6 +13,9 @@ if (!empty($controle) && isset($controle)) {
         case 'listarProprietarios';
             include_once ('listarProprietarios.php');
         break;
+        case 'listarCarros';
+        include_once ('carros.php');
+        break;
     }
 
 } else {
