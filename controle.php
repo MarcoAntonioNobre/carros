@@ -16,6 +16,9 @@ if (!empty($controle) && isset($controle)) {
         case 'listarCarros';
         include_once ('carros.php');
         break;
+        case 'clienteAdd';
+        include_once ('cadCliente.php');
+        break;
     }
 
 } else {
