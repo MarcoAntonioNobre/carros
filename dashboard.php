@@ -50,7 +50,7 @@ include_once("func/funcoes.php");
                             </ul>
                         </li>
                     </ul>
-                    <a href="./index.php" class="btn btn-outline-danger" type="submit">Sair</a>
+                    <a href="./index.php" class="btn btn-outline-light" type="submit">Sair</a>
                 </div>
             </div>
         </nav>
@@ -75,9 +75,9 @@ include_once("func/funcoes.php");
                     <div class="card card-body bg-black p-5">
                         <div class="position-absolute top-50 start-50 translate-middle">
                             <form class="d-flex" role="search">
-                                <input class="form-control me-2 " type="search" placeholder="Digite o código"
+                                <input class="form-control me-2 " width="75%" type="search" placeholder="Digite o código"
                                        aria-label="Buscar carro">
-                                <button class="btn btn-outline-danger" type="submit">Buscar</button>
+                                <button class="btn btn-outline-light" type="submit">Buscar</button>
                             </form>
                         </div>
                     </div>
