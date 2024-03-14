@@ -154,6 +154,35 @@ function deletecadastro($tabela, $NomeDoCampoId, $id)
     $conn = null;
 }
 
+function validarSenha($campos, $tabela, $campoBdString, $campoBdString2, $campoParametro, $campoParametro2, $campoBdAtivo, $valorAtivo)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("SELECT $campos "
+            . "FROM $tabela "
+            . "WHERE $campoBdString = ? AND  $campoBdString2 = ? AND $campoBdAtivo = ? ");
+        $sqlLista->bindValue(1, $campoParametro, PDO::PARAM_STR);
+        $sqlLista->bindValue(2, $campoParametro2, PDO::PARAM_STR);
+        $sqlLista->bindValue(3, $valorAtivo, PDO::PARAM_STR);
+        $sqlLista->execute();
+        $conn->commit();
+
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return "Vazio";
+        }
+    } catch (Throwable $e) {
+        $error_message = 'Throwable:' . $e->getMessage() . PHP_EOL;
+        $error_message = 'File:' . $e->getFile() . PHP_EOL;
+        $error_message = 'Line:' . $e->getLine() . PHP_EOL;
+        error_log($error_message, 3, 'log/arquivo_log.txt');
+        $conn->rollBack();
+        throw $e;
+    };
+}
+
 function verificarSenhaCriptografada($campos, $tabela, $campoBdEmail, $campoEmail, $campoBdSenha, $campoSenha, $campoBdAtivo, $campoAtivo)
 {
     $conn = conectar();
