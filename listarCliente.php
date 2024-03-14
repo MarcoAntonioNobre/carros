@@ -7,7 +7,7 @@ include_once("func/funcoes.php");
 <div class="card">
     <div class="card-header">
         # Cliente
-        <button data-bs-toggle="modal" data-bs-target="#cadCliente">Cadastrar</button>
+        <button data-bs-toggle="modal" data-bs-target="#mdlCadCliente">Cadastrar</button>
     </div>
     <div class="card-body">
         <table class="table">
