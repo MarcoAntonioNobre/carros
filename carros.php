@@ -11,27 +11,44 @@
     <tbody>
     <?php
     $contar = 1;
-    $carros = listarTabelaInnerJoin('*', 'carro', 'proprietario', 'idcarro', 'idproprietario', 'carro', 'ASC');
+    $carros = listarTabelaInnerJoin('*', 'carro', 'proprietario', 'idproprietario', 'idproprietario', 'carro', 'ASC');
 
     if ($carros !== 'Vazio') {
 
         foreach ($carros as $carro) {
-
-            $idcarro = $carro->idcarro;
             $proprietario = $carro->nome;
+            $idcarro = $carro->idcarro;
             $foto = $carro->foto;
             $nomeCarro = $carro->carro;
             $modelo = $carro->modelo;
             $valor = $carro->valor;
+            $valor = conversorDBNum($valor);
             ?>
             <tr class="text-center">
                 <th scope="row"><?php echo $contar ?></th>
                 <td><?php echo $proprietario ?></td>
                 <td><?php echo $nomeCarro ?></td>
-                <td><?php echo $valor ?></td>
-                <td><button class="btn btn-outline-primary">Ver Mais</button></td>
+                <td>R$ <?php echo $valor ?></td>
+                <td><button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verMais<?php echo $contar?>">Ver Mais</button></td>
             </tr>
 
+            <div class="modal fade" id="verMais<?php echo $contar?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header  text-white bg-primary">
+                            <h1 class="modal-title fs-5 text-center" id="nomeCarroModal"><?php echo $nomeCarro ?> - <?php echo $proprietario ?></h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <?php echo $proprietario ?>
+                        </div>
+                        <div class="modal-footer">
+                        <h4>R$<?php echo $valor ?></h4>
+                            <button type="button" class="btn btn-outline-success" onclick="">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <?php
             ++$contar;
         }

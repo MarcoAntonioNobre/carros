@@ -131,7 +131,26 @@ function insertGlobal($tabela, $dados, $novosDados1, $novosDados2)
     $conn = null;
 }
 
-
+function insertGlobalProp($tabela, $dados, $novosDados1, $novosDados2,$novosDados3)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES ('$novosDados1','$novosDados2','$novosDados3')");
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        }
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        $conn->rollback();
+        return ($e->getMessage());
+    }
+    $conn = null;
+}
 function deletecadastro($tabela, $NomeDoCampoId, $id)
 {
     $conn = conectar();

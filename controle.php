@@ -8,14 +8,17 @@ if (!empty($controle) && isset($controle)) {
     switch ($controle) {
 
         case 'listarCliente':
-            include_once ('listarCliente.php');
-        break;
+            include_once('listarCliente.php');
+            break;
         case 'listarProprietarios';
-            include_once ('listarProprietarios.php');
-        break;
+            include_once('listarProprietarios.php');
+            break;
         case 'listarCarros';
-        include_once ('carros.php');
-        break;
+            include_once('carros.php');
+            break;
+        case 'addProprietario';
+            include_once('cadProprietario.php');
+            break;
     }
 
 } else {
