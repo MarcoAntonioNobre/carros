@@ -66,6 +66,60 @@ include_once("./func/funcoes.php");
     </div>
 </div>
 
+<!-- Modal de Edit de Proprietário -->
+<div class="modal fade" id="editProprietario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" name="frmEditProprietario" id="frmEditProprietario">
+                <div class="modal-body">
+                    <input type="text" name="idEditProprietario"
+                           id="idEditProprietario" hidden="hidden">
+                    <label for="nomeEditProprietario">Nome:</label>
+                    <input type="text" name="nomeEditProprietario"
+                           id="nomeEditProprietario">
+                    <label for="contatoEditProprietario">Telefone:</label>
+                    <input type="text" name="contatoEditProprietario" class="telefoneBR"
+                           id="contatoEditProprietario">
+                    <label for="fotoEditProprietario">Foto:</label>
+                    <input type="file" name="fotoEditProprietario" class=""
+                           id="fotoEditProprietario" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="btnEditProprietario">Editar Cadastro</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal de Delte de Proprietário -->
+<div class="modal fade" id="deleteProprietario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-light">
+                <h1 class="modal-title fs-5 " id="exampleModalLabel">Deletar Proprietário</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" name="frmDeleteProprietario" id="frmDeleteProprietario">
+                <div class="modal-body">
+                    <input type="text" name="idDeleteProprietario"
+                           id="idDeleteProprietario" hidden="hidden">
+                    <div class="alert alert-danger">
+                        tem certeza?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteProprietario">Deletar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

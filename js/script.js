@@ -48,9 +48,14 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, contatoProp, i
         if (inID !== 'nao') {
             inputid.value = id;
         }
-        if (inFotoProp !== 'nao') {
+        const inContato = document.getElementById(`${inContatoProp}`);
+        if (inContatoProp !== 'nao') {
+            inContato.value = contatoProp;
+        }
 
+        if (inFotoProp !== 'nao') {
             var foto = document.getElementById(`${inFotoProp}`).files;
+            inFotoProp.value = foto;
         }
 
 
