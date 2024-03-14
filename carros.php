@@ -60,32 +60,13 @@
     if ($carros !== 'Vazio') {
 
         foreach ($carros as $carro) {
-
-            $idcarro = $carro->idcarro;
             $proprietario = $carro->nome;
+            $idcarro = $carro->idcarro;
             $foto = $carro->foto;
             $nomeCarro = $carro->carro;
             $modelo = $carro->modelo;
             $valor = $carro->valor;
 
-    ?>
-
-            <div class="col-sm-4">
-                <div class="card">
-                    
-                    <img src="./img/<?php
-                    echo $foto;
-
-                    ?>" class="card-img-top" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title"><?php echo $nomeCarro ?></h5>
-                        <a href="#" class="btn btn-outline-dark">Ver Mais</a>
-                    </div>
-                </div>
-            </div>
-
-
-        <?php
             ++$contar;
         }
     } else {
