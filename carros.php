@@ -10,54 +10,66 @@
     </thead>
     <tbody>
     <?php
-    // $contar = 1;
-    // $carros = listarTabelaInnerJoin('*', 'carro', 'proprietario', 'idproprietario', 'idproprietario', 'carro', 'ASC');
+// $contar = 1;
+// $carros = listarTabelaInnerJoin('*', 'carro', 'proprietario', 'idproprietario', 'idproprietario', 'carro', 'ASC');
 
-    // if ($carros !== 'Vazio') {
+// if ($carros !== 'Vazio') {
 
-    //     foreach ($carros as $carro) {
+//     foreach ($carros as $carro) {
 
-    //         $idcarro = $carro->idcarro;
-    //         $proprietario = $carro->nome;
-    //         $foto = $carro->foto;
-    //         $nomeCarro = $carro->carro;
-    //         $modelo = $carro->modelo;
-    //         $valor = $carro->valor;
-    ?>
+//         $idcarro = $carro->idcarro;
+//         $proprietario = $carro->nome;
+//         $foto = $carro->foto;
+//         $nomeCarro = $carro->carro;
+//         $modelo = $carro->modelo;
+//         $valor = $carro->valor;
+?>
             <tr class="text-center">
                 <th scope="row"><?php // echo $contar 
-                                ?></th>
+?></th>
                 <td><?php // echo $proprietario 
-                    ?></td>
+?></td>
                 <td><?php // echo $nomeCarro 
-                    ?></td>
+?></td>
                 <td><?php // echo $valor 
-                    ?></td>
+?></td>
                 <td><button class="btn btn-outline-primary">Ver Mais</button></td>
             </tr>
 
             <?php
-            //         ++$contar;
-            //     }
-            // } else {
-            ?>
+//         ++$contar;
+//     }
+// } else {
+?>
         <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
             <h1>Página Vazia, Retorne. </h1><sup>Error 404</sup>
             <img src="./img/vazio.gif" alt="ERROR 404">
         </div>
         <?php
-        // }
+// }
 
-        ?>
+?>
 
     </tbody>
 </table> -->
-<div class="row">
-    <?php
-    $contar = 1;
-    $carros = listarTabelaInnerJoin('*', 'carro', 'proprietario', 'idproprietario', 'idproprietario', 'carro', 'ASC');
+<?php
+$carros = listarTabelaInnerJoin('*', 'carro', 'proprietario', 'idproprietario', 'idproprietario', 'carro', 'ASC');
+if ($carros !== 'Vazio') {
+$contar = 1;
 
-    if ($carros !== 'Vazio') {
+?>
+<div class="row">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr class="text-center ">
+            <th scope="col" class="bg-black text-light legenda">#</th>
+            <th scope="col" class="bg-black text-light legenda">Proprietário</th>
+            <th scope="col" class="bg-black text-light legenda">Carro</th>
+            <th scope="col" class="bg-black text-light legenda">Valor</th>
+        </tr>
+        </thead>
+        <?php
+
 
         foreach ($carros as $carro) {
             $proprietario = $carro->nome;
@@ -66,17 +78,30 @@
             $nomeCarro = $carro->carro;
             $modelo = $carro->modelo;
             $valor = $carro->valor;
+            ?>
 
+            <tr class="text-center">
+                <th scope="row"><?php echo $contar ?></th>
+                <td><?php echo $proprietario ?></td>
+                <td><?php echo $nomeCarro ?></td>
+                <td><?php echo $valor ?></td>
+            </tr>
+
+            <?php
             ++$contar;
         }
-    } else {
-        ?>
-        <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-            <h1>Página Vazia, Retorne. </h1><sup>Error 404</sup>
-            <img src="./img/vazio.gif" alt="ERROR 404">
-        </div>
-    <?php
-    }
 
-    ?>
+
+        } else {
+            ?>
+            <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
+                <h1>Página Vazia, Retorne. </h1>
+                <img src="./img/vazio.gif" alt="">
+            </div>
+            <?php
+
+        }
+
+        ?>
+    </table>
 </div>

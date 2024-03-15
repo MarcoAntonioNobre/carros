@@ -48,9 +48,14 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, contatoProp, i
         if (inID !== 'nao') {
             inputid.value = id;
         }
-        if (inFotoProp !== 'nao') {
+        const inContato = document.getElementById(`${inContatoProp}`);
+        if (inContatoProp !== 'nao') {
+            inContato.value = contatoProp;
+        }
 
+        if (inFotoProp !== 'nao') {
             var foto = document.getElementById(`${inFotoProp}`).files;
+            inFotoProp.value = foto;
         }
 
 
@@ -76,17 +81,17 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, contatoProp, i
                 .then(data => {
                     if (data.success) {
 
-                        // switch (addEditDel) {
-                        //     case 'generoAdd':
-                        //         addOuEditSucesso('Você', 'success', 'adicionou')
-                        //         break;
-                        //     case 'generoEdit':
-                        //         addOuEditSucesso('Você', 'info', 'editou')
-                        //         break;
-                        //     case 'generoDelete':
-                        //         addOuEditSucesso('Você', 'success', 'deletou')
-                        //         break;
-                        // }
+                        switch (addEditDel) {
+                            case 'cadProprietario':
+                                addOuEditSucesso('Você', 'success', 'adicionou')
+                                break;
+                            case 'editProprietario':
+                                addOuEditSucesso('Você', 'info', 'editou')
+                                break;
+                            case 'deleteProprietario':
+                                addOuEditSucesso('Você', 'success', 'deletou')
+                                break;
+                        }
                         // setTimeout(function () {
 
                         ModalInstacia.hide();
@@ -99,7 +104,6 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, contatoProp, i
                     console.log(data)
                 })
                 .catch(error => {
-
                     ModalInstacia.hide();
                     addErro()
                     carregarConteudo("listarProprietarios");
@@ -117,6 +121,59 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, contatoProp, i
 
 }
 
+function pesquisarCarros( botao, addEditDel, inFocus, inFocusValue, formulario) {
+    const formDados = document.getElementById(`${formulario}`)
+
+    var botoes = document.getElementById(`${botao}`);
+
+
+        const inputFocar = document.getElementById(`${inFocus}`);
+        if (inFocusValue !== 'nao') {
+            inputFocar.value = inFocusValue;
+            setTimeout(function () {
+                inputFocar.focus();
+
+            }, 500);
+        }
+    if (inFocus !== 'nao') {
+        setTimeout(function () {
+            inputFocar.focus();
+
+        }, 500);
+    }
+        const submitHandler = function (event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            formData.append('controle', `${addEditDel}`)
+
+            fetch('controle.php', {
+                method: 'POST', body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    var mostrar = document.getElementById('mostrar')
+                    if (data.success) {
+
+                        carregarConteudo("listarCarros");
+
+                    } else {
+                        carregarConteudo("listarCarros");
+                    }
+                    console.log(data)
+                })
+                .catch(error => {
+                   alert('catch')
+                    carregarConteudo("listarCarros");
+                    console.error('Erro na requisição:', error);
+                });
+
+
+        }
+        formDados.addEventListener('submit', submitHandler);
+
+
+}
 
 function addOuEditSucesso(UserAlter, icon, addOuEditOuDelete) {
     let timerInterval;
@@ -149,7 +206,7 @@ function addOuEditSucesso(UserAlter, icon, addOuEditOuDelete) {
 function addErro() {
     let timerInterval;
     Swal.fire({
-        title: "Erro ao Adicionar <br> Tente Novamente.",
+        title: "Erro ao Manipular <br> Tente Novamente.",
         html: "Fechando em <b></b> ms.",
         timer: 3000,
         icon: "error",
