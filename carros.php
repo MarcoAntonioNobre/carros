@@ -56,42 +56,8 @@
 $carros = listarTabelaInnerJoin('*', 'carro', 'proprietario', 'idproprietario', 'idproprietario', 'carro', 'ASC');
 if ($carros !== 'Vazio') {
 $contar = 1;
-
 ?>
-<div class="row">
-    <table class="table table-striped table-hover">
-        <thead>
-        <tr class="text-center ">
-            <th scope="col" class="bg-black text-light legenda">#</th>
-            <th scope="col" class="bg-black text-light legenda">Proprietário</th>
-            <th scope="col" class="bg-black text-light legenda">Carro</th>
-            <th scope="col" class="bg-black text-light legenda">Valor</th>
-        </tr>
-        </thead>
-        <?php
-
-
-        foreach ($carros as $carro) {
-            $proprietario = $carro->nome;
-            $idcarro = $carro->idcarro;
-            $foto = $carro->foto;
-            $nomeCarro = $carro->carro;
-            $modelo = $carro->modelo;
-            $valor = $carro->valor;
-            ?>
-
-            <tr class="text-center">
-                <th scope="row"><?php echo $contar ?></th>
-                <td><?php echo $proprietario ?></td>
-                <td><?php echo $nomeCarro ?></td>
-                <td><?php echo $valor ?></td>
-            </tr>
-
-            <?php
-            ++$contar;
-        }
-
-
+<?php
         } else {
             ?>
             <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
@@ -99,9 +65,5 @@ $contar = 1;
                 <img src="./img/vazio.gif" alt="">
             </div>
             <?php
-
         }
-
         ?>
-    </table>
-</div>
