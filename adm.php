@@ -35,49 +35,6 @@ include_once("./func/funcoes.php");
         </div>
     </div>
 </div>
-   <!-- Modal de cadastro de cliente -->
-   <div class="modal fade" id="mdlCadCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar cliente</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="card">
-                        <div class="card-body">
-                            <form method="post" action="" name="frmCadCliente" id="frmCadCliente">
-                                <div>
-                                    <label for="inpNome" class="label-control">Nome:</label>
-                                    <input type="text" name="inpNome" id="inpNome" class="form-control">
-                                </div>
-                                <div>
-                                    <label for="inpCpf">CPF:</label>
-                                    <input type="text" name="inpCpf" id="inpCpf">
-                                </div>
-                                <div>
-                                    <label for="inpContato">Contato:</label>
-                                    <input type="text" name="inpContato" id="inpContato">
-                                </div>
-                                <div>
-                                    <label for="inpValorUnitario">Valor Unitário:</label>
-                                    <input type="text" name="inpValorUnitario" id="inpValorUnitario">
-                                </div>
-                                <div>
-                                    <label for="inpCartao">Cartão:</label>
-                                    <input type="text" name="inpCartao" id="inpCartao">
-                                </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-primary" id="btnCadCliente">Cadastrar</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
 <!-- Modal de cadastro de Proprietário -->
 <div class="modal fade" id="cadProprietario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -109,6 +66,62 @@ include_once("./func/funcoes.php");
     </div>
 </div>
 
+<!-- Modal de Edit de Proprietário -->
+<div class="modal fade" id="editProprietario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" name="frmEditProprietario" id="frmEditProprietario">
+                <div class="modal-body">
+                    <input type="text" name="idEditProprietario"
+                           id="idEditProprietario" hidden="hidden">
+                    <label for="nomeEditProprietario">Nome:</label>
+                    <input type="text" name="nomeEditProprietario"
+                           id="nomeEditProprietario">
+                    <label for="contatoEditProprietario">Telefone:</label>
+                    <input type="text" name="contatoEditProprietario" class="telefoneBR"
+                           id="contatoEditProprietario">
+                    <label for="fotoEditProprietario">Foto:</label>
+                    <input type="file" name="fotoEditProprietario" class=""
+                           id="fotoEditProprietario" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="btnEditProprietario">Editar Cadastro</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal de Delete de Proprietário -->
+<div class="modal fade" id="deleteProprietario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-light">
+                <h1 class="modal-title fs-5 " id="exampleModalLabel">Deletar Proprietário</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" name="frmDeleteProprietario" id="frmDeleteProprietario">
+                <div class="modal-body">
+                    <input type="text" name="idDeleteProprietario"
+                           id="idDeleteProprietario">
+                    <div class="alert alert-danger">
+                        tem certeza?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteProprietario">Deletar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -122,6 +135,5 @@ include_once("./func/funcoes.php");
         integrity="sha512-oJCa6FS2+zO3EitUSj+xeiEN9UTr+AjqlBZO58OPadb2RfqwxHpjTU8ckIC8F4nKvom7iru2s8Jwdo+Z8zm0Vg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./js/script.js"></script>
-<script src="./js/funcoes.js"></script>
 </body>
 </html>

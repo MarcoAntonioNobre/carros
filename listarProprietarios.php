@@ -26,6 +26,8 @@ include_once("func/funcoes.php");
             if ($proprietarios !== 'Vazio') {
                 $cont = 1;
                 foreach ($proprietarios as $proprietario) {
+                    $idprop = $proprietario->idproprietario;
+
                     $foto = $proprietario->foto;
                     $nome = $proprietario->nome;
                     $contato = $proprietario->contato;
@@ -39,8 +41,8 @@ include_once("func/funcoes.php");
                         <td><?php echo $contato; ?></td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <button type="button" class="btn btn-warning">Editar</button>
-                                <button type="button" class="btn btn-danger">Deletar</button>
+                                <button type="button" class="btn btn-warning"  data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop;?>', 'idEditProprietario', '<?php echo $nome;?>', 'nomeEditProprietario', '<?php echo $contato ;?>', 'contatoEditProprietario', 'nao', 'nao', 'editProprietario', 'A', 'btnEditProprietario', 'editProprietario', 'nomeEditProprietario',' <?php echo $nome;?>', 'frmEditProprietario')">Editar</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop;?>', 'idDeleteProprietario', 'nao', 'nao', 'nao', 'nao', 'nao', 'nao', 'deleteProprietario', 'A', 'btnDeleteProprietario', 'deleteProprietario', 'nao', 'nao', 'frmDeleteProprietario')">Deletar</button>
                             </div>
                         </td>
                     </tr>
