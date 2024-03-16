@@ -24,6 +24,8 @@
                     $id = $admin->idadm;
                     $nome = $admin->nomeAdm;
                     $cpf = $admin->cpf;
+                    $nome = mb_strtolower($nome);
+                    $nome = converterAcentuacao($nome);
                     ?>
                     <tr class="text-center">
                         <th scope="row"><?php echo $contar

@@ -1,4 +1,5 @@
 <?php
+
 function listarTabela($campos, $tabela)
 {
     $conn = conectar();
@@ -134,7 +135,7 @@ function ativar($tabela, $campo, $ativo, $condicao)
     $conn = null;
 }
 
-function insertGlobal($tabela, $dados, $novosDados1, $novosDados2)
+function insertGlobal2($tabela, $dados, $novosDados1, $novosDados2)
 {
     $conn = conectar();
     try {
@@ -155,12 +156,12 @@ function insertGlobal($tabela, $dados, $novosDados1, $novosDados2)
     $conn = null;
 }
 
-function insertGlobalProp($tabela, $dados, $novosDados1, $novosDados2, $novosDados3)
+function insertGlobal1($tabela, $dados, $novosDados1)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
-        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES ('$novosDados1','$novosDados2','$novosDados3')");
+        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES ('$novosDados1')");
         $sqlLista->execute();
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {
@@ -223,7 +224,27 @@ function deletecadastro($tabela, $NomeDoCampoId, $id)
     };
     $conn = null;
 }
-
+function alterarGlobal1($tabela, $campo, $valor, $identificar, $id)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("UPDATE $tabela SET $campo = '$valor' WHERE  $identificar = $id ;");
+        //        $sqlLista->bindValue(1, $campoParametro, PDO::PARAM_INT);
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        };
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    };
+    $conn = null;
+}
 function verificarSenhaCriptografada($campos, $tabela, $campoBdEmail, $campoEmail, $campoBdSenha, $campoSenha, $campoBdAtivo, $campoAtivo)
 {
     $conn = conectar();
@@ -290,7 +311,7 @@ function conversorDBNumPonto($numm)
     return $numero;
 }
 
-function ucfirst_tr($str)
+function converterAcentuacao($str)
 {
     $trMap = ['Á' => 'á', 'É' => 'é', 'Í' => 'í', 'Ó' => 'ó', 'Ú' => 'ú', 'Ã' => 'ã', 'Õ' => 'õ', 'Â' => 'â', 'Ê' => 'ê', 'Î' => 'î', 'Ô' => 'ô', 'Û' => 'û', 'À' => 'à', 'È' => 'è', 'Ì' => 'ì', 'Ò' => 'ò', 'Ù' => 'ù'];
     $str = mb_strtolower(strtr($str, $trMap));

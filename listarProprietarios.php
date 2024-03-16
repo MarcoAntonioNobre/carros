@@ -1,17 +1,16 @@
 <div class="card mt-3">
     <div class="card-header espaco fs-3">
         # Proprietários
-        <button class="btn btn-outline-dark" data-bs-toggle="modal" onclick="abrirModalJsProprietario('nao','nao','nao','nao','nao','nao','nao','nao', 'cadProprietario','A', 'btnAddProprietario', 'addProprietario', 'nomeProprietario', 'nao', 'frmAddProprietario')">
+        <button class="btn btn-outline-dark" data-bs-toggle="modal" onclick="abrirModalJsProprietario('nao','nao','nao','nao','<?php echo DATATIMEATUAL?>', 'cadProprietario','A', 'btnAddProprietario', 'addProprietario', 'nomeProprietario', 'nao', 'frmAddProprietario')">
             Cadastrar
         </button>
 
     </div>
     <div class="card-body">
-        <table class="table">
+        <table class="table text-center">
             <thead>
                 <tr>
                     <th scope="col" class="bg-black text-light legenda">#</th>
-                    <th scope="col" class="bg-black text-light legenda">Foto</th>
                     <th scope="col" class="bg-black text-light legenda">Nome</th>
                     <th scope="col" class="bg-black text-light legenda">Ações</th>
                 </tr>
@@ -24,17 +23,19 @@
                     foreach ($proprietarios as $proprietario) {
                         $idprop = $proprietario -> idproprietario;
                         $nome = $proprietario->nomeProprietario;
+                        $nome = mb_strtolower($nome);
+                        $nome = converterAcentuacao($nome);
+
                 ?>
 
 
                         <tr>
                             <th scope="row"><?php echo $cont; ?></th>
-                            <td>foto</td>
                             <td><?php echo $nome; ?></td>
                             <td>
                                 <button class="btn btn-outline-dark">Ver Mais</button>
-                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop; ?>', 'idEditProprietario', '<?php echo $nome; ?>', 'nomeEditProprietario', 'nao', 'contatoEditProprietario', 'nao', 'nao', 'editProprietario', 'A', 'btnEditProprietario', 'editProprietario', 'nomeEditProprietario',' <?php echo $nome; ?>', 'frmEditProprietario')">Alterar</button>
-                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop; ?>', 'idDeleteProprietario', 'nao', 'nao', 'nao', 'nao', 'nao', 'nao', 'deleteProprietario', 'A', 'btnDeleteProprietario', 'deleteProprietario', 'nao', 'nao', 'frmDeleteProprietario')">Deletar</button>
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop; ?>', 'idEditProprietario', '<?php echo $nome; ?>', 'nomeEditProprietario', '<?php echo DATATIMEATUAL?>', 'editProprietario', 'A', 'btnEditProprietario', 'editProprietario', 'nomeEditProprietario',' <?php echo $nome; ?>', 'frmEditProprietario')">Alterar</button>
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop; ?>', 'idDeleteProprietario', 'nao', 'nao','<?php echo DATATIMEATUAL?>', 'deleteProprietario', 'A', 'btnDeleteProprietario', 'deleteProprietario', 'nao', 'nao', 'frmDeleteProprietario')">Deletar</button>
 
                             </td>
                         </tr>
