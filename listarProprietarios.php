@@ -33,8 +33,7 @@
                             <th scope="row"><?php echo $cont; ?></th>
                             <td><?php echo $nome; ?></td>
                             <td>
-                                <button class="btn btn-outline-dark">Ver Mais</button>
-                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop; ?>', 'idEditProprietario', '<?php echo $nome; ?>', 'nomeEditProprietario', '<?php echo DATATIMEATUAL?>', 'editProprietario', 'A', 'btnEditProprietario', 'editProprietario', 'nomeEditProprietario',' <?php echo $nome; ?>', 'frmEditProprietario')">Alterar</button>
+                                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop; ?>', 'idEditProprietario', '<?php echo $nome; ?>', 'nomeEditProprietario', '<?php echo DATATIMEATUAL?>', 'editProprietario', 'A', 'btnEditProprietario', 'editProprietario', 'nomeEditProprietario',' <?php echo $nome; ?>', 'frmEditProprietario')">Alterar</button>
                                 <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop; ?>', 'idDeleteProprietario', 'nao', 'nao','<?php echo DATATIMEATUAL?>', 'deleteProprietario', 'A', 'btnDeleteProprietario', 'deleteProprietario', 'nao', 'nao', 'frmDeleteProprietario')">Deletar</button>
 
                             </td>

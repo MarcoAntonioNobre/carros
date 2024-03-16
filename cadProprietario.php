@@ -5,8 +5,9 @@ if (isset($Dados) && !empty($Dados)) {
 //    echo json_encode($Dados);
 
     $nome = isset($Dados['nomeProprietario']) ? addslashes(mb_strtoupper($Dados['nomeProprietario'], 'UTF-8')) : '';
+    $dataHora = isset($Dados['dataTime']) ? addslashes(mb_strtoupper($Dados['dataTime'], 'UTF-8')) : '';
 
-    $retornoInsert = insertGlobal1('proprietario', 'nomeProprietario', $nome);
+    $retornoInsert = insertGlobal2('proprietario', 'nomeProprietario,cadastro', $nome, $dataHora);
 
 
     if ($retornoInsert > 0) {

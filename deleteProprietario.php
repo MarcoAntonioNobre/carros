@@ -8,30 +8,11 @@ if (isset($Dados) && !empty($Dados)) {
     $retornoInsert = deletecadastro('proprietario', 'idproprietario', $id);
 
 
-    if ($retornoInsert > 0) {
-        try {
-            echo json_encode(['success' => true, 'message' => "Proprietário <b>$id</b> deletado com sucesso"], JSON_THROW_ON_ERROR);
-        } catch (JsonException $e) {
-            $error_message = 'Throwable: ' . $e->getMessage() . PHP_EOL;
-            $error_message .= 'File: ' . $e->getFile() . PHP_EOL;
-            $error_message .= 'Lile: ' . $e->getLine() . PHP_EOL;
-        }
+    if ($retornoInsert = 1 ) {
+        echo json_encode(['success' => true, 'message' => "Proprietário <b>$id</b> deletado com sucesso"], JSON_THROW_ON_ERROR);
     } else {
-        try {
-            echo json_encode(['success' => false, 'message' => "Proprietário Não deletado! Error Bd"], JSON_THROW_ON_ERROR);
-        } catch (JsonException $e) {
-            $error_message = 'Throwable: ' . $e->getMessage() . PHP_EOL;
-            $error_message .= 'File: ' . $e->getFile() . PHP_EOL;
-            $error_message .= 'Lile: ' . $e->getLine() . PHP_EOL;
-        }
-
+        echo json_encode(['success' => false, 'message' => "Proprietário Não deletado! Error Bd"], JSON_THROW_ON_ERROR);
     }
 } else {
-    try {
-        echo json_encode(['success' => false, 'message' => "Proprietário Não deletado! Error Variável"], JSON_THROW_ON_ERROR);
-    } catch (JsonException $e) {
-        $error_message = 'Throwable: ' . $e->getMessage() . PHP_EOL;
-        $error_message .= 'File: ' . $e->getFile() . PHP_EOL;
-        $error_message .= 'Lile: ' . $e->getLine() . PHP_EOL;
-    }
+    echo json_encode(['success' => false, 'message' => "Proprietário Não deletado! Error Variável"], JSON_THROW_ON_ERROR);
 }

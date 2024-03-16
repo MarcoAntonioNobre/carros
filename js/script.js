@@ -28,7 +28,7 @@ function carregarConteudo(controle) {
 }
 
 
-function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp,dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
+function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
 
     var botoes = document.getElementById(`${botao}`);
@@ -49,6 +49,7 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp,dataTime, nomeM
             inputid.value = id;
         }
 
+
         const submitHandler = function (event) {
             event.preventDefault();
 
@@ -59,6 +60,9 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp,dataTime, nomeM
             if (inID !== 'nao') {
                 formData.append('id', `${id}`)
             }
+            if (dataTime !== 'nao') {
+                formData.append('dataTime', `${dataTime}`)
+            }
             formData.append('controle', `${addEditDel}`)
 
             fetch('controle.php', {
@@ -67,30 +71,31 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp,dataTime, nomeM
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
+                        carregarConteudo("listarProprietarios");
 
                         switch (addEditDel) {
-                            case 'cadProprietario':
+                            case 'addProprietario':
                                 addOuEditSucesso('Você', 'success', 'adicionou')
                                 break;
                             case 'editProprietario':
                                 addOuEditSucesso('Você', 'info', 'editou')
+                                botoes.disabled = false;
                                 break;
                             case 'deleteProprietario':
                                 addOuEditSucesso('Você', 'success', 'deletou')
+                                botoes.disabled = false;
                                 break;
                         }
-                        // setTimeout(function () {
-
                         ModalInstacia.hide();
-                        carregarConteudo("listarProprietarios");
-                        // }, 3000);
                     } else {
                         addErro()
+                        ModalInstacia.hide();
                         carregarConteudo("listarProprietarios");
                     }
                     console.log(data)
                 })
                 .catch(error => {
+                    botoes.disabled = false;
                     ModalInstacia.hide();
                     addErro()
                     carregarConteudo("listarProprietarios");
@@ -103,61 +108,62 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp,dataTime, nomeM
 
 
     } else {
+        botoes.disabled = false;
         ModalInstacia.hide();
     }
 
 }
 
-function pesquisarCarros( botao, addEditDel, inFocus, inFocusValue, formulario) {
+function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
 
     var botoes = document.getElementById(`${botao}`);
 
 
-        const inputFocar = document.getElementById(`${inFocus}`);
-        if (inFocusValue !== 'nao') {
-            inputFocar.value = inFocusValue;
-            setTimeout(function () {
-                inputFocar.focus();
+    const inputFocar = document.getElementById(`${inFocus}`);
+    if (inFocusValue !== 'nao') {
+        inputFocar.value = inFocusValue;
+        setTimeout(function () {
+            inputFocar.focus();
 
-            }, 500);
-        }
+        }, 500);
+    }
     if (inFocus !== 'nao') {
         setTimeout(function () {
             inputFocar.focus();
 
         }, 500);
     }
-        const submitHandler = function (event) {
-            event.preventDefault();
-            const form = event.target;
-            const formData = new FormData(form);
-            formData.append('controle', `${addEditDel}`)
+    const submitHandler = function (event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        formData.append('controle', `${addEditDel}`)
 
-            fetch('controle.php', {
-                method: 'POST', body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-                    var mostrar = document.getElementById('mostrar')
-                    if (data.success) {
+        fetch('controle.php', {
+            method: 'POST', body: formData,
+        })
+            .then(response => response.json())
+            .then(data => {
+                var mostrar = document.getElementById('mostrar')
+                if (data.success) {
 
-                        carregarConteudo("listarCarros");
-
-                    } else {
-                        carregarConteudo("listarCarros");
-                    }
-                    console.log(data)
-                })
-                .catch(error => {
-                   alert('catch')
                     carregarConteudo("listarCarros");
-                    console.error('Erro na requisição:', error);
-                });
+
+                } else {
+                    carregarConteudo("listarCarros");
+                }
+                console.log(data)
+            })
+            .catch(error => {
+                alert('catch')
+                carregarConteudo("listarCarros");
+                console.error('Erro na requisição:', error);
+            });
 
 
-        }
-        formDados.addEventListener('submit', submitHandler);
+    }
+    formDados.addEventListener('submit', submitHandler);
 
 
 }
@@ -167,7 +173,7 @@ function addOuEditSucesso(UserAlter, icon, addOuEditOuDelete) {
     Swal.fire({
         title: `${UserAlter} ${addOuEditOuDelete} com sucesso! <br> Atualizando Dados.`,
         html: "Fechando em <b></b> ms.",
-        timer: 3000,
+        timer: 1500,
         icon: `${icon}`,
         timerProgressBar: true,
         didOpen: () => {
@@ -195,7 +201,7 @@ function addErro() {
     Swal.fire({
         title: "Erro ao Manipular <br> Tente Novamente.",
         html: "Fechando em <b></b> ms.",
-        timer: 3000,
+        timer: 1500,
         icon: "error",
         timerProgressBar: true,
         didOpen: () => {
