@@ -24,23 +24,23 @@ include_once("./func/funcoes.php");
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-2 bg-dark vh-100 text-white text-center fs-5">
-            <div class="mt-5 mb-1 pointer">
+        <div  id="nav" class="col-lg-2 bg-black text-white text-center fs-5 ">
+            <div class="mt-5 mb-1 pointer ">
                 <div onclick="carregarConteudo('listarCarros')">Carros</div>
             </div>
-            <div class="mt-3 mb-1 pointer">
+            <div class="mt-3 mb-1 pointer ">
                 <div onclick="carregarConteudo('listarProprietarios')">Proprietários</div>
             </div>
-            <div class="mt-3 mb-1 pointer">
+            <div class="mt-3 mb-1 pointer ">
                 <div onclick="carregarConteudo('listarCliente')">Clientes</div>
             </div>
-            <div class="mt-3 mb-1 pointer">
+            <div class="mt-3 mb-1 pointer ">
                 <div onclick="carregarConteudo('listarFoto')">Fotos</div>
             </div>
-            <div class="mt-3 mb-1 pointer">
+            <div class="mt-3 mb-1 pointer ">
                 <div onclick="carregarConteudo('listarTotal')">Total de vendas</div>
             </div>
-            <div class="mt-3 mb-1 pointer">
+            <div class="mt-3 mb-1 pointer ">
                 <div onclick="carregarConteudo('listarAdm')">Administradores</div>
             </div>
         </div>
@@ -142,15 +142,15 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpContato" class="label-control">Contato:</label>
-                                <input type="text" name="inpContato" id="inpContato" class="form-control">
+                                <input type="text" name="inpContato" id="inpContato" class="form-control telefoneBR">
                             </div>
                             <div>
-                                <label for="inpValorUnitario" class="label-control">Valor de cada unidae:</label>
-                                <input type="text" name="inpValorUnitario" id="inpValorUnitario" class="form-control">
+                                <label for="inpValorUnitario" class="label-control">Valor de cada unidade:</label>
+                                <input type="text" name="inpValorUnitario" id="inpValorUnitario" class="form-control dinheiro">
                             </div>
                             <div>
                                 <label for="inpValorCartao" class="label-control">Valor em cartão:</label>
-                                <input type="text" name="inpValorCartao" id="inpValorCartao" class="form-control">
+                                <input type="text" name="inpValorCartao" id="inpValorCartao" class="form-control dinheiro">
                             </div>
                     </div>
                 </div>
@@ -159,6 +159,69 @@ include_once 'footer.php';
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                 <button type="submit" class="btn btn-primary" id="btnCadCliente">Cadastrar</button>
             </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal de edit de CLIENTE -->
+<div class="modal fade" id="mdlEditCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar cliente</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post" action="" name="frmEditCliente" id="frmEditCliente">
+                            <input type="text" id="inpEditId"  name="inpEditId" hidden="hidden">
+                            <div>
+                                <label for="inpEditNome" class="label-control">Nome:</label>
+                                <input type="text" name="inpEditNome" id="inpEditNome" class="form-control" required="required">
+                            </div>
+                            <div>
+                                <label for="inpEditContato" class="label-control">Contato:</label>
+                                <input type="text" name="inpEditContato" id="inpEditContato" class="form-control telefoneBR">
+                            </div>
+                            <div>
+                                <label for="inpEditValorUnitario" class="label-control">Valor de cada unidade:</label>
+                                <input type="text" name="inpEditValorUnitario" id="inpEditValorUnitario" class=" form-control dinheiro">
+                            </div>
+                            <div>
+                                <label for="inpEditValorCartao" class="label-control">Valor em cartão:</label>
+                                <input type="text" name="inpEditValorCartao" id="inpEditValorCartao" class="form-control dinheiro">
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                <button type="submit" class="btn btn-primary" id="btnEditCliente">Editar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal de Delete de CLIENTE -->
+<div class="modal fade" id="mdlDeleteCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-light">
+                <h1 class="modal-title fs-5 " id="exampleModalLabel">Deletar Proprietário</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" name="frmDeleteCliente" id="frmDeleteCliente">
+                <div class="modal-body">
+                    <input type="text" name="idDeleteCliente" id="idDeleteCliente">
+                    <div class="alert alert-danger">
+                        tem certeza?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteCliente">Deletar</button>
+                </div>
             </form>
         </div>
     </div>
@@ -187,7 +250,7 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpValor">Valor:</label>
-                                <input type="text" name="inpValor" id="inpValor" required="required">
+                                <input type="text" name="inpValor " id="inpValor" required="required" class="dinheiro">
                             </div>
                             <div>
                                 <label for="selectProprietario">Selecione o proprietário:</label>

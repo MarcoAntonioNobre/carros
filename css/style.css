@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+@media only screen and (min-width: 992px) {
+    #nav {
+        min-height: 100vh !important;
+    }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+    #nav {
+        min-height: 40vh !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #nav {
+        min-height: 40vh !important;
+    }
+}
+
 body {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
@@ -15,14 +33,16 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
-.corbotao{
+.corbotao {
     border-radius: 100px;
     background-color: rgb(161, 0, 0);
 }
-.icones{
+
+.icones {
     color: white;
 }
-.teste{
+
+.teste {
     width: 50px;
 }
 
@@ -33,6 +53,7 @@ a:focus {
     text-decoration: none;
     transition: all 0.3s;
 }
+
 .corpadrao {
     color: #ffffff;
 }
@@ -58,7 +79,7 @@ td strong .a:hover {
     color: #0D6EFD;
 }
 
-.corzinha{
+.corzinha {
     background-color: black;
 }
 
@@ -70,7 +91,7 @@ td strong .a:hover {
 .wrapper .icon {
     position: relative;
     background: #000000;
-    
+
     border-radius: 50%;
     padding: 15px;
     margin: 5px;
@@ -111,9 +132,11 @@ td strong .a:hover {
     transform: translate(-50%) rotate(45deg);
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.tudo{
+
+.tudo {
     min-height: 100vh;
 }
+
 .wrapper .icon:hover .tooltip {
     top: -45px;
     opacity: 1;
@@ -161,16 +184,16 @@ td strong .a:hover {
     color: #ffffff;
 }
 
-.espaco{
+.espaco {
     display: flex;
     justify-content: space-between;
 }
 
-.pointer{
+.pointer {
     cursor: pointer;
 }
 
-::selection{
+::selection {
     background-color: #000000;
     color: white;
 }

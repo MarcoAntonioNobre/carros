@@ -1,5 +1,5 @@
 $('.cpf').mask('000.000.000-00');
-
+$('.dinheiro').mask('000.000.000.000.000,00', {reverse: true});
 
 var options = {
     onKeyPress: function (tell, e, field, options) {
@@ -99,6 +99,106 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, dataTime, nome
                     ModalInstacia.hide();
                     addErro()
                     carregarConteudo("listarProprietarios");
+                    console.error('Erro na requisição:', error);
+                });
+
+
+        }
+        formDados.addEventListener('submit', submitHandler);
+
+
+    } else {
+        botoes.disabled = false;
+        ModalInstacia.hide();
+    }
+
+}
+
+function abrirModalJsCliente(id, inID, nome, inNome, dataTime, contato, inContato, uni, inUNI, cartao, inCartao, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
+    const formDados = document.getElementById(`${formulario}`)
+
+    var botoes = document.getElementById(`${botao}`);
+    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    if (abrirModal === 'A') {
+        ModalInstacia.show();
+
+        const inputFocar = document.getElementById(`${inFocus}`);
+        if (inFocusValue !== 'nao') {
+            inputFocar.value = inFocusValue;
+            setTimeout(function () {
+                inputFocar.focus();
+
+            }, 500);
+        }
+        const ID = document.getElementById(`${inID}`);
+        if (inID !== 'nao') {
+            ID.value = id;
+        }
+        const Nome = document.getElementById(`${inNome}`);
+        if (inNome !== 'nao') {
+            Nome.value = nome;
+        }
+        const Contato = document.getElementById(`${inContato}`);
+        if (inContato !== 'nao') {
+            Contato.value = contato;
+        }
+        const Unidade = document.getElementById(`${inUNI}`);
+        if (inUNI !== 'nao') {
+            Unidade.value = uni;
+        }
+        const Cartao = document.getElementById(`${inCartao}`);
+        if (inCartao !== 'nao') {
+            Cartao.value = cartao;
+        }
+
+
+        const submitHandler = function (event) {
+            event.preventDefault();
+
+            botoes.disabled = true;
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            if (dataTime !== 'nao') {
+                formData.append('dataTime', `${dataTime}`)
+            }
+            formData.append('controle', `${addEditDel}`)
+
+            fetch('controle.php', {
+                method: 'POST', body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        carregarConteudo("listarCliente");
+
+                        switch (addEditDel) {
+                            case 'addCliente':
+                                addOuEditSucesso('Você', 'success', 'adicionou')
+                                break;
+                            case 'editCliente':
+                                addOuEditSucesso('Você', 'info', 'editou')
+                                botoes.disabled = false;
+                                break;
+                            case 'deleteCliente':
+                                addOuEditSucesso('Você', 'success', 'deletou')
+                                botoes.disabled = false;
+                                break;
+                        }
+                        ModalInstacia.hide();
+                    } else {
+                        addErro()
+                        ModalInstacia.hide();
+                        carregarConteudo("listarCliente");
+                    }
+                    console.log(data)
+                })
+                .catch(error => {
+                    botoes.disabled = false;
+                    ModalInstacia.hide();
+                    addErro()
+                    carregarConteudo("listarCliente");
                     console.error('Erro na requisição:', error);
                 });
 

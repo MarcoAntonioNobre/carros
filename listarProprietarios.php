@@ -7,7 +7,7 @@
 
     </div>
     <div class="card-body">
-        <table class="table text-center">
+        <table class="table text-center table-striped table-hover">
             <thead>
                 <tr>
                     <th scope="col" class="bg-black text-light legenda">#</th>

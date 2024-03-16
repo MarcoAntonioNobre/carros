@@ -1,10 +1,10 @@
 <div class="card mt-3">
     <div class="card-header espaco fs-3">
         # Cliente
-        <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#mdlCadCliente">Cadastrar</button>
+        <button class="btn btn-outline-dark" data-bs-toggle="modal" onclick="abrirModalJsCliente('nao', 'nao', 'nao', 'nao', '<?php echo DATATIMEATUAL?>','nao','nao','nao','nao','nao','nao', 'mdlCadCliente','A', 'btnCadCliente', 'addCliente', 'inpNome', 'nao', 'frmCadCliente')">Cadastrar</button>
     </div>
     <div class="card-body">
-        <table class="table">
+        <table class="table table-striped table-hover text-center">
             <thead>
             <tr>
                 <th scope="col" class="bg-black text-light legenda">#</th>
@@ -22,6 +22,7 @@
             if ($listarCliente !== 'Vazio') {
                 $cont = 1;
                 foreach ($listarCliente as $cliente) {
+                    $idcliente = $cliente-> idcliente;
                     $nome = $cliente->nomeCliente;
                     $contato = $cliente->contato;
                     $cartao = $cliente->valorCartao;
@@ -49,28 +50,27 @@
                             }
                             ?>
                         </td>
+                        <td >
+                            <?php
+                            if ($valorUni !== '') {
+                                echo 'R$ '.$valorUni;
+                            } else {
+                                echo 'Não informado';
+                            }
+                            ?>
+                        </td>
                         <td>
                             <?php
                             if ($cartao !== '') {
-                                echo $cartao;
+                                echo 'R$ '.$cartao;
                             } else {
                                 echo 'Não informado';
                             }
                             ?>
                         </td>
                         <td>
-                            <?php
-                            if ($valorUni !== '') {
-                                echo $valorUni;
-                            } else {
-                                echo 'Não informado';
-                            }
-                            ?>
-                        </td>
-                        <td>
-                            <button name="vermaisCliente" id="vermaisCliente" class="btn btn-outline-dark">Ver mais</button>
-                            <button name="alterarCliente" id="alterarCliente" class="btn btn-outline-primary">Alterar</button>
-                            <button name="excluirCliente" id="vermaisCliente" class="btn btn-outline-danger">Excluir</button>
+                            <button name="alterarCliente" id="alterarCliente" class="btn btn-outline-primary" data-bs-toggle="modal" onclick="abrirModalJsCliente('<?php echo $idcliente?>', 'inpEditId', '<?php echo $nome?>', 'inpEditNome', '<?php echo DATATIMEATUAL?>','<?php echo $contato?>','inpEditContato','<?php echo $valorUni?>','inpEditValorUnitario','<?php echo $cartao?>','inpEditValorCartao', 'mdlEditCliente','A', 'btnEditCliente', 'editCliente', 'inpEditNome', 'nao', 'frmEditCliente')">Alterar</button>
+                            <button name="excluirCliente" id="vermaisCliente" class="btn btn-outline-danger" data-bs-toggle="modal" onclick="abrirModalJsCliente('<?php echo $idcliente?>', 'idDeleteCliente', 'nao', 'nao', 'nao','nao','nao','nao','nao','nao','nao', 'mdlDeleteCliente','A', 'btnDeleteCliente', 'deleteCliente', 'nao', 'nao', 'frmDeleteCliente')">Excluir</button>
                         </td>
                     </tr>
                     <?php
