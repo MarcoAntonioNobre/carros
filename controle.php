@@ -8,19 +8,32 @@ if (!empty($controle) && isset($controle)) {
     switch ($controle) {
 
         case 'listarCliente':
-            include_once ('listarCliente.php');
-        break;
+            include_once('listarCliente.php');
+            break;
         case 'listarProprietarios';
-            include_once ('listarProprietarios.php');
-        break;
+            include_once('listarProprietarios.php');
+            break;
         case 'listarCarros';
-        include_once ('carros.php');
-        break;
+            include_once('carros.php');
+            break;
+        case 'addProprietario';
+            include_once('cadProprietario.php');
+            break;
         case 'clienteAdd';
-        include_once ('cadCliente.php');
-        break;
+            include_once('cadCliente.php');
+            break;
+        case 'carroAdd';
+            include_once('cadCarro.php');
+            break;
+        case 'listarTotal';
+            include_once('listarTotal.php');
+            break;
+        case 'listarFoto';
+            include_once('fotos.php');
+            break;
+        default;
+            echo 'Menu não encontrado!';
     }
-
 } else {
     ?>
     <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
@@ -33,4 +46,3 @@ if (!empty($controle) && isset($controle)) {
 //$acao = filter_input(INPUT_POST, 'ação', FILTER_SANITIZE_STRING);
 //$acaoId = filter_input(INPUT_POST, 'acaoId', FILTER_SANITIZE_NUMBER_INT);
 //$controleGet = filter_input(INPUT_GET, 'controleGet', FILTER_SANITIZE_STRING);
-

@@ -12,7 +12,7 @@ body {
 }
 
 .fundo {
-    background-color: gray;
+    background-color: rgb(255, 255, 255);
 }
 
 #page-container {
@@ -83,7 +83,8 @@ td strong .a:hover {
 
 .wrapper .icon {
     position: relative;
-    background: #ffffff;
+    background: #000000;
+    
     border-radius: 50%;
     padding: 15px;
     margin: 5px;
@@ -170,7 +171,7 @@ td strong .a:hover {
 .wrapper .youtube:hover,
 .wrapper .youtube:hover .tooltip,
 .wrapper .youtube:hover .tooltip::before {
-    background: #cd201f;
+    background: #00c010;
     color: #ffffff;
 }
 

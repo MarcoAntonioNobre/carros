@@ -50,7 +50,7 @@ include_once("func/funcoes.php");
                             </ul>
                         </li>
                     </ul>
-                    <a href="./index.php" class="btn btn-outline-danger" type="submit">Sair</a>
+                    <a href="./index.php" class="btn btn-outline-light" type="submit">Sair</a>
                 </div>
             </div>
         </nav>
@@ -58,15 +58,18 @@ include_once("func/funcoes.php");
 
         <div class="container mt-5 text-center bg-black">
             <div class="pt-3 row">
-                <div class="col-md-4">
-                    <a href="" class="links text-white margem">Lista</a>
+                <div class="col-md-1">
+                    <a href="adm.php"><i class="fa-solid fa-gear text-white"></i></a>
                 </div>
                 <div class="col-md-4">
+                    <a href="dashboard.php" class="links text-white margem">Ver Todos</a>
+                </div>
+                <div class="col-md-3">
                 </div>
                 <div class="col-md-4">
                     <p class="d-inline-flex gap-1">
                         <a class="links text-white margem" data-bs-toggle="collapse" href="#collapseExample"
-                           role="button" aria-expanded="false" aria-controls="collapseExample">
+                           role="button" aria-expanded="false" aria-controls="collapseExample" >
                             Pesquisar Código
                         </a>
                     </p>
@@ -74,22 +77,27 @@ include_once("func/funcoes.php");
                 <div class="collapse mb-3" id="collapseExample">
                     <div class="card card-body bg-black p-5">
                         <div class="position-absolute top-50 start-50 translate-middle">
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2 " type="search" placeholder="Digite o código"
-                                       aria-label="Buscar carro">
-                                <button class="btn btn-outline-danger" type="submit">Buscar</button>
+                            <form class="d-flex" role="search" id="pesquisaCarro" name="pesquisaCarro">
+                                <input class="form-control me-2 " width="75%" type="search"
+                                       placeholder="Digite o código"
+                                       aria-label="Buscar carro" id="inputPesquisa" name="inputPesquisa">
+                                <button class="btn btn-outline-light" id="btnPesquisa" name="btnPesquisa" type="submit" onclick="pesquisarCarros('btnPesquisa', 'pesquisarCarro', 'inputPesquisa', 'nao', 'pesquisaCarro')">
+<!--                                -->
+                                    Buscar
+                                </button>
                             </form>
+                                <button onclick="carregarConteudo('listarCarros')">dasd</button>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
-        <div class="container mt-3">
-
-        <?php
-        include_once './carros.php';
-        ?>
+        <div class="container mt-3" id="show">
+<div id="mostrar"></div>
+            <?php
+            include_once './carros.php';
+            ?>
         </div>
     </div>
 
