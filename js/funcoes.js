@@ -39,6 +39,7 @@ if (clienteModal) {
     })
 }
 
+
 const carroModalInstancia = new bootstrap.Modal(document.getElementById('mdlCadCarro'));
 const carroModal = document.getElementById('mdlCadCarro');
 const inpCarro = document.getElementById('inpNomeCarro');
@@ -75,4 +76,12 @@ if (carroModal) {
         }
         formCarro.addEventListener('submit', submitHandler);
     })
+}
+
+
+
+
+function redireciona() {
+        window.location.href = 'dashboard.php';
+
 }

@@ -1,6 +1,6 @@
 <div class="card mt-3">
     <div class="card-header espaco fs-3">
-        #Carros
+        #Administrador
         <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#mdlCadCarro">Cadastrar</button>
     </div>
     <div class="card-body">
@@ -8,34 +8,29 @@
             <thead>
             <tr class="text-center ">
                 <th scope="col" class="bg-black text-light legenda">#</th>
-                <th scope="col" class="bg-black text-light legenda">Proprietário</th>
-                <th scope="col" class="bg-black text-light legenda">Carro</th>
-                <th scope="col" class="bg-black text-light legenda">Valor</th>
+                <th scope="col" class="bg-black text-light legenda">Nome</th>
+                <th scope="col" class="bg-black text-light legenda">CPF</th>
                 <th scope="col" class="bg-black text-light legenda">Ação</th>
             </tr>
             </thead>
             <tbody>
             <?php
             $contar = 1;
-            $carros = listarTabelaInnerJoin('*', 'carro', 'proprietario', 'idproprietario', 'idproprietario', 'nomeCarro', 'ASC');
+            $adm = listarTabela('*', 'adm');
 
-            if ($carros !== 'Vazio') {
+            if ($adm !== 'Vazio') {
 
-                foreach ($carros as $carro) {
-                    $idcarro = $carro->idcarro;
-                    $proprietario = $carro->nomeProprietario;
-                    $nomeCarro = $carro->nomeCarro;
-                    $diferenciais = $carro->diferenciais;
-                    $valor = $carro->preco  ;
+                foreach ($adm as $admin) {
+                    $id = $admin->idadm;
+                    $nome = $admin->nomeAdm;
+                    $cpf = $admin->cpf;
                     ?>
                     <tr class="text-center">
                         <th scope="row"><?php echo $contar
                             ?></th>
-                        <td><?php echo $proprietario
+                        <td><?php echo $nome
                             ?></td>
-                        <td><?php echo $nomeCarro
-                            ?></td>
-                        <td><?php echo $valor
+                        <td><?php echo $cpf
                             ?></td>
                         <td>
                             <button class="btn btn-outline-dark">Ver Mais</button>

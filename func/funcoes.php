@@ -194,14 +194,13 @@ function insertGlobal5($tabela, $dados, $novosDados1, $novosDados2,$novosDados3,
         } else {
             return 'Vazio';
         }
-    } catch (PDOExecption $e) {
+    } catch (PDOException $e) {
         echo 'Exception -> ';
         $conn->rollback();
         return ($e->getMessage());
     }
     $conn = null;
 }
-
 
 function deletecadastro($tabela, $NomeDoCampoId, $id)
 {
