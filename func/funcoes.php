@@ -177,7 +177,7 @@ function insertGlobal1($tabela, $dados, $novosDados1)
     $conn = null;
 }
 
-function insertGlobal5($tabela, $dados, $novosDados1, $novosDados2,$novosDados3,$novosDados4,$novosDados5)
+function insertGlobal5($tabela, $dados, $novosDados1, $novosDados2, $novosDados3, $novosDados4, $novosDados5)
 {
     $conn = conectar();
     try {
@@ -224,6 +224,7 @@ function deletecadastro($tabela, $NomeDoCampoId, $id)
     };
     $conn = null;
 }
+
 function alterarGlobal1($tabela, $campo, $valor, $identificar, $id)
 {
     $conn = conectar();
@@ -245,6 +246,36 @@ function alterarGlobal1($tabela, $campo, $valor, $identificar, $id)
     };
     $conn = null;
 }
+
+function alterarGlobal4($tabela, $campo1, $campo2, $campo3, $campo4, $valor, $valor2, $valor3, $valor4, $identificar, $id)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("UPDATE $tabela SET $campo1 = ?, $campo2 = ?, $campo3 = ?,$campo4 = ? WHERE  $identificar = $id ;");
+//        $sqlLista->bindValue(1, $campo1, PDO::PARAM_STR);
+        $sqlLista->bindValue(1, $valor, PDO::PARAM_STR);
+//        $sqlLista->bindValue(3, $campo2, PDO::PARAM_STR);
+        $sqlLista->bindValue(2, $valor2, PDO::PARAM_STR);
+//        $sqlLista->bindValue(5, $campo3, PDO::PARAM_STR);
+        $sqlLista->bindValue(3, $valor3, PDO::PARAM_STR);
+//        $sqlLista->bindValue(7, $campo4, PDO::PARAM_STR);
+        $sqlLista->bindValue(4, $valor4, PDO::PARAM_STR);
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    };
+    $conn = null;
+}
+
 function verificarSenhaCriptografada($campos, $tabela, $campoBdEmail, $campoEmail, $campoBdSenha, $campoSenha, $campoBdAtivo, $campoAtivo)
 {
     $conn = conectar();

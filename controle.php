@@ -34,7 +34,7 @@ if (!empty($controle) && isset($controle)) {
         case 'listarFoto';
             include_once('fotos.php');
             break;
-        case 'clienteAdd';
+        case 'addCliente';
             include_once('cadCliente.php');
             break;
         case 'carroAdd';
@@ -42,6 +42,12 @@ if (!empty($controle) && isset($controle)) {
             break;
         case 'listarAdm';
             include_once('listarAdm.php');
+            break;
+        case 'editCliente';
+            include_once('editCliente.php');
+            break;
+        case 'deleteCliente';
+            include_once('deleteCliente.php');
             break;
         default;
             echo 'Menu inexistente';
