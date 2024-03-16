@@ -19,11 +19,14 @@ if (!empty($controle) && isset($controle)) {
         case 'addProprietario';
             include_once('cadProprietario.php');
             break;
-        case 'clienteAdd';
-            include_once('cadCliente.php');
+        case 'editProprietario';
+            include_once('editProprietario.php');
             break;
-        case 'carroAdd';
-            include_once('cadCarro.php');
+        case 'deleteProprietario';
+            include_once('deleteProprietario.php');
+            break;
+        case 'pesquisarCarro';
+            include_once('pesquisarCarro.php');
             break;
         case 'listarTotal';
             include_once('listarTotal.php');
@@ -31,16 +34,25 @@ if (!empty($controle) && isset($controle)) {
         case 'listarFoto';
             include_once('fotos.php');
             break;
-        default;
-            echo 'Menu não encontrado!';
+        case 'clienteAdd';
+            include_once('cadCliente.php');
+            break;
+        case 'carroAdd';
+            include_once('cadCarro.php');
+            break;
+            case 'listarAdm';
+            include_once ('listarAdm.php');
+            break;
+            default;
+            echo 'Menu inexistente';
     }
 } else {
-    ?>
+?>
     <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
         <h1>Página Vazia, Retorne. </h1><sup>Error 404</sup>
         <img src="./img/vazio.gif" alt="ERROR 404">
     </div>
-    <?php
+<?php
 }
 
 //$acao = filter_input(INPUT_POST, 'ação', FILTER_SANITIZE_STRING);

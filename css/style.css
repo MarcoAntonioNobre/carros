@@ -15,20 +15,6 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
-#page-container {
-    position: relative;
-    min-height: 100vh;
-}
-
-#content-wrap {
-    padding-bottom: 2.5rem;
-}
-
-#footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
 .corbotao{
     border-radius: 100px;
     background-color: rgb(161, 0, 0);
@@ -175,3 +161,16 @@ td strong .a:hover {
     color: #ffffff;
 }
 
+.espaco{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+::selection{
+    background-color: #000000;
+    color: white;
+}
