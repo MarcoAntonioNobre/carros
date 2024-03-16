@@ -28,7 +28,7 @@ function carregarConteudo(controle) {
 }
 
 
-function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, contatoProp, inContatoProp, fotoProp, inFotoProp, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
+function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp,dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
 
     var botoes = document.getElementById(`${botao}`);
@@ -48,16 +48,6 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, contatoProp, i
         if (inID !== 'nao') {
             inputid.value = id;
         }
-        const inContato = document.getElementById(`${inContatoProp}`);
-        if (inContatoProp !== 'nao') {
-            inContato.value = contatoProp;
-        }
-
-        if (inFotoProp !== 'nao') {
-            var foto = document.getElementById(`${inFotoProp}`).files;
-            inFotoProp.value = foto;
-        }
-
 
         const submitHandler = function (event) {
             event.preventDefault();
@@ -68,9 +58,6 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, contatoProp, i
             const formData = new FormData(form);
             if (inID !== 'nao') {
                 formData.append('id', `${id}`)
-            }
-            if (inFotoProp !== 'nao') {
-                formData.append('foto', foto)
             }
             formData.append('controle', `${addEditDel}`)
 
@@ -178,7 +165,7 @@ function pesquisarCarros( botao, addEditDel, inFocus, inFocusValue, formulario) 
 function addOuEditSucesso(UserAlter, icon, addOuEditOuDelete) {
     let timerInterval;
     Swal.fire({
-        title: `${UserAlter}, você ${addOuEditOuDelete} com sucesso! <br> Atualizando Dados.`,
+        title: `${UserAlter} ${addOuEditOuDelete} com sucesso! <br> Atualizando Dados.`,
         html: "Fechando em <b></b> ms.",
         timer: 3000,
         icon: `${icon}`,

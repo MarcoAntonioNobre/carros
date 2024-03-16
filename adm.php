@@ -65,10 +65,6 @@ include_once("./func/funcoes.php");
 
                         <label for="nomeProprietario">Nome:</label>
                         <input type="text" name="nomeProprietario" id="nomeProprietario">
-                        <label for="contatoProprietario">Telefone:</label>
-                        <input type="text" name="contatoProprietario" class="telefoneBR" id="contatoProprietario">
-                        <label for="fotoProprietario">Foto:</label>
-                        <input type="file" name="fotoProprietario" class="" id="fotoProprietario" alt="">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
@@ -92,10 +88,7 @@ include_once("./func/funcoes.php");
                         <input type="text" name="idEditProprietario" id="idEditProprietario" hidden="hidden">
                         <label for="nomeEditProprietario">Nome:</label>
                         <input type="text" name="nomeEditProprietario" id="nomeEditProprietario">
-                        <label for="contatoEditProprietario">Telefone:</label>
-                        <input type="text" name="contatoEditProprietario" class="telefoneBR" id="contatoEditProprietario">
-                        <label for="fotoEditProprietario">Foto:</label>
-                        <input type="file" name="fotoEditProprietario" class="" id="fotoEditProprietario" alt="">
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>

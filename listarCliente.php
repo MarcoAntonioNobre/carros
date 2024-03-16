@@ -26,6 +26,8 @@
                     $contato = $cliente->contato;
                     $cartao = $cliente->valorCartao;
                     $valorUni = $cliente->valorUnitario;
+                    $nome = mb_strtolower($nome);
+                    $nome = converterAcentuacao($nome);
                     ?>
                     <tr>
                         <th scope="row"><?php echo $cont; ?></th>

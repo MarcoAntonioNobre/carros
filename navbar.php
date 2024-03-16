@@ -23,7 +23,7 @@
                     </ul>
                 </li>
             </ul>
-            <a href="./index.php" class="btn btn-outline-light" type="submit">Sair</a>
+            <a href="./logout.php" class="btn btn-outline-light" type="submit">Sair</a>
         </div>
     </div>
 </nav>
