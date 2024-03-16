@@ -24,7 +24,7 @@ include_once("./func/funcoes.php");
 
 <div class="container-fluid">
     <div class="row">
-        <div  id="nav" class="col-lg-2 bg-black text-white text-center fs-5 ">
+        <div id="nav" class="col-lg-2 bg-black text-white text-center fs-5 ">
             <div class="mt-5 mb-1 pointer ">
                 <div onclick="carregarConteudo('listarCarros')">Carros</div>
             </div>
@@ -69,7 +69,7 @@ include_once 'footer.php';
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-primary" id="btnAddProprietario">Criar Cadastro</button>
+                    <button type="submit" class="btn btn-success" id="btnAddProprietario">Criar Cadastro</button>
                 </div>
             </form>
         </div>
@@ -146,18 +146,20 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpValorUnitario" class="label-control">Valor de cada unidade:</label>
-                                <input type="text" name="inpValorUnitario" id="inpValorUnitario" class="form-control dinheiro">
+                                <input type="text" name="inpValorUnitario" id="inpValorUnitario"
+                                       class="form-control dinheiro">
                             </div>
                             <div>
                                 <label for="inpValorCartao" class="label-control">Valor em cartão:</label>
-                                <input type="text" name="inpValorCartao" id="inpValorCartao" class="form-control dinheiro">
+                                <input type="text" name="inpValorCartao" id="inpValorCartao"
+                                       class="form-control dinheiro">
                             </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                <button type="submit" class="btn btn-primary" id="btnCadCliente">Cadastrar</button>
+                <button type="submit" class="btn btn-success" id="btnCadCliente">Cadastrar</button>
             </div>
             </form>
         </div>
@@ -175,22 +177,26 @@ include_once 'footer.php';
                 <div class="card">
                     <div class="card-body">
                         <form method="post" action="" name="frmEditCliente" id="frmEditCliente">
-                            <input type="text" id="inpEditId"  name="inpEditId" hidden="hidden">
+                            <input type="text" id="inpEditId" name="inpEditId" hidden="hidden">
                             <div>
                                 <label for="inpEditNome" class="label-control">Nome:</label>
-                                <input type="text" name="inpEditNome" id="inpEditNome" class="form-control" required="required">
+                                <input type="text" name="inpEditNome" id="inpEditNome" class="form-control"
+                                       required="required">
                             </div>
                             <div>
                                 <label for="inpEditContato" class="label-control">Contato:</label>
-                                <input type="text" name="inpEditContato" id="inpEditContato" class="form-control telefoneBR">
+                                <input type="text" name="inpEditContato" id="inpEditContato"
+                                       class="form-control telefoneBR">
                             </div>
                             <div>
                                 <label for="inpEditValorUnitario" class="label-control">Valor de cada unidade:</label>
-                                <input type="text" name="inpEditValorUnitario" id="inpEditValorUnitario" class=" form-control dinheiro">
+                                <input type="text" name="inpEditValorUnitario" id="inpEditValorUnitario"
+                                       class=" form-control dinheiro">
                             </div>
                             <div>
                                 <label for="inpEditValorCartao" class="label-control">Valor em cartão:</label>
-                                <input type="text" name="inpEditValorCartao" id="inpEditValorCartao" class="form-control dinheiro">
+                                <input type="text" name="inpEditValorCartao" id="inpEditValorCartao"
+                                       class="form-control dinheiro">
                             </div>
                     </div>
                 </div>
@@ -226,6 +232,95 @@ include_once 'footer.php';
         </div>
     </div>
 </div>
+
+
+<!-- Modal de cadastro de ADM -->
+<div class="modal fade" id="cadAdm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de administrador</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" name="frmAddAdm" id="frmAddAdm">
+                <div class="modal-body">
+                    <div>
+                        <label for="nomeAdm">Nome:</label>
+                        <input type="text" name="nomeAdm" id="nomeAdm">
+                    </div>
+                    <div>
+                        <label for="cpfAdm">CPF:</label>
+                        <input type="text" name="cpfAdm" id="cpfAdm" class="cpf" autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="senhaAdm">Senha:</label>
+                        <input type="password" name="senhaAdm" id="senhaAdm" class="" autocomplete="off">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-success" id="btnAddAdm">Criar Administrador</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal de Edit de ADM -->
+<div class="modal fade" id="editAdm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de administrador</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" name="frmEditAdm" id="frmEditAdm">
+                <div class="modal-body">
+                    <input type="text" name="idEditAdm" id="idEditAdm">
+                    <div>
+                        <label for="nomeEditAdm">Nome:</label>
+                        <input type="text" name="nomeEditAdm" id="nomeEditAdm">
+                    </div>
+                    <div>
+                        <label for="cpfEditAdm">CPF:</label>
+                        <input type="text" name="cpfEditAdm" id="cpfEditAdm" class="cpf" autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="senhaEditAdm">Senha:</label>
+                        <input type="password" name="senhaEditAdm" id="senhaEditAdm" class="" autocomplete="off">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-primary" id="btnEditAdm">Editar Administrador</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal de Delete de ADM -->
+<div class="modal fade" id="deleteAdm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de administrador</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" name="frmDeleteAdm" id="frmDeleteAdm" >
+                <div class="modal-body">
+                    <input type="text" name="idDeleteAdm" id="idDeleteAdm" hidden="hidden">
+                    <div class="alert alert-danger">
+                        tem certeza?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteAdm">Deletar </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 <!-- Modal de cadastro de CARRO -->
 <div class="modal fade" id="mdlCadCarro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -203,6 +203,32 @@ function insertGlobal5($tabela, $dados, $novosDados1, $novosDados2, $novosDados3
     $conn = null;
 }
 
+function insertGlobal4($tabela, $dados, $novosDados1, $novosDados2, $novosDados3, $novosDados4)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES (?,?,?,?)");
+        $sqlLista->bindValue(1, $novosDados1, PDO::PARAM_STR);
+        $sqlLista->bindValue(2, $novosDados2, PDO::PARAM_STR);
+        $sqlLista->bindValue(3, $novosDados3, PDO::PARAM_STR);
+        $sqlLista->bindValue(4, $novosDados4, PDO::PARAM_STR);
+
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        }
+    } catch (PDOException $e) {
+        echo 'Exception -> ';
+        $conn->rollback();
+        return ($e->getMessage());
+    }
+    $conn = null;
+}
+
 function deletecadastro($tabela, $NomeDoCampoId, $id)
 {
     $conn = conectar();
@@ -261,6 +287,33 @@ function alterarGlobal4($tabela, $campo1, $campo2, $campo3, $campo4, $valor, $va
         $sqlLista->bindValue(3, $valor3, PDO::PARAM_STR);
 //        $sqlLista->bindValue(7, $campo4, PDO::PARAM_STR);
         $sqlLista->bindValue(4, $valor4, PDO::PARAM_STR);
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    };
+    $conn = null;
+}
+function alterarGlobal3($tabela, $campo1, $campo2, $campo3, $valor, $valor2, $valor3,  $identificar, $id)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("UPDATE $tabela SET $campo1 = ?, $campo2 = ?, $campo3 = ? WHERE  $identificar = $id ;");
+//        $sqlLista->bindValue(1, $campo1, PDO::PARAM_STR);
+        $sqlLista->bindValue(1, $valor, PDO::PARAM_STR);
+//        $sqlLista->bindValue(3, $campo2, PDO::PARAM_STR);
+        $sqlLista->bindValue(2, $valor2, PDO::PARAM_STR);
+//        $sqlLista->bindValue(5, $campo3, PDO::PARAM_STR);
+        $sqlLista->bindValue(3, $valor3, PDO::PARAM_STR);
+
         $sqlLista->execute();
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {
@@ -350,4 +403,16 @@ function converterAcentuacao($str)
     $first = strtr($first, array_flip($trMap));
     $first = mb_strtoupper($first);
     return $first . mb_substr($str, 1);
+}
+
+function criarSenhaHash($senha, $valorCost = '12')
+{
+    $options = [
+        'cost' => $valorCost,
+    ];
+    return password_hash($senha, PASSWORD_BCRYPT, $options);
+}
+
+{
+
 }

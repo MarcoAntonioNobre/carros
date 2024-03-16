@@ -49,6 +49,15 @@ if (!empty($controle) && isset($controle)) {
         case 'deleteCliente';
             include_once('deleteCliente.php');
             break;
+        case 'addAdm';
+            include_once('cadAdm.php');
+            break;
+        case 'editAdm';
+            include_once('editAdm.php');
+            break;
+        case 'deleteAdm';
+            include_once('deleteAdm.php');
+            break;
         default;
             echo 'Menu inexistente';
     }
