@@ -7,7 +7,7 @@ include_once("func/funcoes.php");
 <div class="card">
     <div class="card-header">
         # Cliente
-        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#mdlCadCliente">Cadastrar</button>
+        <button data-bs-toggle="modal" data-bs-target="#cadCliente">Cadastrar</button>
     </div>
     <div class="card-body">
         <table class="table">
@@ -16,7 +16,6 @@ include_once("func/funcoes.php");
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Contato</th>
-                <th scope="col">Dinheiro</th>
                 <th scope="col">Cartão</th>
                 <th scope="col">Ações</th>
             </tr>
@@ -28,53 +27,17 @@ include_once("func/funcoes.php");
             if ($listarCliente !== 'Vazio') {
                 $cont = 1;
                 foreach ($listarCliente as $cliente) {
-                    $nome = $cliente->nomeCliente;
+                    $nome = $cliente->nome;
                     $contato = $cliente->contato;
-                    $cartao = $cliente->valorCartao;
-                    $valorUni = $cliente->valorUnitario;
+                    $cartao = $cliente->cartao;
                     ?>
                     <tr>
                         <th scope="row"><?php echo $cont; ?></th>
-                        <td>
-                            <?php
-                            if($nome !== ''){
-                                echo $nome;
-                            }else{
-                                echo 'Não informado';
-                            }
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            if ($contato !== '') {
-                                echo $contato;
-                            } else {
-                                echo 'Não informado';
-                            }
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            if ($cartao !== '') {
-                                echo $cartao;
-                            } else {
-                                echo 'Não informado';
-                            }
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            if ($valorUni !== '') {
-                                echo $valorUni;
-                            } else {
-                                echo 'Não informado';
-                            }
-                            ?>
-                        </td>
+                        <td><?php echo $nome; ?></td>
+                        <td><?php echo $contato; ?></td>
+                        <td><?php echo $cartao; ?></td>
                         <td>
                             <button name="vermaisCliente" id="vermaisCliente" class="btn">Ver mais</button>
-                            <button name="vermaisCliente" id="vermaisCliente" class="btn">Alterar</button>
-                            <button name="vermaisCliente" id="vermaisCliente" class="btn">Excluir</button>
                         </td>
                     </tr>
                     <?php

@@ -5,11 +5,8 @@ include_once("func/funcoes.php");
 ?>
 <div class="card">
     <div class="card-header">
-        # Proprietários
-        <button class="btn btn-success" data-bs-toggle="modal"
-                onclick="abrirModalJsProprietario('nao','nao','nao','nao','nao','nao','nao','nao', 'cadProprietario','A', 'btnAddProprietario', 'addProprietario', 'nomeProprietario', 'nao', 'frmAddProprietario')">
-            Cadastrar
-        </button>
+        # Cliente
+        <button class="btn btn-success" data-bs-toggle="modal" onclick="abrirModalJsProprietario('nao','nao','nao','nao','nao','nao','nao','nao', 'cadProprietario','A', 'btnAddProprietario', 'addProprietario', 'nomeProprietario', 'nao', 'frmAddProprietario')">Cadastrar</button>
 
     </div>
     <div class="card-body">
@@ -19,16 +16,21 @@ include_once("func/funcoes.php");
                 <th scope="col">#</th>
                 <th scope="col">Foto</th>
                 <th scope="col">Nome</th>
+                <th scope="col">Contato</th>
                 <th scope="col">Ações</th>
             </tr>
             </thead>
             <tbody>
             <?php
-            $proprietarios = listarTabela('*', 'proprietario', 'nomeProprietario');
+            $proprietarios = listarTabela('*', 'proprietario', 'nome');
             if ($proprietarios !== 'Vazio') {
                 $cont = 1;
                 foreach ($proprietarios as $proprietario) {
-                    $nome = $proprietario->nomeProprietario;
+                    $idprop = $proprietario->idproprietario;
+
+                    $foto = $proprietario->foto;
+                    $nome = $proprietario->nome;
+                    $contato = $proprietario->contato;
                     ?>
 
 
@@ -36,10 +38,11 @@ include_once("func/funcoes.php");
                         <th scope="row"><?php echo $cont; ?></th>
                         <td>foto</td>
                         <td><?php echo $nome; ?></td>
+                        <td><?php echo $contato; ?></td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <button type="button" class="btn btn-warning">Editar</button>
-                                <button type="button" class="btn btn-danger">Deletar</button>
+                                <button type="button" class="btn btn-warning"  data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop;?>', 'idEditProprietario', '<?php echo $nome;?>', 'nomeEditProprietario', '<?php echo $contato ;?>', 'contatoEditProprietario', 'nao', 'nao', 'editProprietario', 'A', 'btnEditProprietario', 'editProprietario', 'nomeEditProprietario',' <?php echo $nome;?>', 'frmEditProprietario')">Editar</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop;?>', 'idDeleteProprietario', 'nao', 'nao', 'nao', 'nao', 'nao', 'nao', 'deleteProprietario', 'A', 'btnDeleteProprietario', 'deleteProprietario', 'nao', 'nao', 'frmDeleteProprietario')">Deletar</button>
                             </div>
                         </td>
                     </tr>
