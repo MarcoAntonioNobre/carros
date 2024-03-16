@@ -246,15 +246,15 @@ include_once 'footer.php';
                 <div class="modal-body">
                     <div>
                         <label for="nomeAdm">Nome:</label>
-                        <input type="text" name="nomeAdm" id="nomeAdm">
+                        <input type="text" name="nomeAdm" id="nomeAdm" required="required">
                     </div>
                     <div>
                         <label for="cpfAdm">CPF:</label>
-                        <input type="text" name="cpfAdm" id="cpfAdm" class="cpf" autocomplete="off">
+                        <input type="text" name="cpfAdm" id="cpfAdm" class="cpf" autocomplete="off" required="required">
                     </div>
                     <div>
                         <label for="senhaAdm">Senha:</label>
-                        <input type="password" name="senhaAdm" id="senhaAdm" class="" autocomplete="off">
+                        <input type="password" name="senhaAdm" id="senhaAdm" class="" autocomplete="off" required="required">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -270,23 +270,23 @@ include_once 'footer.php';
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de administrador</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edição de administrador</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="#" name="frmEditAdm" id="frmEditAdm">
                 <div class="modal-body">
-                    <input type="text" name="idEditAdm" id="idEditAdm">
+                    <input type="hidden" name="idEditAdm" id="idEditAdm">
                     <div>
                         <label for="nomeEditAdm">Nome:</label>
-                        <input type="text" name="nomeEditAdm" id="nomeEditAdm">
+                        <input type="text" name="nomeEditAdm" id="nomeEditAdm" required="required">
                     </div>
                     <div>
                         <label for="cpfEditAdm">CPF:</label>
-                        <input type="text" name="cpfEditAdm" id="cpfEditAdm" class="cpf" autocomplete="off">
+                        <input type="text" name="cpfEditAdm" id="cpfEditAdm" class="cpf" autocomplete="off" required="required">
                     </div>
                     <div>
                         <label for="senhaEditAdm">Senha:</label>
-                        <input type="password" name="senhaEditAdm" id="senhaEditAdm" class="" autocomplete="off">
+                        <input type="password" name="senhaEditAdm" id="senhaEditAdm" class="" autocomplete="off" required="required">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -302,7 +302,7 @@ include_once 'footer.php';
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de administrador</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Apagar administrador</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="#" name="frmDeleteAdm" id="frmDeleteAdm" >
@@ -349,7 +349,7 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="selectProprietario">Selecione o proprietário:</label>
-                                <select name="selectProprietario" id="selectProprietario">
+                                <select name="selectProprietario" id="selectProprietario" required="required">
                                     <option selected>Selecione uma opção</option>
                                     <?php
                                     $proprietarios = listarTabela('*', 'proprietario', 'nome');
@@ -371,6 +371,70 @@ include_once 'footer.php';
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                     <button type="submit" class="btn btn-primary" id="btnCadCarro">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mdlCadFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Foto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="" name="frmCadFoto" id="frmCadFoto">
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+<!--                                <label for="inpCarroFoto" class="label-control">Selecione o carro:</label>-->
+<!--                                <select name="inpCarroFoto" id="inpCarroFoto">-->
+<!--                                    <option selected>Selecione uma opção</option>-->
+<!--                                    --><?php
+//                                    $carro = listarTabela('*', 'carro');
+//                                    if ($carro !== 'Vazio') {
+//                                        foreach ($carro as $carros) {
+//                                            $id = $carros->idcarro;
+//                                            $nome = $carros->nomeCarro;
+//                                            ?>
+<!--                                            <option value="--><?php //echo $id ?><!--">--><?php //echo $nome ?><!--</option>-->
+<!--                                            --><?php
+//                                        }
+//                                    }
+//                                    ?>
+<!--                                </select>-->
+<!--                            </div>-->
+                            <div>
+                                <label for="inpGrupo" class="label-control">Selecione o grupo:</label>
+                                <select name="inpGrupo" id="inpGrupo" required="required">
+                                    <option selected>Selecione uma opção</option>
+                                    <?php
+                                    $proprietario = listarTabela('*', 'proprietario');
+                                    if ($proprietario !== 'Vazio') {
+                                        foreach ($proprietario as $proprietarios) {
+                                            $id = $proprietarios->idproprietario;
+                                            $nome = $proprietarios->nomeProprietario;
+                                            ?>
+                                            <option value="<?php echo $id ?>"><?php echo $nome ?></option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+
+                                </select>
+                            </div>
+                            <div>
+                                <label for="inpFoto" class="label-control">Foto:</label>
+                                <input type="file" name="inpFoto" id="inpFoto" class="form-control" required="required">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-primary" id="btnCadFoto">Cadastrar</button>
                 </div>
             </form>
         </div>
