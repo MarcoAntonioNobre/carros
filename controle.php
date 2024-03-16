@@ -40,19 +40,19 @@ if (!empty($controle) && isset($controle)) {
         case 'carroAdd';
             include_once('cadCarro.php');
             break;
-            case 'listarAdm';
-            include_once ('listarAdm.php');
+        case 'listarAdm';
+            include_once('listarAdm.php');
             break;
-            default;
+        default;
             echo 'Menu inexistente';
     }
 } else {
-?>
+    ?>
     <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
         <h1>Página Vazia, Retorne. </h1><sup>Error 404</sup>
         <img src="./img/vazio.gif" alt="ERROR 404">
     </div>
-<?php
+    <?php
 }
 
 //$acao = filter_input(INPUT_POST, 'ação', FILTER_SANITIZE_STRING);
