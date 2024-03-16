@@ -19,17 +19,21 @@ if (!empty($controle) && isset($controle)) {
         case 'addProprietario';
             include_once('cadProprietario.php');
             break;
-        case 'editProprietario';
-            include_once('editProprietario.php');
+        case 'clienteAdd';
+            include_once('cadCliente.php');
             break;
-        case 'deleteProprietario';
-            include_once('deleteProprietario.php');
+        case 'carroAdd';
+            include_once('cadCarro.php');
             break;
-        case 'pesquisarCarro';
-            include_once('pesquisarCarro.php');
+        case 'listarTotal';
+            include_once('listarTotal.php');
             break;
+        case 'listarFoto';
+            include_once('fotos.php');
+            break;
+        default;
+            echo 'Menu não encontrado!';
     }
-
 } else {
     ?>
     <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
@@ -42,4 +46,3 @@ if (!empty($controle) && isset($controle)) {
 //$acao = filter_input(INPUT_POST, 'ação', FILTER_SANITIZE_STRING);
 //$acaoId = filter_input(INPUT_POST, 'acaoId', FILTER_SANITIZE_NUMBER_INT);
 //$controleGet = filter_input(INPUT_GET, 'controleGet', FILTER_SANITIZE_STRING);
-

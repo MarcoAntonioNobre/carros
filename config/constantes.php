@@ -17,10 +17,10 @@ if ($servidorLocal) {
     define('HOST', 'localhost');
     define('USER', 'root');
     define('PASS', '');
-    define('DBNAME', 'carro');
+    define('DBNAME', 'concessionaria');
 } else {
     define('HOST', '192.168.1.1');
     define('USER', 'root');
     define('PASS', '');
-    define('DBNAME', 'carro');
+    define('DBNAME', 'concessionaria');
 }
