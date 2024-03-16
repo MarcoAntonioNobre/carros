@@ -34,6 +34,12 @@ if (!empty($controle) && isset($controle)) {
         case 'listarFoto';
             include_once('fotos.php');
             break;
+        case 'addFoto';
+            include_once('cadFoto.php');
+            break;
+            case 'apagarFoto';
+            include_once  ('deletarFoto.php');
+            break;
         case 'addCliente';
             include_once('cadCliente.php');
             break;
