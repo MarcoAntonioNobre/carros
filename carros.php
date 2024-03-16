@@ -27,6 +27,8 @@
                     $nomeCarro = $carro->nomeCarro;
                     $diferenciais = $carro->diferenciais;
                     $valor = $carro->preco  ;
+                    $nomeCarro = mb_strtolower($nomeCarro);
+                    $nomeCarro = converterAcentuacao($nomeCarro);
                     ?>
                     <tr class="text-center">
                         <th scope="row"><?php echo $contar

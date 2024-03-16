@@ -8,13 +8,13 @@ $conn = conectar();
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-if (isset($dados) && !empty($dados)){
-    $nome = isset($dados['inpNome']) ? addslashes($dados['inpNome']) : '';
-    $contato =isset($dados['inpContato']) ? addslashes($dados['inpContato']) : '';
-    $valorUnitario =isset($dados['inpValorUnitario']) ? addslashes($dados['inpValorUnitario']) : '';
-    $valorCartao = isset($dados['inpValorCartao']) ? addslashes($dados['inpValorCartao']) : '';
+if (isset($dados) && !empty($dados)) {
+    $nome = isset($dados['inpNome']) ? addslashes(mb_strtoupper($dados['inpNome'], 'UTF-8')) : '';
+    $contato = isset($dados['inpContato']) ? addslashes(mb_strtoupper($dados['inpContato'], 'UTF-8')) : '';
+    $valorUnitario = isset($dados['inpValorUnitario']) ? addslashes(mb_strtoupper($dados['inpValorUnitario'], 'UTF-8')) : '';
+    $valorCartao = isset($dados['inpValorCartao']) ? addslashes(mb_strtoupper($dados['inpValorCartao'], 'UTF-8')) : '';
 
-    $retornoInsert = insertGlobal5('cliente', 'nomeCliente, contato, valorUnitario, valorCartao, cadastro', "$nome", "$contato","$valorUnitario","$valorCartao",DATATIMEATUAL);
+    $retornoInsert = insertGlobal5('cliente', 'nomeCliente, contato, valorUnitario, valorCartao, cadastro', "$nome", "$contato", "$valorUnitario", "$valorCartao", DATATIMEATUAL);
     if ($retornoInsert > 0) {
         echo json_encode(['success' => true, 'message' => "Cliente $nome cadastrado com sucesso"]);
     } else {

@@ -70,6 +70,8 @@ include_once("func/funcoes.php");
 
                             $idcarro = $carro->idcarro;
                             $nomeCarro = $carro->nomeCarro;
+                            $nomeCarro = mb_strtolower($nomeCarro);
+                            $nomeCarro = converterAcentuacao($nomeCarro);
                     ?>
                             <div class="col-lg-4 col-md-4">
                                 <div class="card text-center mt-4" style="width: 18rem;">
