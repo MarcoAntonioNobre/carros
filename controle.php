@@ -19,6 +19,15 @@ if (!empty($controle) && isset($controle)) {
         case 'addProprietario';
             include_once('cadProprietario.php');
             break;
+        case 'editProprietario';
+            include_once('editProprietario.php');
+            break;
+        case 'deleteProprietario';
+            include_once('deleteProprietario.php');
+            break;
+        case 'pesquisarCarro';
+            include_once('pesquisarCarro.php');
+            break;
     }
 
 } else {

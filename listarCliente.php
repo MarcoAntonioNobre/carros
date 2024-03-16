@@ -4,20 +4,20 @@ include_once("config/conexao.php");
 include_once("func/funcoes.php");
 
 ?>
-<div class="card">
-    <div class="card-header">
+<div class="card mt-5">
+    <div class="card-header espaco fs-3">
         # Cliente
-        <button data-bs-toggle="modal" data-bs-target="#cadCliente">Cadastrar</button>
+        <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#cadCliente">Cadastrar</button>
     </div>
     <div class="card-body">
-        <table class="table">
+        <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Contato</th>
-                <th scope="col">Cartão</th>
-                <th scope="col">Ações</th>
+                <th scope="col" class="bg-black text-light legenda">#</th>
+                <th scope="col" class="bg-black text-light legenda">Nome</th>
+                <th scope="col" class="bg-black text-light legenda">Contato</th>
+                <th scope="col" class="bg-black text-light legenda">Cartão</th>
+                <th scope="col" class="bg-black text-light legenda">Ações</th>
             </tr>
             </thead>
             <tbody>
@@ -37,7 +37,7 @@ include_once("func/funcoes.php");
                         <td><?php echo $contato; ?></td>
                         <td><?php echo $cartao; ?></td>
                         <td>
-                            <button name="vermaisCliente" id="vermaisCliente" class="btn">Ver mais</button>
+                            <button name="vermaisCliente" id="vermaisCliente" class="btn btn-outline-dark">Ver mais</button>
                         </td>
                     </tr>
                     <?php

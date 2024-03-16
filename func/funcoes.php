@@ -10,11 +10,35 @@ function listarTabela($campos, $tabela)
         $conn->commit();
         if ($sqlListaTabelas->rowCount() > 0) {
             return $sqlListaTabelas->fetchAll(PDO::FETCH_OBJ);
-        } else {
-            return 'Vazio';
         }
+        return 'Vazio';
     } catch
-    (PDOExecption $e) {
+    (PDOException $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
+function listarItemExpecifico($campos, $tabela, $campoExpecifico, $valorCampo)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlListaTabelas = $conn->prepare("SELECT $campos FROM $tabela WHERE ? = ?");
+//        $sqlListaTabelas->bindValue(1, $campos, PDO::PARAM_STR);
+//        $sqlListaTabelas->bindValue(2, $tabela, PDO::PARAM_STR);
+        $sqlListaTabelas->bindValue(1, $campoExpecifico, PDO::PARAM_STR);
+        $sqlListaTabelas->bindValue(2, $valorCampo, PDO::PARAM_STR);
+        $sqlListaTabelas->execute();
+        $conn->commit();
+        if ($sqlListaTabelas->rowCount() > 0) {
+            return $sqlListaTabelas->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch
+    (PDOException $e) {
         echo 'Exception -> ';
         return ($e->getMessage());
         $conn->rollback();
@@ -33,10 +57,10 @@ function listarTabelaOrdenada($campos, $tabela, $campoOrdem, $ASCouDESC)
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {
             return $sqlLista->fetchAll(PDO::FETCH_OBJ);
-        } else {
-            return 'Vazio';
         }
-    } catch (PDOExecption $e) {
+        return 'Vazio';
+
+    } catch (PDOException $e) {
         echo 'Exception -> ';
         return ($e->getMessage());
         $conn->rollback();
@@ -55,10 +79,10 @@ function listarTabelaInnerJoin($campos, $tabela1, $tabela2, $id1, $id2, $ordem, 
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {
             return $sqlLista->fetchAll(PDO::FETCH_OBJ);
-        } else {
-            return 'Vazio';
         }
-    } catch (PDOExecption $e) {
+        return 'Vazio';
+
+    } catch (PDOException $e) {
         echo 'Exception -> ';
         return ($e->getMessage());
         $conn->rollback();
@@ -76,10 +100,10 @@ function listarTabelaInnerJoinTriplo($campos, $tabela1, $tabela2, $tabela3, $id1
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {
             return $sqlLista->fetchAll(PDO::FETCH_OBJ);
-        } else {
-            return 'Vazio';
         }
-    } catch (PDOExecption $e) {
+        return 'Vazio';
+
+    } catch (PDOException $e) {
         echo 'Exception -> ';
         return ($e->getMessage());
         $conn->rollback();
@@ -98,11 +122,11 @@ function ativar($tabela, $campo, $ativo, $condicao)
         $conn->commit();
         if ($sqlListaTabelas->rowCount() > 0) {
             return $sqlListaTabelas->fetchAll(PDO::FETCH_OBJ);
-        } else {
-            return 'Vazio';
         }
+        return 'Vazio';
+
     } catch
-    (PDOExecption $e) {
+    (PDOException $e) {
         echo 'Exception -> ';
         return ($e->getMessage());
         $conn->rollback();
@@ -120,10 +144,10 @@ function insertGlobal($tabela, $dados, $novosDados1, $novosDados2)
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {
             return $sqlLista->fetchAll(PDO::FETCH_OBJ);
-        } else {
-            return 'Vazio';
         }
-    } catch (PDOExecption $e) {
+        return 'Vazio';
+
+    } catch (PDOException $e) {
         echo 'Exception -> ';
         $conn->rollback();
         return ($e->getMessage());
@@ -131,7 +155,7 @@ function insertGlobal($tabela, $dados, $novosDados1, $novosDados2)
     $conn = null;
 }
 
-function insertGlobalProp($tabela, $dados, $novosDados1, $novosDados2,$novosDados3)
+function insertGlobalProp($tabela, $dados, $novosDados1, $novosDados2, $novosDados3)
 {
     $conn = conectar();
     try {
@@ -141,16 +165,17 @@ function insertGlobalProp($tabela, $dados, $novosDados1, $novosDados2,$novosDado
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {
             return $sqlLista->fetchAll(PDO::FETCH_OBJ);
-        } else {
-            return 'Vazio';
         }
-    } catch (PDOExecption $e) {
+        return 'Vazio';
+
+    } catch (PDOException $e) {
         echo 'Exception -> ';
         $conn->rollback();
         return ($e->getMessage());
     }
     $conn = null;
 }
+
 function deletecadastro($tabela, $NomeDoCampoId, $id)
 {
     $conn = conectar();
@@ -165,7 +190,7 @@ function deletecadastro($tabela, $NomeDoCampoId, $id)
         } else {
             return null;
         }
-    } catch (PDOExecption $e) {
+    } catch (PDOException $e) {
         echo 'Exception -> ';
         return ($e->getMessage());
         $conn->rollback();

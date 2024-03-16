@@ -3,21 +3,21 @@ include_once("config/constantes.php");
 include_once("config/conexao.php");
 include_once("func/funcoes.php");
 ?>
-<div class="card">
-    <div class="card-header">
+<div class="card mt-5">
+    <div class="card-header fs-3">
         # Cliente
-        <button class="btn btn-success" data-bs-toggle="modal" onclick="abrirModalJsProprietario('nao','nao','nao','nao','nao','nao','nao','nao', 'cadProprietario','A', 'btnAddProprietario', 'addProprietario', 'nomeProprietario', 'nao', 'frmAddProprietario')">Cadastrar</button>
+        <button class="btn btn-outline-dark" data-bs-toggle="modal" onclick="abrirModalJsProprietario('nao','nao','nao','nao','nao','nao','nao','nao', 'cadProprietario','A', 'btnAddProprietario', 'addProprietario', 'nomeProprietario', 'nao', 'frmAddProprietario')">Cadastrar</button>
 
     </div>
     <div class="card-body">
-        <table class="table">
+        <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Foto</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Contato</th>
-                <th scope="col">Ações</th>
+                <th scope="col" class="bg-black text-light legenda">#</th>
+                <th scope="col" class="bg-black text-light legenda">Foto</th>
+                <th scope="col" class="bg-black text-light legenda">Nome</th>
+                <th scope="col" class="bg-black text-light legenda">Contato</th>
+                <th scope="col" class="bg-black text-light legenda">Ações</th>
             </tr>
             </thead>
             <tbody>
@@ -26,6 +26,8 @@ include_once("func/funcoes.php");
             if ($proprietarios !== 'Vazio') {
                 $cont = 1;
                 foreach ($proprietarios as $proprietario) {
+                    $idprop = $proprietario->idproprietario;
+
                     $foto = $proprietario->foto;
                     $nome = $proprietario->nome;
                     $contato = $proprietario->contato;
@@ -39,8 +41,8 @@ include_once("func/funcoes.php");
                         <td><?php echo $contato; ?></td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <button type="button" class="btn btn-warning">Editar</button>
-                                <button type="button" class="btn btn-danger">Deletar</button>
+                                <button type="button" class="btn btn-outline-primary"  data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop;?>', 'idEditProprietario', '<?php echo $nome;?>', 'nomeEditProprietario', '<?php echo $contato ;?>', 'contatoEditProprietario', 'nao', 'nao', 'editProprietario', 'A', 'btnEditProprietario', 'editProprietario', 'nomeEditProprietario',' <?php echo $nome;?>', 'frmEditProprietario')">Editar</button>
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" onclick="abrirModalJsProprietario('<?php echo $idprop;?>', 'idDeleteProprietario', 'nao', 'nao', 'nao', 'nao', 'nao', 'nao', 'deleteProprietario', 'A', 'btnDeleteProprietario', 'deleteProprietario', 'nao', 'nao', 'frmDeleteProprietario')">Deletar</button>
                             </div>
                         </td>
                     </tr>
