@@ -1,7 +1,7 @@
 
 <div class="card mt-3">
     <div class="card-header espaco fs-3">
-        #Administrador
+        # Administrador
         <button class="btn btn-outline-dark" data-bs-toggle="modal" onclick="abrirModalJsADM('nao', 'nao', 'nao', 'nao', '<?php echo DATATIMEATUAL?>','nao', 'nao','nao', 'nao', 'cadAdm','A', 'btnAddAdm', 'addAdm', 'nomeAdm', 'nao', 'frmAddAdm')">Cadastrar</button>
     </div>
     <div class="card-body">

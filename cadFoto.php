@@ -7,7 +7,7 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if (isset($dados) && !empty($dados)) {
     $grupo = isset($dados['inpGrupo']) ? addslashes($dados['inpGrupo']) : '';
-
+    $data = isset($dados['dataTime']) ? addslashes($dados['dataTime']) : '';
     $tCarro = listarTabela('*', 'carro');
     foreach ($tCarro as $carroTabela) {
         $idProp = $carroTabela->idproprietario;
@@ -24,7 +24,7 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
     $fotoPath = uniqid() . '_' . $fotoName;
 
     if (move_uploaded_file($fotoTmpName, $uploadDir . '/' . $fotoPath)) {
-        $retornoInsert = insertGlobal4('foto', 'idcarro,idproprietario,foto,cadastro', $carro, $grupo, $fotoName, DATATIMEATUAL);
+        $retornoInsert = insertGlobal4('foto', 'idcarro,idproprietario,foto,cadastro', $carro, $grupo, $fotoPath, $data);
 
         if ($retornoInsert > 0) {
             echo json_encode(['success' => true, 'message' => "Foto cadastrada com sucesso!"]);

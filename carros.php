@@ -8,6 +8,7 @@
             <thead>
             <tr class="text-center ">
                 <th scope="col" class="bg-black text-light legenda">#</th>
+                <th scope="col" class="bg-black text-light legenda">Foto</th>
                 <th scope="col" class="bg-black text-light legenda">Proprietário</th>
                 <th scope="col" class="bg-black text-light legenda">Carro</th>
                 <th scope="col" class="bg-black text-light legenda">Valor</th>
@@ -27,12 +28,17 @@
                     $nomeCarro = $carro->nomeCarro;
                     $diferenciais = $carro->diferenciais;
                     $valor = $carro->preco  ;
+                    $foto = $carro->fotoPerfil;
                     $nomeCarro = mb_strtolower($nomeCarro);
                     $nomeCarro = converterAcentuacao($nomeCarro);
                     ?>
                     <tr class="text-center">
                         <th scope="row"><?php echo $contar
                             ?></th>
+                        <td>
+                            <img src="./img/<?php echo $foto?>" alt="<?php echo $nomeCarro?>" title="<?php echo $nomeCarro?>" width="50px">
+
+                        </td>
                         <td><?php echo $proprietario
                             ?></td>
                         <td><?php echo $nomeCarro
@@ -40,9 +46,8 @@
                         <td><?php echo $valor
                             ?></td>
                         <td>
-                            <button class="btn btn-outline-dark">Ver Mais</button>
-                            <button class="btn btn-outline-primary">Alterar</button>
-                            <button class="btn btn-outline-danger">Excluir</button>
+                            <button class="btn btn-outline-primary" onclick="abrirModalCarro('<?php echo $idcarro?>','<?php echo $nomeCarro?>','<?php echo $diferenciais?>','<?php echo $valor?>','<?php echo $proprietario?>')">Alterar</button>
+                            <button class="btn btn-outline-danger" onclick="deletarCarro('deleteCarro',<?php echo $idcarro?>)">Excluir</button>
                         </td>
                     </tr>
 
