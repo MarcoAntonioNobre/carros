@@ -94,8 +94,11 @@ if ($_SESSION['idadm']) {
                                 <img src="./img/<?php echo $foto;?>" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $nomeCarro ?></h5>
-                                    <a href="#" class="btn btn-outline-dark" onclick="carregarconteudo('comprar')">Ver
-                                        Mais</a>
+                                    <form action="venda.php" method="post" name="venda">
+                                        <input type="number" name="idVenda" id="idVenda" value="<?php echo $idcarro?>">
+                                        <button type="submit" class="btn btn-outline-dark">Ver Mais</button>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>

@@ -42,8 +42,8 @@ if (carroModal) {
 }
 
 
-function redireciona() {
-    window.location.href = 'dashboard.php';
+function redireciona(link) {
+    window.location.href = link+'.php';
 
 }
 
@@ -108,8 +108,10 @@ if (carroEditModal) {
                         form.removeEventListener('submit', submitHandler)
                         btnEditCarro.disabled = false;
                         // alert(data['message']);
+                        carroEditModalInstancia.hide();
                         carregarConteudo('listarCarros');
                     } else {
+                        carroEditModalInstancia.hide();
                         btnEditCarro.disabled = false;
                         //alert(data['message'])
                         addErro()
