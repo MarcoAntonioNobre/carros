@@ -10,16 +10,16 @@ function fazerLogin() {
     if (cpf === "") {
         alertlog.style.display = "block";
         alertlog.innerHTML =
-            "O campo de cpf está vazio. Por favor, preencha o cpf.";
+            "CPF não digitado.";
         return;
     } else if (senha === "") {
         alertlog.style.display = "block";
         alertlog.innerHTML =
-            "O campo de senha está vazio. Por favor, preencha a senha.";
+            "Senha não digitada.";
         return;
     } else if (senha.length < 8) {
         alertlog.style.display = "block";
-        alertlog.innerHTML = "Senha inválida. Mínimo de 8 ou mais digitos.";
+        alertlog.innerHTML = "Mínimo de 8 digitos.";
         return;
     } else {
         alertlog.style.display = "none";
@@ -44,8 +44,8 @@ function fazerLogin() {
                     window.location.href = "dashboard.php";
                 }, 2000);
                 //alert(data.message);
-                alertlog.classList.remove("alert-light");
-                alertlog.classList.add("alert-success");
+                alertlog.classList.remove("erroBonito");
+                alertlog.classList.add("acertoBonito");
                 alertlog.innerHTML = data.message;
                 alertlog.style.display = "block";
             } else {
@@ -67,7 +67,7 @@ function mostrarProcessando() {
     divProcessando.style.left = "50%";
     divProcessando.style.transform = "translate(-50%, -50%)";
     divProcessando.innerHTML =
-        '<img src="img/loading.gif" width="70px" alt="Processando..." title="Processando...">';
+        '<img src="./img/loading.gif" width="70px" alt="Processando..." title="Processando...">';
     document.body.appendChild(divProcessando);
 }
 // FUNCAO DE ESCONDER O LOADING
