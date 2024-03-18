@@ -20,13 +20,18 @@ include_once("func/funcoes.php");
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
-
+<style>
+    input[type="text"], textarea {
+        background-color : #d1d1d1;
+    }
+</style>
 <body class="bodylogin"
       style="background-image: url('./img/funlogin3.jpg');background-size: cover;background-repeat: no-repeat;width: 100%;height: 100%;">
 <?php
 include_once('navbar.php');
 ?>
 <div class="container mt-5 ">
+
     <div class=" d-flex justify-content-center">
         <div class=" d-flex align-items-center justify-content-center">
             <div class="wrapper">
@@ -37,7 +42,7 @@ include_once('navbar.php');
 <!--                        <input type="text" class="cpf" name="cpf" id="cpf" placeholder="Cpf">-->
 <!--                        <i class="bi bi-person-bounding-box"></i>-->
                         <div class="wave-group">
-                            <input required="required" type="text" class="input text-white cpf" name="cpf" id="cpf" autocomplete="off">
+                            <input required="required" type="text" class="input text-white cpf" name="cpf" id="cpf" style="background-color: transparent" autocomplete="off">
                             <span class="bar"> </span>
 
                             <label class="label">
@@ -63,7 +68,7 @@ include_once('navbar.php');
                         </div>
 
                     </div>
-                    <div class="alert alert-danger p-1 text-center" role="alert" id="alertlog" style="display: none;">
+                    <div class="alert erroBonito p-1 text-center" role="alert" id="alertlog" style="display: none;">
                     </div>
                     <button type="button" class="w-100" onclick="fazerLogin()">
                         <span class="text">Login</span>

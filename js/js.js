@@ -44,8 +44,8 @@ function fazerLogin() {
                     window.location.href = "dashboard.php";
                 }, 2000);
                 //alert(data.message);
-                alertlog.classList.remove("alert-danger");
-                alertlog.classList.add("alert-success");
+                alertlog.classList.remove("erroBonito");
+                alertlog.classList.add("acertoBonito");
                 alertlog.innerHTML = data.message;
                 alertlog.style.display = "block";
             } else {
