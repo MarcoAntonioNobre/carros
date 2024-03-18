@@ -54,12 +54,15 @@
                                     onclick="abrirModalEditFoto(<?php echo $id ?>)">
                                 Alterar
                             </button>
-                            <!--                            <button class="btn btn-outline-danger" data-bs-toggle="modal" onclick="abrirModalDelFoto(<?php //echo $id?>)">-->
-                            <!--                            Excluir </button>-->
                             <button class="btn btn-outline-danger" data-bs-toggle="modal"
-                                    onclick="deletar('deleteFoto',<?php echo $id ?>)">
+                                    onclick="abrirModalDelFoto(<?php echo $id ?>)">
                                 Excluir
                             </button>
+                            <!--                            <button class="btn btn-outline-danger" data-bs-toggle="modal"-->
+                            <!--                                    onclick="deletar('deleteFoto',<?php //echo $id ?>
+                            )">
+                             Excluir
+                            </button> -->
                         </td>
                     </tr>
 
@@ -131,8 +134,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 <div class="modal fade" id="mdlDeleteFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

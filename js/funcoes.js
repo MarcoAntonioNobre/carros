@@ -1,3 +1,65 @@
+function abrirModalCompra(idcarro) {
+    const idcar = document.getElementById('inQuantidade');
+
+    if (idcar) {
+        idcar.focus();
+    }
+
+    document.getElementById('idcompra').value = idcarro
+    abrirFecharModalCompra('vermais', 'A');
+}
+
+function abrirFecharModalCompra(idModal, abrirOuFechar) {
+    const modalInstancia = new bootstrap.Modal(document.getElementById(idModal));
+    if (abrirOuFechar == 'A') {
+        modalInstancia.show();
+    } else {
+        modalInstancia.hide();
+    }
+}
+
+const modalCompraInstancia = document.getElementById('vermais')
+const modalCompra = document.getElementById('vermais');
+const inpCompra = document.getElementById('valorPagamento');
+const btnCompra = document.getElementById('btnCompra')
+
+if (modalCompra) {
+    const formCompra = document.getElementById('frmCompra')
+    modalCompra.addEventListener('shown.bs.modal', () => {
+        inpCompra.focus()
+
+        const submitHandler = function (event) {
+            event.preventDefault();
+            btnCompra.disabled = true;
+            modalCompraInstancia.hide();
+            const form = event.target;
+            const formData = new FormData(form);
+            formData.append('controle', 'compra');
+            fetch('controle.php', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.success) {
+                        form.removeEventListener('submit', submitHandler)
+                        btnCarro.disabled = false;
+                        alert(data['message']);
+                        window.location.href = 'dashboard.php';
+                    } else {
+                        btnCarro.disabled = false;
+                        alert(data['message'])
+                        addErro()
+                    }
+                })
+        }
+        formCompra.addEventListener('submit',submitHandler)
+
+    })
+}
+
+
 const carroModalInstancia = new bootstrap.Modal(document.getElementById('mdlCadCarro'));
 const carroModal = document.getElementById('mdlCadCarro');
 const inpCarro = document.getElementById('inpNomeCarro');
@@ -43,7 +105,7 @@ if (carroModal) {
 
 
 function redireciona(link) {
-    window.location.href = link+'.php';
+    window.location.href = link + '.php';
 
 }
 
