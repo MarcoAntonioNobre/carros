@@ -197,3 +197,8 @@ td strong .a:hover {
     background-color: #000000;
     color: white;
 }
+
+
+.height{
+    min-height: 60vh;
+}
