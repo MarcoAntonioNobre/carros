@@ -198,6 +198,11 @@ td strong .a:hover {
     color: white;
 }
 
+
+.height{
+    min-height: 60vh;
+}
+
 .input {
     display: flex;
     flex-direction: column;
@@ -266,6 +271,7 @@ transform: translateY(70%);
   
 .input2 {
     line-height: 28px;
+    width: 100%!important;
     border: 2px solid transparent;
     border-bottom-color: #212121;
     padding: .2rem 0;
@@ -290,8 +296,34 @@ transform: translateY(70%);
     opacity: 0;
     transition: opacity .3s;
    }
+
+
+
    
+   .cardii {
+    width: 190px;
+    height: 254px;
+    background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+    border-radius: 20px;
+    transition: all .3s;
+   }
    
+   .card2ii {
+    width: 190px;
+    height: 254px;
+    background-color: #1a1a1a;
+    border-radius: 0px;
+    transition: all .2s;
+   }
+   
+   .card2ii:hover {
+    transform: scale(0.98);
+    border-radius: 20px;
+   }
+   
+   .cardii:hover {
+    box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+   }
    
    
    
