@@ -4,11 +4,12 @@ if (isset($Dados) && !empty($Dados)) {
 
 //    echo json_encode($Dados);
 
-    $nome = isset($Dados['nomeProprietario']) ? addslashes(mb_strtoupper($Dados['nomeProprietario'], 'UTF-8')) : '';
+    $nome = isset($Dados['nomeAdm']) ? addslashes(mb_strtoupper($Dados['nomeAdm'], 'UTF-8')) : '';
     $dataHora = isset($Dados['dataTime']) ? addslashes(mb_strtoupper($Dados['dataTime'], 'UTF-8')) : '';
-
-    $retornoInsert = insertGlobal2('proprietario', 'nomeProprietario,cadastro', $nome, $dataHora);
-
+    $senha = isset($Dados['senhaAdm']) ? addslashes(mb_strtoupper($Dados['senhaAdm'], 'UTF-8')) : '';
+    $cpf = isset($Dados['cpfAdm']) ? addslashes(mb_strtoupper($Dados['cpfAdm'], 'UTF-8')) : '';
+    $senhaHash = criarSenhaHash($senha);
+    $retornoInsert = insertGlobal4('adm', 'nomeAdm,cpf,senha,cadastro', $nome, $cpf,$senhaHash,$dataHora);
 
     if ($retornoInsert > 0) {
         echo json_encode(['success' => true, 'message' => "Proprietário <b>$nome</b> cadastrado com sucesso"], JSON_THROW_ON_ERROR);

@@ -4,8 +4,8 @@ if (isset($Dados) && !empty($Dados)) {
 
 //echo json_encode($Dados);
 
-    $id = isset($Dados['idDeleteProprietario']) ? addslashes(mb_strtoupper($Dados['idDeleteProprietario'], 'UTF-8')) : '';
-    $retornoInsert = deletecadastro('proprietario', 'idproprietario', $id);
+    $id = isset($Dados['idDeleteAdm']) ? addslashes(mb_strtoupper($Dados['idDeleteAdm'], 'UTF-8')) : '';
+    $retornoInsert = deletecadastro('adm', 'idadm', $id);
 
 
     if ($retornoInsert = 1 ) {

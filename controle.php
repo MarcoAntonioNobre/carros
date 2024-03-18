@@ -28,8 +28,54 @@ if (!empty($controle) && isset($controle)) {
         case 'pesquisarCarro';
             include_once('pesquisarCarro.php');
             break;
+        case 'listarTotal';
+            include_once('listarTotal.php');
+            break;
+        case 'listarFoto';
+            include_once('fotos.php');
+            break;
+        case 'addFoto';
+            include_once('cadFoto.php');
+            break;
+        case 'editFoto';
+            include_once('editFoto.php');
+            break;
+        case 'deleteFoto';
+            include_once('deletarFoto.php');
+            break;
+        case 'addCliente';
+            include_once('cadCliente.php');
+            break;
+        case 'carroAdd';
+            include_once('cadCarro.php');
+            break;
+        case 'carroEdit';
+            include_once('editCarro.php');
+            break;
+        case 'deleteCarro';
+            include_once('deleteCarro.php');
+            break;
+        case 'listarAdm';
+            include_once('listarAdm.php');
+            break;
+        case 'editCliente';
+            include_once('editCliente.php');
+            break;
+        case 'deleteCliente';
+            include_once('deleteCliente.php');
+            break;
+        case 'addAdm';
+            include_once('cadAdm.php');
+            break;
+        case 'editAdm';
+            include_once('editAdm.php');
+            break;
+        case 'deleteAdm';
+            include_once('deleteAdm.php');
+            break;
+        default;
+            echo 'Menu inexistente';
     }
-
 } else {
     ?>
     <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
@@ -42,4 +88,3 @@ if (!empty($controle) && isset($controle)) {
 //$acao = filter_input(INPUT_POST, 'ação', FILTER_SANITIZE_STRING);
 //$acaoId = filter_input(INPUT_POST, 'acaoId', FILTER_SANITIZE_NUMBER_INT);
 //$controleGet = filter_input(INPUT_GET, 'controleGet', FILTER_SANITIZE_STRING);
-

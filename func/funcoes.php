@@ -1,4 +1,5 @@
 <?php
+
 function listarTabela($campos, $tabela)
 {
     $conn = conectar();
@@ -134,7 +135,7 @@ function ativar($tabela, $campo, $ativo, $condicao)
     $conn = null;
 }
 
-function insertGlobal($tabela, $dados, $novosDados1, $novosDados2)
+function insertGlobal2($tabela, $dados, $novosDados1, $novosDados2)
 {
     $conn = conectar();
     try {
@@ -155,12 +156,12 @@ function insertGlobal($tabela, $dados, $novosDados1, $novosDados2)
     $conn = null;
 }
 
-function insertGlobalProp($tabela, $dados, $novosDados1, $novosDados2, $novosDados3)
+function insertGlobal1($tabela, $dados, $novosDados1)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
-        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES ('$novosDados1','$novosDados2','$novosDados3')");
+        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES ('$novosDados1')");
         $sqlLista->execute();
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {
@@ -175,6 +176,88 @@ function insertGlobalProp($tabela, $dados, $novosDados1, $novosDados2, $novosDad
     }
     $conn = null;
 }
+
+function insertGlobal5($tabela, $dados, $novosDados1, $novosDados2, $novosDados3, $novosDados4, $novosDados5)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES (?,?,?,?,?)");
+        $sqlLista->bindValue(1, $novosDados1, PDO::PARAM_STR);
+        $sqlLista->bindValue(2, $novosDados2, PDO::PARAM_STR);
+        $sqlLista->bindValue(3, $novosDados3, PDO::PARAM_STR);
+        $sqlLista->bindValue(4, $novosDados4, PDO::PARAM_STR);
+        $sqlLista->bindValue(5, $novosDados5, PDO::PARAM_STR);
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        }
+    } catch (PDOException $e) {
+        echo 'Exception -> ';
+        $conn->rollback();
+        return ($e->getMessage());
+    }
+    $conn = null;
+}
+
+function insertGlobal6($tabela, $dados, $novosDados1, $novosDados2, $novosDados3, $novosDados4, $novosDados5,$novosDados6)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES (?,?,?,?,?,?)");
+        $sqlLista->bindValue(1, $novosDados1, PDO::PARAM_STR);
+        $sqlLista->bindValue(2, $novosDados2, PDO::PARAM_STR);
+        $sqlLista->bindValue(3, $novosDados3, PDO::PARAM_STR);
+        $sqlLista->bindValue(4, $novosDados4, PDO::PARAM_STR);
+        $sqlLista->bindValue(5, $novosDados5, PDO::PARAM_STR);
+        $sqlLista->bindValue(6, $novosDados6, PDO::PARAM_STR);
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        }
+    } catch (PDOException $e) {
+        echo 'Exception -> ';
+        $conn->rollback();
+        return ($e->getMessage());
+    }
+    $conn = null;
+}
+
+function insertGlobal4($tabela, $dados, $novosDados1, $novosDados2, $novosDados3, $novosDados4)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES (?,?,?,?)");
+        $sqlLista->bindValue(1, $novosDados1, PDO::PARAM_STR);
+        $sqlLista->bindValue(2, $novosDados2, PDO::PARAM_STR);
+        $sqlLista->bindValue(3, $novosDados3, PDO::PARAM_STR);
+        $sqlLista->bindValue(4, $novosDados4, PDO::PARAM_STR);
+
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        }
+    } catch (PDOException $e) {
+        echo 'Exception -> ';
+        $conn->rollback();
+        return ($e->getMessage());
+    }
+    $conn = null;
+}
+
+
+
 
 function deletecadastro($tabela, $NomeDoCampoId, $id)
 {
@@ -191,6 +274,114 @@ function deletecadastro($tabela, $NomeDoCampoId, $id)
             return null;
         }
     } catch (PDOException $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    };
+    $conn = null;
+}
+
+function alterarGlobal1($tabela, $campo, $valor, $identificar, $id)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("UPDATE $tabela SET $campo = '$valor' WHERE  $identificar = $id ;");
+        //        $sqlLista->bindValue(1, $campoParametro, PDO::PARAM_INT);
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        };
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    };
+    $conn = null;
+}
+
+function alterarGlobal4($tabela, $campo1, $campo2, $campo3, $campo4, $valor, $valor2, $valor3, $valor4, $identificar, $id)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("UPDATE $tabela SET $campo1 = ?, $campo2 = ?, $campo3 = ?,$campo4 = ? WHERE  $identificar = $id ;");
+//        $sqlLista->bindValue(1, $campo1, PDO::PARAM_STR);
+        $sqlLista->bindValue(1, $valor, PDO::PARAM_STR);
+//        $sqlLista->bindValue(3, $campo2, PDO::PARAM_STR);
+        $sqlLista->bindValue(2, $valor2, PDO::PARAM_STR);
+//        $sqlLista->bindValue(5, $campo3, PDO::PARAM_STR);
+        $sqlLista->bindValue(3, $valor3, PDO::PARAM_STR);
+//        $sqlLista->bindValue(7, $campo4, PDO::PARAM_STR);
+        $sqlLista->bindValue(4, $valor4, PDO::PARAM_STR);
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    };
+    $conn = null;
+}
+
+function alterarGlobal5($tabela, $campo1, $campo2, $campo3, $campo4,$campo5, $valor, $valor2, $valor3, $valor4,$valor5, $identificar, $id)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("UPDATE $tabela SET $campo1 = ?, $campo2 = ?, $campo3 = ?,$campo4 = ?,$campo5 = ? WHERE  $identificar = $id ;");
+//        $sqlLista->bindValue(1, $campo1, PDO::PARAM_STR);
+        $sqlLista->bindValue(1, $valor, PDO::PARAM_STR);
+//        $sqlLista->bindValue(3, $campo2, PDO::PARAM_STR);
+        $sqlLista->bindValue(2, $valor2, PDO::PARAM_STR);
+//        $sqlLista->bindValue(5, $campo3, PDO::PARAM_STR);
+        $sqlLista->bindValue(3, $valor3, PDO::PARAM_STR);
+//        $sqlLista->bindValue(7, $campo4, PDO::PARAM_STR);
+        $sqlLista->bindValue(4, $valor4, PDO::PARAM_STR);
+        $sqlLista->bindValue(5, $valor5, PDO::PARAM_STR);
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    };
+    $conn = null;
+}
+function alterarGlobal3($tabela, $campo1, $campo2, $campo3, $valor, $valor2, $valor3,  $identificar, $id)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("UPDATE $tabela SET $campo1 = ?, $campo2 = ?, $campo3 = ? WHERE  $identificar = $id ;");
+//        $sqlLista->bindValue(1, $campo1, PDO::PARAM_STR);
+        $sqlLista->bindValue(1, $valor, PDO::PARAM_STR);
+//        $sqlLista->bindValue(3, $campo2, PDO::PARAM_STR);
+        $sqlLista->bindValue(2, $valor2, PDO::PARAM_STR);
+//        $sqlLista->bindValue(5, $campo3, PDO::PARAM_STR);
+        $sqlLista->bindValue(3, $valor3, PDO::PARAM_STR);
+
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+
+    } catch (PDOExecption $e) {
         echo 'Exception -> ';
         return ($e->getMessage());
         $conn->rollback();
@@ -264,7 +455,7 @@ function conversorDBNumPonto($numm)
     return $numero;
 }
 
-function ucfirst_tr($str)
+function converterAcentuacao($str)
 {
     $trMap = ['Á' => 'á', 'É' => 'é', 'Í' => 'í', 'Ó' => 'ó', 'Ú' => 'ú', 'Ã' => 'ã', 'Õ' => 'õ', 'Â' => 'â', 'Ê' => 'ê', 'Î' => 'î', 'Ô' => 'ô', 'Û' => 'û', 'À' => 'à', 'È' => 'è', 'Ì' => 'ì', 'Ò' => 'ò', 'Ù' => 'ù'];
     $str = mb_strtolower(strtr($str, $trMap));
@@ -272,4 +463,16 @@ function ucfirst_tr($str)
     $first = strtr($first, array_flip($trMap));
     $first = mb_strtoupper($first);
     return $first . mb_substr($str, 1);
+}
+
+function criarSenhaHash($senha, $valorCost = '12')
+{
+    $options = [
+        'cost' => $valorCost,
+    ];
+    return password_hash($senha, PASSWORD_BCRYPT, $options);
+}
+
+{
+
 }

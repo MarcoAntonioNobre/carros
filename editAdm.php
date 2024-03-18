@@ -4,10 +4,14 @@ if (isset($Dados) && !empty($Dados)) {
 
 //    echo json_encode($Dados);
 
-    $nome = isset($Dados['nomeEditProprietario']) ? addslashes(mb_strtoupper($Dados['nomeEditProprietario'], 'UTF-8')) : '';
-    $id = isset($Dados['idEditProprietario']) ? addslashes(mb_strtoupper($Dados['idEditProprietario'], 'UTF-8')) : '';
 
-    $retornoInsert = alterarGlobal1('proprietario', 'nomeProprietario', $nome, 'idproprietario', $id);
+    $id = isset($Dados['idEditAdm']) ? addslashes(mb_strtoupper($Dados['idEditAdm'], 'UTF-8')) : '';
+    $nome = isset($Dados['nomeEditAdm']) ? addslashes(mb_strtoupper($Dados['nomeEditAdm'], 'UTF-8')) : '';
+    $cpf = isset($Dados['cpfEditAdm']) ? addslashes(mb_strtoupper($Dados['cpfEditAdm'], 'UTF-8')) : '';
+    $senha = isset($Dados['senhaEditAdm']) ? addslashes(mb_strtoupper($Dados['senhaEditAdm'], 'UTF-8')) : '';
+    $senhaHash = criarSenhaHash($senha);
+
+    $retornoInsert = alterarGlobal3('adm', 'nomeAdm', 'cpf', 'senha',$nome, $cpf, $senhaHash, 'idadm', $id);
 
 
     if ($retornoInsert = 1) {
