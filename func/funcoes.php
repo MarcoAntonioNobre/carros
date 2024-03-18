@@ -22,6 +22,29 @@ function listarTabela($campos, $tabela)
     $conn = null;
 }
 
+function teste($instrucao)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlListaTabelas = $conn->prepare("$instrucao");
+        //$sqlListaTabelas->bindValue(1, $campos, PDO::PARAM_INT);
+        $sqlListaTabelas->execute();
+        $conn->commit();
+        if ($sqlListaTabelas->rowCount() > 0) {
+            return $sqlListaTabelas->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch
+    (PDOException $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
+
 function listarItemExpecifico($campos, $tabela, $campoExpecifico, $valorCampo)
 {
     $conn = conectar();

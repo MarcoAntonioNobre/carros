@@ -386,24 +386,25 @@ if ($_SESSION['idadm']) {
                         <div class="card">
                             <div class="card-body">
                                 <div>
-                                    <label for="inpNomeCarro" class="label-control">Nome:</label>
-                                    <input type="text" name="inpNomeCarro" id="inpNomeCarro" class="form-control" required="required">
+                                    <!-- <label for="inpNomeCarro" class="label-control">Nome:</label> -->
+                                    <input type="text" name="inpNomeCarro" id="inpNomeCarro" class="input2 mt-3" placeholder="Nome:" required="required">
                                 </div>
                                 <div>
-                                    <label for="inpDiferenciais">Diferenciais:</label>
-                                    <input type="text" name="inpDiferenciais" id="inpDiferenciais" required="required">
+                                    <!-- <label for="inpDiferenciais">Diferenciais:</label> -->
+                                    <input type="text" name="inpDiferenciais" id="inpDiferenciais" required="required" class="input2 mt-3" placeholder="Diferenciais:">
                                 </div>
                                 <div>
-                                    <label for="inpFotoCarro" class="label-control">Foto:</label>
-                                    <input type="file" name="inpFotoCarro" id="inpFotoCarro" class="form-control" required="required">
+                                    <!-- <label for="inpFotoCarro" class="label-control">Foto:</label> -->
+                                    
+                                    <input type="file" name="inpFotoCarro" id="inpFotoCarro" class="input2 mt-3" placeholder="Foto:" required="required">
                                 </div>
                                 <div>
-                                    <label for="inpValor">Valor:</label>
-                                    <input type="text" name="inpValor" id="inpValor" required="required" class="dinheiro">
+                                    <!-- <label for="inpValor">Valor:</label> -->
+                                    <input type="text" name="inpValor" id="inpValor" required="required" class="dinheiro input2 mt-3" placeholder="Valor:">
                                 </div>
                                 <div>
-                                    <label for="selectProprietario">Selecione o proprietário:</label>
-                                    <select name="selectProprietario" id="selectProprietario" required="required">
+                                    <label for="selectProprietario" class="mt-3">Selecione o proprietário:</label>
+                                    <select name="selectProprietario" id="selectProprietario" required="required" class="form-select" aria-label="Default select example">
                                         <option selected>Selecione uma opção</option>
                                         <?php
                                         $proprietarios = listarTabela('*', 'proprietario', 'nome');
@@ -423,8 +424,8 @@ if ($_SESSION['idadm']) {
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="submit" class="btn btn-primary" id="btnCadCarro">Cadastrar</button>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Voltar</button>
+                        <button type="submit" class="btn btn-outline-dark" id="btnCadCarro">Cadastrar</button>
                     </div>
                 </form>
             </div>
@@ -436,33 +437,33 @@ if ($_SESSION['idadm']) {
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar carro</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar carro</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="post" action="" name="frmEditCarro" id="frmEditCarro">
                     <div class="modal-body">
                         <div class="card">
                             <div class="card-body">
-                                <input type="text" name="idEditCarro" id="idEditCarro">
+                                <input type="hidden" name="idEditCarro" id="idEditCarro" class="input2">
                                 <div>
-                                    <label for="inpNomeEditCarro" class="label-control">Nome:</label>
-                                    <input type="text" name="inpNomeEditCarro" id="inpNomeEditCarro" class="form-control" required="required">
+                                    <!-- <label for="inpNomeEditCarro" class="label-control">Nome:</label> -->
+                                    <input type="text" name="inpNomeEditCarro" id="inpNomeEditCarro" class="input2 mt-3" placeholder="Nome:" required="required">
                                 </div>
                                 <div>
-                                    <label for="inpEditDiferenciais">Diferenciais:</label>
-                                    <input type="text" name="inpEditDiferenciais" id="inpEditDiferenciais" required="required">
+                                    <!-- <label for="inpEditDiferenciais">Diferenciais:</label> -->
+                                    <input type="text" name="inpEditDiferenciais" id="inpEditDiferenciais" required="required" class="input2 mt-3" placeholder="Diferenciais:">
                                 </div>
                                 <div>
-                                    <label for="inpEditFotoCarro" class="label-control">Foto:</label>
-                                    <input type="file" name="inpEditFotoCarro" id="inpEditFotoCarro" class="form-control" required="required">
+                                    <!-- <label for="inpEditFotoCarro" class="label-control">Foto:</label> -->
+                                    <input type="file" name="inpEditFotoCarro" id="inpEditFotoCarro" class="form-control" required="required" class="input2 mt-3" placeholder="Foto:">
                                 </div>
                                 <div>
-                                    <label for="inpEditValor">Valor:</label>
-                                    <input type="text" name="inpEditValor" id="inpEditValor" required="required" class="dinheiro">
+                                    <!-- <label for="inpEditValor">Valor:</label> -->
+                                    <input type="text" name="inpEditValor" id="inpEditValor" required="required" class="dinheiro input2 mt-3" placeholder="Valor:">
                                 </div>
                                 <div>
-                                    <label for="selectEditProprietario">Selecione o proprietário:</label>
-                                    <select name="selectEditProprietario" id="selectEditProprietario" required="required">
+                                    <label for="selectEditProprietario" class="mt-3">Selecione o proprietário:</label>
+                                    <select name="selectEditProprietario" id="selectEditProprietario" required="required" class="form-select mt-3" aria-label="Default select example">
                                         <option selected>Selecione uma opção</option>
                                         <?php
                                         $proprietarios = listarTabela('*', 'proprietario', 'nome');
@@ -482,8 +483,8 @@ if ($_SESSION['idadm']) {
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="submit" class="btn btn-primary" id="btnEditCarro">Cadastrar</button>
+                        <button type="button" class="btn btn-outlinesecondary" data-bs-dismiss="modal">Voltar</button>
+                        <button type="submit" class="btn btn-outline-primary" id="btnEditCarro">Cadastrar</button>
                     </div>
                 </form>
             </div>
@@ -528,7 +529,7 @@ if ($_SESSION['idadm']) {
                                     <!--                            </div>-->
                                     <div>
                                         <label for="inpGrupo" class="label-control">Selecione o grupo:</label>
-                                        <select name="inpGrupo" id="inpGrupo" required="required">
+                                        <select name="inpGrupo" id="inpGrupo" required="required" class="form-select">
                                             <option selected>Selecione uma opção</option>
                                             <?php
                                             $proprietario = listarTabela('*', 'proprietario');
@@ -547,14 +548,14 @@ if ($_SESSION['idadm']) {
                                     </div>
                                     <div>
                                         <label for="inpFoto" class="label-control">Foto:</label>
-                                        <input type="file" name="inpFoto" id="inpFoto" class="form-control" required="required">
+                                        <input type="file" name="inpFoto" id="inpFoto" class="dinheiro input2 mt-3" placeholder="Foto:" required="required">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                            <button type="submit" class="btn btn-primary" id="btnCadFoto">Cadastrar</button>
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Voltar</button>
+                            <button type="submit" class="btn btn-outline-dark" id="btnCadFoto">Cadastrar</button>
                         </div>
                 </form>
             </div>
