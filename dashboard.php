@@ -73,34 +73,36 @@ if ($_SESSION['idadm']) {
 
         </div>
         <div class="container">
-            <div class="row">
+            <div class="row d-flex justify-content-center align-items-center">
 
                 <?php
                 $contar = 1;
-                $carros = listarTabela('idcarro, nomeCarro,fotoPerfil', 'carro');
+                $carros = listarTabela('idcarro, nomeCarro,fotoPerfil,preco,diferenciais', 'carro');
 
                 if ($carros !== 'Vazio') {
 
                     foreach ($carros as $carro) {
                         $idcarro = $carro->idcarro;
                         $nomeCarro = $carro->nomeCarro;
-                        $foto = $carro ->fotoPerfil;
+                        $foto = $carro->fotoPerfil;
+                        $preco = $carro->preco;
+                        $diferenciais = $carro->diferenciais;
                         $nomeCarro = mb_strtolower($nomeCarro);
                         $nomeCarro = converterAcentuacao($nomeCarro);
+                        $diferenciais = mb_strtolower($diferenciais);
                         ?>
 
-                        <div class="col-lg-4 col-md-4">
-                            <div class="card text-center mt-4" style="width: 18rem;">
-                                <img src="./img/<?php echo $foto;?>" class="card-img-top" alt="...">
-                                <div class="card-body">
+                        <div class="col-lg-4 col-md-4 col-12 ">
+                            <div class="card mt-4" style="width: 18rem;">
+                                <img src="./img/<?php echo $foto; ?>" class="card-img-top" alt="...">
+                                <div class="card-body text-center">
                                     <h5 class="card-title"><?php echo $nomeCarro ?></h5>
-                                    <form action="venda.php" method="post" name="venda">
-                                        <input type="number" name="idVenda" id="idVenda" value="<?php echo $idcarro?>">
-                                        <button type="submit" class="btn btn-outline-dark">Ver Mais</button>
-                                    </form>
-
+                                    <button type="submit" class="btn btn-outline-dark" data-bs-toggle="modal"
+                                            onclick="abrirModalCompra('<?php echo $idcarro?>')">Ver Mais
+                                    </button>
                                 </div>
                             </div>
+
                         </div>
                         <?php
                         ++$contar;
@@ -126,6 +128,57 @@ if ($_SESSION['idadm']) {
         <?php
         include_once './footer.php';
         ?>
+    </div>
+
+    
+<!-- Modal de compra-->
+    <div class="modal fade" id="vermais" tabindex="-1"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Comprar
+                        carro <?php echo "$nomeCarro"; ?></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <b>Valor do veículo:</b> <?php echo $preco?>
+                    </div>
+                    <div class="mt-2">
+                        <B>Diferenciais:</B> <?php echo $diferenciais?>
+                    </div>
+                    <div class="mt-3">
+                        <form action="" name="frmCompra" id="frmCompra">
+                            <div class="wave-group">
+                                <input type="hidden" name="idcompra" id="idcompra">
+                                <input required="required" type="text" class="input" name="inQuantidade" id="inQuantidade">
+                                <span class="bar"></span>
+                                <label class="label">
+                                    <span class="label-char" style="--index: 0">Q</span>
+                                    <span class="label-char" style="--index: 1">u</span>
+                                    <span class="label-char" style="--index: 2">a</span>
+                                    <span class="label-char" style="--index: 3">n</span>
+                                    <span class="label-char" style="--index: 4">t</span>
+                                    <span class="label-char" style="--index: 4">i</span>
+                                    <span class="label-char" style="--index: 4">d</span>
+                                    <span class="label-char" style="--index: 4">a</span>
+                                    <span class="label-char" style="--index: 4">d</span>
+                                    <span class="label-char" style="--index: 4">e</span>
+                                </label>
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Fechar
+                    </button>
+                    <button type="submit" class="btn btn-success" id="btnCompra">Comprar</button>
+                </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
