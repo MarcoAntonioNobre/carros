@@ -22,12 +22,12 @@ function listarTabela($campos, $tabela)
     $conn = null;
 }
 
-function teste($instrucao)
+function soma($campoSomar,$tabela,$idquando,$id)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
-        $sqlListaTabelas = $conn->prepare("$instrucao");
+        $sqlListaTabelas = $conn->prepare("SELECT $campoSomar FROM $tabela WHERE $idquando = $id");
         //$sqlListaTabelas->bindValue(1, $campos, PDO::PARAM_INT);
         $sqlListaTabelas->execute();
         $conn->commit();
@@ -474,8 +474,7 @@ function conversorDBNum($numm)
 function conversorDBNumPonto($numm)
 {
     $numero = $numm;
-    $numero = number_format($numero, 2, '.', '');
-    return $numero;
+    return number_format($numero, 2, '.', '');
 }
 
 function converterAcentuacao($str)

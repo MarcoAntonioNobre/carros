@@ -14,35 +14,48 @@
             <tbody>
             <?php
             $contar = 1;
-            $teste = teste("SELECT idproprietario, COUNT(idproprietario) FROM compras GROUP BY idcarro");
+            $grupos = listarTabela('*', 'proprietario');
 
-            if ($teste !== 'Vazio') {
+            if ($grupos !== 'Vazio') {
 
-                foreach ($teste as $testeItem) {
-                    $idprop = $testeItem->idproprietario;
+                foreach ($grupos
 
-//                    $cpf = $testeItem->;
+                         as $grupo) {
+                    $id = $grupo->idproprietario;
+                    $nome = $grupo->nomeProprietario;
 
                     ?>
                     <tr class="text-center">
-                        <th scope="row"><?php echo $contar
-                            ?></th>
-                        <td><?php
-                            $prop = listarTabela('*','proprietario');
-                            foreach($prop as $proprie){
-                                $id = $proprie->idproprietario;
-                                if($id === $idprop){
-                                    $grupo = $proprie->nomeProprietario;
-                                }
-                            }
-                            echo $grupo;
-                            ?></td>
-                        <td><?php echo $cpf
-                            ?></td>
-                    </tr>
-
+                    <th scope="row">
+                        <?php
+                        echo $contar
+                        ?>
+                    </th>
+                    <td>
+                        <?php
+                        echo $nome
+                        ?>
+                    </td>
+                    <td>
                     <?php
-                    ++$contar;
+                    $vendas = listarTabela('*', 'compras');
+                    foreach ($vendas
+
+                             as $venda) {
+                        $idcar = $venda->idcarro;
+                        if ($idcar == $id) {
+                            $total = soma("SUM(valorPago) as soma", 'compras', 'idcarro', $idcar);
+                            foreach ($total as $to) {
+                                $resultado = $to->soma;
+                            }
+                            echo 'R$ ' . $resultado;
+                            ?>
+                            </td>
+                            </tr>
+                            <?php
+                            ++$contar;
+                        }
+                    }
                 }
             } else {
                 ?>
