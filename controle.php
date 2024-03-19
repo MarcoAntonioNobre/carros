@@ -73,8 +73,8 @@ if (!empty($controle) && isset($controle)) {
         case 'deleteAdm';
             include_once('deleteAdm.php');
             break;
-        case 'compra';
-            include_once('compra.php');
+            case 'compra';
+            include_once ('compra.php');
             break;
         default;
             echo 'Menu inexistente';

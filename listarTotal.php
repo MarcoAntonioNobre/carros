@@ -21,7 +21,7 @@
                 foreach ($teste as $testeItem) {
                     $idprop = $testeItem->idproprietario;
 
-                    $cpf = $testeItem->;
+//                    $cpf = $testeItem->;
 
                     ?>
                     <tr class="text-center">
