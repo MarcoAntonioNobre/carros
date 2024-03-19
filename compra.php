@@ -37,14 +37,14 @@ if (isset($dados) && !empty($dados)) {
                 }
             }
         }
-    } else {
-        $retornoInsert = insertGlobal4('compras', 'idcarro,valorUnidade,valorPago,cadastro', "$idcarro", "$precoV", "$total", DATATIMEATUAL);
-        if ($retornoInsert > 0) {
-            echo json_encode(['success' => true, 'message' => "Veículo comprado com sucesso"]);
-        } else {
-            echo json_encode(['success' => false, 'message' => "Veículo não comprado!"]);
-        }
     }
+    $retornoInsert = insertGlobal4('compras', 'idcarro,valorUnidade,valorPago,cadastro', "$idcarro", "$precoV", "$total", DATATIMEATUAL);
+    if ($retornoInsert > 0) {
+        echo json_encode(['success' => true, 'message' => "Veículo comprado com sucesso"]);
+    } else {
+        echo json_encode(['success' => false, 'message' => "Veículo não comprado!"]);
+    }
+
 } else {
     echo json_encode((['success' => false, 'message' => 'Veículo não encontrado!']));
 }
