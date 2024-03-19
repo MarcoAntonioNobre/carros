@@ -73,11 +73,11 @@ CREATE TABLE `carro` (
 
 /*!40000 ALTER TABLE `carro` DISABLE KEYS */;
 INSERT INTO `carro` (`idcarro`,`idproprietario`,`nomeCarro`,`diferenciais`,`fotoPerfil`,`preco`,`cadastro`,`alteracao`,`ativo`) VALUES 
- (1,1,'RED SENNA','O CARRO DE NOSSA EQUIPE POSSUI UM CINTO DE CINCO PONTOS QUE É IDEAL PARA CARROS DA FÓRMULA SAE (SOCIETY OF AUTOMOTIVE ENGINEERS), E FOI UM DOS MAIS FIÉIS À PROPOSTA DO PROFESSOR.','65f823376be9d_IMG-20240314-WA0056.jpg','150,00','2024-03-15 17:08:32','2024-03-18 08:19:19','A'),
- (2,2,'MARQUINHOS','NOSSO CARRO POSSUI COMO DIFERENCIAIS UMA HASTE DE ARAME GALVANIZADO, VOLANTE MÓVEL, PLACA, BANCO, AEROFÓLIO, E FAZ UMA REFERÊNCIA AO RELÂMPAGO MCQUEEN.','65f8231a6ae29_IMG-20240314-WA0040.jpg','150,00','2024-03-15 17:08:32','2024-03-18 08:18:50','A'),
- (3,3,'SCUDERIA','NOSSO CARRO POSSUI UMA GAIOLA QUE DIMINUI O PESO E AUMENTA A VELOCIDADE DELE. ELE É O MAIOR, PORÉM É CONSTRUÍDO COM FIBRA DE CARBONO, O QUE REDUZ O PESO DO VEÍCULO.','65f823533e5da_IMG-20240314-WA0023.jpg','150,00','2024-03-15 17:08:32','2024-03-18 08:19:47','A'),
- (4,4,'FITTIPALDI','AS RODAS DO CARRO SÃO FEITAS EM ISOPOR LIXADAS A MÃO, POSSUI UM AEROFÓLIO REMOVÍVEL E UM BODY KIT, ALÉM DE FARÓIS E LANTERNA TRASEIRA.','65f826678eb78_IMG-20240314-WA0013.jpg','150,00','2024-03-15 17:08:32','2024-03-18 08:32:55','A'),
- (5,5,'FBM','CRIAMOS UM CARRO QUE TEM OS SEGUINTES DIFERENCIAIS: LUZ DE LED, APARÊNCIA COM OS CARROS DA FÓRMULA 1, E A ORIGINALIDADE DE NOSSA EMPRESA.','65f81ffd82b70_IMG-20240314-WA0019.jpg','150,03','2024-03-15 17:08:32','2024-03-18 08:05:33','A');
+ (1,1,'RED SENNA','O CARRO DE NOSSA EQUIPE POSSUI UM CINTO DE CINCO PONTOS QUE É IDEAL PARA CARROS DA FÓRMULA SAE (SOCIETY OF AUTOMOTIVE ENGINEERS), E FOI UM DOS MAIS FIÉIS À PROPOSTA DO PROFESSOR.','65f823376be9d_IMG-20240314-WA0056.jpg','150.00','2024-03-15 17:08:32','2024-03-19 13:14:28','A'),
+ (2,2,'MARQUINHOS','NOSSO CARRO POSSUI COMO DIFERENCIAIS UMA HASTE DE ARAME GALVANIZADO, VOLANTE MÓVEL, PLACA, BANCO, AEROFÓLIO, E FAZ UMA REFERÊNCIA AO RELÂMPAGO MCQUEEN.','65f8231a6ae29_IMG-20240314-WA0040.jpg','150.00','2024-03-15 17:08:32','2024-03-19 13:14:28','A'),
+ (3,3,'SCUDERIA','NOSSO CARRO POSSUI UMA GAIOLA QUE DIMINUI O PESO E AUMENTA A VELOCIDADE DELE. ELE É O MAIOR, PORÉM É CONSTRUÍDO COM FIBRA DE CARBONO, O QUE REDUZ O PESO DO VEÍCULO.','65f823533e5da_IMG-20240314-WA0023.jpg','150.00','2024-03-15 17:08:32','2024-03-19 13:14:28','A'),
+ (4,4,'FITTIPALDI','AS RODAS DO CARRO SÃO FEITAS EM ISOPOR LIXADAS A MÃO, POSSUI UM AEROFÓLIO REMOVÍVEL E UM BODY KIT, ALÉM DE FARÓIS E LANTERNA TRASEIRA.','65f826678eb78_IMG-20240314-WA0013.jpg','150.00','2024-03-15 17:08:32','2024-03-19 13:14:28','A'),
+ (5,5,'FBM','CRIAMOS UM CARRO QUE TEM OS SEGUINTES DIFERENCIAIS: LUZ DE LED, APARÊNCIA COM OS CARROS DA FÓRMULA 1, E A ORIGINALIDADE DE NOSSA EMPRESA.','65f81ffd82b70_IMG-20240314-WA0019.jpg','150.03','2024-03-15 17:08:32','2024-03-19 13:14:28','A');
 /*!40000 ALTER TABLE `carro` ENABLE KEYS */;
 
 
@@ -90,8 +90,8 @@ CREATE TABLE `cliente` (
   `idcliente` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nomeCliente` varchar(75) NOT NULL DEFAULT '',
   `contato` varchar(15) DEFAULT NULL,
-  `valorUnitario` decimal(10,0) DEFAULT NULL,
-  `valorCartao` decimal(10,0) DEFAULT NULL,
+  `numeroCartao` varchar(30) DEFAULT NULL,
+  `valorCartao` varchar(30) DEFAULT NULL,
   `cadastro` datetime DEFAULT NULL,
   `alteracao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `ativo` char(1) NOT NULL DEFAULT 'A',
@@ -103,13 +103,13 @@ CREATE TABLE `cliente` (
 --
 
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` (`idcliente`,`nomeCliente`,`contato`,`valorUnitario`,`valorCartao`,`cadastro`,`alteracao`,`ativo`) VALUES 
- (1,'Marco',NULL,'100000','100000','2024-03-15 17:10:30','2024-03-15 17:10:46','A'),
- (2,'Arthur',NULL,'100000','100000','2024-03-15 17:10:30','2024-03-15 17:10:46','A'),
- (3,'Franciele',NULL,'100000','100000','2024-03-15 17:10:30','2024-03-15 17:10:46','A'),
- (4,'Isadora',NULL,'100000','100000','2024-03-15 17:10:30','2024-03-15 17:10:46','A'),
- (5,'Clarisse',NULL,'100000','100000','2024-03-15 17:10:30','2024-03-15 17:10:46','A'),
- (6,'Rebeka',NULL,'100000','100000','2024-03-15 17:10:30','2024-03-15 17:10:46','A');
+INSERT INTO `cliente` (`idcliente`,`nomeCliente`,`contato`,`numeroCartao`,`valorCartao`,`cadastro`,`alteracao`,`ativo`) VALUES 
+ (1,'Marco',NULL,'111111','100000','2024-03-15 17:10:30','2024-03-19 13:12:38','A'),
+ (2,'Arthur',NULL,'222222','100000','2024-03-15 17:10:30','2024-03-19 13:12:38','A'),
+ (3,'Franciele',NULL,'333333','100000','2024-03-15 17:10:30','2024-03-19 13:12:38','A'),
+ (4,'Isadora',NULL,'444444','100000','2024-03-15 17:10:30','2024-03-19 13:12:38','A'),
+ (5,'Clarisse',NULL,'555555','100000','2024-03-15 17:10:30','2024-03-19 13:12:38','A'),
+ (6,'Rebeka',NULL,'666666','100000','2024-03-15 17:10:30','2024-03-19 13:12:38','A');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 
 
@@ -121,37 +121,30 @@ DROP TABLE IF EXISTS `compras`;
 CREATE TABLE `compras` (
   `idcompras` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `idcarro` int(10) unsigned NOT NULL DEFAULT 0,
-  `idcliente` int(10) unsigned NOT NULL DEFAULT 0,
-  `idpagamento` int(10) unsigned NOT NULL DEFAULT 0,
-  `idproprietario` int(10) unsigned NOT NULL DEFAULT 0,
   `valorUnidade` decimal(10,0) NOT NULL DEFAULT 0,
-  `valor` decimal(10,0) NOT NULL DEFAULT 0,
+  `valorPago` decimal(10,0) NOT NULL DEFAULT 0,
   `cadastro` datetime DEFAULT NULL,
   `alteracao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `ativo` char(1) NOT NULL DEFAULT 'A',
-  PRIMARY KEY (`idcompras`,`idcarro`,`idcliente`,`idpagamento`,`idproprietario`),
-  KEY `FK_compras_carro` (`idcarro`,`idproprietario`),
-  KEY `FK_compras_cliente` (`idcliente`),
-  KEY `FK_compras_pagamento` (`idpagamento`),
-  KEY `FK_compras_proprietario` (`idproprietario`),
-  CONSTRAINT `FK_compras_carro` FOREIGN KEY (`idcarro`, `idproprietario`) REFERENCES `carro` (`idcarro`, `idproprietario`),
-  CONSTRAINT `FK_compras_cliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`),
-  CONSTRAINT `FK_compras_pagamento` FOREIGN KEY (`idpagamento`) REFERENCES `pagamento` (`idpagamento`),
-  CONSTRAINT `FK_compras_proprietario` FOREIGN KEY (`idproprietario`) REFERENCES `proprietario` (`idproprietario`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`idcompras`,`idcarro`) USING BTREE,
+  KEY `FK_compras_carro` (`idcarro`) USING BTREE,
+  CONSTRAINT `FK_compras_carro` FOREIGN KEY (`idcarro`) REFERENCES `carro` (`idcarro`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `compras`
 --
 
 /*!40000 ALTER TABLE `compras` DISABLE KEYS */;
-INSERT INTO `compras` (`idcompras`,`idcarro`,`idcliente`,`idpagamento`,`idproprietario`,`valorUnidade`,`valor`,`cadastro`,`alteracao`,`ativo`) VALUES 
- (2,3,3,1,3,'150','300',NULL,'2024-03-18 08:46:04','A'),
- (3,3,2,2,3,'150','300',NULL,'2024-03-18 08:55:26','A'),
- (4,2,1,1,2,'150','600',NULL,'2024-03-18 08:55:26','A'),
- (5,1,6,2,1,'150','1000',NULL,'2024-03-18 08:55:27','A'),
- (6,4,4,2,4,'150','450',NULL,'2024-03-18 09:53:37','A'),
- (7,5,5,2,5,'150','750',NULL,'2024-03-18 09:53:39','A');
+INSERT INTO `compras` (`idcompras`,`idcarro`,`valorUnidade`,`valorPago`,`cadastro`,`alteracao`,`ativo`) VALUES 
+ (2,3,'150','300',NULL,'2024-03-18 08:46:04','A'),
+ (3,3,'150','300',NULL,'2024-03-18 08:55:26','A'),
+ (4,2,'150','600',NULL,'2024-03-18 08:55:26','A'),
+ (5,1,'150','1000',NULL,'2024-03-18 08:55:27','A'),
+ (6,4,'150','450',NULL,'2024-03-18 09:53:37','A'),
+ (7,5,'150','750',NULL,'2024-03-18 09:53:39','A'),
+ (8,1,'1','1','2024-03-18 16:45:27','2024-03-18 16:45:27','A'),
+ (9,4,'150','450','2024-03-18 16:49:45','2024-03-18 16:49:46','A');
 /*!40000 ALTER TABLE `compras` ENABLE KEYS */;
 
 
