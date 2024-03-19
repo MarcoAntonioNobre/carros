@@ -1,10 +1,10 @@
-function abrirModalCompra(idcarro, precoV) {
-    const idQtd = document.getElementById('inQuantidade');
-    const preco = document.getElementById('precoVeiculo');
-    if (idQtd) {
-        idQtd.focus();
+function abrirModalCompra(idcarro) {
+    const idcar = document.getElementById('inQuantidade');
+
+    if (idcar) {
+        idcar.focus();
     }
-    preco.value = precoV
+
     document.getElementById('idcompra').value = idcarro
     abrirFecharModalCompra('vermais', 'A');
 }
@@ -20,19 +20,18 @@ function abrirFecharModalCompra(idModal, abrirOuFechar) {
 
 const modalCompraInstancia = document.getElementById('vermais')
 const modalCompra = document.getElementById('vermais');
-const inpCompra = document.getElementById('inQuantidade');
+const inpCompra = document.getElementById('valorPagamento');
 const btnCompra = document.getElementById('btnCompra')
 
 if (modalCompra) {
     const formCompra = document.getElementById('frmCompra')
-
     modalCompra.addEventListener('shown.bs.modal', () => {
         inpCompra.focus()
 
         const submitHandler = function (event) {
             event.preventDefault();
             btnCompra.disabled = true;
-            //modalCompraInstancia.hide();
+            modalCompraInstancia.hide();
             const form = event.target;
             const formData = new FormData(form);
             formData.append('controle', 'compra');
@@ -45,17 +44,17 @@ if (modalCompra) {
                     console.log(data)
                     if (data.success) {
                         form.removeEventListener('submit', submitHandler)
-                        btnCompra.disabled = false;
+                        btnCarro.disabled = false;
                         alert(data['message']);
                         window.location.href = 'dashboard.php';
                     } else {
-                        btnCompra.disabled = false;
+                        btnCarro.disabled = false;
                         alert(data['message'])
-
+                        addErro()
                     }
                 })
         }
-        formCompra.addEventListener('submit', submitHandler)
+        formCompra.addEventListener('submit',submitHandler)
 
     })
 }
