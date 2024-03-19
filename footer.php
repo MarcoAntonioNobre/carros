@@ -1,6 +1,6 @@
 <div class="container-fluid align-items-end">
     <div class="row mt-5">
-        <div class="corzinha mt-5 pt-5 ">
+        <div class="corzinha pt-5 ">
             <section class="ftco-section">
                 <div class="container">
                     <div class="row justify-content-center">
