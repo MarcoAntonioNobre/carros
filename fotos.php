@@ -85,7 +85,6 @@
     </div>
 </div>
 
-
 <div class="modal fade" id="mdlEditFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -136,6 +135,18 @@
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="modal fade" id="mdlDeleteFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -158,3 +169,6 @@
         </div>
     </div>
 </div>
+
+
+

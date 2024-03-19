@@ -49,7 +49,7 @@ if ($_SESSION['idadm']) {
                 <div class="col-md-4">
                     <p class="d-inline-flex gap-1">
                         <a class="links text-white margem" data-bs-toggle="collapse" href="#collapseExample"
-                           role="button" aria-expanded="false" aria-controls="collapseExample">
+                           role="button" aria-expanded="false" aria-controls="collapseExample" id="teste">
                             Pesquisar Código
                         </a>
                     </p>
@@ -120,11 +120,7 @@ if ($_SESSION['idadm']) {
                 }
 
                 ?>
-
-
             </div>
-
-
         </div>
 
         <?php

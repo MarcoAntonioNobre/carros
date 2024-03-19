@@ -227,9 +227,9 @@ function abrirModalDelFoto(idfoto) {
 
 function abrirFecharModalDelFoto(idModal, abrirOuFechar) {
     const modalInstancia = new bootstrap.Modal(document.getElementById(idModal));
-    if (abrirOuFechar === 'A') {
+    if (abrirOuFechar == 'A') {
         modalInstancia.show();
-    } else {
+    }else {
         modalInstancia.hide();
     }
 }

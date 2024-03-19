@@ -12,16 +12,15 @@ if (isset($dados) && !empty($dados)) {
     $idcarro = isset($dados['idcompra']) ? addslashes($dados['idcompra']) : 0;
     $qtd = isset($dados['inQuantidade']) ? addslashes($dados['inQuantidade']) : 0;
     $precoV = isset($dados['precoVeiculo']) ? addslashes($dados['precoVeiculo']) : 0;
-    $cartao = isset($dados['codCartao']) ? addslashes($dados['codCartao']) : 0;
+    $cartao = isset($dados['codCartao']) ? addslashes($dados['codCartao']) : '';
 
-    if ($cartao !== 0) {
+    if ($cartao !== '') {
         $compraCliente = listarTabela('*', 'cliente');
         foreach ($compraCliente as $cliente) {
             $idcartao = $cliente->numeroCartao;
             $valorNoCartao = $cliente->valorCartao;
 
-            $a = conversorDBNumPonto($precoV);
-            $total = $a * $qtd;
+            $total = $precoV * $qtd;
 
             if ($total > $valorNoCartao) {
                 echo json_encode(['success' => true, 'message' => 'Compra não efetuada. Limite insuficiente!!']);
@@ -30,22 +29,23 @@ if (isset($dados) && !empty($dados)) {
 
                 $result = $valorNoCartao - $total;
                 $retornoupdate = alterarGlobal1('cliente', 'valorCartao', "$result", 'numeroCartao', "$idcartao");
-                $retornoInsert = insertGlobal4('compras', 'idcarro,valorUnidade,valorPago,cadastro', "$idcarro", "$precoV", "$total", DATATIMEATUAL);
+                $retornoInsert = insertGlobal4('compras', 'idcarro,valorUnidade,valorPago,cadastro', $idcarro, $precoV, $total, DATATIMEATUAL);
                 if ($retornoInsert > 0) {
-                    echo json_encode(['success' => true, 'message' => "Veículo comprado com sucesso no cartão"]);
+                    echo json_encode(['success' => true, 'message' => "Veículo comprado no cartão com sucesso"]);
                 } else {
                     echo json_encode(['success' => false, 'message' => "Veículo não comprado!"]);
                 }
             }
         }
+    }else{
+        $total = $precoV * $qtd;
+        $retornoInsert = insertGlobal4('compras', 'idcarro,valorUnidade,valorPago,cadastro', "$idcarro", "$precoV", "$total", DATATIMEATUAL);
+        if ($retornoInsert > 0) {
+            echo json_encode(['success' => true, 'message' => "Veículo comprado no dinheiro com sucesso"]);
+        } else {
+            echo json_encode(['success' => false, 'message' => "Veículo não comprado!"]);
+        }
     }
-    $retornoInsert = insertGlobal4('compras', 'idcarro,valorUnidade,valorPago,cadastro', "$idcarro", "$precoV", "$total", DATATIMEATUAL);
-    if ($retornoInsert > 0) {
-        echo json_encode(['success' => true, 'message' => "Veículo comprado com sucesso"]);
-    } else {
-        echo json_encode(['success' => false, 'message' => "Veículo não comprado!"]);
-    }
-
 } else {
     echo json_encode((['success' => false, 'message' => 'Veículo não encontrado!']));
 }
