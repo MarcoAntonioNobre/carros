@@ -7,6 +7,7 @@ $conn = conectar();
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
+
 if (isset($dados) && !empty($dados)) {
     $idcarro = isset($dados['idcompra']) ? addslashes($dados['idcompra']) : 0;
     $qtd = isset($dados['inQuantidade']) ? addslashes($dados['inQuantidade']) : 0;
