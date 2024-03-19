@@ -70,7 +70,7 @@
                         </td>
                         <td>
                             <button name="alterarCliente" id="alterarCliente" class="btn btn-outline-primary" data-bs-toggle="modal" onclick="abrirModalJsCliente('<?php echo $idcliente?>', 'inpEditId', '<?php echo $nome?>', 'inpEditNome', '<?php echo DATATIMEATUAL?>','<?php echo $contato?>','inpEditContato','<?php echo $valorUni?>','inpEditValorUnitario','<?php echo $cartao?>','inpEditValorCartao', 'mdlEditCliente','A', 'btnEditCliente', 'editCliente', 'inpEditNome', 'nao', 'frmEditCliente')">Alterar</button>
-                            <button name="excluirCliente" id="vermaisCliente" class="btn btn-outline-danger" data-bs-toggle="modal" onclick="abrirModalJsCliente('<?php echo $idcliente?>', 'idDeleteCliente', 'nao', 'nao', 'nao','nao','nao','nao','nao','nao','nao', 'mdlDeleteCliente','A', 'btnDeleteCliente', 'deleteCliente', 'nao', 'nao', 'frmDeleteCliente')">Excluir</button>
+                            <button name="excluirCliente" id="vermaisCliente" class="btn btn-outline-danger" data-bs-toggle="modal" onclick="abrirModalJsCliente('<?php echo $idcliente?>', 'idDeleteCliente', 'nao', 'nao', 'nao','nao','nao','nao','nao','nao','nao', 'mdlDeleteCliente','A', 'btnDeleteCliente', 'deleteCliente', 'nao', 'nao', 'frmDeleteCliente')">Deletar</button>
                         </td>
                     </tr>
                     <?php

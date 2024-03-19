@@ -38,7 +38,7 @@ if ($_SESSION['idadm']) {
         <div class="container mt-5 text-center bg-black">
             <div class="pt-3 row">
                 <div class="col-md-1">
-                    <a href="adm.php"><i class="fa-solid fa-gear text-white"></i></a>
+                    <a href="adm.php"><i class="fa-solid fa-gear text-white spinner is-animating"></i></a>
                 </div>
                 <div class="col-md-4">
                     <a href="dashboard.php" class="links text-white margem" onclick="carregarConteudo('listarCarros')">Ver
@@ -91,7 +91,6 @@ if ($_SESSION['idadm']) {
                         $nomeCarro = mb_strtolower($nomeCarro);
                         $nomeCarro = converterAcentuacao($nomeCarro);
                         $diferenciais = mb_strtolower($diferenciais);
-                        $diferenciais = converterAcentuacao($diferenciais);
                         ?>
 
                         <div class="col-lg-4 col-md-4 col-12 ">
@@ -151,12 +150,12 @@ if ($_SESSION['idadm']) {
                     <div class="mt-2">
                         <B>Diferenciais:</B> <?php echo $diferenciais ?>
                     </div>
-                    <form action="" name="frmCompra" id="frmCompra">
-                        <div class="mt-3">
+                    <div class="mt-3">
+                        <form action="" name="frmCompra" id="frmCompra">
                             <div class="wave-group">
                                 <div>
-                                    <input type="number" name="idcompra" id="idcompra" hidden="hidden" >
-                                    <input type="text" name="precoVeiculo" id="precoVeiculo" hidden="hidden" >
+                                    <input type="number" name="idcompra" id="idcompra" hidden="hidden">
+                                    <input type="text" name="precoVeiculo" id="precoVeiculo" hidden="hidden">
                                 </div>
 
                                 <div class="mt-3">
@@ -195,7 +194,7 @@ if ($_SESSION['idadm']) {
                                 </div>
 
                             </div>
-                        </div>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
