@@ -10,8 +10,8 @@
                 <th scope="col" class="bg-black text-light legenda">#</th>
                 <th scope="col" class="bg-black text-light legenda">Nome</th>
                 <th scope="col" class="bg-black text-light legenda">Contato</th>
-                <th scope="col" class="bg-black text-light legenda">Preço da unidade</th>
-                <th scope="col" class="bg-black text-light legenda">Cartão</th>
+                <th scope="col" class="bg-black text-light legenda">Número do cartão</th>
+                <th scope="col" class="bg-black text-light legenda">Valor no cartão</th>
                 <th scope="col" class="bg-black text-light legenda">Ações</th>
             </tr>
             </thead>
@@ -26,7 +26,7 @@
                     $nome = $cliente->nomeCliente;
                     $contato = $cliente->contato;
                     $cartao = $cliente->valorCartao;
-                    $valorUni = $cliente->valorUnitario;
+                    $numCartao = $cliente->numeroCartao;
                     $nome = mb_strtolower($nome);
                     $nome = converterAcentuacao($nome);
                     ?>
@@ -52,8 +52,8 @@
                         </td>
                         <td >
                             <?php
-                            if ($valorUni !== '') {
-                                echo 'R$ '.$valorUni;
+                            if ($numCartao !== '') {
+                                echo $numCartao;
                             } else {
                                 echo 'Não informado';
                             }
@@ -64,7 +64,7 @@
                             if ($cartao !== '') {
                                 echo 'R$ '.$cartao;
                             } else {
-                                echo 'Não informado';
+                                echo 'Sem limite';
                             }
                             ?>
                         </td>
