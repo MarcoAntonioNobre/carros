@@ -37,7 +37,7 @@
                             ?></td>
                         <td>
                             <button class="btn btn-outline-primary" data-bs-toggle="modal" onclick="abrirModalJsADM('<?php echo $id?>', 'idEditAdm', '<?php echo $nome?>', 'nomeEditAdm','nao','<?php echo $cpf?>', 'cpfEditAdm','nao', 'senhaEditAdm', 'editAdm','A', 'btnEditAdm', 'editAdm', 'nomeEditAdm', 'nao', 'frmEditAdm')">Alterar</button>
-                            <button class="btn btn-outline-danger" data-bs-toggle="modal" onclick="abrirModalJsADM('<?php echo $id?>', 'idDeleteAdm', 'nao', 'nao', 'nao','nao', 'nao', 'nao', 'nao', 'deleteAdm','A', 'btnDeleteAdm', 'deleteAdm', 'nao', 'nao', 'frmDeleteAdm')">Deletar</button>
+                            <button class="btn btn-outline-danger" data-bs-toggle="modal" onclick="abrirModalJsADM('<?php echo $id?>', 'idDeleteAdm', 'nao', 'nao', 'nao','nao', 'nao', 'nao', 'nao', 'deleteAdm','A', 'btnDeleteAdm', 'deleteAdm', 'nao', 'nao', 'frmDeleteAdm')">Excluir</button>
                         </td>
                     </tr>
 

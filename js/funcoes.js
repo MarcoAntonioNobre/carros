@@ -1,6 +1,12 @@
-function abrirModalCompra(idcarro, precoV) {
+function abrirModalCompra(idcarro, precoV, nome,descricao) {
     const idQtd = document.getElementById('inQuantidade');
     const preco = document.getElementById('precoVeiculo');
+    const nomeModalCarro = document.getElementById('tituloCarro');
+    const precoModalCarro = document.getElementById('precoCarro');
+    const diferenciaisModalCarro = document.getElementById('diferenciaisCarro');
+    nomeModalCarro.innerHTML='Comprar '+`${nome}`
+    precoModalCarro.innerHTML=`${precoV}`
+    diferenciaisModalCarro.innerHTML=`${descricao}`
     if (idQtd) {
         idQtd.focus();
     }
@@ -53,13 +59,18 @@ if (modalCompra) {
                 .then(data => {
                     console.log(data)
                     if (data.success) {
-                        form.removeEventListener('submit', submitHandler)
+                     
                         btnCompra.disabled = false;
-                        alert(data['message']);
-                        window.location.href = 'dashboard.php';
+                        addOuEditSucesso('Compra', 'success', ' efetuada')
+                        setTimeout(() => {
+                       
+                            window.location.href = 'dashboard.php';
+                          }, "1500");
+                     
                     } else {
                         btnCompra.disabled = false;
-                        alert(data['message'])
+                        addErro()
+                    
 
                     }
                 })

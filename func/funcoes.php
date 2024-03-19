@@ -22,7 +22,7 @@ function listarTabela($campos, $tabela)
     $conn = null;
 }
 
-function soma($campoSomar,$tabela,$idquando,$id)
+function soma($campoSomar, $tabela, $idquando, $id)
 {
     $conn = conectar();
     try {
@@ -55,6 +55,56 @@ function listarItemExpecifico($campos, $tabela, $campoExpecifico, $valorCampo)
 //        $sqlListaTabelas->bindValue(2, $tabela, PDO::PARAM_STR);
         $sqlListaTabelas->bindValue(1, $campoExpecifico, PDO::PARAM_STR);
         $sqlListaTabelas->bindValue(2, $valorCampo, PDO::PARAM_STR);
+        $sqlListaTabelas->execute();
+        $conn->commit();
+        if ($sqlListaTabelas->rowCount() > 0) {
+            return $sqlListaTabelas->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch
+    (PDOException $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
+function listarItemExpecificoPesquisa($valorCampo)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlListaTabelas = $conn->prepare("SELECT * FROM carro WHERE idcarro = ?");
+//        $sqlListaTabelas->bindValue(1, $campos, PDO::PARAM_STR);
+//        $sqlListaTabelas->bindValue(2, $tabela, PDO::PARAM_STR);
+//        $sqlListaTabelas->bindValue(1, $campoExpecifico, PDO::PARAM_STR);
+        $sqlListaTabelas->bindValue(1, $valorCampo, PDO::PARAM_STR);
+        $sqlListaTabelas->execute();
+        $conn->commit();
+        if ($sqlListaTabelas->rowCount() > 0) {
+            return $sqlListaTabelas->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch
+    (PDOException $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
+function listarItemExpecificoPessoa($valorCampo)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlListaTabelas = $conn->prepare("SELECT * FROM proprietario WHERE idproprietario = ?");
+//        $sqlListaTabelas->bindValue(1, $campos, PDO::PARAM_STR);
+//        $sqlListaTabelas->bindValue(2, $tabela, PDO::PARAM_STR);
+//        $sqlListaTabelas->bindValue(1, $campoExpecifico, PDO::PARAM_STR);
+        $sqlListaTabelas->bindValue(1, $valorCampo, PDO::PARAM_STR);
         $sqlListaTabelas->execute();
         $conn->commit();
         if ($sqlListaTabelas->rowCount() > 0) {
@@ -120,6 +170,27 @@ function listarTabelaInnerJoinTriplo($campos, $tabela1, $tabela2, $tabela3, $id1
     try {
         $conn->beginTransaction();
         $sqlLista = $conn->prepare("SELECT $campos FROM $tabela1 t INNER JOIN $tabela2 y ON t.$id1 = y.$id2 INNER JOIN $tabela3 i ON t.$id3 = i.$id4 ORDER BY $ordem $tipoOrdem");
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+
+    } catch (PDOException $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
+function listarTabelaInnerJoinTriploValorPago($camposSomar, $tabela1, $tabela2, $tabela3, $id1, $id2, $id3, $id4, $identificadorWhere, $idWhere)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("SELECT sum($camposSomar) as soma FROM $tabela1 t INNER JOIN $tabela2 y ON t.$id1 = y.$id2 INNER JOIN $tabela3 i ON t.$id3 = i.$id4 WHERE $identificadorWhere = $idWhere");
         $sqlLista->execute();
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {
@@ -226,7 +297,7 @@ function insertGlobal5($tabela, $dados, $novosDados1, $novosDados2, $novosDados3
     $conn = null;
 }
 
-function insertGlobal6($tabela, $dados, $novosDados1, $novosDados2, $novosDados3, $novosDados4, $novosDados5,$novosDados6)
+function insertGlobal6($tabela, $dados, $novosDados1, $novosDados2, $novosDados3, $novosDados4, $novosDados5, $novosDados6)
 {
     $conn = conectar();
     try {
@@ -278,8 +349,6 @@ function insertGlobal4($tabela, $dados, $novosDados1, $novosDados2, $novosDados3
     }
     $conn = null;
 }
-
-
 
 
 function deletecadastro($tabela, $NomeDoCampoId, $id)
@@ -355,7 +424,7 @@ function alterarGlobal4($tabela, $campo1, $campo2, $campo3, $campo4, $valor, $va
     $conn = null;
 }
 
-function alterarGlobal5($tabela, $campo1, $campo2, $campo3, $campo4,$campo5, $valor, $valor2, $valor3, $valor4,$valor5, $identificar, $id)
+function alterarGlobal5($tabela, $campo1, $campo2, $campo3, $campo4, $campo5, $valor, $valor2, $valor3, $valor4, $valor5, $identificar, $id)
 {
     $conn = conectar();
     try {
@@ -384,7 +453,8 @@ function alterarGlobal5($tabela, $campo1, $campo2, $campo3, $campo4,$campo5, $va
     };
     $conn = null;
 }
-function alterarGlobal3($tabela, $campo1, $campo2, $campo3, $valor, $valor2, $valor3,  $identificar, $id)
+
+function alterarGlobal3($tabela, $campo1, $campo2, $campo3, $valor, $valor2, $valor3, $identificar, $id)
 {
     $conn = conectar();
     try {
