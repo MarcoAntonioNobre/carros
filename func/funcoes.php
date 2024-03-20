@@ -395,6 +395,28 @@ function alterarGlobal1($tabela, $campo, $valor, $identificar, $id)
     $conn = null;
 }
 
+function alterarGlobal2($tabela, $campo,$campo2, $valor,$valor2, $identificar, $id)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("UPDATE $tabela SET $campo = '$valor',$campo2 = '$valor2' WHERE  $identificar = $id ;");
+        //        $sqlLista->bindValue(1, $campoParametro, PDO::PARAM_INT);
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        };
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    };
+    $conn = null;
+}
+
 function alterarGlobal4($tabela, $campo1, $campo2, $campo3, $campo4, $valor, $valor2, $valor3, $valor4, $identificar, $id)
 {
     $conn = conectar();

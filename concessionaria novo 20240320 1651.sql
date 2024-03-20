@@ -35,7 +35,7 @@ CREATE TABLE `adm` (
   `alteracao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `ativo` char(1) NOT NULL DEFAULT 'A',
   PRIMARY KEY (`idadm`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `adm`
@@ -105,7 +105,7 @@ CREATE TABLE `cliente` (
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
 INSERT INTO `cliente` (`idcliente`,`nomeCliente`,`contato`,`numeroCartao`,`valorCartao`,`cadastro`,`alteracao`,`ativo`) VALUES 
  (1,'MARCO','','111111','100000','2024-03-15 17:10:30','2024-03-20 10:01:34','A'),
- (2,'ARTHUR','','222222','88600','2024-03-15 17:10:30','2024-03-20 09:42:26','A'),
+ (2,'ARTHUR','','222222','87400','2024-03-15 17:10:30','2024-03-20 16:31:19','A'),
  (3,'FRANCIELE','','333333','100000','2024-03-15 17:10:30','2024-03-20 10:01:27','A'),
  (4,'ISADORA','','444444','100000','2024-03-15 17:10:30','2024-03-20 10:01:31','A'),
  (5,'CLARISSE','','555555','100000','2024-03-15 17:10:30','2024-03-20 09:30:33','A'),
@@ -121,6 +121,7 @@ DROP TABLE IF EXISTS `compras`;
 CREATE TABLE `compras` (
   `idcompras` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `idcarro` int(10) unsigned NOT NULL DEFAULT 0,
+  `idcliente` varchar(10) DEFAULT NULL,
   `valorUnidade` decimal(10,0) NOT NULL DEFAULT 0,
   `qtdComprada` varchar(5) NOT NULL DEFAULT '',
   `valorPago` decimal(10,0) NOT NULL DEFAULT 0,
@@ -130,13 +131,15 @@ CREATE TABLE `compras` (
   PRIMARY KEY (`idcompras`,`idcarro`) USING BTREE,
   KEY `FK_compras_carro` (`idcarro`) USING BTREE,
   CONSTRAINT `FK_compras_carro` FOREIGN KEY (`idcarro`) REFERENCES `carro` (`idcarro`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `compras`
 --
 
 /*!40000 ALTER TABLE `compras` DISABLE KEYS */;
+INSERT INTO `compras` (`idcompras`,`idcarro`,`idcliente`,`valorUnidade`,`qtdComprada`,`valorPago`,`cadastro`,`alteracao`,`ativo`) VALUES 
+ (26,1,'2','150','8','1200','2024-03-20 16:31:19','2024-03-20 16:31:19','A');
 /*!40000 ALTER TABLE `compras` ENABLE KEYS */;
 
 
@@ -158,7 +161,7 @@ CREATE TABLE `foto` (
   KEY `FK_foto_proprietario` (`idproprietario`),
   CONSTRAINT `FK_foto_carro` FOREIGN KEY (`idcarro`) REFERENCES `carro` (`idcarro`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_foto_proprietario` FOREIGN KEY (`idproprietario`) REFERENCES `proprietario` (`idproprietario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `foto`
@@ -186,8 +189,7 @@ INSERT INTO `foto` (`idfoto`,`idcarro`,`idproprietario`,`foto`,`cadastro`,`alter
  (68,5,5,'65f83c976e654_IMG-20240314-WA0025.jpg','2024-03-18 10:07:27','2024-03-18 10:07:35','A'),
  (69,5,5,'65f83ca3bff79_IMG-20240314-WA0030.jpg','2024-03-18 10:07:39','2024-03-18 10:07:47','A'),
  (70,5,5,'65f83cb2d3668_IMG-20240314-WA0035.jpg','2024-03-18 10:07:53','2024-03-18 10:08:02','A'),
- (71,5,5,'65f83cc28d917_IMG-20240314-WA0041.jpg','2024-03-18 10:08:06','2024-03-18 10:08:18','A'),
- (72,1,1,'65faea14893c6_IMG-20240314-WA0032.jpg','2024-03-20 10:52:03','2024-03-20 10:52:20','A');
+ (71,5,5,'65f83cc28d917_IMG-20240314-WA0041.jpg','2024-03-18 10:08:06','2024-03-18 10:08:18','A');
 /*!40000 ALTER TABLE `foto` ENABLE KEYS */;
 
 

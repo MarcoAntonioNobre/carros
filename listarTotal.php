@@ -87,6 +87,7 @@
     </div>
 </div>
 
+
 <!--SELECT sum(c.valorPago) FROM carro t-->
 <!--INNER JOIN proprietario y-->
 <!--ON t.idproprietario = y.idproprietario-->
@@ -95,7 +96,4 @@
 <!--where y.idproprietario = 4-->
 
 
-<?php
 
-
-?>
