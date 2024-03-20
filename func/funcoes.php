@@ -369,7 +369,7 @@ function deletecadastro($tabela, $NomeDoCampoId, $id)
         echo 'Exception -> ';
         return ($e->getMessage());
         $conn->rollback();
-    };
+    }
     $conn = null;
 }
 

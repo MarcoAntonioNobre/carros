@@ -366,7 +366,7 @@ include_once 'footer.php';
                                 <input type="text" name="inpValor" id="inpValor" required="required" class="">
                             </div>
                             <div>
-                                <label  for="selectProprietario" >Selecione o proprietário:</label>
+                                <label for="selectProprietario">Selecione o proprietário:</label>
                                 <select name="selectProprietario" id="selectProprietario" required="required">
                                     <option selected>Selecione uma opção</option>
                                     <?php
@@ -506,19 +506,111 @@ include_once 'footer.php';
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                         <button type="submit" class="btn btn-primary" id="btnCadFoto">Cadastrar</button>
                     </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
 
 <!--Modal de edição de foto-->
+<div class="modal fade" id="mdlEditFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Foto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="" name="frmEditFoto" id="frmEditFoto">
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <input type="text" name="idEditFoto" id="idEditFoto" value="<?php echo $id; ?>">
+                                <div>
+                                    <label for="inpEditGrupo" class="label-control">Selecione o grupo:</label>
+                                    <select name="inpEditGrupo" id="inpEditGrupo" required="required">
+                                        <option selected>Selecione uma opção</option>
+                                        <?php
+                                        $proprietario = listarTabela('*', 'proprietario');
+                                        if ($proprietario !== 'Vazio') {
+                                            foreach ($proprietario as $proprietarios) {
+                                                $id = $proprietarios->idproprietario;
+                                                $nome = $proprietarios->nomeProprietario;
+                                                ?>
+                                                <option value="<?php echo $id ?>"><?php echo $nome ?></option>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="inpEditFoto" class="label-control">Foto:</label>
+                                    <input type="file" name="inpEditFoto" id="inpEditFoto" class="form-control"
+                                           required="required">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                        <button type="submit" class="btn btn-primary" id="btnEditFoto">Alterar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <!--Modal de apagar de FOTO-->
-<!--Tá na pagina de foto-->
+<div class="modal fade" id="mdlDeleteFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Apagar foto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post" name="frmDeleteFoto" id="frmDeleteFoto">
+                <div class="modal-body">
+                    <input type="text" name="idDeleteFoto" id="idDeleteFoto">
+                    <div class="alert alert-danger">
+                        Tem certeza que deseja apagar essa foto?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteFoto">Deletar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!--Modal de deletar Venda-->
-<!--Na página venda.php-->
+<div class="modal fade" id="mdlDeleteVenda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Apagar venda</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" name="frmDeleteVenda" id="frmDeleteVenda">
+                <div class="modal-body">
+                    <input type="text" name="idDeleteVenda" id="idDeleteVenda" hidden="hidden">
+                    <div class="alert alert-danger">
+                        Tem certeza?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteVenda">Deletar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -535,6 +627,7 @@ include_once 'footer.php';
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./js/script.js"></script>
 <script src="./js/funcoes.js"></script>
+
 </body>
 
 </html>
