@@ -11,7 +11,7 @@
                 <th scope="col" class="bg-black text-light legenda">#</th>
                 <th scope="col" class="bg-black text-light legenda">Nome</th>
                 <th scope="col" class="bg-black text-light legenda">CPF</th>
-                <th scope="col" class="bg-black text-light legenda">Ação</th>
+                <th scope="col" class="bg-black text-light legenda">Ações</th>
             </tr>
             </thead>
             <tbody>

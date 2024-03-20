@@ -49,6 +49,9 @@ if ($_SESSION['idadm']) {
                 <div onclick="carregarConteudo('listarTotal')">Total de vendas</div>
             </div>
             <div class="mt-3 mb-1 pointer ">
+                <div onclick="carregarConteudo('listarVenda')">Vendas</div>
+            </div>
+            <div class="mt-3 mb-1 pointer ">
                 <div onclick="carregarConteudo('listarAdm')">Administradores</div>
             </div>
         </div>
@@ -153,7 +156,7 @@ include_once 'footer.php';
                                 <input type="text" name="inpContato" id="inpContato" class="form-control telefoneBR">
                             </div>
                             <div>
-                                <label for="inpValorUnitario" class="label-control">Valor de cada unidade:</label>
+                                <label for="inpValorUnitario" class="label-control">Número do cartão:</label>
                                 <input type="text" name="inpValorUnitario" id="inpValorUnitario"
                                        class="form-control">
                             </div>
@@ -197,7 +200,7 @@ include_once 'footer.php';
                                        class="form-control telefoneBR">
                             </div>
                             <div>
-                                <label for="inpEditValorUnitario" class="label-control">Valor de cada unidade:</label>
+                                <label for="inpEditValorUnitario" class="label-control">Número do cartão:</label>
                                 <input type="text" name="inpEditValorUnitario" id="inpEditValorUnitario"
                                        class=" form-control">
                             </div>
@@ -222,14 +225,14 @@ include_once 'footer.php';
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-danger text-light">
-                <h1 class="modal-title fs-5 " id="exampleModalLabel">Deletar Proprietário</h1>
+                <h1 class="modal-title fs-5 " id="exampleModalLabel">Deletar cliente</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="#" name="frmDeleteCliente" id="frmDeleteCliente">
                 <div class="modal-body">
-                    <input type="text" name="idDeleteCliente" id="idDeleteCliente">
+                    <input type="hidden" name="idDeleteCliente" id="idDeleteCliente">
                     <div class="alert alert-danger">
-                        tem certeza?
+                        Tem certeza?
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -393,7 +396,6 @@ include_once 'footer.php';
         </div>
     </div>
 </div>
-
 <!--Modal de edicao de carro-->
 <div class="modal fade" id="mdlEditCarro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -406,7 +408,7 @@ include_once 'footer.php';
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <input type="text" name="idEditCarro" id="idEditCarro">
+                            <input type="hidden" name="idEditCarro" id="idEditCarro">
                             <div>
                                 <label for="inpNomeEditCarro" class="label-control">Nome:</label>
                                 <input type="text" name="inpNomeEditCarro" id="inpNomeEditCarro" class="form-control"
@@ -473,24 +475,6 @@ include_once 'footer.php';
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                <!--                                <label for="inpCarroFoto" class="label-control">Selecione o carro:</label>-->
-                                <!--                                <select name="inpCarroFoto" id="inpCarroFoto">-->
-                                <!--                                    <option selected>Selecione uma opção</option>-->
-                                <!--                                    --><?php
-                                //                                    $carro = listarTabela('*', 'carro');
-                                //                                    if ($carro !== 'Vazio') {
-                                //                                        foreach ($carro as $carros) {
-                                //                                            $id = $carros->idcarro;
-                                //                                            $nome = $carros->nomeCarro;
-                                //                                            ?>
-                                <!--                                            <option value="-->
-                                <?php //echo $id ?><!--">--><?php //echo $nome ?><!--</option>-->
-                                <!--                                            --><?php
-                                //                                        }
-                                //                                    }
-                                //                                    ?>
-                                <!--                                </select>-->
-                                <!--                            </div>-->
                                 <div>
                                     <label for="inpGrupo" class="label-control">Selecione o grupo:</label>
                                     <select name="inpGrupo" id="inpGrupo" required="required">
@@ -528,10 +512,13 @@ include_once 'footer.php';
 </div>
 
 <!--Modal de edição de foto-->
-<!--Tá na pagina de foto-->
+
 
 <!--Modal de apagar de FOTO-->
 <!--Tá na pagina de foto-->
+
+<!--Modal de deletar Venda-->
+<!--Na página venda.php-->
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

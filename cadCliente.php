@@ -11,10 +11,10 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 if (isset($dados) && !empty($dados)) {
     $nome = isset($dados['inpNome']) ? addslashes(mb_strtoupper($dados['inpNome'], 'UTF-8')) : '';
     $contato = isset($dados['inpContato']) ? addslashes(mb_strtoupper($dados['inpContato'], 'UTF-8')) : '';
-    $valorUnitario = isset($dados['inpValorUnitario']) ? addslashes(mb_strtoupper($dados['inpValorUnitario'], 'UTF-8')) : '';
+    $numeroCartao = isset($dados['inpValorUnitario']) ? addslashes(mb_strtoupper($dados['inpValorUnitario'], 'UTF-8')) : '';
     $valorCartao = isset($dados['inpValorCartao']) ? addslashes(mb_strtoupper($dados['inpValorCartao'], 'UTF-8')) : '';
 
-    $retornoInsert = insertGlobal5('cliente', 'nomeCliente, contato, valorUnitario, valorCartao, cadastro', "$nome", "$contato", "$valorUnitario", "$valorCartao", '<?php echo DATATIMEATUAL?>');
+    $retornoInsert = insertGlobal5('cliente', 'nomeCliente, contato, numeroCartao, valorCartao, cadastro', "$nome", "$contato", "$numeroCartao", "$valorCartao", '<?php echo DATATIMEATUAL?>');
     if ($retornoInsert > 0) {
         echo json_encode(['success' => true, 'message' => "Cliente $nome cadastrado com sucesso"]);
     } else {
