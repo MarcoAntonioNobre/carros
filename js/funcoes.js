@@ -244,104 +244,103 @@ function abrirFecharModalDelFoto(idModal, abrirOuFechar) {
     }
 }
 
+
 const fotoDeleteModalInstancia = new bootstrap.Modal(document.getElementById('mdlDeleteFoto'));
 const fotoDeleteModal = document.getElementById('mdlDeleteFoto');
 const btnDelFoto = document.getElementById('btnDeleteFoto');
-const inpDelFoto = document.getElementById('idDeleteFoto');
 
 if (fotoDeleteModal) {
     const formFoto = document.getElementById('frmDeleteFoto');
-    inpDelFoto.focus()
+
     fotoDeleteModal.addEventListener('shown.bs.modal', () => {
 
         const submitHandler = function (event) {
-            alert('Clicou no botao')
-            // event.preventDefault();
-            // btnDelFoto.disabled = true;
-            // btnDelFoto.addEventListener('click',function (){
-            //     console.log('OOII')
-            // })
-            // fotoDeleteModalInstancia.hide();
-            // const form = event.target;
-            // const formData = new FormData(form);
-            // formData.append('controle', 'deleteFoto');
-            // fetch('controle.php', {
-            //     method: 'POST',
-            //     body: formData,
-            // })
-            //     .then(response => response.json())
-            //     .then(data => {
-            //         if (data.success) {
-            //             addOuEditSucesso('Você', 'success', 'deletou')
-            //             btnDelFoto.disabled = false;
-            //             carregarConteudo('listarFoto');
-            //         } else {
-            //             btnDelFoto.disabled = false;
-            //             addErro()
-            //         }
-            //     })
+            event.preventDefault();
+            btnDelFoto.disabled = true;
+            fotoDeleteModalInstancia.hide();
+            const form = event.target;
+            const formData = new FormData(form);
+            formData.append('controle', 'deleteFoto');
+            fetch('controle.php', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.success) {
+                        addOuEditSucesso('Você', 'success', 'deletou')
+                        btnDelFoto.disabled = false;
+                        carregarConteudo('listarFoto');
+                    } else {
+                        btnDelFoto.disabled = false;
+                        addErro()
+                    }
+                })
         }
         formFoto.addEventListener('submit', submitHandler);
     })
 }
 
 
-// function abrirModalEditFoto(idEditfoto) {
-//     console.log('capturou o id editar')
-//     document.getElementById('idEditFoto').value = idEditfoto
-//     abrirFecharModalEditFoto('mdlEditFoto', 'A');
-// }
-//
-// function abrirFecharModalEditFoto(idModal, abrirOuFechar) {
-//     const modalInstancia = new bootstrap.Modal(document.getElementById(idModal));
-//     if (abrirOuFechar === 'A') {
-//         modalInstancia.show();
-//         console.log('Mostrou a modal editar')
-//     } else {
-//         modalInstancia.hide();
-//     }
-// }
-//
-// const fotoEditModalinstancia = document.getElementById('mdlEditFoto');
-// const fotoEditModal = document.getElementById('mdlEditFoto');
-// const btnEditFoto = document.getElementById('btnEditFoto');
-//
-//
-// if (fotoEditModal) {
-//     const formEditFoto = document.getElementById('frmEditFoto');
-//
-//     fotoEditModal.addEventListener('shown.bs.modal', () => {
-//         const submitHandler = function (event) {
-//             event.preventDefault();
-//             btnEditFoto.disabled = true;
-//             fotoEditModalinstancia.hide();
-//             const form = event.target;
-//             const formData = new FormData(form);
-//             formData.append('controle', 'editFoto');
-//             const fileInput = document.getElementById('inpEditFoto');
-//             formData.append('foto', fileInput.files[0]);
-//             fetch('controle.php', {
-//                 method: 'POST',
-//                 body: formData,
-//             })
-//                 .then(response => response.json())
-//                 .then(data => {
-//
-//                     if (data.success) {
-//                         btnEditFoto.disabled = false
-//                         addOuEditSucesso('Você', 'info', 'editou');
-//                         form.removeEventListener('submit', submitHandler);
-//                         carregarConteudo('listarFoto');
-//                     } else {
-//                         btnEditFoto.disabled = false
-//                         addErro();
-//                     }
-//                 });
-//         };
-//         formEditFoto.addEventListener('submit', submitHandler);
-//     });
-//
-// }
+function abrirModalEditFoto(idEditfoto) {
+    console.log('capturou o id editar')
+    document.getElementById('idEditFoto').value = idEditfoto
+    abrirFecharModalEditFoto('mdlEditFoto', 'A');
+}
+
+function abrirFecharModalEditFoto(idModal, abrirOuFechar) {
+    const modalInstancia = new bootstrap.Modal(document.getElementById(idModal));
+
+    if (abrirOuFechar === 'A') {
+        modalInstancia.show();
+        console.log('Mostrou a modal editar')
+    } else {
+        modalInstancia.hide();
+    }
+}
+
+
+const fotoEditModalinstancia = new bootstrap.Modal(document.getElementById('mdlEditFoto'));
+const fotoEditModal = document.getElementById('mdlEditFoto');
+const btnEditFoto = document.getElementById('btnEditFoto');
+
+
+if (fotoEditModal) {
+    const formEditFoto = document.getElementById('frmEditFoto');
+
+    fotoEditModal.addEventListener('shown.bs.modal', () => {
+        const submitHandler = function (event) {
+            event.preventDefault();
+            btnEditFoto.disabled = true;
+            fotoEditModalinstancia.hide();
+            const form = event.target;
+            const formData = new FormData(form);
+            formData.append('controle', 'editFoto');
+            const fileInput = document.getElementById('inpEditFoto');
+            formData.append('foto', fileInput.files[0]);
+            fetch('controle.php', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.success) {
+                        btnEditFoto.disabled = false
+                        addOuEditSucesso('Você', 'info', 'editou');
+                        form.removeEventListener('submit', submitHandler);
+                        carregarConteudo('listarFoto');
+                    } else {
+                        btnEditFoto.disabled = false
+                        addErro();
+                    }
+                });
+        };
+        formEditFoto.addEventListener('submit', submitHandler);
+    });
+
+}
 
 
 function deletar(controle, id) {
@@ -423,4 +422,25 @@ function addErro() {
 };
 
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});

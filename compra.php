@@ -23,13 +23,14 @@ if (isset($dados) && !empty($dados)) {
             $total = $precoV * $qtd;
 
             if ($total > $valorNoCartao) {
-                echo json_encode(['success' => true, 'message' => 'Compra não efetuada. Limite insuficiente!!']);
+                echo json_encode(['success' => false, 'message' => 'Compra não efetuada. Limite insuficiente!!']);
 
             } else if ($idcartao === $cartao) {
+                $idcliente = $cliente -> idcliente;
 
                 $result = $valorNoCartao - $total;
                 $retornoupdate = alterarGlobal1('cliente', 'valorCartao', "$result", 'numeroCartao', "$idcartao");
-                $retornoInsert = insertGlobal5('compras', 'idcarro,valorUnidade,qtdComprada,valorPago,cadastro', $idcarro, $precoV,$qtd, $total, DATATIMEATUAL);
+                $retornoInsert = insertGlobal6('compras', 'idcarro,idcliente,valorUnidade,qtdComprada,valorPago,cadastro', $idcarro,$idcliente, $precoV,$qtd, $total, DATATIMEATUAL);
                 if ($retornoInsert > 0) {
                     echo json_encode(['success' => true, 'message' => "Veículo comprado no cartão com sucesso"]);
                 } else {
@@ -39,7 +40,7 @@ if (isset($dados) && !empty($dados)) {
         }
     }else{
         $total = $precoV * $qtd;
-        $retornoInsert = insertGlobal5('compras', 'idcarro,valorUnidade,qtdComprada,valorPago,cadastro', "$idcarro", "$precoV","$qtd", "$total", DATATIMEATUAL);
+        $retornoInsert = insertGlobal6('compras', 'idcarro,idcliente,valorUnidade,qtdComprada,valorPago,cadastro', "$idcarro",'null', "$precoV","$qtd", "$total", DATATIMEATUAL);
         if ($retornoInsert > 0) {
             echo json_encode(['success' => true, 'message' => "Veículo comprado no dinheiro com sucesso"]);
         } else {

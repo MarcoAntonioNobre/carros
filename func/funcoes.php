@@ -369,7 +369,7 @@ function deletecadastro($tabela, $NomeDoCampoId, $id)
         echo 'Exception -> ';
         return ($e->getMessage());
         $conn->rollback();
-    };
+    }
     $conn = null;
 }
 
@@ -379,6 +379,28 @@ function alterarGlobal1($tabela, $campo, $valor, $identificar, $id)
     try {
         $conn->beginTransaction();
         $sqlLista = $conn->prepare("UPDATE $tabela SET $campo = '$valor' WHERE  $identificar = $id ;");
+        //        $sqlLista->bindValue(1, $campoParametro, PDO::PARAM_INT);
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        };
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    };
+    $conn = null;
+}
+
+function alterarGlobal2($tabela, $campo,$campo2, $valor,$valor2, $identificar, $id)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("UPDATE $tabela SET $campo = '$valor',$campo2 = '$valor2' WHERE  $identificar = $id ;");
         //        $sqlLista->bindValue(1, $campoParametro, PDO::PARAM_INT);
         $sqlLista->execute();
         $conn->commit();
