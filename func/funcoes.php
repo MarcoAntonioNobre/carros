@@ -69,6 +69,32 @@ function listarItemExpecifico($campos, $tabela, $campoExpecifico, $valorCampo)
     }
     $conn = null;
 }
+
+function listarItemExpecificoPesquisa($valorCampo)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlListaTabelas = $conn->prepare("SELECT * FROM carro WHERE idcarro = ?");
+//        $sqlListaTabelas->bindValue(1, $campos, PDO::PARAM_STR);
+//        $sqlListaTabelas->bindValue(2, $tabela, PDO::PARAM_STR);
+//        $sqlListaTabelas->bindValue(1, $campoExpecifico, PDO::PARAM_STR);
+        $sqlListaTabelas->bindValue(1, $valorCampo, PDO::PARAM_STR);
+        $sqlListaTabelas->execute();
+        $conn->commit();
+        if ($sqlListaTabelas->rowCount() > 0) {
+            return $sqlListaTabelas->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch
+    (PDOException $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
 function listarItemExpecificoPessoa($valorCampo)
 {
     $conn = conectar();
@@ -93,6 +119,7 @@ function listarItemExpecificoPessoa($valorCampo)
     }
     $conn = null;
 }
+
 function listarTabelaOrdenada($campos, $tabela, $campoOrdem, $ASCouDESC)
 {
     $conn = conectar();
@@ -153,31 +180,31 @@ function listarTabelaInnerJoinTriplo($campos, $tabela1, $tabela2, $tabela3, $id1
     } catch (PDOException $e) {
         echo 'Exception -> ';
         return ($e->getMessage());
-        $conn-> rollback();
+        $conn->rollback();
     }
     $conn = null;
 }
 
-  function listarTabelaInnerJoinTriploValorPago($camposSomar, $tabela1, $tabela2, $tabela3, $id1, $id2, $id3, $id4, $identificadorWhere,$idWhere)
-  {
-      $conn = conectar();
-      try {
-          $conn->beginTransaction();
-          $sqlLista = $conn->prepare("SELECT sum($camposSomar) as soma FROM $tabela1 t INNER JOIN $tabela2 y ON t.$id1 = y.$id2 INNER JOIN $tabela3 i ON t.$id3 = i.$id4 WHERE $identificadorWhere = $idWhere");
-          $sqlLista->execute();
-          $conn->commit();
-          if ($sqlLista->rowCount() > 0) {
-              return $sqlLista->fetchAll(PDO::FETCH_OBJ);
-          }
-          return 'Vazio';
+function listarTabelaInnerJoinTriploValorPago($camposSomar, $tabela1, $tabela2, $tabela3, $id1, $id2, $id3, $id4, $identificadorWhere, $idWhere)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("SELECT sum($camposSomar) as soma FROM $tabela1 t INNER JOIN $tabela2 y ON t.$id1 = y.$id2 INNER JOIN $tabela3 i ON t.$id3 = i.$id4 WHERE $identificadorWhere = $idWhere");
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
 
-      } catch (PDOException $e) {
-          echo 'Exception -> ';
-          return ($e->getMessage());
-          $conn-> rollback();
-      }
-      $conn = null;
-  }
+    } catch (PDOException $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
 
 function ativar($tabela, $campo, $ativo, $condicao)
 {

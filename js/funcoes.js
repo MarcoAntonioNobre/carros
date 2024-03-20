@@ -1,6 +1,12 @@
-function abrirModalCompra(idcarro, precoV) {
+function abrirModalCompra(idcarro, precoV, nome, descricao) {
     const idQtd = document.getElementById('inQuantidade');
     const preco = document.getElementById('precoVeiculo');
+    const nomeModalCarro = document.getElementById('tituloCarro');
+    const precoModalCarro = document.getElementById('precoCarro');
+    const diferenciaisModalCarro = document.getElementById('diferenciaisCarro');
+    nomeModalCarro.innerHTML = 'Comprar ' + `${nome}`
+    precoModalCarro.innerHTML = `${precoV}`
+    diferenciaisModalCarro.innerHTML = `${descricao}`
     if (idQtd) {
         idQtd.focus();
     }
@@ -30,11 +36,11 @@ if (modalCompra) {
         inpCompra.focus()
         const cartao = document.getElementById('cartao');
         const codCartao = document.getElementById('cartaoCod');
-        cartao.addEventListener('click', function() {
+        cartao.addEventListener('click', function () {
             codCartao.style.display = 'block';
         });
         const dinheiro = document.getElementById('dinheiro');
-        dinheiro.addEventListener('click',function (){
+        dinheiro.addEventListener('click', function () {
             codCartao.style.display = 'none';
         })
 
@@ -51,15 +57,20 @@ if (modalCompra) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
+
                     if (data.success) {
-                        form.removeEventListener('submit', submitHandler)
+
                         btnCompra.disabled = false;
-                        alert(data['message']);
-                        window.location.href = 'dashboard.php';
+                        addOuEditSucesso('Compra', 'success', ' efetuada')
+                        setTimeout(() => {
+
+                            window.location.href = 'dashboard.php';
+                        }, "1500");
+                        abrirFecharModalCompra('vermais', 'F');
                     } else {
                         btnCompra.disabled = false;
-                        alert(data['message'])
+                        addErro()
+                        abrirFecharModalCompra('vermais', 'F');
 
                     }
                 })
@@ -96,12 +107,12 @@ if (carroModal) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
+
                     if (data.success) {
                         addOuEditSucesso('Você', 'success', 'adicionou')
                         form.removeEventListener('submit', submitHandler)
                         btnCarro.disabled = false;
-                        // alert(data['message']);
+
                         carregarConteudo('listarCarros');
                     } else {
                         btnCarro.disabled = false;
@@ -163,7 +174,6 @@ if (carroEditModal) {
         const submitHandler = function (event) {
             event.preventDefault();
             btnEditCarro.disabled = true;
-            carroEditModalInstancia.hide();
             const form = event.target;
             const formData = new FormData(form);
             formData.append('controle', 'carroEdit');
@@ -175,22 +185,22 @@ if (carroEditModal) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
+                    carroEditModalInstancia.hide();
                     if (data.success) {
                         addOuEditSucesso('Você', 'info', 'editou')
                         form.removeEventListener('submit', submitHandler)
                         btnEditCarro.disabled = false;
-                        // alert(data['message']);
+
                         carroEditModalInstancia.hide();
                         carregarConteudo('listarCarros');
                     } else {
                         carroEditModalInstancia.hide();
                         btnEditCarro.disabled = false;
-                        //alert(data['message'])
                         addErro()
                     }
                 })
         }
+    
         formCarro.addEventListener('submit', submitHandler);
     })
 }
@@ -208,11 +218,11 @@ function deletarCarro(controle, id) {
         .then(data => {
             if (data.success) {
                 addOuEditSucesso('Você', 'success', 'deletou')
-                //alert(data.message)
-                carregarConteudo('listarCarro')
+
+                carregarConteudo('listarCarros')
             } else {
                 addErro()
-                //alert(data.message)
+
             }
         })
         .catch(error => console.error('Erro na requisição:', error));
@@ -227,9 +237,9 @@ function abrirModalDelFoto(idfoto) {
 
 function abrirFecharModalDelFoto(idModal, abrirOuFechar) {
     const modalInstancia = new bootstrap.Modal(document.getElementById(idModal));
-    if (abrirOuFechar == 'A') {
+    if (abrirOuFechar === 'A') {
         modalInstancia.show();
-    }else {
+    } else {
         modalInstancia.hide();
     }
 }
@@ -243,7 +253,6 @@ if (fotoDeleteModal) {
     fotoDeleteModal.addEventListener('shown.bs.modal', () => {
         const submitHandler = function (event) {
             event.preventDefault();
-            alert('OI')
             fotoDeleteModalInstancia.hide();
             const form = event.target;
             const formData = new FormData(form);
@@ -254,16 +263,16 @@ if (fotoDeleteModal) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
+
                     if (data.success) {
                         addOuEditSucesso('Você', 'success', 'deletou')
-                        // form.removeEventListener('submit', submitHandler)
+
                         btnEditCarro.disabled = false;
-                        // alert(data['message']);
+
                         carregarConteudo('listarFoto');
                     } else {
                         btnEditCarro.disabled = false;
-                        //alert(data['message'])
+
                         addErro()
                     }
                 })
@@ -276,7 +285,6 @@ if (fotoDeleteModal) {
 function abrirModalEditFoto(idfoto) {
     document.getElementById('idEditFoto').value = idfoto
     abrirFecharModalEditFoto('mdlEditFoto', 'A');
-    alert('OI')
 }
 
 function abrirFecharModalEditFoto(idModal, abrirOuFechar) {
@@ -309,7 +317,7 @@ if (fotoEditModal) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
+                    ;
                     if (data.success) {
                         addOuEditSucesso('Você', 'info', 'editou');
                         form.removeEventListener('submit', submitHandler);
@@ -338,11 +346,10 @@ function deletar(controle, id) {
         .then(data => {
             if (data.success) {
                 addOuEditSucesso('Você', 'success', 'deletou')
-                //alert(data.message)
                 carregarConteudo('listarFoto')
             } else {
                 addErro()
-                //alert(data.message)
+               
             }
         })
         .catch(error => console.error('Erro na requisição:', error));
@@ -405,8 +412,4 @@ function addErro() {
 };
 
 
-// const cartao = document.getElementById('cartao');
-// if (modalCompra) {
-//
-//
-// }
+

@@ -155,12 +155,12 @@ include_once 'footer.php';
                             <div>
                                 <label for="inpValorUnitario" class="label-control">Valor de cada unidade:</label>
                                 <input type="text" name="inpValorUnitario" id="inpValorUnitario"
-                                       class="form-control dinheiro">
+                                       class="form-control">
                             </div>
                             <div>
                                 <label for="inpValorCartao" class="label-control">Valor em cartão:</label>
                                 <input type="text" name="inpValorCartao" id="inpValorCartao"
-                                       class="form-control dinheiro">
+                                       class="form-control">
                             </div>
                     </div>
                 </div>
@@ -199,12 +199,12 @@ include_once 'footer.php';
                             <div>
                                 <label for="inpEditValorUnitario" class="label-control">Valor de cada unidade:</label>
                                 <input type="text" name="inpEditValorUnitario" id="inpEditValorUnitario"
-                                       class=" form-control dinheiro">
+                                       class=" form-control">
                             </div>
                             <div>
                                 <label for="inpEditValorCartao" class="label-control">Valor em cartão:</label>
                                 <input type="text" name="inpEditValorCartao" id="inpEditValorCartao"
-                                       class="form-control dinheiro">
+                                       class="form-control">
                             </div>
                     </div>
                 </div>
@@ -360,10 +360,10 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpValor">Valor:</label>
-                                <input type="text" name="inpValor" id="inpValor" required="required" class="dinheiro">
+                                <input type="text" name="inpValor" id="inpValor" required="required" class="">
                             </div>
                             <div>
-                                <label for="selectProprietario">Selecione o proprietário:</label>
+                                <label  for="selectProprietario" >Selecione o proprietário:</label>
                                 <select name="selectProprietario" id="selectProprietario" required="required">
                                     <option selected>Selecione uma opção</option>
                                     <?php
@@ -372,6 +372,8 @@ include_once 'footer.php';
                                         foreach ($proprietarios as $proprietario) {
                                             $id = $proprietario->idproprietario;
                                             $nome = $proprietario->nomeProprietario;
+                                            $nome = mb_strtolower($nome);
+                                            $nome = converterAcentuacao($nome);
                                             ?>
                                             <option value="<?php echo $id ?>"><?php echo $nome ?></option>
                                             <?php
@@ -423,7 +425,7 @@ include_once 'footer.php';
                             <div>
                                 <label for="inpEditValor">Valor:</label>
                                 <input type="text" name="inpEditValor" id="inpEditValor" required="required"
-                                       class="dinheiro">
+                                       class="">
                             </div>
                             <div>
                                 <label for="selectEditProprietario">Selecione o proprietário:</label>
@@ -435,6 +437,8 @@ include_once 'footer.php';
                                         foreach ($proprietarios as $proprietario) {
                                             $id = $proprietario->idproprietario;
                                             $nome = $proprietario->nomeProprietario;
+                                            $nome = mb_strtolower($nome);
+                                            $nome = converterAcentuacao($nome);
                                             ?>
                                             <option value="<?php echo $id ?>"><?php echo $nome ?></option>
                                             <?php
@@ -524,63 +528,18 @@ include_once 'footer.php';
 </div>
 
 <!--Modal de edição de foto-->
-<div class="modal fade" id="mdlEditFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Foto</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form method="post" action="" name="frmEditFoto" id="frmEditFoto">
-                <div class="modal-body">
-                    <div class="card">
-                        <div class="card-body">
-                            <div>
-                                <input type="text" name="idEditFoto" id="idEditFoto">
-                                <div>
-                                    <label for="inpEditGrupo" class="label-control">Selecione o grupo:</label>
-                                    <select name="inpEditGrupo" id="inpEditGrupo" required="required">
-                                        <option selected>Selecione uma opção</option>
-                                        <?php
-                                        $proprietario = listarTabela('*', 'proprietario');
-                                        if ($proprietario !== 'Vazio') {
-                                            foreach ($proprietario as $proprietarios) {
-                                                $id = $proprietarios->idproprietario;
-                                                $nome = $proprietarios->nomeProprietario;
-                                                ?>
-                                                <option value="<?php echo $id ?>"><?php echo $nome ?></option>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="inpEditFoto" class="label-control">Foto:</label>
-                                    <input type="file" name="inpEditFoto" id="inpEditFoto" class="form-control"
-                                           required="required">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="submit" class="btn btn-primary" id="btnEditFoto">Alterar</button>
-                    </div>
-            </form>
-        </div>
-    </div>
-</div>
-
+<!--Tá na pagina de foto-->
 
 <!--Modal de apagar de FOTO-->
+<!--Tá na pagina de foto-->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"
-        integrity="sha512-FnSlOsFwZ4/zIAdm5r3l+1ub/8YXytwXedddszgCuLyrNz6FbjEggfACFCXzEMmc8Xt6hw5Qbt+2OaIeu+qd/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
@@ -589,7 +548,6 @@ include_once 'footer.php';
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./js/script.js"></script>
 <script src="./js/funcoes.js"></script>
-
 </body>
 
 </html>

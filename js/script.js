@@ -92,7 +92,6 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, dataTime, nome
                         ModalInstacia.hide();
                         carregarConteudo("listarProprietarios");
                     }
-                    console.log(data)
                 })
                 .catch(error => {
                     botoes.disabled = false;
@@ -192,7 +191,6 @@ function abrirModalJsCliente(id, inID, nome, inNome, dataTime, contato, inContat
                         ModalInstacia.hide();
                         carregarConteudo("listarCliente");
                     }
-                    console.log(data)
                 })
                 .catch(error => {
                     botoes.disabled = false;
@@ -285,7 +283,6 @@ function abrirModalJsADM(id, inID, nome, inNome, dataTime, cpf, inCpf, senha, in
                         ModalInstacia.hide();
                         carregarConteudo("listarAdm");
                     }
-                    console.log(data)
                 })
                 .catch(error => {
 
@@ -364,7 +361,7 @@ function abrirModalJsFoto(id, inID, idCarroFoto, inCarroFoto, idPropFoto, inProp
                         switch (addEditDel) {
                             case 'addFoto':
                                 addOuEditSucesso('Você', 'success', 'adicionou')
-                                form.removeEventListener('submit',submitHandler)
+                                form.removeEventListener('submit', submitHandler)
                                 break;
                             case 'editFoto':
                                 addOuEditSucesso('Você', 'info', 'editou')
@@ -381,7 +378,6 @@ function abrirModalJsFoto(id, inID, idCarroFoto, inCarroFoto, idPropFoto, inProp
                         ModalInstacia.hide();
                         carregarConteudo("listarFoto");
                     }
-                    console.log(data)
                 })
                 .catch(error => {
 
@@ -404,7 +400,7 @@ function abrirModalJsFoto(id, inID, idCarroFoto, inCarroFoto, idPropFoto, inProp
 }
 
 
-function abrirModalJsCarro(id, inID, Carro, inCarro, Prop, inProp,diferenciais, inDiferenciais, dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
+function abrirModalJsCarro(id, inID, Carro, inCarro, Prop, inProp, diferenciais, inDiferenciais, dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
 
     var botoes = document.getElementById(`${botao}`);
@@ -477,7 +473,6 @@ function abrirModalJsCarro(id, inID, Carro, inCarro, Prop, inProp,diferenciais, 
                         ModalInstacia.hide();
                         carregarConteudo("listarFoto");
                     }
-                    console.log(data)
                 })
                 .catch(error => {
 
@@ -500,10 +495,8 @@ function abrirModalJsCarro(id, inID, Carro, inCarro, Prop, inProp,diferenciais, 
 }
 
 
-
 function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
-
     var botoes = document.getElementById(`${botao}`);
 
 
@@ -532,21 +525,63 @@ function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
         })
             .then(response => response.json())
             .then(data => {
-                var mostrar = document.getElementById('mostrar')
+                const mostrar = document.getElementById('mostrar');
                 if (data.success) {
 
-                    carregarConteudo("listarCarros");
+                    const divMain = document.createElement('div');
+                    const divCol = document.createElement('div');
+                    const divCard = document.createElement('div');
+                    const divBody = document.createElement('div');
+                    const Imagem = document.createElement('img');
+                    const divTexto = document.createElement('div');
+                    const h5 = document.createElement('h5');
+                    const buttonCard = document.createElement('button');
+                    mostrar.innerHTML = '';
+                    mostrar.appendChild(divMain)
+                    divMain.classList.add("row");
+                    divMain.classList.add("d-flex");
+                    divMain.classList.add("justify-content-center");
+                    divMain.classList.add("align-items-center");
+                    divMain.appendChild(divCol)
+                    divCol.classList.add("col-lg-4");
+                    divCol.classList.add("col-md-4");
+                    divCol.classList.add("col-12");
+                    divCol.appendChild(divCard)
+                    divCard.classList.add("card");
+                    divCard.classList.add("mt-4");
+                    divCard.appendChild(Imagem)
+                    Imagem.src = "./img/" + data.fotoPerfil;
+                    Imagem.classList.add("card-img-top");
+                    Imagem.classList.add("img-fluid");
+                    divCard.appendChild(divBody)
+                    divBody.classList.add("card-body");
+                    divBody.classList.add("text-center");
+                    divBody.appendChild(divTexto)
+                    
+                    divTexto.appendChild(h5)
+                    divTexto.classList.add("card-title");
+                    divTexto.innerHTML ="<b>"+ data.nomeCarro+"</b>";
+                
+                    divBody.appendChild(buttonCard)
 
+                //  dasdas
+                    buttonCard.setAttribute('onclick','abrirModalCompra(\'' + data.idcarro + '\',\'' + data.preco + '\',\'' + data.nomeCarro + '\',\'' + data.diferenciais + '\')')
+
+                    buttonCard.type = 'submit';
+                    buttonCard.innerText = 'Ver Mais';
+
+                    buttonCard.classList.add("btn");
+                    buttonCard.classList.add("btn-outline-dark");
+                 
                 } else {
-                    carregarConteudo("listarCarros");
+                   
                 }
-                console.log(data)
             })
-            .catch(error => {
-                alert('catch')
-                carregarConteudo("listarCarros");
-                console.error('Erro na requisição:', error);
-            });
+        .catch(error => {
+           
+        
+            console.error('Erro na requisição:', error);
+        });
 
 
     }
