@@ -69,8 +69,8 @@
                         </tr>
                     <?php
 
-                        }
                         ++$contar;
+                        }
                     } else {
                     ?>
                     <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">

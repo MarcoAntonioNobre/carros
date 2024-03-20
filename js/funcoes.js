@@ -422,6 +422,7 @@ function addErro() {
 };
 
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 const ctx = document.getElementById('myChart');
 
