@@ -212,6 +212,92 @@ function abrirModalJsCliente(id, inID, nome, inNome, dataTime, contato, inContat
 
 }
 
+
+function abrirModalJsVenda(id, inID, nomeModal, dataTime, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
+    const formDados = document.getElementById(`${formulario}`)
+
+    var botoes = document.getElementById(`${botao}`);
+    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    if (abrirModal === 'A') {
+        ModalInstacia.show();
+
+        const inputFocar = document.getElementById(`${inFocus}`);
+        if (inFocusValue !== 'nao') {
+            inputFocar.value = inFocusValue;
+            setTimeout(function () {
+                inputFocar.focus();
+
+            }, 500);
+        }
+        const ID = document.getElementById(`${inID}`);
+        if (inID !== 'nao') {
+            ID.value = id;
+        }
+
+
+        const submitHandler = function (event) {
+            event.preventDefault();
+
+            botoes.disabled = true;
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            if (dataTime !== 'nao') {
+                formData.append('dataTime', `${dataTime}`)
+            }
+            formData.append('controle', `${addEditDel}`)
+
+            fetch('controle.php', {
+                method: 'POST', body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // console.log(data)
+                    if (data.success) {
+                        carregarConteudo("listarVenda");
+                        console.log(data)
+                        switch (addEditDel) {
+                            case 'addVenda':
+                                addOuEditSucesso('Você', 'success', 'adicionou')
+                                break;
+                            case 'editVenda':
+                                addOuEditSucesso('Você', 'info', 'editou')
+                                botoes.disabled = false;
+                                break;
+                            case 'deleteVenda':
+                                addOuEditSucesso('Você', 'success', 'deletou')
+                                botoes.disabled = false;
+                                break;
+                        }
+                        ModalInstacia.hide();
+                    } else {
+                        addErro()
+                        ModalInstacia.hide();
+                        carregarConteudo("listarVenda");
+                    }
+                })
+                .catch(error => {
+                    botoes.disabled = false;
+                    ModalInstacia.hide();
+                    addErro()
+                    carregarConteudo("listarVenda");
+                    console.error('Erro na requisição:', error);
+                });
+
+
+        }
+        formDados.addEventListener('submit', submitHandler);
+
+
+    } else {
+        botoes.disabled = false;
+        ModalInstacia.hide();
+    }
+
+}
+
+
 function abrirModalJsADM(id, inID, nome, inNome, dataTime, cpf, inCpf, senha, inSenha, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
 
@@ -304,7 +390,7 @@ function abrirModalJsADM(id, inID, nome, inNome, dataTime, cpf, inCpf, senha, in
 
 }
 
-function abrirModalJsFoto(id, inID, idCarroFoto, inCarroFoto, idPropFoto, inPropFoto, dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
+function abrirModalJsFoto(id, inID, idCarroFoto, inCarroFoto, idPropFoto, inPropFoto,inpfoto, dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
 
     var botoes = document.getElementById(`${botao}`);
@@ -345,8 +431,9 @@ function abrirModalJsFoto(id, inID, idCarroFoto, inCarroFoto, idPropFoto, inProp
             if (dataTime !== 'nao') {
                 formData.append('dataTime', `${dataTime}`)
             }
-            const fileInput = document.getElementById('inpFoto')
+            const fileInput = document.getElementById(`${inpfoto}`)
             formData.append('foto', fileInput.files[0]);
+
             formData.append('controle', `${addEditDel}`)
 
             fetch('controle.php', {
@@ -557,31 +644,31 @@ function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
                     divBody.classList.add("card-body");
                     divBody.classList.add("text-center");
                     divBody.appendChild(divTexto)
-                    
+
                     divTexto.appendChild(h5)
                     divTexto.classList.add("card-title");
-                    divTexto.innerHTML ="<b>"+ data.nomeCarro+"</b>";
-                
+                    divTexto.innerHTML = "<b>" + data.nomeCarro + "</b>";
+
                     divBody.appendChild(buttonCard)
 
-                //  dasdas
-                    buttonCard.setAttribute('onclick','abrirModalCompra(\'' + data.idcarro + '\',\'' + data.preco + '\',\'' + data.nomeCarro + '\',\'' + data.diferenciais + '\')')
+                    //  dasdas
+                    buttonCard.setAttribute('onclick', 'abrirModalCompra(\'' + data.idcarro + '\',\'' + data.preco + '\',\'' + data.nomeCarro + '\',\'' + data.diferenciais + '\')')
 
                     buttonCard.type = 'submit';
                     buttonCard.innerText = 'Ver Mais';
 
                     buttonCard.classList.add("btn");
                     buttonCard.classList.add("btn-outline-dark");
-                 
+
                 } else {
-                   
+
                 }
             })
-        .catch(error => {
-           
-        
-            console.error('Erro na requisição:', error);
-        });
+            .catch(error => {
+
+
+                console.error('Erro na requisição:', error);
+            });
 
 
     }

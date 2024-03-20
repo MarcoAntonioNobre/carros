@@ -2,7 +2,7 @@
     <div class="card-header espaco fs-3">
         # Fotos
         <button class="btn btn-outline-dark" data-bs-toggle="modal"
-                onclick="abrirModalJsFoto('nao', 'nao', 'nao', 'nao','nao', 'nao' , '<?php echo DATATIMEATUAL ?>', 'mdlCadFoto', 'A', 'btnCadFoto', 'addFoto', 'nao', 'nao', 'frmCadFoto')">
+                onclick="abrirModalJsFoto('nao', 'nao', 'nao', 'nao','nao', 'nao' ,'inpFoto', '<?php echo DATATIMEATUAL ?>', 'mdlCadFoto', 'A', 'btnCadFoto', 'addFoto', 'nao', 'nao', 'frmCadFoto')">
             Cadastrar
         </button>
     </div>
@@ -50,12 +50,13 @@
                                  title="<?php echo $nomeCarro; ?>" width="50px">
                         </td>
                         <td>
-                            <button class="btn btn-outline-primary" data-bs-toggle="modal"
-                                    onclick="abrirModalEditFoto(<?php echo $id ?>)">
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#mdlEditFoto<?php echo $id?>">
                                 Alterar
                             </button>
+
+
                             <button class="btn btn-outline-danger" data-bs-toggle="modal"
-                                    onclick="abrirModalDelFoto('<?php echo $id ?>')">
+                                    onclick='abrirModalDelFoto("<?php echo $id ?>")'>
                                 Excluir
                             </button>
                             <!--                            <button class="btn btn-outline-danger" data-bs-toggle="modal"-->
@@ -86,7 +87,7 @@
 </div>
 
 
-<div class="modal fade" id="mdlEditFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="mdlEditFoto<?php echo $id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -98,7 +99,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                <input type="text" name="idEditFoto" id="idEditFoto">
+                                <input type="text" name="idEditFoto" id="idEditFoto" value="<?php echo $id;?>">
                                 <div>
                                     <label for="inpEditGrupo" class="label-control">Selecione o grupo:</label>
                                     <select name="inpEditGrupo" id="inpEditGrupo" required="required">
@@ -136,6 +137,11 @@
 </div>
 
 
+
+
+
+
+
 <div class="modal fade" id="mdlDeleteFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -143,17 +149,17 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Apagar foto</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form action="" method="post" name="frmDeleteFoto" id="frmDeleteFoto">
+            <form action="" method="post" name="frmDeleteFoto" id="frmDeleteFoto">
+                <div class="modal-body">
                     <input type="text" name="idDeleteFoto" id="idDeleteFoto">
                     <div class="alert alert-danger">
                         Tem certeza que deja apagar essa foto?
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                <button type="submit" class="btn btn-outline-danger" id="btnDeleteFoto">Deletar</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteFoto">Deletar</button>
+                </div>
             </form>
         </div>
     </div>

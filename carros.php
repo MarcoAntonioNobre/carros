@@ -12,7 +12,7 @@
                 <th scope="col" class="bg-black text-light legenda">Proprietário</th>
                 <th scope="col" class="bg-black text-light legenda">Carro</th>
                 <th scope="col" class="bg-black text-light legenda">Valor</th>
-                <th scope="col" class="bg-black text-light legenda">Ação</th>
+                <th scope="col" class="bg-black text-light legenda">Ações</th>
             </tr>
             </thead>
             <tbody>

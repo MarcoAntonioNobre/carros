@@ -29,7 +29,7 @@ if (isset($dados) && !empty($dados)) {
 
                 $result = $valorNoCartao - $total;
                 $retornoupdate = alterarGlobal1('cliente', 'valorCartao', "$result", 'numeroCartao', "$idcartao");
-                $retornoInsert = insertGlobal4('compras', 'idcarro,valorUnidade,valorPago,cadastro', $idcarro, $precoV, $total, DATATIMEATUAL);
+                $retornoInsert = insertGlobal5('compras', 'idcarro,valorUnidade,qtdComprada,valorPago,cadastro', $idcarro, $precoV,$qtd, $total, DATATIMEATUAL);
                 if ($retornoInsert > 0) {
                     echo json_encode(['success' => true, 'message' => "Veículo comprado no cartão com sucesso"]);
                 } else {
@@ -39,7 +39,7 @@ if (isset($dados) && !empty($dados)) {
         }
     }else{
         $total = $precoV * $qtd;
-        $retornoInsert = insertGlobal4('compras', 'idcarro,valorUnidade,valorPago,cadastro', "$idcarro", "$precoV", "$total", DATATIMEATUAL);
+        $retornoInsert = insertGlobal5('compras', 'idcarro,valorUnidade,qtdComprada,valorPago,cadastro', "$idcarro", "$precoV","$qtd", "$total", DATATIMEATUAL);
         if ($retornoInsert > 0) {
             echo json_encode(['success' => true, 'message' => "Veículo comprado no dinheiro com sucesso"]);
         } else {

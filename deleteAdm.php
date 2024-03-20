@@ -9,10 +9,10 @@ if (isset($Dados) && !empty($Dados)) {
 
 
     if ($retornoInsert = 1 ) {
-        echo json_encode(['success' => true, 'message' => "Proprietário <b>$id</b> deletado com sucesso"], JSON_THROW_ON_ERROR);
+        echo json_encode(['success' => true, 'message' => "Administrador <b>$id</b> deletado com sucesso"], JSON_THROW_ON_ERROR);
     } else {
-        echo json_encode(['success' => false, 'message' => "Proprietário Não deletado! Error Bd"], JSON_THROW_ON_ERROR);
+        echo json_encode(['success' => false, 'message' => "Administrador Não deletado! Error Bd"], JSON_THROW_ON_ERROR);
     }
 } else {
-    echo json_encode(['success' => false, 'message' => "Proprietário Não deletado! Error Variável"], JSON_THROW_ON_ERROR);
+    echo json_encode(['success' => false, 'message' => "Administrador Não deletado! Error Variável"], JSON_THROW_ON_ERROR);
 }
