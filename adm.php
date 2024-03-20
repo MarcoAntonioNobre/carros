@@ -155,12 +155,12 @@ include_once 'footer.php';
                             <div>
                                 <label for="inpValorUnitario" class="label-control">Valor de cada unidade:</label>
                                 <input type="text" name="inpValorUnitario" id="inpValorUnitario"
-                                       class="form-control dinheiro">
+                                       class="form-control">
                             </div>
                             <div>
                                 <label for="inpValorCartao" class="label-control">Valor em cartão:</label>
                                 <input type="text" name="inpValorCartao" id="inpValorCartao"
-                                       class="form-control dinheiro">
+                                       class="form-control">
                             </div>
                     </div>
                 </div>
@@ -199,12 +199,12 @@ include_once 'footer.php';
                             <div>
                                 <label for="inpEditValorUnitario" class="label-control">Valor de cada unidade:</label>
                                 <input type="text" name="inpEditValorUnitario" id="inpEditValorUnitario"
-                                       class=" form-control dinheiro">
+                                       class=" form-control">
                             </div>
                             <div>
                                 <label for="inpEditValorCartao" class="label-control">Valor em cartão:</label>
                                 <input type="text" name="inpEditValorCartao" id="inpEditValorCartao"
-                                       class="form-control dinheiro">
+                                       class="form-control">
                             </div>
                     </div>
                 </div>
@@ -360,10 +360,10 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpValor">Valor:</label>
-                                <input type="text" name="inpValor" id="inpValor" required="required" class="dinheiro">
+                                <input type="text" name="inpValor" id="inpValor" required="required" class="">
                             </div>
                             <div>
-                                <label for="selectProprietario">Selecione o proprietário:</label>
+                                <label  for="selectProprietario" >Selecione o proprietário:</label>
                                 <select name="selectProprietario" id="selectProprietario" required="required">
                                     <option selected>Selecione uma opção</option>
                                     <?php
@@ -372,6 +372,8 @@ include_once 'footer.php';
                                         foreach ($proprietarios as $proprietario) {
                                             $id = $proprietario->idproprietario;
                                             $nome = $proprietario->nomeProprietario;
+                                            $nome = mb_strtolower($nome);
+                                            $nome = converterAcentuacao($nome);
                                             ?>
                                             <option value="<?php echo $id ?>"><?php echo $nome ?></option>
                                             <?php
@@ -423,7 +425,7 @@ include_once 'footer.php';
                             <div>
                                 <label for="inpEditValor">Valor:</label>
                                 <input type="text" name="inpEditValor" id="inpEditValor" required="required"
-                                       class="dinheiro">
+                                       class="">
                             </div>
                             <div>
                                 <label for="selectEditProprietario">Selecione o proprietário:</label>
@@ -435,6 +437,8 @@ include_once 'footer.php';
                                         foreach ($proprietarios as $proprietario) {
                                             $id = $proprietario->idproprietario;
                                             $nome = $proprietario->nomeProprietario;
+                                            $nome = mb_strtolower($nome);
+                                            $nome = converterAcentuacao($nome);
                                             ?>
                                             <option value="<?php echo $id ?>"><?php echo $nome ?></option>
                                             <?php

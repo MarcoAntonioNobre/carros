@@ -10,7 +10,7 @@ if (isset($Dados) && !empty($Dados)) {
     $uni = isset($Dados['inpEditValorUnitario']) ? addslashes(mb_strtoupper($Dados['inpEditValorUnitario'], 'UTF-8')) : '';
     $cartao = isset($Dados['inpEditValorCartao']) ? addslashes(mb_strtoupper($Dados['inpEditValorCartao'], 'UTF-8')) : '';
 
-    $retornoInsert = alterarGlobal4('cliente', 'nomeCliente', 'contato', 'valorUnitario', 'valorCartao', $nome, $contato, $uni, $cartao, 'idcliente', $id);
+    $retornoInsert = alterarGlobal4('cliente', 'nomeCliente', 'contato', 'numeroCartao', 'valorCartao', $nome, $contato, $uni, $cartao, 'idcliente', $id);
 
 
     if ($retornoInsert = 1) {

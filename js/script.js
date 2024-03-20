@@ -92,7 +92,6 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, dataTime, nome
                         ModalInstacia.hide();
                         carregarConteudo("listarProprietarios");
                     }
-                    console.log(data)
                 })
                 .catch(error => {
                     botoes.disabled = false;
@@ -192,7 +191,6 @@ function abrirModalJsCliente(id, inID, nome, inNome, dataTime, contato, inContat
                         ModalInstacia.hide();
                         carregarConteudo("listarCliente");
                     }
-                    console.log(data)
                 })
                 .catch(error => {
                     botoes.disabled = false;
@@ -285,7 +283,6 @@ function abrirModalJsADM(id, inID, nome, inNome, dataTime, cpf, inCpf, senha, in
                         ModalInstacia.hide();
                         carregarConteudo("listarAdm");
                     }
-                    console.log(data)
                 })
                 .catch(error => {
 
@@ -381,7 +378,6 @@ function abrirModalJsFoto(id, inID, idCarroFoto, inCarroFoto, idPropFoto, inProp
                         ModalInstacia.hide();
                         carregarConteudo("listarFoto");
                     }
-                    console.log(data)
                 })
                 .catch(error => {
 
@@ -477,7 +473,6 @@ function abrirModalJsCarro(id, inID, Carro, inCarro, Prop, inProp, diferenciais,
                         ModalInstacia.hide();
                         carregarConteudo("listarFoto");
                     }
-                    console.log(data)
                 })
                 .catch(error => {
 
@@ -502,12 +497,6 @@ function abrirModalJsCarro(id, inID, Carro, inCarro, Prop, inProp, diferenciais,
 
 function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
-    // const nomeModalCarro = document.getElementById('tituloCarro');
-    // const precoModalCarro = document.getElementById('precoCarro');
-    // const diferenciaisModalCarro = document.getElementById('diferenciaisCarro');
-    // nomeModalCarro.innerHTML='Comprar '+`${nome}`
-    // precoModalCarro.innerHTML=`${precoV}`
-    // diferenciaisModalCarro.innerHTML=`${descricao}`
     var botoes = document.getElementById(`${botao}`);
 
 
@@ -575,7 +564,7 @@ function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
                 
                     divBody.appendChild(buttonCard)
 
-                 
+                //  dasdas
                     buttonCard.setAttribute('onclick','abrirModalCompra(\'' + data.idcarro + '\',\'' + data.preco + '\',\'' + data.nomeCarro + '\',\'' + data.diferenciais + '\')')
 
                     buttonCard.type = 'submit';
@@ -583,19 +572,16 @@ function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
 
                     buttonCard.classList.add("btn");
                     buttonCard.classList.add("btn-outline-dark");
-                    // = "card-body text-center" >
-                    // mostrar.innerHTML = data.message;
-
+                 
                 } else {
-
+                   
                 }
-                console.log(data)
             })
-        // .catch(error => {
-        //     alert('catch')
-        //
-        //     console.error('Erro na requisição:', error);
-        // });
+        .catch(error => {
+           
+        
+            console.error('Erro na requisição:', error);
+        });
 
 
     }
