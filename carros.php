@@ -47,7 +47,7 @@
                             ?></td>
                         <td>
                             <button class="btn btn-outline-primary" onclick="abrirModalCarro('<?php echo $idcarro?>','<?php echo $nomeCarro?>','<?php echo $diferenciais?>','<?php echo $valor?>','<?php echo $proprietario?>')">Alterar</button>
-                            <button class="btn btn-outline-danger" onclick="deletarCarro('deleteCarro',<?php echo $idcarro?>)">Excluir</button>
+                            <button class="btn btn-outline-danger" onclick="abrirModalDeleteCarro(<?php echo $idcarro?>)">Excluir</button>
                         </td>
                     </tr>
 
@@ -57,7 +57,7 @@
             } else {
                 ?>
                 <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-                    <h1>Página Vazia, Retorne. </h1><sup>Error 404</sup>
+                    <h1>Página Vazia, Retorne. </h1>
                     <img src="./img/vazio.gif" alt="ERROR 404">
                 </div>
                 <?php

@@ -63,7 +63,6 @@ if (modalCompra) {
                         btnCompra.disabled = false;
                         addOuEditSucesso('Compra', 'success', ' efetuada')
                         setTimeout(() => {
-
                             window.location.href = 'dashboard.php';
                         }, "1500");
                         abrirFecharModalCompra('vermais', 'F');
@@ -71,7 +70,6 @@ if (modalCompra) {
                         btnCompra.disabled = false;
                         addErro()
                         abrirFecharModalCompra('vermais', 'F');
-
                     }
                 })
         }
@@ -159,7 +157,6 @@ function abrirFecharModalCarro(idModal, abrirOuFechar) {
     }
 }
 
-
 const carroEditModalInstancia = new bootstrap.Modal(document.getElementById('mdlEditCarro'));
 const carroEditModal = document.getElementById('mdlEditCarro');
 const inpEditCarro = document.getElementById('inpNomeEditCarro');
@@ -204,28 +201,77 @@ if (carroEditModal) {
     })
 }
 
-function deletarCarro(controle, id) {
+function abrirModalDeleteCarro(idDelCarro){
+    document.getElementById('idDeleteCarro').value = idDelCarro
+    abrirFecharModalDeleteCarro('mdlDeleteCarro', 'A');
 
-    fetch('controle.php', {
-        method: 'POST',
-        body: 'controle=' + encodeURIComponent(controle) + '&idApagar=' + encodeURIComponent(id),
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                addOuEditSucesso('Você', 'success', 'deletou')
-
-                carregarConteudo('listarCarros')
-            } else {
-                addErro()
-
-            }
-        })
-        .catch(error => console.error('Erro na requisição:', error));
 }
+
+function abrirFecharModalDeleteCarro(idModal, abrirOuFechar) {
+    const modalInstancia = new bootstrap.Modal(document.getElementById(idModal));
+    if (abrirOuFechar === 'A') {
+        modalInstancia.show();
+    } else {
+        modalInstancia.hide();
+    }
+}
+
+
+const modalDeleteCarroInstancia = new bootstrap.Modal(document.getElementById('mdlDeleteCarro'))
+const modalDeleteCarro = document.getElementById('mdlDeleteCarro')
+const btnDeleteCarro = document.getElementById('btnDeleteCarro')
+
+if(modalDeleteCarro){
+    const formDelCarro = document.getElementById('frmDeleteCarro')
+
+    modalDeleteCarro.addEventListener('show.bs.modal',() => {
+        const submitHandler = function(event){
+            event.preventDefault();
+            btnDeleteCarro.disabled = true;
+            modalDeleteCarroInstancia.hide()
+            const form = event.target;
+            const formData = new FormData(form);
+            formData.append('controle', 'deleteCarro');
+            fetch('controle.php', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data =>{
+                    console.log(data)
+                    if(data.success){
+                        addOuEditSucesso('Você', 'success', 'deletou')
+                        carregarConteudo('listarCarros')
+                    }else{
+                        addErro()
+                    }
+                })
+        }
+        formDelCarro.addEventListener('submit', submitHandler)
+    })
+}
+// function deletarCarro(controle, id) {
+//
+//     fetch('controle.php', {
+//         method: 'POST',
+//         body: 'controle=' + encodeURIComponent(controle) + '&idApagar=' + encodeURIComponent(id),
+//         headers: {
+//             'Content-Type': 'application/x-www-form-urlencoded',
+//         },
+//     })
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.success) {
+//                 addOuEditSucesso('Você', 'success', 'deletou')
+//
+//                 carregarConteudo('listarCarros')
+//             } else {
+//                 addErro()
+//
+//             }
+//         })
+//         .catch(error => console.error('Erro na requisição:', error));
+// }
 
 
 function abrirModalDelFoto(idDelfoto) {
@@ -284,7 +330,7 @@ if (fotoDeleteModal) {
 
 
 function abrirModalEditFoto(idEditfoto) {
-    console.log('capturou o id editar')
+    //console.log('capturou o id editar')
     document.getElementById('idEditFoto').value = idEditfoto
     abrirFecharModalEditFoto('mdlEditFoto', 'A');
 }
@@ -294,7 +340,7 @@ function abrirFecharModalEditFoto(idModal, abrirOuFechar) {
 
     if (abrirOuFechar === 'A') {
         modalInstancia.show();
-        console.log('Mostrou a modal editar')
+        //console.log('Mostrou a modal editar')
     } else {
         modalInstancia.hide();
     }
@@ -421,26 +467,3 @@ function addErro() {
     });
 };
 
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-const ctx = document.getElementById('myChart');
-
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});

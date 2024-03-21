@@ -5,82 +5,80 @@
     <div class="card-body">
         <table class="table table-striped table-hover">
             <thead>
-                <tr class="text-center ">
-                    <th scope="col" class="bg-black text-light legenda">#</th>
-                    <th scope="col" class="bg-black text-light legenda">Grupo</th>
-                    <th scope="col" class="bg-black text-light legenda">Total de vendas</th>
-                </tr>
+            <tr class="text-center ">
+                <th scope="col" class="bg-black text-light legenda">#</th>
+                <th scope="col" class="bg-black text-light legenda">Grupo</th>
+                <th scope="col" class="bg-black text-light legenda">Total de vendas</th>
+            </tr>
             </thead>
             <tbody>
-                <?php
-                $contar = 1;
-                $grupos = listarTabela('*', 'proprietario');
-                $RODARODA = 1;
-                $RODARODAnome = 1;
-                $mario = 0;
-                if ($grupos !== 'Vazio') {
+            <?php
+            $contar = 1;
+            $grupos = listarTabela('*', 'proprietario');
+            $RODARODA = 1;
+            $RODARODAnome = 1;
+            $mario = 0;
+            if ($grupos !== 'Vazio') {
 
-                    foreach ($grupos
+                foreach ($grupos as $grupo) {
+                    $id = $grupo->idproprietario;
+                    $nome = $grupo->nomeProprietario;
 
-                        as $grupo) {
-                        $id = $grupo->idproprietario;
-                        $nome = $grupo->nomeProprietario;
+                    ?>
+                    <tr class="text-center">
 
-                ?>
-                        <tr class="text-center">
+                    <?php
+                    $total = listarTabelaInnerJoinTriploValorPago('valorPago', 'carro', 'proprietario', 'compras', 'idproprietario', 'idproprietario', 'idcarro', 'idcarro', 't.idcarro', $RODARODA);
+                    foreach ($total as $to) {
+                        $testando2 = $to->soma;
+                        $marioMaior[] = $testando2;
+                        ++$RODARODA;
+                    }
+                }
 
-                            <?php
-                            $total = listarTabelaInnerJoinTriploValorPago('valorPago', 'carro', 'proprietario', 'compras', 'idproprietario', 'idproprietario', 'idcarro', 'idcarro', 't.idcarro', $RODARODA);
-                            foreach ($total as $to) {
-                                $testando2 = $to->soma;
-                                $marioMaior[] = $testando2;
-                                ++$RODARODA;
-                            }
+                arsort($marioMaior);
+                foreach ($marioMaior as $ordem => $val) {
+                    ?>
+
+                    <th scope="row" class="text-center">
+                        <?php
+                        echo $contar
+                        ?>
+                    </th>
+                    <td class="text-center">
+                        <?php
+                        $idpessoa = $ordem;
+                        $idpessoa = $idpessoa + 1;
+                        $pessoaUnica = listarItemExpecificoPessoa($idpessoa);
+                        foreach ($pessoaUnica as $pessoas) {
+                            $nomePessoa = $pessoas->nomeProprietario;
+                            echo $nomePessoa;
                         }
+                        ?>
+                    </td>
+                    <td class="text-center dinheiro">
 
-                        arsort($marioMaior);
-                        foreach ($marioMaior as $ordem => $val) {
-                            ?>
+                        <?php
+                        $val = conversorDBNum($val);
+                        echo 'R$ ' . $val;
+                        ?>
 
-                            <th scope="row" class="text-center">
-                                <?php
-                                echo $contar
-                                ?>
-                            </th>
-                            <td class="text-center">
-                                <?php
-                                $idpessoa = $ordem;
-                                $idpessoa = $idpessoa + 1;
-                                $pessoaUnica = listarItemExpecificoPessoa($idpessoa);
-                                foreach ($pessoaUnica as $pessoas) {
-                                    $nomePessoa = $pessoas->nomeProprietario;
-                                    echo $nomePessoa;
-                                }
-                                ?>
-                            </td>
-                            <td class="text-center dinheiro">
-
-                                <?php
-                                $val = conversorDBNum($val);
-                                echo 'R$ ' . $val;
-                                ?>
-
-                            </td>
-                        </tr>
+                    </td>
+                    </tr>
                     <?php
 
-                        ++$contar;
-                        }
-                    } else {
-                    ?>
-                    <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-                        <h1>Página Vazia. </h1><sup>NOT FOUND</sup>
-                        <img src="./img/vazio.gif" alt="ERROR 404">
-                    </div>
-                <?php
-                    }
-
+                    ++$contar;
+                }
+            } else {
                 ?>
+                <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
+                    <h1>Página Vazia. </h1>
+                    <img src="./img/vazio.gif" alt="ERROR 404">
+                </div>
+                <?php
+            }
+
+            ?>
 
             </tbody>
         </table>
