@@ -7,6 +7,11 @@
 
     </div>
     <div class="card-body">
+        <?php
+        $proprietarios = listarTabela('*', 'proprietario', 'nomeProprietario');
+        if ($proprietarios !== 'Vazio') {
+
+        ?>
         <table class="table text-center table-striped table-hover">
             <thead>
                 <tr>
@@ -16,9 +21,9 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                $proprietarios = listarTabela('*', 'proprietario', 'nomeProprietario');
-                if ($proprietarios !== 'Vazio') {
+
+
+                    <?php
                     $cont = 1;
                     foreach ($proprietarios as $proprietario) {
                         $idprop = $proprietario -> idproprietario;
@@ -44,10 +49,10 @@
                     }
                 } else {
                     ?>
-                    <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-                        <h1>Página Vazia, Retorne. </h1>
-                        <img src="./img/vazio.gif" alt="ERROR 404">
-                    </div>
+                        <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
+                            <h1>Página Vazia. </h1>
+                            <img src="./img/vazio.gif" alt="ERROR 404">
+                        </div>
                 <?php
                 }
                 ?>

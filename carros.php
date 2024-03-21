@@ -4,6 +4,13 @@
         <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#mdlCadCarro">Cadastrar</button>
     </div>
     <div class="card-body">
+        <?php
+        $contar = 1;
+        $carros = listarTabelaInnerJoin('*', 'carro', 'proprietario', 'idproprietario', 'idproprietario', 'nomeCarro', 'ASC');
+
+        if ($carros !== 'Vazio') {
+        ?>
+
         <table class="table table-striped table-hover">
             <thead>
             <tr class="text-center ">
@@ -16,12 +23,8 @@
             </tr>
             </thead>
             <tbody>
-            <?php
-            $contar = 1;
-            $carros = listarTabelaInnerJoin('*', 'carro', 'proprietario', 'idproprietario', 'idproprietario', 'nomeCarro', 'ASC');
 
-            if ($carros !== 'Vazio') {
-
+                <?php
                 foreach ($carros as $carro) {
                     $idcarro = $carro->idcarro;
                     $proprietario = $carro->nomeProprietario;
@@ -56,10 +59,10 @@
                 }
             } else {
                 ?>
-                <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-                    <h1>Página Vazia, Retorne. </h1>
-                    <img src="./img/vazio.gif" alt="ERROR 404">
-                </div>
+                    <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
+                        <h1>Página Vazia. </h1>
+                        <img src="./img/vazio.gif" alt="ERROR 404">
+                    </div>
                 <?php
             }
 

@@ -4,6 +4,11 @@
         <button class="btn btn-outline-dark" data-bs-toggle="modal" onclick="abrirModalJsCliente('nao', 'nao', 'nao', 'nao', '<?php echo DATATIMEATUAL?>','nao','nao','nao','nao','nao','nao', 'mdlCadCliente','A', 'btnCadCliente', 'addCliente', 'inpNome', 'nao', 'frmCadCliente')">Cadastrar</button>
     </div>
     <div class="card-body">
+        <?php
+        $listarCliente = listarTabela('*', 'cliente');
+
+        if ($listarCliente !== 'Vazio') {
+        ?>
         <table class="table table-striped table-hover text-center">
             <thead>
             <tr>
@@ -16,10 +21,9 @@
             </tr>
             </thead>
             <tbody>
-            <?php
-            $listarCliente = listarTabela('*', 'cliente');
 
-            if ($listarCliente !== 'Vazio') {
+
+                <?php
                 $cont = 1;
                 foreach ($listarCliente as $cliente) {
                     $idcliente = $cliente-> idcliente;
@@ -78,10 +82,10 @@
                 }
             } else {
                 ?>
-                <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-                    <h1>Página Vazia, Retorne.</h1>
-                    <img src="./img/vazio.gif" alt="ERROR 404">
-                </div>
+                    <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
+                        <h1>Página Vazia. </h1>
+                        <img src="./img/vazio.gif" alt="ERROR 404">
+                    </div>
                 <?php
             }
             ?>

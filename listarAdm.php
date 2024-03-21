@@ -5,6 +5,12 @@
         <button class="btn btn-outline-dark" data-bs-toggle="modal" onclick="abrirModalJsADM('nao', 'nao', 'nao', 'nao', '<?php echo DATATIMEATUAL?>','nao', 'nao','nao', 'nao', 'cadAdm','A', 'btnAddAdm', 'addAdm', 'nomeAdm', 'nao', 'frmAddAdm')">Cadastrar</button>
     </div>
     <div class="card-body">
+        <?php
+        $contar = 1;
+        $adm = listarTabela('*', 'adm');
+        if ($adm !== 'Vazio') {
+        ?>
+
         <table class="table table-striped table-hover">
             <thead>
             <tr class="text-center ">
@@ -15,12 +21,11 @@
             </tr>
             </thead>
             <tbody>
+
+
+
+
             <?php
-            $contar = 1;
-            $adm = listarTabela('*', 'adm');
-
-            if ($adm !== 'Vazio') {
-
                 foreach ($adm as $admin) {
                     $id = $admin->idadm;
                     $nome = $admin->nomeAdm;

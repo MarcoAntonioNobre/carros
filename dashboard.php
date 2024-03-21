@@ -163,7 +163,7 @@ if ($_SESSION['idadm']) {
 
                                 <div class="mt-3">
                                     <input type="radio" id="cartao" name="cartao" class="ui-checkbox"
-                                           required="required">
+                                           required="required"  >
                                     <label for="cartao">Cartão</label>
                                 </div>
                                 <div>
@@ -173,8 +173,9 @@ if ($_SESSION['idadm']) {
                                 </div>
                                 <div class="mt-3" id="cartaoCod" style="display: none">
                                     <label for="codCartao">Número do cartão:</label>
-                                    <input type="text" name="codCartao" id="codCartao" class="form-control">
+                                    <input type="text" name="codCartao" id="codCartao" class="form-control" minlength="6" maxlength="6">
                                 </div>
+
                                 <div class="mt-3">
                                     <div class="wave-group">
                                         <input required="required" min="1" max="500" type="number" class="input"
@@ -198,7 +199,7 @@ if ($_SESSION['idadm']) {
                                 </div>
                                 <div class="mt-3">
                                     <p>Valor total: <b id="valorTotal"></b></p>
-                                    <button type="button" id="calcular" name="calcular" class="btn btn-secondary">Calcular total</button>
+                                    <button type="button" id="calcular" name="calcular" class="btn btn-outline-secondary">Calcular total</button>
                                 </div>
 
                             </div>
