@@ -24,7 +24,7 @@ function abrirFecharModalCompra(idModal, abrirOuFechar) {
     }
 }
 
-const modalCompraInstancia = document.getElementById('vermais')
+//const modalCompraInstancia = document.getElementById('vermais')
 const modalCompra = document.getElementById('vermais');
 const inpCompra = document.getElementById('inQuantidade');
 const btnCompra = document.getElementById('btnCompra')
@@ -34,6 +34,14 @@ if (modalCompra) {
 
     modalCompra.addEventListener('shown.bs.modal', () => {
         inpCompra.focus()
+        const valorTotal = document.getElementById('valorTotal');
+        const calcular = document.getElementById('calcular');
+        const preco = document.getElementById('precoVeiculo').value;
+        calcular.addEventListener('click', function () {
+            const inputQtd = document.getElementById('inQuantidade').value;
+            const resultado = preco * inputQtd
+            valorTotal.innerHTML = 'R$ ' + resultado;
+        })
         const cartao = document.getElementById('cartao');
         const codCartao = document.getElementById('cartaoCod');
         cartao.addEventListener('click', function () {
@@ -59,7 +67,7 @@ if (modalCompra) {
                 .then(data => {
 
                     if (data.success) {
-
+                        console.log(data)
                         btnCompra.disabled = false;
                         addOuEditSucesso('Compra', 'success', ' efetuada')
                         setTimeout(() => {
@@ -69,6 +77,7 @@ if (modalCompra) {
                     } else {
                         btnCompra.disabled = false;
                         addErro()
+                        alert(data.message)
                         abrirFecharModalCompra('vermais', 'F');
                     }
                 })
@@ -109,7 +118,6 @@ if (carroModal) {
                         addOuEditSucesso('Você', 'success', 'adicionou')
                         form.removeEventListener('submit', submitHandler)
                         btnCarro.disabled = false;
-
                         carregarConteudo('listarCarros');
                     } else {
                         btnCarro.disabled = false;
@@ -201,7 +209,7 @@ if (carroEditModal) {
     })
 }
 
-function abrirModalDeleteCarro(idDelCarro){
+function abrirModalDeleteCarro(idDelCarro) {
     document.getElementById('idDeleteCarro').value = idDelCarro
     abrirFecharModalDeleteCarro('mdlDeleteCarro', 'A');
 
@@ -221,11 +229,11 @@ const modalDeleteCarroInstancia = new bootstrap.Modal(document.getElementById('m
 const modalDeleteCarro = document.getElementById('mdlDeleteCarro')
 const btnDeleteCarro = document.getElementById('btnDeleteCarro')
 
-if(modalDeleteCarro){
+if (modalDeleteCarro) {
     const formDelCarro = document.getElementById('frmDeleteCarro')
 
-    modalDeleteCarro.addEventListener('show.bs.modal',() => {
-        const submitHandler = function(event){
+    modalDeleteCarro.addEventListener('show.bs.modal', () => {
+        const submitHandler = function (event) {
             event.preventDefault();
             btnDeleteCarro.disabled = true;
             modalDeleteCarroInstancia.hide()
@@ -237,12 +245,12 @@ if(modalDeleteCarro){
                 body: formData,
             })
                 .then(response => response.json())
-                .then(data =>{
+                .then(data => {
                     console.log(data)
-                    if(data.success){
+                    if (data.success) {
                         addOuEditSucesso('Você', 'success', 'deletou')
                         carregarConteudo('listarCarros')
-                    }else{
+                    } else {
                         addErro()
                     }
                 })
@@ -330,7 +338,10 @@ if (fotoDeleteModal) {
 
 
 function abrirModalEditFoto(idEditfoto) {
-    //console.log('capturou o id editar')
+    const enderecoFoto = document.getElementById('inpEditFoto')
+
+    // enderecoFoto.value = endFoto
+
     document.getElementById('idEditFoto').value = idEditfoto
     abrirFecharModalEditFoto('mdlEditFoto', 'A');
 }

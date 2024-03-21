@@ -27,7 +27,7 @@
                     $id = $fotos->idfoto;
                     $nomeCarro = $fotos->nomeCarro;
                     $nomeProp = $fotos->nomeProprietario;
-                    $foto = $fotos->foto;
+                    $fotoCarro = $fotos->foto;
                     ?>
                     <tr class="text-center">
                         <th scope="row">
@@ -46,8 +46,7 @@
                             ?>
                         </td>
                         <td>
-                            <?php echo $id ?>
-                            <img src="./img/<?php echo $foto; ?>" alt="<?php echo $nomeCarro; ?>"
+                            <img src="./img/<?php echo $fotoCarro; ?>" alt="<?php echo $nomeCarro; ?>"
                                  title="<?php echo $nomeCarro; ?>" width="50px">
                         </td>
                         <td>

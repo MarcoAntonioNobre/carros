@@ -70,6 +70,57 @@ function listarItemExpecifico($campos, $tabela, $campoExpecifico, $valorCampo)
     $conn = null;
 }
 
+function listarSomaCartao($campos, $tabela, $campoExpecifico, $valorCampo)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlListaTabelas = $conn->prepare("SELECT $campos FROM $tabela WHERE ? <> ?");
+//        $sqlListaTabelas->bindValue(1, $campos, PDO::PARAM_STR);
+//        $sqlListaTabelas->bindValue(2, $tabela, PDO::PARAM_STR);
+        $sqlListaTabelas->bindValue(1, $campoExpecifico, PDO::PARAM_STR);
+        $sqlListaTabelas->bindValue(2, $valorCampo, PDO::PARAM_STR);
+        $sqlListaTabelas->execute();
+        $conn->commit();
+        if ($sqlListaTabelas->rowCount() > 0) {
+            return $sqlListaTabelas->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch
+    (PDOException $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
+
+function listarSomaDinheiro($campos, $tabela, $campoExpecifico, $valorCampo)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlListaTabelas = $conn->prepare("SELECT $campos FROM $tabela WHERE ? = ?");
+//        $sqlListaTabelas->bindValue(1, $campos, PDO::PARAM_STR);
+//        $sqlListaTabelas->bindValue(2, $tabela, PDO::PARAM_STR);
+        $sqlListaTabelas->bindValue(1, $campoExpecifico, PDO::PARAM_STR);
+        $sqlListaTabelas->bindValue(2, $valorCampo, PDO::PARAM_STR);
+        $sqlListaTabelas->execute();
+        $conn->commit();
+        if ($sqlListaTabelas->rowCount() > 0) {
+            return $sqlListaTabelas->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch
+    (PDOException $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
 function listarItemExpecificoPesquisa($valorCampo)
 {
     $conn = conectar();
