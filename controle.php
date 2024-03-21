@@ -6,15 +6,26 @@ include_once("func/funcoes.php");
 $controle = filter_input(INPUT_POST, 'controle', FILTER_SANITIZE_STRING);
 if (!empty($controle) && isset($controle)) {
     switch ($controle) {
-
-        case 'listarCliente':
-            include_once('listarCliente.php');
-            break;
-        case 'listarProprietarios';
-            include_once('listarProprietarios.php');
+        case 'home';
+            echo "<meta HTTP-EQUIV='refresh' CONTENT='0'>";
             break;
         case 'listarCarros';
             include_once('carros.php');
+            break;
+        case 'pesquisarCarro';
+            include_once('pesquisarCarro.php');
+            break;
+        case 'carroAdd';
+            include_once('cadCarro.php');
+            break;
+        case 'carroEdit';
+            include_once('editCarro.php');
+            break;
+        case 'deleteCarro';
+            include_once('deleteCarro.php');
+            break;
+        case 'listarProprietarios';
+            include_once('listarProprietarios.php');
             break;
         case 'addProprietario';
             include_once('cadProprietario.php');
@@ -25,11 +36,17 @@ if (!empty($controle) && isset($controle)) {
         case 'deleteProprietario';
             include_once('deleteProprietario.php');
             break;
-        case 'pesquisarCarro';
-            include_once('pesquisarCarro.php');
+        case 'listarCliente':
+            include_once('listarCliente.php');
             break;
-        case 'listarTotal';
-            include_once('listarTotal.php');
+        case 'addCliente';
+            include_once('cadCliente.php');
+            break;
+        case 'editCliente';
+            include_once('editCliente.php');
+            break;
+        case 'deleteCliente';
+            include_once('deleteCliente.php');
             break;
         case 'listarFoto';
             include_once('fotos.php');
@@ -43,26 +60,8 @@ if (!empty($controle) && isset($controle)) {
         case 'deleteFoto';
             include_once('deletarFoto.php');
             break;
-        case 'addCliente';
-            include_once('cadCliente.php');
-            break;
-        case 'carroAdd';
-            include_once('cadCarro.php');
-            break;
-        case 'carroEdit';
-            include_once('editCarro.php');
-            break;
-        case 'deleteCarro';
-            include_once('deleteCarro.php');
-            break;
         case 'listarAdm';
             include_once('listarAdm.php');
-            break;
-        case 'editCliente';
-            include_once('editCliente.php');
-            break;
-        case 'deleteCliente';
-            include_once('deleteCliente.php');
             break;
         case 'addAdm';
             include_once('cadAdm.php');
@@ -73,8 +72,8 @@ if (!empty($controle) && isset($controle)) {
         case 'deleteAdm';
             include_once('deleteAdm.php');
             break;
-        case 'compra';
-            include_once('compra.php');
+        case 'listarTotal';
+            include_once('listarTotal.php');
             break;
         case 'listarVenda';
             include_once('venda.php');
@@ -82,13 +81,16 @@ if (!empty($controle) && isset($controle)) {
         case 'deleteVenda';
             include_once('deleteVenda.php');
             break;
+        case 'compra';
+            include_once('compra.php');
+            break;
         default;
             echo 'Menu inexistente';
     }
 } else {
     ?>
     <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-        <h1>Página Vazia, Retorne. </h1><sup>Error 404</sup>
+        <h1>Página Vazia, Retorne. </h1>
         <img src="./img/vazio.gif" alt="ERROR 404">
     </div>
     <?php

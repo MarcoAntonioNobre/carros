@@ -21,6 +21,10 @@ if ($_SESSION['idadm']) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Área do administrador</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
@@ -33,31 +37,153 @@ if ($_SESSION['idadm']) {
 <div class="container-fluid">
     <div class="row">
         <div id="nav" class="col-lg-2 bg-black text-white text-center fs-5 ">
-            <div class="mt-5 mb-1 pointer ">
-                <div onclick="carregarConteudo('listarCarros')">Carros</div>
-            </div>
-            <div class="mt-3 mb-1 pointer ">
-                <div onclick="carregarConteudo('listarProprietarios')">Proprietários</div>
-            </div>
-            <div class="mt-3 mb-1 pointer ">
-                <div onclick="carregarConteudo('listarCliente')">Clientes</div>
-            </div>
-            <div class="mt-3 mb-1 pointer ">
-                <div onclick="carregarConteudo('listarFoto')">Fotos</div>
-            </div>
-            <div class="mt-3 mb-1 pointer ">
-                <div onclick="carregarConteudo('listarTotal')">Total de vendas</div>
-            </div>
-            <div class="mt-3 mb-1 pointer ">
-                <div onclick="carregarConteudo('listarVenda')">Vendas</div>
-            </div>
-            <div class="mt-3 mb-1 pointer ">
-                <div onclick="carregarConteudo('listarAdm')">Administradores</div>
+            <div class="inputii">
+                <button class="value" onclick="carregarConteudo('home')">
+                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" data-name="Layer 2">
+                        <i class="bi bi-bar-chart-line"></i>
+                    </svg>
+                    Gráfico
+                </button>
+                <button class="value" onclick="carregarConteudo('listarCarros')">
+                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" data-name="Layer 2">
+                        <i class="bi bi-car-front-fill"></i>
+                    </svg>
+                    Carros
+                </button>
+                <button class="value" onclick="carregarConteudo('listarProprietarios')">
+                    <svg id="Line" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <i class="bi bi-person-fill"></i>
+                    </svg>
+                    Propietários
+                </button>
+                <button class="value" onclick="carregarConteudo('listarCliente')">
+                    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                        <i class="bi bi-person-circle"></i>
+                    </svg>
+                    Cliente
+                </button>
+                <button class="value" onclick="carregarConteudo('listarFoto')">
+                    <svg id="svg8" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <i class="bi bi-file-earmark-image"></i>
+                    </svg>
+                    Fotos
+                </button>
+                <button class="value" onclick="carregarConteudo('listarTotal')">
+                    <svg fill="none" viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
+                        <i class="bi bi-cash-coin"></i>
+                    </svg>
+                    Total de Vendas
+                </button>
+                <button class="value" onclick="carregarConteudo('listarVenda')">
+                    <svg fill="none" viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
+                        <i class="bi bi-cash-stack"></i>
+                    </svg>
+                    Vendas
+                </button>
+                <button class="value" onclick="carregarConteudo('listarAdm')">
+                    <svg fill="none" viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
+                        <i class="bi bi-person-gear"></i>
+                    </svg>
+                    Administradores
+                </button>
             </div>
         </div>
         <div class="col-lg-10">
             <div name="show" id="show">
+                <div class="tamanhoGrafico">
+                    <canvas id="myChart"></canvas>
+                    <canvas id="pizza"></canvas>
+                </div>
 
+                <?php
+                $RODARODA = 1;
+
+                $while = 1;
+                while ($while <= 5) {
+                    $total = listarTabelaInnerJoinTriploValorPago('valorPago', 'carro', 'proprietario', 'compras', 'idproprietario', 'idproprietario', 'idcarro', 'idcarro', 't.idcarro', $RODARODA);
+                    foreach ($total as $to) {
+                        $testando2 = $to->soma;
+                        $marioMaior[] = $testando2;
+                        ++$RODARODA;
+                    }
+                    $while++;
+                }
+                //                echo '<pre>';
+                //                print_r($marioMaior);
+                //                echo '</pre>';
+
+
+                //                foreach ($grafico as $grafic) {
+                //
+                //                }
+                ?>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                <script>
+                    const ctx = document.getElementById('myChart');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+                            datasets: [{
+                                label: 'Vendas(Montante em reais)',
+                                <?php
+                                arsort($marioMaior);
+
+                                ?>
+                                data: ['<?php echo $marioMaior[0]?>', '<?php echo $marioMaior[1]?>', '<?php echo $marioMaior[2]?>', '<?php echo $marioMaior[3]?>', '<?php echo $marioMaior[4]?>'],
+
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 205, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgb(255, 99, 132)',
+                                    'rgb(255, 159, 64)',
+                                    'rgb(255, 205, 86)',
+                                    'rgb(75, 192, 192)',
+                                    'rgb(54, 162, 235)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+
+                    // const config = {
+                    //     type: 'polarArea',
+                    //     data: {
+                    //         labels: [
+                    //             'Red',
+                    //             'Green',
+                    //             'Yellow',
+                    //             'Grey',
+                    //             'Blue'
+                    //         ],
+                    //         datasets: [{
+                    //             label: 'My First Dataset',
+                    //             data: [11, 16, 7, 3, 14],
+                    //             backgroundColor: [
+                    //                 'rgb(255, 99, 132)',
+                    //                 'rgb(75, 192, 192)',
+                    //                 'rgb(255, 205, 86)',
+                    //                 'rgb(201, 203, 207)',
+                    //                 'rgb(54, 162, 235)'
+                    //             ]
+                    //         }]
+                    //     };
+                    //     options: {}
+                    // }
+                </script>
             </div>
         </div>
     </div>
@@ -78,7 +204,7 @@ include_once 'footer.php';
                 <div class="modal-body">
 
                     <label for="nomeProprietario">Nome:</label>
-                    <input type="text" name="nomeProprietario" id="nomeProprietario">
+                    <input type="text" class="inputzz" name="nomeProprietario" id="nomeProprietario">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
@@ -88,7 +214,6 @@ include_once 'footer.php';
         </div>
     </div>
 </div>
-
 <!-- Modal de Edit de PROPRIETÁRIO -->
 <div class="modal fade" id="editProprietario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -101,7 +226,7 @@ include_once 'footer.php';
                 <div class="modal-body">
                     <input type="text" name="idEditProprietario" id="idEditProprietario" hidden="hidden">
                     <label for="nomeEditProprietario">Nome:</label>
-                    <input type="text" name="nomeEditProprietario" id="nomeEditProprietario">
+                    <input type="text" name="nomeEditProprietario" id="nomeEditProprietario" class="inputzz">
 
                 </div>
                 <div class="modal-footer">
@@ -151,21 +276,21 @@ include_once 'footer.php';
                         <form method="post" action="" name="frmCadCliente" id="frmCadCliente">
                             <div>
                                 <label for="inpNome" class="label-control">Nome:</label>
-                                <input type="text" name="inpNome" id="inpNome" class="form-control" required="required">
+                                <input type="text" name="inpNome" id="inpNome" class="inputzz" required="required">
                             </div>
                             <div>
                                 <label for="inpContato" class="label-control">Contato:</label>
-                                <input type="text" name="inpContato" id="inpContato" class="form-control telefoneBR">
+                                <input type="text" name="inpContato" id="inpContato" class="inputzz" telefoneBR">
                             </div>
                             <div>
                                 <label for="inpValorUnitario" class="label-control">Número do cartão:</label>
                                 <input type="text" name="inpValorUnitario" id="inpValorUnitario"
-                                       class="form-control">
+                                       class="inputzz">
                             </div>
                             <div>
                                 <label for="inpValorCartao" class="label-control">Valor em cartão:</label>
                                 <input type="text" name="inpValorCartao" id="inpValorCartao"
-                                       class="form-control">
+                                       class="inputzz">
                             </div>
                     </div>
                 </div>
@@ -193,23 +318,23 @@ include_once 'footer.php';
                             <input type="text" id="inpEditId" name="inpEditId" hidden="hidden">
                             <div>
                                 <label for="inpEditNome" class="label-control">Nome:</label>
-                                <input type="text" name="inpEditNome" id="inpEditNome" class="form-control"
+                                <input type="text" name="inpEditNome" id="inpEditNome" class="inputzz"
                                        required="required">
                             </div>
                             <div>
                                 <label for="inpEditContato" class="label-control">Contato:</label>
                                 <input type="text" name="inpEditContato" id="inpEditContato"
-                                       class="form-control telefoneBR">
+                                       class="inputzz telefoneBR">
                             </div>
                             <div>
                                 <label for="inpEditValorUnitario" class="label-control">Número do cartão:</label>
                                 <input type="text" name="inpEditValorUnitario" id="inpEditValorUnitario"
-                                       class=" form-control">
+                                       class="inputzz">
                             </div>
                             <div>
                                 <label for="inpEditValorCartao" class="label-control">Valor em cartão:</label>
                                 <input type="text" name="inpEditValorCartao" id="inpEditValorCartao"
-                                       class="form-control">
+                                       class="inputzz"">
                             </div>
                     </div>
                 </div>
@@ -259,15 +384,16 @@ include_once 'footer.php';
                 <div class="modal-body">
                     <div>
                         <label for="nomeAdm">Nome:</label>
-                        <input type="text" name="nomeAdm" id="nomeAdm" required="required">
+                        <input type="text" name="nomeAdm" id="nomeAdm" required="required" class="inputzz">
                     </div>
                     <div>
                         <label for="cpfAdm">CPF:</label>
-                        <input type="text" name="cpfAdm" id="cpfAdm" class="cpf" autocomplete="off" required="required">
+                        <input type="text" name="cpfAdm" id="cpfAdm" class="cpf inputzz" autocomplete="off"
+                               required="required">
                     </div>
                     <div>
                         <label for="senhaAdm">Senha:</label>
-                        <input type="password" name="senhaAdm" id="senhaAdm" class="" autocomplete="off"
+                        <input type="password" name="senhaAdm" id="senhaAdm" class="inputzz" autocomplete="off"
                                required="required">
                     </div>
                 </div>
@@ -292,16 +418,16 @@ include_once 'footer.php';
                     <input type="hidden" name="idEditAdm" id="idEditAdm">
                     <div>
                         <label for="nomeEditAdm">Nome:</label>
-                        <input type="text" name="nomeEditAdm" id="nomeEditAdm" required="required">
+                        <input type="text" name="nomeEditAdm" id="nomeEditAdm" required="required" class="inputzz">
                     </div>
                     <div>
                         <label for="cpfEditAdm">CPF:</label>
-                        <input type="text" name="cpfEditAdm" id="cpfEditAdm" class="cpf" autocomplete="off"
+                        <input type="text" name="cpfEditAdm" id="cpfEditAdm" class="cpf inputzz" autocomplete="off"
                                required="required">
                     </div>
                     <div>
                         <label for="senhaEditAdm">Senha:</label>
-                        <input type="password" name="senhaEditAdm" id="senhaEditAdm" class="" autocomplete="off"
+                        <input type="password" name="senhaEditAdm" id="senhaEditAdm" class="inputzz" autocomplete="off"
                                required="required">
                     </div>
                 </div>
@@ -337,6 +463,7 @@ include_once 'footer.php';
     </div>
 </div>
 
+
 <!-- Modal de cadastro de CARRO -->
 <div class="modal fade" id="mdlCadCarro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -351,12 +478,13 @@ include_once 'footer.php';
                         <div class="card-body">
                             <div>
                                 <label for="inpNomeCarro" class="label-control">Nome:</label>
-                                <input type="text" name="inpNomeCarro" id="inpNomeCarro" class="form-control"
+                                <input type="text" name="inpNomeCarro" id="inpNomeCarro" class="inputzz"
                                        required="required">
                             </div>
                             <div>
-                                <label for="inpDiferenciais">Diferenciais:</label>
-                                <input type="text" name="inpDiferenciais" id="inpDiferenciais" required="required">
+                                <label for="inpDiferenciais" class="label-control">Diferenciais:</label>
+                                <input type="text" name="inpDiferenciais" id="inpDiferenciais" required="required"
+                                       class="inputzz">
                             </div>
                             <div>
                                 <label for="inpFotoCarro" class="label-control">Foto:</label>
@@ -365,11 +493,12 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpValor">Valor:</label>
-                                <input type="text" name="inpValor" id="inpValor" required="required" class="">
+                                <input type="text" name="inpValor" id="inpValor" required="required" class="inputzz">
                             </div>
                             <div>
                                 <label for="selectProprietario">Selecione o proprietário:</label>
-                                <select name="selectProprietario" id="selectProprietario" required="required">
+                                <select name="selectProprietario" id="selectProprietario" required="required"
+                                        class="inputzz">
                                     <option selected>Selecione uma opção</option>
                                     <?php
                                     $proprietarios = listarTabela('*', 'proprietario', 'nome');
@@ -413,13 +542,13 @@ include_once 'footer.php';
                             <input type="hidden" name="idEditCarro" id="idEditCarro">
                             <div>
                                 <label for="inpNomeEditCarro" class="label-control">Nome:</label>
-                                <input type="text" name="inpNomeEditCarro" id="inpNomeEditCarro" class="form-control"
+                                <input type="text" name="inpNomeEditCarro" id="inpNomeEditCarro" class="inputzz"
                                        required="required">
                             </div>
                             <div>
                                 <label for="inpEditDiferenciais">Diferenciais:</label>
                                 <input type="text" name="inpEditDiferenciais" id="inpEditDiferenciais"
-                                       required="required">
+                                       required="required" class="inputzz">
                             </div>
                             <div>
                                 <label for="inpEditFotoCarro" class="label-control">Foto:</label>
@@ -429,11 +558,12 @@ include_once 'footer.php';
                             <div>
                                 <label for="inpEditValor">Valor:</label>
                                 <input type="text" name="inpEditValor" id="inpEditValor" required="required"
-                                       class="">
+                                       class="inputzz">
                             </div>
                             <div>
                                 <label for="selectEditProprietario">Selecione o proprietário:</label>
-                                <select name="selectEditProprietario" id="selectEditProprietario" required="required">
+                                <select name="selectEditProprietario" id="selectEditProprietario" required="required"
+                                        class="inputzz">
                                     <option selected>Selecione uma opção</option>
                                     <?php
                                     $proprietarios = listarTabela('*', 'proprietario', 'nome');
@@ -462,6 +592,29 @@ include_once 'footer.php';
         </div>
     </div>
 </div>
+<!--Modal de apagar carro-->
+<div class="modal fade" id="mdlDeleteCarro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Apagar venda</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" name="frmDeleteCarro" id="frmDeleteCarro">
+                <div class="modal-body">
+                    <input type="text" name="idDeleteCarro" id="idDeleteCarro">
+                    <div class="alert alert-danger">
+                        Tem certeza?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteCarro">Deletar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <!--Modal de cadastro de FOTO-->
@@ -479,7 +632,7 @@ include_once 'footer.php';
                             <div>
                                 <div>
                                     <label for="inpGrupo" class="label-control">Selecione o grupo:</label>
-                                    <select name="inpGrupo" id="inpGrupo" required="required">
+                                    <select name="inpGrupo" id="inpGrupo" required="required" class="inputzz">
                                         <option selected>Selecione uma opção</option>
                                         <?php
                                         $proprietario = listarTabela('*', 'proprietario');
@@ -513,7 +666,6 @@ include_once 'footer.php';
         </div>
     </div>
 </div>
-
 <!--Modal de edição de foto-->
 <div class="modal fade" id="mdlEditFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -530,7 +682,7 @@ include_once 'footer.php';
                                 <input type="hidden" name="idEditFoto" id="idEditFoto">
                                 <div>
                                     <label for="inpEditGrupo" class="label-control">Selecione o grupo:</label>
-                                    <select name="inpEditGrupo" id="inpEditGrupo" class="form-control"
+                                    <select name="inpEditGrupo" id="inpEditGrupo" class="inputzz"
                                             required="required">
                                         <option selected>Selecione uma opção</option>
                                         <?php
@@ -565,8 +717,6 @@ include_once 'footer.php';
         </div>
     </div>
 </div>
-
-
 <!--Modal de apagar de FOTO-->
 <div class="modal fade" id="mdlDeleteFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

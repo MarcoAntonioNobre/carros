@@ -51,13 +51,13 @@
                                  title="<?php echo $nomeCarro; ?>" width="50px">
                         </td>
                         <td>
-                            <button class="btn btn-outline-primary" data-bs-toggle="modal" onclick="abrirModalEditFoto('<?php echo $id;?>')">
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" onclick="abrirModalEditFoto(<?php echo $id;?>)">
                                 Alterar
                             </button>
 
 
                             <button class="btn btn-outline-danger" data-bs-toggle="modal"
-                                    onclick='abrirModalDelFoto("<?php echo $id ?>")'>
+                                    onclick='abrirModalDelFoto(<?php echo $id ?>)'>
                                 Excluir
                             </button>
                             <!--                            <button class="btn btn-outline-danger" data-bs-toggle="modal"-->
@@ -74,7 +74,7 @@
             } else {
                 ?>
                 <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-                    <h1>Página Vazia, Retorne. </h1><sup>Error 404</sup>
+                    <h1>Página Vazia, Retorne. </h1>
                     <img src="./img/vazio.gif" alt="ERROR 404">
                 </div>
                 <?php
