@@ -90,100 +90,134 @@ if ($_SESSION['idadm']) {
         </div>
         <div class="col-lg-10">
             <div name="show" id="show">
-                <div class="tamanhoGrafico">
-                    <canvas id="myChart"></canvas>
-                    <canvas id="pizza"></canvas>
-                </div>
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 col-12 mt-3">
+                        <div class="">
+                            <canvas id="myChart"></canvas>
+                        </div>
 
-                <?php
-                $RODARODA = 1;
+                        <?php
+                        $RODARODA = 1;
 
-                $while = 1;
-                while ($while <= 5) {
-                    $total = listarTabelaInnerJoinTriploValorPago('valorPago', 'carro', 'proprietario', 'compras', 'idproprietario', 'idproprietario', 'idcarro', 'idcarro', 't.idcarro', $RODARODA);
-                    foreach ($total as $to) {
-                        $testando2 = $to->soma;
-                        $marioMaior[] = $testando2;
-                        ++$RODARODA;
-                    }
-                    $while++;
-                }
-                //                echo '<pre>';
-                //                print_r($marioMaior);
-                //                echo '</pre>';
+                        $while = 1;
+                        while ($while <= 5) {
+                            $total = listarTabelaInnerJoinTriploValorPago('valorPago', 'carro', 'proprietario', 'compras', 'idproprietario', 'idproprietario', 'idcarro', 'idcarro', 't.idcarro', $RODARODA);
+                            foreach ($total as $to) {
+                                $testando2 = $to->soma;
+                                $marioMaior[] = $testando2;
+                                ++$RODARODA;
+                            }
+                            $while++;
+                        }
+                        ?>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+                        <script>
+                            const ctx = document.getElementById('myChart');
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['Red Senna', 'Marquinhos', 'Scuderia', 'Fittipaldi', 'FBM'],
+                                    datasets: [{
+                                        label: 'Vendas(Montante em reais)',
+                                        <?php
+                                        arsort($marioMaior);
 
-                //                foreach ($grafico as $grafic) {
-                //
-                //                }
-                ?>
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                        ?>
+                                        data: ['<?php echo $marioMaior[0]?>', '<?php echo $marioMaior[1]?>', '<?php echo $marioMaior[2]?>', '<?php echo $marioMaior[3]?>', '<?php echo $marioMaior[4]?>'],
 
-                <script>
-                    const ctx = document.getElementById('myChart');
-                    new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
-                            datasets: [{
-                                label: 'Vendas(Montante em reais)',
-                                <?php
-                                arsort($marioMaior);
+                                        backgroundColor: [
+                                            'rgba(0, 0, 0, 0.8)',
+                                            'rgba(255,31,31,0.8)',
+                                            'rgba(48,112,252,0.8)',
+                                            'rgba(12,148,0,0.7)',
+                                            'rgba(0,0,0,0.8)'
+                                        ],
+                                        borderColor: [
+                                            'rgb(255, 99, 132)',
+                                            'rgb(2,2,2)',
+                                            'rgb(255,96,0)',
+                                            'rgb(255,96,0)',
+                                            'rgb(66,235,54)'
+                                        ],
+                                        borderWidth: 2
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                    <div class="col-lg-5 col-md-12 col-12 mt-3">
+                        <div class="">
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                        <?php
+                        $pagamento = listarTabela('*', 'compras');
+                        if ($pagamento !== 'Vazio') {
+                            foreach ($pagamento as $pagamentoItem) {
+                                $cliente = $pagamentoItem->idcliente;
+                                $valorPago = $pagamentoItem->valorPago;
+                                if ($cliente === 'null') {
+                                    if($valorPago === 'null'){
+                                        $dinheiro = 0;
+                                    }else{
+                                        $dinheiro += $valorPago;
+                                    }
+                                } else {
+                                    if ($valorPago === 'null') {
+                                        $cartao = 0;
+                                    } else {
+                                        $cartao += $valorPago;
+                                    }
 
-                                ?>
-                                data: ['<?php echo $marioMaior[0]?>', '<?php echo $marioMaior[1]?>', '<?php echo $marioMaior[2]?>', '<?php echo $marioMaior[3]?>', '<?php echo $marioMaior[4]?>'],
-
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)',
-                                    'rgba(255, 205, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgb(255, 99, 132)',
-                                    'rgb(255, 159, 64)',
-                                    'rgb(255, 205, 86)',
-                                    'rgb(75, 192, 192)',
-                                    'rgb(54, 162, 235)'
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
                                 }
                             }
+                        }else{
+                            $dinheiro = 0;
+                            $cartao = 0;
                         }
-                    });
 
-                    // const config = {
-                    //     type: 'polarArea',
-                    //     data: {
-                    //         labels: [
-                    //             'Red',
-                    //             'Green',
-                    //             'Yellow',
-                    //             'Grey',
-                    //             'Blue'
-                    //         ],
-                    //         datasets: [{
-                    //             label: 'My First Dataset',
-                    //             data: [11, 16, 7, 3, 14],
-                    //             backgroundColor: [
-                    //                 'rgb(255, 99, 132)',
-                    //                 'rgb(75, 192, 192)',
-                    //                 'rgb(255, 205, 86)',
-                    //                 'rgb(201, 203, 207)',
-                    //                 'rgb(54, 162, 235)'
-                    //             ]
-                    //         }]
-                    //     };
-                    //     options: {}
-                    // }
-                </script>
+
+                        ?>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                        <script>
+                            const ctx2 = document.getElementById('myChart2');
+
+                            new Chart(ctx2, {
+                                type: 'polarArea',
+                                data: {
+                                    labels: [
+                                        'Cartão',
+                                        'Dinheiro',
+                                    ],
+                                    datasets: [{
+                                        label: 'Vendas (em reais)',
+                                        data: ['<?php echo $cartao?>', '<?php echo $dinheiro?>'],
+                                        backgroundColor: [
+                                            'rgb(249,253,68)',
+                                            'rgb(75, 192, 192)',
+                                        ]
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

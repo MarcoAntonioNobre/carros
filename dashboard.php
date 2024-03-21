@@ -196,6 +196,10 @@ if ($_SESSION['idadm']) {
                                         </label>
                                     </div>
                                 </div>
+                                <div class="mt-3">
+                                    <p>Valor total: <b id="valorTotal"></b></p>
+                                    <button type="button" id="calcular" name="calcular" class="btn btn-secondary">Calcular total</button>
+                                </div>
 
                             </div>
                         </div>
