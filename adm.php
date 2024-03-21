@@ -36,7 +36,7 @@ if ($_SESSION['idadm']) {
 
 <div class="container-fluid">
     <div class="row">
-        <div id="nav" class="col-lg-2 bg-black text-white text-center fs-5 ">
+        <div id="nav" class="col-lg-2 col-md-12 bg-black text-white text-center fs-5 ">
             <div class="inputii">
                 <button class="value" onclick="carregarConteudo('home')">
                     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" data-name="Layer 2">
@@ -72,7 +72,7 @@ if ($_SESSION['idadm']) {
                     <svg fill="none" viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
                         <i class="bi bi-cash-coin"></i>
                     </svg>
-                    Total de Vendas
+                    Total
                 </button>
                 <button class="value" onclick="carregarConteudo('listarVenda')">
                     <svg fill="none" viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
@@ -84,15 +84,15 @@ if ($_SESSION['idadm']) {
                     <svg fill="none" viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
                         <i class="bi bi-person-gear"></i>
                     </svg>
-                    Administradores
+                    Admin
                 </button>
             </div>
         </div>
-        <div class="col-lg-10">
+        <div class="col-lg-10 col-md-12">
             <div name="show" id="show">
                 <div class="row">
-                    <div class="col-lg-7 col-md-12 col-12 mt-3">
-                        <div class="">
+                    <div class="col-lg-7 col-md-12 col-12 mt-3 d-flex justify-content-center align-items-center">
+                        <div class=" d-flex justify-content-center align-items-center  w-100">
                             <canvas id="myChart"></canvas>
                         </div>
 
@@ -130,7 +130,7 @@ if ($_SESSION['idadm']) {
                                             'rgba(0, 0, 0, 0.8)',
                                             'rgba(255,31,31,0.8)',
                                             'rgba(48,112,252,0.8)',
-                                            'rgba(12,148,0,0.7)',
+                                            'rgba(12,148,0, 0.8)',
                                             'rgba(0,0,0,0.8)'
                                         ],
                                         borderColor: [
@@ -153,27 +153,25 @@ if ($_SESSION['idadm']) {
                             });
                         </script>
                     </div>
-                    <div class="col-lg-5 col-md-12 col-12 mt-3">
-                        <div class="">
+                    <div class="col-lg-5 col-md-12 col-12 mt-3 d-flex justify-content-center align-items-center ">
+                        <div class=" d-flex justify-content-center align-items-center  w-75">
                             <canvas id="myChart2"></canvas>
                         </div>
                         <?php
                         $pagamento = listarTabela('*', 'compras');
                         if ($pagamento !== 'Vazio') {
+                            $cartao = 0;
+                            $dinheiro = 0;
                             foreach ($pagamento as $pagamentoItem) {
                                 $cliente = $pagamentoItem->idcliente;
                                 $valorPago = $pagamentoItem->valorPago;
                                 if ($cliente === 'null') {
-                                    if($valorPago === 'null'){
-                                        $dinheiro = 0;
-                                    }else{
-                                        $dinheiro += $valorPago;
+                                    if ($valorPago !== 'null') {
+                                        $dinheiro = $valorPago+$dinheiro;
                                     }
                                 } else {
-                                    if ($valorPago === 'null') {
-                                        $cartao = 0;
-                                    } else {
-                                        $cartao += $valorPago;
+                                    if ($valorPago !== 'null') {
+                                        $cartao = $valorPago+$cartao;
                                     }
 
                                 }
@@ -185,7 +183,6 @@ if ($_SESSION['idadm']) {
 
 
                         ?>
-                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                         <script>
                             const ctx2 = document.getElementById('myChart2');
@@ -201,8 +198,13 @@ if ($_SESSION['idadm']) {
                                         label: 'Vendas (em reais)',
                                         data: ['<?php echo $cartao?>', '<?php echo $dinheiro?>'],
                                         backgroundColor: [
-                                            'rgb(249,253,68)',
-                                            'rgb(75, 192, 192)',
+                                            'rgba(4,16,30,0.8)',
+                                            'rgba(248,189,9,0.8)',
+                                        ],
+                                        borderColor: [
+                                            'rgb(255,192,0)',
+                                            'rgba(4,16,30)',
+
                                         ]
                                     }]
                                 },
@@ -318,7 +320,7 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpValorUnitario" class="label-control">Número do cartão:</label>
-                                <input type="text" name="inpValorUnitario" id="inpValorUnitario"
+                                <input type="text" name="inpValorUnitario" id="inpValorUnitario"  minlength="6" maxlength="6"
                                        class="inputzz">
                             </div>
                             <div>
@@ -362,7 +364,7 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpEditValorUnitario" class="label-control">Número do cartão:</label>
-                                <input type="text" name="inpEditValorUnitario" id="inpEditValorUnitario"
+                                <input type="text" name="inpEditValorUnitario" id="inpEditValorUnitario"  minlength="6" maxlength="6"
                                        class="inputzz">
                             </div>
                             <div>

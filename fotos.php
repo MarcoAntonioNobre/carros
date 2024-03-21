@@ -7,6 +7,12 @@
         </button>
     </div>
     <div class=" card-body">
+        <?php
+        $contar = 1;
+        $foto = listarTabelaInnerJoinTriplo('*', 'foto', 'carro', 'proprietario', 'idcarro', 'idcarro', 'idproprietario', 'idproprietario', 'idfoto', 'desc');
+        if ($foto !== 'Vazio') {
+        ?>
+
         <table class="table table-striped table-hover">
             <thead>
             <tr class="text-center ">
@@ -18,11 +24,8 @@
             </tr>
             </thead>
             <tbody>
-            <?php
-            $contar = 1;
-            $foto = listarTabelaInnerJoinTriplo('*', 'foto', 'carro', 'proprietario', 'idcarro', 'idcarro', 'idproprietario', 'idproprietario', 'idfoto', 'desc');
-            if ($foto !== 'Vazio') {
 
+                <?php
                 foreach ($foto as $fotos) {
                     $id = $fotos->idfoto;
                     $nomeCarro = $fotos->nomeCarro;
@@ -72,10 +75,10 @@
                 }
             } else {
                 ?>
-                <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-                    <h1>Página Vazia, Retorne. </h1>
-                    <img src="./img/vazio.gif" alt="ERROR 404">
-                </div>
+                    <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
+                        <h1>Página Vazia. </h1>
+                        <img src="./img/vazio.gif" alt="ERROR 404">
+                    </div>
                 <?php
             }
 

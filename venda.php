@@ -3,6 +3,12 @@
         # Vendas
     </div>
     <div class="card-body">
+        <?php
+        $listarVenda = listarTabelaInnerJoin('*', 'compras','carro','idcarro','idcarro','t.idcompras','DESC');
+
+        if ($listarVenda !== 'Vazio') {
+        $cont = 1;
+        ?>
         <table class="table table-striped table-hover text-center">
             <thead>
             <tr>
@@ -15,11 +21,9 @@
             </tr>
             </thead>
             <tbody>
-            <?php
-            $listarVenda = listarTabelaInnerJoin('*', 'compras','carro','idcarro','idcarro','t.idcompras','DESC');
 
-            if ($listarVenda !== 'Vazio') {
-                $cont = 1;
+
+                <?php
                 foreach ($listarVenda as $venda) {
                     $id = $venda-> idcompras;
                     $nomeCarro = $venda->nomeCarro;
@@ -60,10 +64,10 @@
                 }
             } else {
                 ?>
-                <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-                    <h1>Página Vazia, Retorne. </h1>
-                    <img src="./img/vazio.gif" alt="ERROR 404">
-                </div>
+                    <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
+                        <h1>Página Vazia. </h1>
+                        <img src="./img/vazio.gif" alt="ERROR 404">
+                    </div>
                 <?php
             }
             ?>

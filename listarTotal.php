@@ -3,6 +3,14 @@
         # Total de vendas
     </div>
     <div class="card-body">
+        <?php
+        $contar = 1;
+        $grupos = listarTabela('*', 'proprietario');
+        $RODARODA = 1;
+        $RODARODAnome = 1;
+        $mario = 0;
+        if ($grupos !== 'Vazio') {
+        ?>
         <table class="table table-striped table-hover">
             <thead>
             <tr class="text-center ">
@@ -12,14 +20,8 @@
             </tr>
             </thead>
             <tbody>
-            <?php
-            $contar = 1;
-            $grupos = listarTabela('*', 'proprietario');
-            $RODARODA = 1;
-            $RODARODAnome = 1;
-            $mario = 0;
-            if ($grupos !== 'Vazio') {
 
+                <?php
                 foreach ($grupos as $grupo) {
                     $id = $grupo->idproprietario;
                     $nome = $grupo->nomeProprietario;
@@ -71,10 +73,10 @@
                 }
             } else {
                 ?>
-                <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-                    <h1>Página Vazia. </h1>
-                    <img src="./img/vazio.gif" alt="ERROR 404">
-                </div>
+                        <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
+                            <h1>Página Vazia. </h1>
+                            <img src="./img/vazio.gif" alt="ERROR 404">
+                        </div>
                 <?php
             }
 
