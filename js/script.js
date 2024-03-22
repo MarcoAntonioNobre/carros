@@ -349,7 +349,7 @@ function abrirModalJsADM(id, inID, nome, inNome, dataTime, cpf, inCpf, senha, in
 
                     if (data.success) {
                         carregarConteudo("listarAdm");
-
+                        form.removeEventListener('submit',submitHandler)
                         switch (addEditDel) {
                             case 'addAdm':
                                 addOuEditSucesso('Você', 'success', 'adicionou')

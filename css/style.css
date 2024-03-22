@@ -6,17 +6,18 @@
     }
 }
 
-@media only screen and (max-width: 992px) and (min-width: 768px) {
+@media only screen and (max-width: 999px){
     #nav {
-        min-height: 75vh !important;
+        /*min-height: 75vh !important;*/
+    display: none;
     }
 }
 
-@media only screen and (max-width: 768px) {
-    #nav {
-        min-height:80vh !important;
-    }
-}
+/*@media only screen and (max-width: 768px) {*/
+/*    #nav {*/
+/*        min-height:80vh !important;*/
+/*    }*/
+/*}*/
 
 body {
     font-family: "Roboto", sans-serif;
@@ -496,70 +497,81 @@ td strong .a:hover {
 .mostrar {
     display: block;
 }
-
-.inputii {
-    display: flex;
-    flex-direction: column;
-    background-color: #000000;
-    justify-content: center;
-    border-radius: 5px;
-    position: relative;
-    /*top: 0;*/
-    transform: translateY(50%);
+@media (max-width: 999px) {
+    .inputii{
+        display: none;
+    }
 }
 
-.value {
-    background-color: transparent;
-    border: none;
-    padding: 10px;
-    color: white;
-    display: flex;
-    position: relative;
-    gap: 5px;
-    cursor: pointer;
-    border-radius: 4px;
+@media(min-width: 999px){
+
+    .inputii {
+        display: flex;
+        flex-direction: column;
+        background-color: #000000;
+        justify-content: center;
+        border-radius: 5px;
+        position: relative;
+        /*top: 0;*/
+        transform: translateY(50%);
+    }
+
+    .value {
+        background-color: transparent;
+        border: none;
+        padding: 10px;
+        color: white;
+        display: flex;
+        position: relative;
+        gap: 5px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .value:not(:active):hover,
+    .value:focus {
+        background-color: #ffffff;
+        color: black;
+    }
+
+    .value:focus,
+    .value:active {
+
+        outline: none;
+        background-color: #b4b4b4;
+        color: black;
+    }
+
+    .value::before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: -10px;
+        width: 5px;
+        height: 80%;
+        background-color: #ffffff;
+        border-radius: 5px;
+        opacity: 0;
+    }
+
+    .value:focus::before,
+    .value:active::before {
+        opacity: 1;
+    }
+
+    .value svg {
+        width: 15px
+    }
+
+    .inputii:hover > :not(.value:hover) {
+        transition: 300ms;
+        filter: blur(1px);
+        transform: scale(0.95,0.95);
+    }
+
+
 }
 
-.value:not(:active):hover,
-.value:focus {
-    background-color: #ffffff;
-    color: black;
-}
-
-.value:focus,
-.value:active {
-
-    outline: none;
-    background-color: #b4b4b4;
-    color: black;
-}
-
-.value::before {
-    content: "";
-    position: absolute;
-    top: 5px;
-    left: -10px;
-    width: 5px;
-    height: 80%;
-    background-color: #ffffff;
-    border-radius: 5px;
-    opacity: 0;
-}
-
-.value:focus::before,
-.value:active::before {
-    opacity: 1;
-}
-
-.value svg {
-    width: 15px
-}
-
-.inputii:hover > :not(.value:hover) {
-    transition: 300ms;
-    filter: blur(1px);
-    transform: scale(0.95,0.95);
-}
 
 /*===============================================================*/
 @keyframes loading {

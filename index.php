@@ -2,7 +2,7 @@
 include_once("config/constantes.php");
 include_once("config/conexao.php");
 include_once("func/funcoes.php");
-
+$adm = 0;
 ?>
 
 <!doctype html>
@@ -17,8 +17,10 @@ include_once("func/funcoes.php");
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/style-navbar.css">
+
 </head>
 <style>
     input[type="text"], textarea {
@@ -98,6 +100,7 @@ include_once('navbar.php');
 <script src="http://www.geradorcpf.com/scripts.js"></script>
 <script src="http://www.geradorcpf.com/jquery-1.2.6.pack.js"></script>
 <script src="http://www.geradorcpf.com/jquery.maskedinput-1.1.4.pack.js"></script>
+<script src="./js/mobile-navbar.js"></script>
 <script src="./js/formatacoes.js"></script>
 <script src="./js/script.js"></script>
 <script src="js/js.js"></script>
