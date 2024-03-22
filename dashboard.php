@@ -179,7 +179,7 @@ if ($_SESSION['idadm']) {
 
                                 <div class="mt-3">
                                     <div class="wave-group">
-                                        <input required="required" min="1" max="500" type="number" class="input"
+                                        <input required="required" min="1" type="number" class="input"
                                                name="inQuantidade"
                                                id="inQuantidade">
                                         <span class="bar"></span>

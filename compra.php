@@ -23,29 +23,29 @@ if (isset($dados) && !empty($dados)) {
         $compraCliente = listarTabela('*', 'cliente');
         foreach ($compraCliente as $cliente) {
             $numcartao = $cliente->numeroCartao;
-            if($numcartao === $cartao) {
+            if ($numcartao === $cartao) {
                 $codigoCartao = $cliente->numeroCartao;
                 $valorNoCartao = $cliente->valorCartao;
             }
         }
 
         $total = $precoV * $qtd;
-
-        if ($total > $valorNoCartao) {
+        if ($codigoCartao == '') {
+            echo json_encode(['success' => false, 'message' => 'Cartão não existe']);
+        } else if ($total > $valorNoCartao) {
             echo json_encode(['success' => false, 'message' => 'Compra não efetuada. Limite insuficiente!!']);
-
         } else if ($codigoCartao === $cartao) {
             $idcliente = $cliente->idcliente;
 
             $result = $valorNoCartao - $total;
-            $retornoupdate = alterarGlobal1('cliente', 'valorCartao', "$result", 'numeroCartao', "$idcartao");
+            $retornoupdate = alterarGlobal1('cliente', 'valorCartao', "$result", 'numeroCartao', "$codigoCartao");
             $retornoInsert = insertGlobal6('compras', 'idcarro,idcliente,valorUnidade,qtdComprada,valorPago,cadastro', $idcarro, $idcliente, $precoV, $qtd, $total, DATATIMEATUAL);
             if ($retornoInsert > 0) {
                 echo json_encode(['success' => true, 'message' => "Veículo comprado no cartão com sucesso"]);
             } else {
                 echo json_encode(['success' => false, 'message' => "Veículo não comprado!"]);
             }
-        }else{
+        } else {
             echo json_encode(['success' => false, 'message' => "Variável indefinida"]);
         }
 
