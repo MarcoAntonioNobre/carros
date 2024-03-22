@@ -57,9 +57,7 @@
                 </div>
                 <?php
             }
-
             ?>
-
             </tbody>
         </table>
     </div>

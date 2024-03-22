@@ -1,4 +1,4 @@
-<div class="card mt-3">
+<div class="card cardt mt-3">
     <div class="card-header espaco fs-3">
         # Cliente
         <button class="btn btn-outline-dark" data-bs-toggle="modal" onclick="abrirModalJsCliente('nao', 'nao', 'nao', 'nao', '<?php echo DATATIMEATUAL?>','nao','nao','nao','nao','nao','nao', 'mdlCadCliente','A', 'btnCadCliente', 'addCliente', 'inpNome', 'nao', 'frmCadCliente')">Cadastrar</button>
