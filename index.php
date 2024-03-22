@@ -73,7 +73,7 @@ include_once('navbar.php');
                     <div class="alert erroBonito p-1 text-center" role="alert" id="alertlog" style="display: none;">
                     </div>
                     <button type="button" class="w-100" onclick="fazerLogin()">
-                        <span class="text">Login</span>
+                        <span class="">Login</span>
                     </button>
                 </form>
             </div>

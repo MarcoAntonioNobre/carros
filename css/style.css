@@ -12,7 +12,9 @@
     display: none;
     }
 }
-
+#show{
+    min-height: 87vh;
+}
 /*@media only screen and (max-width: 768px) {*/
 /*    #nav {*/
 /*        min-height:80vh !important;*/
@@ -343,7 +345,7 @@ td strong .a:hover {
 }
 
 .wave-group .label {
-    color: #999;
+    color: #000000;
     font-size: 18px;
     font-weight: normal;
     position: absolute;
