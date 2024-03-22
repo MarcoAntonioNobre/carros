@@ -95,7 +95,7 @@
   display: block;
   width: 200px;
   border: none;
-  border-bottom: 1px solid #515151;
+  border-bottom: 1px solid #2D4366;
   background: transparent !important;
 }
 
@@ -104,7 +104,7 @@
 }
 
 .wave-group .label {
-  color: #999;
+  color: #ffffff;
   font-size: 18px;
   font-weight: normal;
   position: absolute;
@@ -138,7 +138,7 @@
   width: 0;
   bottom: 1px;
   position: absolute;
-  background: #940000!important;
+  background: #2D4366 !important;
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
