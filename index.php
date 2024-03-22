@@ -26,7 +26,7 @@ include_once("func/funcoes.php");
     }
 </style>
 <body class="bodylogin"
-      style="background-image: url('./img/funlogin3.jpg');background-size: cover;background-repeat: no-repeat;width: 100%;height: 100%;">
+      style="background-size: cover;background-repeat: no-repeat;width: 100%;height: 100%;">
 <?php
 include_once('navbar.php');
 ?>

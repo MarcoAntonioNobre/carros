@@ -30,7 +30,7 @@
                     $proprietario = $carro->nomeProprietario;
                     $nomeCarro = $carro->nomeCarro;
                     $diferenciais = $carro->diferenciais;
-                    $valor = $carro->preco  ;
+                    $valor = $carro->preco;
                     $foto = $carro->fotoPerfil;
                     $nomeCarro = mb_strtolower($nomeCarro);
                     $nomeCarro = converterAcentuacao($nomeCarro);
@@ -46,8 +46,12 @@
                             ?></td>
                         <td><?php echo $nomeCarro
                             ?></td>
-                        <td><?php echo $valor
-                            ?></td>
+                        <td>
+                            <?php
+                            $preco = conversorDBNum($valor);
+                            echo $preco;
+                            ?>
+                        </td>
                         <td>
                             <button class="btn btn-outline-primary" onclick="abrirModalCarro('<?php echo $idcarro?>','<?php echo $nomeCarro?>','<?php echo $diferenciais?>','<?php echo $valor?>','<?php echo $proprietario?>')">Alterar</button>
                             <button class="btn btn-outline-danger" onclick="abrirModalDeleteCarro(<?php echo $idcarro?>)">Excluir</button>

@@ -1,3 +1,7 @@
+function refresh(){
+    window.location.reload()
+}
+
 function abrirModalCompra(idcarro, precoV, nome, descricao) {
     const idQtd = document.getElementById('inQuantidade');
     const preco = document.getElementById('precoVeiculo');
@@ -79,6 +83,9 @@ if (modalCompra) {
                         addErro()
                         alert(data.message)
                         abrirFecharModalCompra('vermais', 'F');
+                        setTimeout(() => {
+                            window.location.href = 'dashboard.php';
+                        }, "1500");
                     }
                 })
         }
