@@ -99,7 +99,7 @@ if ($_SESSION['idadm']) {
                             $diferenciais = converterAcentuacao($diferenciais);
                             ?>
 
-                            <div class="col-lg-2 col-md-4 col-12 ">
+                            <div class="col-lg-2 col-md-4 col-6">
                                 <div class="card mt-4">
                                     <img src="./img/<?php echo $foto; ?>" class="card-img-top" alt="...">
                                     <div class="card-body text-center">
