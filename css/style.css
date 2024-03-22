@@ -504,7 +504,7 @@ td strong .a:hover {
     justify-content: center;
     border-radius: 5px;
     position: relative;
-    top: 0;
+    /*top: 0;*/
     transform: translateY(50%);
 }
 
@@ -561,6 +561,7 @@ td strong .a:hover {
     transform: scale(0.95,0.95);
 }
 
+/*===============================================================*/
 @keyframes loading {
     0% {
         transform: rotate(0);
@@ -574,7 +575,7 @@ td strong .a:hover {
     animation: loading 4s linear infinite;
 }
 
-
+/*================================================*/
 
 .custom_input {
     display: flex;
@@ -646,13 +647,6 @@ td strong .a:hover {
 
 /*==========================================*/
 
-
-.tamanhoGrafico{
-    width: 800px;
-}
-.tamanhoGrafico2{
-    width: 600px;
-}
 .graficos{
     display: flex;
     justify-content: space-between;

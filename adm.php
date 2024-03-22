@@ -38,7 +38,7 @@ if ($_SESSION['idadm']) {
     <div class="row">
         <div id="nav" class="col-lg-2 col-md-12 bg-black text-white text-center fs-5 ">
             <div class="inputii">
-                <button class="value" onclick="carregarConteudo('home')">
+                <button class="value" onclick="refresh()">
                     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" data-name="Layer 2">
                         <i class="bi bi-bar-chart-line"></i>
                     </svg>

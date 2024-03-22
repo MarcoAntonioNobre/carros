@@ -65,8 +65,9 @@
                         </td>
                         <td>
                             <?php
-                            if ($cartao !== '') {
-                                echo 'R$ '.$cartao;
+                            $valorNoCartao = conversorDBNum($cartao);
+                            if ($valorNoCartao !== '') {
+                                echo 'R$ '.$valorNoCartao;
                             } else {
                                 echo 'Sem limite';
                             }
