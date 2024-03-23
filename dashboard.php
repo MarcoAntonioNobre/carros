@@ -169,7 +169,7 @@ if ($_SESSION['idadm']) {
                                     </div>
                                 </div>
                                 <!--<div class="card mt-4">
-                                    <img src="./img/<?php //echo $foto; ?>" class="card-img-top" alt="<?php echo $nomeCarro ?>">
+                                    <img src="./img/<?php //echo $foto; ?>" class="card-img-top" alt="<?php // // ?>">
                                     <div class="card-body text-center">
                                         <h5 class="card-title"><?php // echo $nomeCarro ?></h5>
                                         <button type="submit" class="btn btn-outline-dark" data-bs-toggle="modal"
@@ -241,9 +241,21 @@ if ($_SESSION['idadm']) {
                                     <label for="dinheiro">Dinheiro</label>
                                 </div>
                                 <div class="mt-3" id="cartaoCod" style="display: none">
-                                    <label for="codCartao">Número do cartão:</label>
-                                    <input type="text" name="codCartao" id="codCartao" class="form-control"
-                                           minlength="6" maxlength="6">
+                                    <div class="wave-group">
+                                        <input  minlength="6" maxlength="6" type="text" class="input"
+                                               name="codCartao" id="codCartao">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">C</span>
+                                            <span class="label-char" style="--index: 1">a</span>
+                                            <span class="label-char" style="--index: 2">r</span>
+                                            <span class="label-char" style="--index: 3">t</span>
+                                            <span class="label-char" style="--index: 4">ã</span>
+                                            <span class="label-char" style="--index: 5">o</span>
+
+                                        </label>
+                                    </div>
+
                                 </div>
 
                                 <div class="mt-3">
