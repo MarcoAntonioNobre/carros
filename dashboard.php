@@ -188,7 +188,7 @@ if ($_SESSION['idadm']) {
                     } else {
                         ?>
                         <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-                            <h1>Página Vazia, Retorne. </h1>
+                            <h1>Página Vazia. </h1>
                             <img src="./img/vazio.gif" alt="vazio">
                         </div>
                         <?php
@@ -212,8 +212,8 @@ if ($_SESSION['idadm']) {
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="tituloCarro">Comprar
                         carro</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal"-->
+<!--                            aria-label="Close"></button>-->
                 </div>
                 <div class="modal-body">
                     <div>
@@ -292,7 +292,7 @@ if ($_SESSION['idadm']) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
-                            data-bs-dismiss="modal">Fechar
+                            onclick="redireciona('dashboard')">Fechar
                     </button>
                     <button type="submit" class="btn btn-success" id="btnCompra">Comprar</button>
                 </div>
