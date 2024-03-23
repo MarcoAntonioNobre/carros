@@ -48,7 +48,7 @@
                 </li>
                 <li onclick="carregarConteudo('listarTotal')">
                     <i class="bi bi-cash-coin"></i>
-                    Total
+                    Total de vendas
                 </li>
                 <li onclick="carregarConteudo('listarVenda')">
                     <i class="bi bi-cash-stack"></i>
