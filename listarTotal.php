@@ -81,7 +81,7 @@
         } else {
             ?>
             <div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">
-                <h1>Página Vazia. </h1>
+                <h1>Página Vazia.</h1>
                 <img src="./img/vazio.gif" alt="ERROR 404">
             </div>
             <?php

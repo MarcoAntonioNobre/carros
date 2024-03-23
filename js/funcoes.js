@@ -1,4 +1,4 @@
-function refresh(){
+function refresh() {
     window.location.reload()
 }
 
@@ -102,8 +102,6 @@ function abrirFecharModalCompra(idModal, abrirOuFechar) {
         modalInstancia.hide();
     }
 }
-
-
 
 
 const carroModalInstancia = new bootstrap.Modal(document.getElementById('mdlCadCarro'));
