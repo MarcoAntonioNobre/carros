@@ -80,12 +80,12 @@ if (modalCompra) {
                         abrirFecharModalCompra('vermais', 'F');
                     } else {
                         btnCompra.disabled = false;
-                        addErro()
-                        alert(data.message)
+                        addErroCompra(data.message)
+                        // alert(data.message)
                         abrirFecharModalCompra('vermais', 'F');
                         setTimeout(() => {
                             window.location.href = 'dashboard.php';
-                        }, "1500");
+                        }, "2000");
                     }
                 })
         }
@@ -464,6 +464,33 @@ function addErro() {
         title: "Erro ao Manipular <br> Tente Novamente.",
         html: "Fechando em <b></b> ms.",
         timer: 1500,
+        icon: "error",
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+
+                timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+    }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("fechando..");
+        }
+    });
+};
+
+function addErroCompra(msg) {
+    let timerInterval;
+    Swal.fire({
+        title: `${msg}` + "<br> Tente Novamente.",
+        html: "Fechando em <b></b> ms.",
+        timer: 2000,
         icon: "error",
         timerProgressBar: true,
         didOpen: () => {

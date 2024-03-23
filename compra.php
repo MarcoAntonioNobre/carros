@@ -30,7 +30,7 @@ if (isset($dados) && !empty($dados)) {
         }
 
         $total = $precoV * $qtd;
-        if ($codigoCartao == '') {
+        if ($codigoCartao === 0) {
             echo json_encode(['success' => false, 'message' => 'Cartão não existe']);
         } else if ($total > $valorNoCartao) {
             echo json_encode(['success' => false, 'message' => 'Compra não efetuada. Limite insuficiente!!']);
