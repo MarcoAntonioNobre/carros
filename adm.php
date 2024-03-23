@@ -33,7 +33,7 @@ if ($_SESSION['idadm']) {
 
 </head>
 
-<body>
+<body class="dark-mode">
 
 <?php include_once('navbar.php') ?>
 

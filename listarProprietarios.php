@@ -6,7 +6,7 @@
     </button>
 
 </div>
-<div class="card-body">
+<div class="">
     <?php
     $proprietarios = listarTabela('*', 'proprietario', 'nomeProprietario');
     if ($proprietarios !== 'Vazio') {
