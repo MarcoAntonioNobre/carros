@@ -615,41 +615,82 @@ function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
                 const mostrar = document.getElementById('mostrar');
                 if (data.success) {
 
+                    const divMaeDeTodos = document.createElement('div');
                     const divMain = document.createElement('div');
                     const divCol = document.createElement('div');
+                    const divCol2 = document.createElement('div');
+                    const divCol3 = document.createElement('div');
                     const divCard = document.createElement('div');
                     const divBody = document.createElement('div');
                     const Imagem = document.createElement('img');
                     const divTexto = document.createElement('div');
+                    const h1 = document.createElement('h1');
+                    const hr = document.createElement('hr');
+                    const divContainerHR = document.createElement('div');
+                    const divPreco = document.createElement('div');
                     const h5 = document.createElement('h5');
+                    const divBotao = document.createElement('div');
+
+
                     const buttonCard = document.createElement('button');
                     mostrar.innerHTML = '';
                     mostrar.appendChild(divMain)
+                    divMain.classList.add("mt-5");
                     divMain.classList.add("row");
                     divMain.classList.add("d-flex");
                     divMain.classList.add("justify-content-center");
                     divMain.classList.add("align-items-center");
                     divMain.appendChild(divCol)
-                    divCol.classList.add("col-lg-4");
-                    divCol.classList.add("col-md-4");
+                    divCol.classList.add("col-lg-6");
+                    divCol.classList.add("col-md-8");
                     divCol.classList.add("col-12");
+                    divCol.classList.add("bordaColPesquisar");
+                    divCol.classList.add("m-0");
+                    divCol.classList.add("p-0");
                     divCol.appendChild(divCard)
-                    divCard.classList.add("card");
-                    divCard.classList.add("mt-4");
-                    divCard.appendChild(Imagem)
+                    divCard.classList.add("row");
+                    divCard.appendChild(divCol2)
+                    divCol2.classList.add("col-6");
+                    divCol2.classList.add("d-flex");
+                    divCol2.classList.add("align-items-center");
+                    divCol2.appendChild(Imagem)
                     Imagem.src = "./img/" + data.fotoPerfil;
                     Imagem.classList.add("card-img-top");
                     Imagem.classList.add("img-fluid");
-                    divCard.appendChild(divBody)
-                    divBody.classList.add("card-body");
-                    divBody.classList.add("text-center");
-                    divBody.appendChild(divTexto)
+                    Imagem.classList.add("bordafotoPesquisar");
+                    Imagem.classList.add("w-100");
+                    Imagem.classList.add("h-100");
 
-                    divTexto.appendChild(h5)
-                    divTexto.classList.add("card-title");
-                    divTexto.innerHTML = "<b>" + data.nomeCarro + "</b>";
+                    divCard.appendChild(divCol3);
 
-                    divBody.appendChild(buttonCard)
+                    divCol3.classList.add("col-6");
+                    divCol3.appendChild(divTexto)
+                    divTexto.classList.add("d-flex");
+                    divTexto.classList.add("align-items-center");
+                    divTexto.classList.add("justify-content-end");
+                    divTexto.classList.add("mt-5");
+                    divTexto.classList.add("ms-5");
+                    divTexto.classList.add("me-3");
+                    divTexto.appendChild(h1)
+                    h1.innerHTML = "<b>" + data.nomeCarro + "</b>";
+                    divCol3.appendChild(divContainerHR)
+                    divContainerHR.classList.add("container");
+                    divContainerHR.appendChild(hr)
+                    divCol3.appendChild(divPreco)
+                    divPreco.classList.add("d-flex");
+                    divPreco.classList.add("justify-content-end");
+                    divPreco.classList.add("mt-4");
+                    divPreco.classList.add("mb-1");
+                    divPreco.classList.add("ms-5");
+                    divPreco.classList.add("me-3");
+                    divPreco.appendChild(h5)
+                    h5.innerHTML = "R$" +data.preco ;
+
+                    divCol3.appendChild(divBotao)
+                    divBotao.classList.add("d-flex");
+                    divBotao.classList.add("align-items-center");
+                    divBotao.classList.add("justify-content-center");
+                    divBotao.appendChild(buttonCard)
 
                     //  dasdas
                     buttonCard.setAttribute('onclick', 'abrirModalCompra(\'' + data.idcarro + '\',\'' + data.preco + '\',\'' + data.nomeCarro + '\',\'' + data.diferenciais + '\')')

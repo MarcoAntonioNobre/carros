@@ -20,79 +20,90 @@ function abrirModalCompra(idcarro, precoV, nome, descricao) {
 }
 
 function abrirFecharModalCompra(idModal, abrirOuFechar) {
-    const modalInstancia = new bootstrap.Modal(document.getElementById(idModal));
-    if (abrirOuFechar == 'A') {
+    const modalInstancia = new bootstrap.Modal(document.getElementById(`${idModal}`))
+    if (abrirOuFechar === 'A') {
         modalInstancia.show();
+
+
+        //const modalCompraInstancia = document.getElementById('vermais')
+        const modalCompra = document.getElementById('vermais');
+        const inpCompra = document.getElementById('inQuantidade');
+        const btnCompra = document.getElementById('btnCompra')
+
+        if (modalCompra) {
+            const formCompra = document.getElementById('frmCompra')
+
+            modalCompra.addEventListener('shown.bs.modal', () => {
+                inpCompra.focus()
+                const valorTotal = document.getElementById('valorTotal');
+                const calcular = document.getElementById('calcular');
+                const preco = document.getElementById('precoVeiculo').value;
+                calcular.addEventListener('click', function () {
+                    const inputQtd = document.getElementById('inQuantidade').value;
+                    const resultado = preco * inputQtd
+                    valorTotal.innerHTML = 'R$ ' + resultado;
+                })
+                const cartao = document.getElementById('cartao');
+                const codCartao = document.getElementById('cartaoCod');
+                cartao.addEventListener('click', function () {
+                    codCartao.style.display = 'block';
+                });
+                const dinheiro = document.getElementById('dinheiro');
+                dinheiro.addEventListener('click', function () {
+                    codCartao.style.display = 'none';
+                })
+
+                const submitHandler = function (event) {
+                    event.preventDefault();
+                    btnCompra.disabled = true;
+                    //modalCompraInstancia.hide();
+                    const form = event.target;
+                    const formData = new FormData(form);
+                    formData.append('controle', 'compra');
+                    fetch('controle.php', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+
+                            if (data.success) {
+                                console.log(data)
+                                btnCompra.disabled = false;
+                                addOuEditSucesso('Compra', 'success', ' efetuada')
+                                setTimeout(() => {
+                                    window.location.href = 'dashboard.php';
+                                }, "1500");
+                                abrirFecharModalCompra('vermais', 'F');
+                            } else {
+                                btnCompra.disabled = false;
+                                addErroCompra(data.message)
+                                // alert(data.message)
+                                abrirFecharModalCompra('vermais', 'F');
+                                setTimeout(() => {
+                                    window.location.href = 'dashboard.php';
+                                }, "2000");
+                            }
+
+                        })
+                        .catch(error => {
+                            ModalInstacia.hide();
+                            console.error('Erro na requisição:', error);
+                        });
+                }
+                formCompra.addEventListener('submit', submitHandler)
+
+            })
+
+        }
+
     } else {
+
         modalInstancia.hide();
     }
 }
 
-//const modalCompraInstancia = document.getElementById('vermais')
-const modalCompra = document.getElementById('vermais');
-const inpCompra = document.getElementById('inQuantidade');
-const btnCompra = document.getElementById('btnCompra')
 
-if (modalCompra) {
-    const formCompra = document.getElementById('frmCompra')
-
-    modalCompra.addEventListener('shown.bs.modal', () => {
-        inpCompra.focus()
-        const valorTotal = document.getElementById('valorTotal');
-        const calcular = document.getElementById('calcular');
-        const preco = document.getElementById('precoVeiculo').value;
-        calcular.addEventListener('click', function () {
-            const inputQtd = document.getElementById('inQuantidade').value;
-            const resultado = preco * inputQtd
-            valorTotal.innerHTML = 'R$ ' + resultado;
-        })
-        const cartao = document.getElementById('cartao');
-        const codCartao = document.getElementById('cartaoCod');
-        cartao.addEventListener('click', function () {
-            codCartao.style.display = 'block';
-        });
-        const dinheiro = document.getElementById('dinheiro');
-        dinheiro.addEventListener('click', function () {
-            codCartao.style.display = 'none';
-        })
-
-        const submitHandler = function (event) {
-            event.preventDefault();
-            btnCompra.disabled = true;
-            //modalCompraInstancia.hide();
-            const form = event.target;
-            const formData = new FormData(form);
-            formData.append('controle', 'compra');
-            fetch('controle.php', {
-                method: 'POST',
-                body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-
-                    if (data.success) {
-                        console.log(data)
-                        btnCompra.disabled = false;
-                        addOuEditSucesso('Compra', 'success', ' efetuada')
-                        setTimeout(() => {
-                            window.location.href = 'dashboard.php';
-                        }, "1500");
-                        abrirFecharModalCompra('vermais', 'F');
-                    } else {
-                        btnCompra.disabled = false;
-                        addErroCompra(data.message)
-                        // alert(data.message)
-                        abrirFecharModalCompra('vermais', 'F');
-                        setTimeout(() => {
-                            window.location.href = 'dashboard.php';
-                        }, "2000");
-                    }
-                })
-        }
-        formCompra.addEventListener('submit', submitHandler)
-
-    })
-}
 
 
 const carroModalInstancia = new bootstrap.Modal(document.getElementById('mdlCadCarro'));
