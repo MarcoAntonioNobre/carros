@@ -26,6 +26,7 @@ if (isset($dados) && !empty($dados)) {
             if ($numcartao === $cartao) {
                 $codigoCartao = $cliente->numeroCartao;
                 $valorNoCartao = $cliente->valorCartao;
+                $idcliente = $cliente->idcliente;
             }
         }
 
@@ -35,7 +36,6 @@ if (isset($dados) && !empty($dados)) {
         } else if ($total > $valorNoCartao) {
             echo json_encode(['success' => false, 'message' => 'Compra não efetuada. Limite insuficiente!!']);
         } else if ($codigoCartao === $cartao) {
-            $idcliente = $cliente->idcliente;
 
             $result = $valorNoCartao - $total;
             $retornoupdate = alterarGlobal1('cliente', 'valorCartao', "$result", 'numeroCartao', "$codigoCartao");
@@ -63,3 +63,4 @@ if (isset($dados) && !empty($dados)) {
 }
 
 //echo json_encode($dados);
+
