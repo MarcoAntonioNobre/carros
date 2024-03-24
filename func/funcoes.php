@@ -236,6 +236,29 @@ function listarTabelaInnerJoinTriplo($campos, $tabela1, $tabela2, $tabela3, $id1
     $conn = null;
 }
 
+function listarTabelaInnerJoinTriploWhere($campos, $tabela1, $tabela2, $tabela3, $id1, $id2, $id3, $id4,$quando,$idquando, $ordem, $tipoOrdem)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("SELECT $campos FROM $tabela1 t INNER JOIN $tabela2 y ON t.$id1 = y.$id2 INNER JOIN $tabela3 i ON t.$id3 = i.$id4 WHERE y.$quando = $idquando ORDER BY t.$ordem $tipoOrdem");
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+
+    } catch (PDOException $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
+
+
 function listarTabelaInnerJoinTriploValorPago($camposSomar, $tabela1, $tabela2, $tabela3, $id1, $id2, $id3, $id4, $identificadorWhere, $idWhere)
 {
     $conn = conectar();
@@ -446,7 +469,7 @@ function alterarGlobal1($tabela, $campo, $valor, $identificar, $id)
     $conn = null;
 }
 
-function alterarGlobal2($tabela, $campo,$campo2, $valor,$valor2, $identificar, $id)
+function alterarGlobal2($tabela, $campo, $campo2, $valor, $valor2, $identificar, $id)
 {
     $conn = conectar();
     try {

@@ -14,7 +14,7 @@ if (isset($dados) && !empty($dados)) {
     $numeroCartao = isset($dados['inpValorUnitario']) ? addslashes(mb_strtoupper($dados['inpValorUnitario'], 'UTF-8')) : '';
     $valorCartao = isset($dados['inpValorCartao']) ? addslashes(mb_strtoupper($dados['inpValorCartao'], 'UTF-8')) : '';
 
-    $retornoInsert = insertGlobal5('cliente', 'nomeCliente, contato, numeroCartao, valorCartao, cadastro', "$nome", "$contato", "$numeroCartao", "$valorCartao", '<?php echo DATATIMEATUAL?>');
+    $retornoInsert = insertGlobal5('cliente', 'nomeCliente, contato, numeroCartao, valorCartao, cadastro', "$nome", "$contato", "$numeroCartao", "$valorCartao", DATATIMEATUAL);
     if ($retornoInsert > 0) {
         echo json_encode(['success' => true, 'message' => "Cliente $nome cadastrado com sucesso"]);
     } else {

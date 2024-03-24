@@ -280,7 +280,7 @@ include_once 'footer.php';
 <div class="modal fade" id="deleteProprietario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-danger text-light">
+            <div class="modal-header bg-danger text-white">
                 <h1 class="modal-title fs-5 " id="exampleModalLabel">Deletar Proprietário</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -288,7 +288,7 @@ include_once 'footer.php';
                 <div class="modal-body">
                     <input type="text" name="idDeleteProprietario" id="idDeleteProprietario" hidden="hidden">
                     <div class="alert alert-danger">
-                        tem certeza?
+                        Tem certeza?
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -323,7 +323,7 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpValorUnitario" class="label-control">Número do cartão:</label>
-                                <input type="text" name="inpValorUnitario" id="inpValorUnitario"  minlength="6" maxlength="6"
+                                <input type="number" name="inpValorUnitario" id="inpValorUnitario"  minlength="6" maxlength="6"
                                        class="inputzz">
                             </div>
                             <div>
@@ -367,7 +367,7 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpEditValorUnitario" class="label-control">Número do cartão:</label>
-                                <input type="text" name="inpEditValorUnitario" id="inpEditValorUnitario"  minlength="6" maxlength="6"
+                                <input type="number" name="inpEditValorUnitario" id="inpEditValorUnitario"  minlength="6" maxlength="6"
                                        class="inputzz">
                             </div>
                             <div>
@@ -482,7 +482,7 @@ include_once 'footer.php';
 <div class="modal fade" id="deleteAdm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header  bg-danger text-light">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Apagar administrador</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -635,13 +635,13 @@ include_once 'footer.php';
 <div class="modal fade" id="mdlDeleteCarro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Apagar venda</h1>
+            <div class="modal-header  bg-danger text-light">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Deletar carro</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="#" name="frmDeleteCarro" id="frmDeleteCarro">
                 <div class="modal-body">
-                    <input type="text" name="idDeleteCarro" id="idDeleteCarro">
+                    <input type="hidden" name="idDeleteCarro" id="idDeleteCarro">
                     <div class="alert alert-danger">
                         Tem certeza?
                     </div>
@@ -760,7 +760,7 @@ include_once 'footer.php';
 <div class="modal fade" id="mdlDeleteFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header  bg-danger text-light">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Apagar foto</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -784,7 +784,7 @@ include_once 'footer.php';
 <div class="modal fade" id="mdlDeleteVenda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header  bg-danger text-light">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Apagar venda</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
