@@ -85,98 +85,101 @@
                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cliente <?php echo $nome ?></h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body vermaisTabela">
-                                    <div>
-                                        <div class="text-start">
-                                            <b>Nome:</b> <?php echo $nome; ?>
-                                        </div>
-                                        <hr>
-                                        <div class="text-start">
-                                            <b>Contato:</b>
-                                            <?php
-                                            if ($contato !== '') {
-                                                echo $contato;
-                                            } else {
-                                                echo 'Não informado';
-                                            }
-                                            ?>
-                                        </div>
-                                        <hr>
-                                        <div class="text-start">
-                                            <b>Número do cartão:</b> <?php echo $numCartao; ?>
-                                        </div>
-                                        <hr>
-                                        <div class="text-start">
-                                            <b>Valor no cartão:</b>
-                                            <?php
-                                            $valorNoCartao = conversorDBNum($cartao);
-                                            if ($valorNoCartao !== '') {
-                                                echo 'R$ ' . $valorNoCartao;
-                                            } else {
-                                                echo 'Sem limite';
-                                            }
-                                            ?>
-                                        </div>
-                                        <hr>
+                                <div id="historico">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                            Cliente <?php echo $nome ?></h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                     </div>
-                                    <div class="mt-4">
-                                        <div class="text-start">
-                                            <h5>Histórico</h5>
+                                    <div class="modal-body vermaisTabela">
+                                        <div>
+                                            <div class="text-start">
+                                                <b>Nome:</b> <?php echo $nome; ?>
+                                            </div>
                                             <hr>
-
-                                            <table class="table vermaisTabela">
-                                                <thead>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Carro</th>
-                                                    <th scope="col">Quantidade</th>
-                                                    <th scope="col">Valor pago</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody class="vermaisTabela">
+                                            <div class="text-start">
+                                                <b>Contato:</b>
                                                 <?php
-                                                $contaHistorico = 1;
-                                                $lista = listarTabelaInnerJoinTriploWhere('*', 'compras', 'cliente', 'carro', 'idcliente', 'idcliente', 'idcarro', 'idcarro', 'idcliente', "$idcliente", 'idcliente', 'DESC');
-                                                if ($lista !== 'Vazio') {
-                                                    foreach ($lista as $historico) {
-                                                        $nomeCarro = $historico->nomeCarro;
-                                                        $qtd = $historico->qtdComprada;
-                                                        $valorPago = $historico->valorPago;
-                                                        ?>
-                                                        <tr>
-                                                            <th scope="row"><?php echo $contaHistorico ?></th>
-                                                            <td><?php echo $nomeCarro ?></td>
-                                                            <td><?php echo $qtd ?></td>
-                                                            <td><?php echo $valorPago ?></td>
-                                                        </tr>
-                                                        <?php
-                                                        ++$contaHistorico;
-                                                    }
+                                                if ($contato !== '') {
+                                                    echo $contato;
                                                 } else {
-                                                    ?>
-                                                    }
-                                                    <tr>
-                                                        <th scope="row" class="text-center" colspan="4">Nenhum dado
-                                                            encontrado!
-                                                        </th>
-                                                    </tr>
-                                                    <?php
+                                                    echo 'Não informado';
                                                 }
                                                 ?>
-                                                </tbody>
-                                            </table>
+                                            </div>
+                                            <hr>
+                                            <div class="text-start">
+                                                <b>Número do cartão:</b> <?php echo $numCartao; ?>
+                                            </div>
+                                            <hr>
+                                            <div class="text-start">
+                                                <b>Valor no cartão:</b>
+                                                <?php
+                                                $valorNoCartao = conversorDBNum($cartao);
+                                                if ($valorNoCartao !== '') {
+                                                    echo 'R$ ' . $valorNoCartao;
+                                                } else {
+                                                    echo 'Sem limite';
+                                                }
+                                                ?>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                        <div class="mt-4">
+                                            <div class="text-start">
+                                                <h5>Histórico</h5>
+                                                <hr>
+                                                <table class="table vermaisTabela">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Carro</th>
+                                                        <th scope="col">Quantidade</th>
+                                                        <th scope="col">Valor pago</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody class="vermaisTabela">
+                                                    <?php
+                                                    $contaHistorico = 1;
+                                                    $lista = listarTabelaInnerJoinTriploWhere('*', 'compras', 'cliente', 'carro', 'idcliente', 'idcliente', 'idcarro', 'idcarro', 'idcliente', "$idcliente", 'idcliente', 'DESC');
+                                                    if ($lista !== 'Vazio') {
+                                                        foreach ($lista as $historico) {
+                                                            $nomeCarro = $historico->nomeCarro;
+                                                            $qtd = $historico->qtdComprada;
+                                                            $valorPago = $historico->valorPago;
+                                                            ?>
+                                                            <tr>
+                                                                <th scope="row"><?php echo $contaHistorico ?></th>
+                                                                <td><?php echo $nomeCarro ?></td>
+                                                                <td><?php echo $qtd ?></td>
+                                                                <td>R$ <?php echo $valorPago ?></td>
+                                                            </tr>
+                                                            <?php
+                                                            ++$contaHistorico;
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        }
+                                                        <tr>
+                                                            <th scope="row" class="text-center" colspan="4">Nenhum dado
+                                                                encontrado!
+                                                            </th>
+                                                        </tr>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar
-                                    </button>
-                                    <!--                                    <button type="button" class="btn btn-primary">Save changes</button>-->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar
+                                        </button>
+<!--                                        <button class="btn btn-ligth" onclick="imprimir('historico')">Imprimir</button>-->
+                                        <!--                                    <button type="button" class="btn btn-primary">Save changes</button>-->
+                                    </div>
                                 </div>
                             </div>
                         </div>

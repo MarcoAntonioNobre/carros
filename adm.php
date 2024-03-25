@@ -3,7 +3,7 @@
 include_once("./config/constantes.php");
 include_once("./config/conexao.php");
 include_once("./func/funcoes.php");
-
+$imprimir = 1;
 $adm = 1;
 
 if ($_SESSION['idadm']) {
@@ -223,8 +223,12 @@ if ($_SESSION['idadm']) {
                         </script>
                     </div>
                 </div>
-
             </div>
+
+
+
+
+
         </div>
     </div>
 </div>

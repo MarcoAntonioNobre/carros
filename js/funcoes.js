@@ -521,3 +521,92 @@ function addErroCompra(msg) {
     });
 };
 
+
+function imprimir(tabela) {
+    const conteudo = document.getElementById(tabela).innerHTML;
+//alert('hey')
+    let estilo = "<style>";
+    estilo += "table {width: 100%; font: 25px Calibri;}"
+    estilo += "th{border: solid 2px #000;}"
+    estilo += "table, thead,tbody, td {border: solid 2px #000; border-collapse: collapse;"
+    estilo += "padding: 4px 8px; text-align: center;}"
+    estilo += "</style>"
+
+    const win = window.open('', '', 'height=700,width=1000');
+
+    win.document.write('<html>')
+    win.document.write('<head>')
+    win.document.write('<title>Imprimir resultado</title>')
+    win.document.write(estilo)
+    win.document.write('</head>')
+    win.document.write('<body>')
+    win.document.write(conteudo)
+    win.document.write('</body>')
+    win.document.write('</html>')
+
+    win.print();
+}
+
+
+// const btnImprimirVendas = document.getElementById('btnImp');
+//
+// function imprime(tabela){
+//     btnImprimirVendas.addEventListener('click', (evt) => {
+//         const conteudo = document.getElementById(tabela).innerHTML;
+//
+//         let estilo = "<style>";
+//         estilo += "table {width: 100%; font: 25px Calibri;}"
+//         estilo += "th{border: solid 2px #000;}"
+//         estilo += "table, thead,tbody, td {border: solid 2px #000; border-collapse: collapse;"
+//         estilo += "padding: 4px 8px; text-align: center;}"
+//         estilo += "</style>"
+//
+//         const win = window.open('', '', 'height=700,width=700');
+//
+//         win.document.write('<html>')
+//         win.document.write('<head>')
+//         win.document.write('<title>Imprimir resultado</title>')
+//         win.document.write(estilo)
+//         win.document.write('</head>')
+//         win.document.write('<body>')
+//         win.document.write(conteudo)
+//         win.document.write('</body>')
+//         win.document.write('</html>')
+//
+//         win.print();
+//     })
+//
+//
+// }
+
+
+// const btnImprimirHistorico = document.getElementById('btnImp');
+//
+// if (btnImprimirHistorico) {
+//     btnImprimirHistorico.addEventListener('click', (evt) => {
+//         const tabela = document.getElementById('historico').innerHTML;
+//
+//         let estilo = "<style>";
+//         estilo += "table {width: 100%; font: 25px Calibri;}"
+//         estilo += "th{border: solid 2px #000;}"
+//         estilo += "table, thead,tbody, td {border: solid 2px #000; border-collapse: collapse;"
+//         estilo += "padding: 4px 8px; text-align: center;}"
+//         estilo += "</style>"
+//
+//         const win = window.open('', '', 'height=700,width=700');
+//
+//         win.document.write('<html>')
+//         win.document.write('<head>')
+//         win.document.write('<title>Imprimir resultado</title>')
+//         win.document.write(estilo)
+//         win.document.write('</head>')
+//         win.document.write('<body>')
+//         win.document.write(tabela)
+//         win.document.write('</body>')
+//         win.document.write('</html>')
+//
+//         win.print();
+//     })
+//
+//
+// }
