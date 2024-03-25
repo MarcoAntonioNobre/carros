@@ -5,7 +5,9 @@ if (isset($Dados) && !empty($Dados)) {
 
     $inputPesquisa = isset($Dados['inputPesquisa']) ? addslashes(mb_strtoupper($Dados['inputPesquisa'], 'UTF-8')) : '';
     $retornoInsert = listarItemExpecificoPesquisa($inputPesquisa);
-    if ($retornoInsert > 0) {
+//    print_r($retornoInsert);
+
+    if ($retornoInsert !== 'Vazio') {
 
         foreach ($retornoInsert as $objeto) {
             $idcarro = $objeto->idcarro;
@@ -24,8 +26,9 @@ if (isset($Dados) && !empty($Dados)) {
         echo json_encode(["success" => true, "message" => "Encontramos", "idcarro" => "$idcarro", "idproprietario" => "$idproprietario", "nomeCarro" => "$nomeCarro", "diferenciais" => "$diferenciais", "fotoPerfil" => "$fotoPerfil", "preco" => "$preco",], JSON_THROW_ON_ERROR);
 
     } else {
-        echo json_encode(['success' => false, 'message' => "Não encontramos! Error Bd"], JSON_THROW_ON_ERROR);
+        echo json_encode(['success' => false, 'message' => "Veículo não encontrado, tente novamente!"], JSON_THROW_ON_ERROR);
     }
+
 } else {
     echo json_encode(['success' => false, 'message' => "Não encontramos! Error Variável"], JSON_THROW_ON_ERROR);
 }
