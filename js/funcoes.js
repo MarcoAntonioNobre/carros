@@ -87,7 +87,7 @@ function abrirFecharModalCompra(idModal, abrirOuFechar) {
 
                         })
                         .catch(error => {
-                            ModalInstacia.hide();
+                            // ModalInstacia.hide();
                             console.error('Erro na requisição:', error);
                         });
                 }
@@ -99,7 +99,7 @@ function abrirFecharModalCompra(idModal, abrirOuFechar) {
 
     } else {
 
-        modalInstancia.hide();
+        // modalInstancia.hide();
     }
 }
 
