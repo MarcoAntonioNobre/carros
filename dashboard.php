@@ -28,6 +28,7 @@ if ($_SESSION['idadm']) {
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/style-navbar.css">
+    <link rel="stylesheet" href="./css/navbar.css">
 </head>
 
 <body class="fundo">
@@ -301,6 +302,10 @@ if ($_SESSION['idadm']) {
         </div>
     </div>
 
+
+    <?php
+    include_once ('teste.php')
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
