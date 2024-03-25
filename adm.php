@@ -319,12 +319,12 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpContato" class="label-control">Contato:</label>
-                                <input type="text" name="inpContato" id="inpContato" class="inputzz" telefoneBR">
+                                <input type="text" name="inpContato" id="inpContato" class="inputzz telefoneBR">
                             </div>
                             <div>
                                 <label for="inpValorUnitario" class="label-control">Número do cartão:</label>
                                 <input type="number" name="inpValorUnitario" id="inpValorUnitario"  minlength="6" maxlength="6"
-                                       class="inputzz">
+                                       class="inputzz cartao">
                             </div>
                             <div>
                                 <label for="inpValorCartao" class="label-control">Valor em cartão:</label>
@@ -368,7 +368,7 @@ include_once 'footer.php';
                             <div>
                                 <label for="inpEditValorUnitario" class="label-control">Número do cartão:</label>
                                 <input type="number" name="inpEditValorUnitario" id="inpEditValorUnitario"  minlength="6" maxlength="6"
-                                       class="inputzz">
+                                       class="inputzz cartao">
                             </div>
                             <div>
                                 <label for="inpEditValorCartao" class="label-control">Valor em cartão:</label>
