@@ -612,6 +612,7 @@ function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
         })
             .then(response => response.json())
             .then(data => {
+                // console.log(data)
                 const mostrar = document.getElementById('mostrar');
                 if (data.success) {
 
@@ -702,14 +703,17 @@ function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
                     buttonCard.classList.add("btn-outline-dark");
 
                 } else {
+                    addErroCompra(data.message)
+                   // const algumnome = document.createElement("h1");
+                   // algumnome.innerHTML = "Nenhum carrro encontrado";
 
                 }
             })
-            .catch(error => {
-
-
-                console.error('Erro na requisição:', error);
-            });
+            // .catch(error => {
+            //
+            //
+            //     console.error('Erro na requisição:', error);
+            // });
 
 
     }
@@ -772,3 +776,31 @@ function addErro() {
         }
     });
 };
+
+function addErroCompra(msg) {
+    let timerInterval;
+    Swal.fire({
+        title: `${msg}` + "<br> Tente Novamente.",
+        html: "Fechando em <b></b> ms.",
+        timer: 2000,
+        icon: "error",
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+
+                timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+    }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("fechando..");
+        }
+    });
+};
+
