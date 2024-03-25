@@ -1,4 +1,5 @@
 $('.cpf').mask('000.000.000-00');
+$('.cartao').mask('000000');
 $('.dinheiro').mask('000.000.000.000.000,00', {reverse: true});
 
 var options = {
