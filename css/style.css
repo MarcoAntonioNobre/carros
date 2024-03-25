@@ -505,13 +505,6 @@ td strong .a:hover {
     display: block;
 }
 
-@media (max-width: 999px) {
-    .inputii {
-        display: none;
-    }
-}
-
-@media (min-width: 999px) {
 
     .inputii {
         display: flex;
@@ -578,7 +571,6 @@ td strong .a:hover {
     }
 
 
-}
 
 
 /*===============================================================*/
@@ -674,7 +666,9 @@ td strong .a:hover {
 }
 
 /*===================Logout=========================*/
-
+.botaFechar{
+    color: white !important;
+}
 .Btn {
     display: flex;
     align-items: center;

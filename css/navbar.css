@@ -1,0 +1,20 @@
+.navlist{
+    list-style: none;
+    color: white;
+    font-size: 20px;
+}
+
+.liNav{
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.list{
+
+}
+
+.offcanvas-header{
+    height: 80px;
+    border-bottom: white;
+}
