@@ -14,7 +14,7 @@
 <!--</nav>-->
 
 <nav>
-    <a class="logo" href="dashboard.php"><img src="./img/13.png" alt="Logo StreetCar" title="Logo StreetCar"
+    <a class="logo testeRespose" href="dashboard.php"><img src="./img/13.png" alt="Logo StreetCar" title="Logo StreetCar"
                                               width="50px"> StreetCar</a>
     <?php
     $cpfAdmin = 'N/A';

@@ -8,7 +8,7 @@
 <div class="tableEnfeite espaco fs-3">
     # Total de vendas
     <div class="d-flex justify-content-end align-items-center">
-        <button class="btn btn-outline-light text-black" onclick="imprimir('tabela')">Imprimir</button>
+        <button class="btn btn-outline-light text-black" onclick="imprimir('Total de vendas','tabela')">Imprimir</button>
     </div>
 
 </div>

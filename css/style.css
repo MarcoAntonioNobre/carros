@@ -23,6 +23,10 @@
 /*    }*/
 /*}*/
 
+.alturaDash{
+    min-height: 30vw;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
@@ -154,9 +158,6 @@ td strong .a:hover {
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.tudo {
-    min-height: 100vh;
-}
 
 .wrapper .icon:hover .tooltip {
     top: -45px;
