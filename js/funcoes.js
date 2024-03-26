@@ -526,7 +526,7 @@ function imprimir(nomeTabela, tabela) {
     const conteudo = document.getElementById(tabela).innerHTML;
 //alert('hey')
     let estilo = "<style>";
-    estilo += "table {width: 100%; font: 25px Calibri;}"
+    estilo += "table {width: 100%; font: 20px Calibri;}"
     estilo += "th{border: solid 2px #000;}"
     estilo += "table, thead,tbody, td {border: solid 2px #000; border-collapse: collapse;"
     estilo += "padding: 4px 8px; text-align: center;}"
@@ -555,7 +555,7 @@ function imprimirHistorico(nomeTabela, tabela, nome, contato, numeroCartao, valo
     const conteudo = document.getElementById(tabela).innerHTML;
 //alert('hey')
     let estilo = "<style>";
-    estilo += "table {width: 100%; font: 25px Calibri;}"
+    estilo += "table {width: 100%; font: 20px Calibri;}"
     estilo += "th{border: solid 2px #000;}"
     estilo += "table, thead,tbody, td {border: solid 2px #000; border-collapse: collapse;"
     estilo += "padding: 4px 8px; text-align: center;}"
