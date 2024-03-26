@@ -1,7 +1,7 @@
 <div class="tableEnfeite espaco fs-3">
     # Vendas
     <div class="d-flex justify-content-end align-items-center">
-        <button class="btn btn-outline-light text-black" onclick="imprimir('vendas')">Imprimir</button>
+        <button class="btn btn-outline-light text-black" onclick="imprimir('Vendas','vendas')">Imprimir</button>
     </div>
 </div>
 <div class="card-body">

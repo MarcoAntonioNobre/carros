@@ -85,51 +85,57 @@
                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
-                                <div id="historico">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                            Cliente <?php echo $nome ?></h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body vermaisTabela">
-                                        <div>
-                                            <div class="text-start">
-                                                <b>Nome:</b> <?php echo $nome; ?>
-                                            </div>
-                                            <hr>
-                                            <div class="text-start">
-                                                <b>Contato:</b>
-                                                <?php
-                                                if ($contato !== '') {
-                                                    echo $contato;
-                                                } else {
-                                                    echo 'Não informado';
-                                                }
-                                                ?>
-                                            </div>
-                                            <hr>
-                                            <div class="text-start">
-                                                <b>Número do cartão:</b> <?php echo $numCartao; ?>
-                                            </div>
-                                            <hr>
-                                            <div class="text-start">
-                                                <b>Valor no cartão:</b>
-                                                <?php
-                                                $valorNoCartao = conversorDBNum($cartao);
-                                                if ($valorNoCartao !== '') {
-                                                    echo 'R$ ' . $valorNoCartao;
-                                                } else {
-                                                    echo 'Sem limite';
-                                                }
-                                                ?>
-                                            </div>
-                                            <hr>
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                        Cliente <?php echo $nome ?></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body vermaisTabela">
+                                    <div>
+                                        <div class="text-start">
+                                            <b>Nome:</b> <?php echo $nome; ?>
                                         </div>
-                                        <div class="mt-4">
-                                            <div class="text-start">
+                                        <hr>
+                                        <div class="text-start">
+                                            <b>Contato:</b>
+                                            <?php
+                                            if ($contato !== '') {
+                                                echo $contato;
+                                            } else {
+                                                echo 'Não informado';
+                                            }
+                                            ?>
+                                        </div>
+                                        <hr>
+                                        <div class="text-start">
+                                            <b>Número do cartão:</b> <?php echo $numCartao; ?>
+                                        </div>
+                                        <hr>
+                                        <div class="text-start">
+                                            <b>Valor no cartão:</b>
+                                            <?php
+                                            $valorNoCartao = conversorDBNum($cartao);
+                                            if ($valorNoCartao !== '') {
+                                                echo 'R$ ' . $valorNoCartao;
+                                            } else {
+                                                echo 'Sem limite';
+                                            }
+                                            ?>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="text-start">
+                                            <div class="d-flex justify-content-between">
                                                 <h5>Histórico</h5>
-                                                <hr>
+                                              <!--  <button class="btn btn-ligth"
+                                                        onclick="imprimirHistorico('Histórico','historico','<?php// echo $nome ?>','<?php// echo $contato ?>', '<?php// echo $numCartao; ?>','<?php// echo 'R$ ' . $valorNoCartao; ?>')">
+                                                    Imprimir
+                                                </button>-->
+                                            </div>
+                                            <hr>
+<!--                                            <div id="historico">-->
                                                 <table class="table vermaisTabela">
                                                     <thead>
                                                     <tr>
@@ -160,7 +166,7 @@
                                                         }
                                                     } else {
                                                         ?>
-                                                        }
+
                                                         <tr>
                                                             <th scope="row" class="text-center" colspan="4">Nenhum dado
                                                                 encontrado!
@@ -171,16 +177,16 @@
                                                     ?>
                                                     </tbody>
                                                 </table>
-                                            </div>
+<!--                                            </div>-->
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar
-                                        </button>
-<!--                                        <button class="btn btn-ligth" onclick="imprimir('historico')">Imprimir</button>-->
-                                        <!--                                    <button type="button" class="btn btn-primary">Save changes</button>-->
-                                    </div>
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar
+                                    </button>
+                                    <!--                                    <button type="button" class="btn btn-primary">Save changes</button>-->
+                                </div>
+
                             </div>
                         </div>
                     </div>
