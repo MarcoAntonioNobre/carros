@@ -11,7 +11,7 @@
     if ($listarVenda !== 'Vazio') {
     $cont = 1;
     ?>
-    <div id="vendas">
+    <div id="vendas" class="mb-3">
         <table class="table table-striped table-hover text-center">
             <thead>
             <tr>
