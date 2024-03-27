@@ -24,7 +24,7 @@ $adm = 0;
 </head>
 <style>
     input[type="text"], textarea {
-        background-color : #d1d1d1;
+        background-color: #d1d1d1;
     }
 </style>
 <body class="bodylogin"
@@ -32,19 +32,26 @@ $adm = 0;
 <?php
 include_once('navbar.php');
 ?>
-<div class="container mt-5 ">
+<div class="container mt-5  ">
 
     <div class=" d-flex justify-content-center">
-        <div class=" d-flex align-items-center justify-content-center">
+        <div class=" d-flex align-items-center justify-content-center  ">
             <div class="wrapper">
                 <form action="login.php" method="post" name="frmLogin" id="frmLogin" autocomplete="off">
                     <h1>LOGIN</h1>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                        <i class="bi bi-eye" id="btn-senha" onclick="mostrarsenha()"></i>
+                    </div>
+
+                        </div>
 
                     <div class="input-box">
-<!--                        <input type="text" class="cpf" name="cpf" id="cpf" placeholder="Cpf">-->
-<!--                        <i class="bi bi-person-bounding-box"></i>-->
+                        <!--                        <input type="text" class="cpf" name="cpf" id="cpf" placeholder="Cpf">-->
+                        <!--                        <i class="bi bi-person-bounding-box"></i>-->
                         <div class="wave-group">
-                            <input required="required" type="text" class="input text-white cpf" name="cpf" id="cpf" style="background-color: transparent" autocomplete="off">
+                            <input required="required" type="text" class="input text-white cpf" name="cpf" id="cpf"
+                                   style="background-color: transparent" autocomplete="off">
                             <span class="bar"> </span>
 
                             <label class="label">
@@ -56,25 +63,37 @@ include_once('navbar.php');
                     </div>
                     <div class="input-box">
                         <div class="wave-group">
-                            <input required="required" type="password" class="input text-white " name="senha" id="senha" autocomplete="off">
-                            <span class="bar"> </span>
 
+                            <input required="required" type="password" class="input text-white " name="senha"
+                                   id="senha" autocomplete="off">
+                            <span class="bar"> </span>
                             <label class="label">
                                 <span class="label-char" style="--index: 0">S</span>
                                 <span class="label-char" style="--index: 1">e</span>
                                 <span class="label-char" style="--index: 2">n</span>
                                 <span class="label-char" style="--index: 3">h</span>
                                 <span class="label-char" style="--index: 3">a</span>
+
                             </label>
-<!--                            <i class="bi bi-lock" id="btn-senha" onclick="mostrarsenha()"></i>-->
+
+
                         </div>
+
 
                     </div>
                     <div class="alert erroBonito p-1 text-center" role="alert" id="alertlog" style="display: none;">
                     </div>
-                    <button type="button" class="w-100" onclick="fazerLogin()">
+                    <button type="button" class="w-100 mb-1" onclick="fazerLogin()">
                         <span class="">Login</span>
                     </button>
+                 <div id="dataHora">
+                    <span id="bi bi-calendar-week-fill mb-2"></span>
+                     <span id="dataHoraTexto"></span>
+                     <span id="HoraTexto"></span>
+                 </div>
+                    <script>
+                        atualizarDataHora();
+                    </script>
                 </form>
             </div>
         </div>

@@ -22,7 +22,7 @@
     $mario = 0;
     if ($grupos !== 'Vazio') {
     ?>
-    <div id="tabela">
+    <div id="tabela" class="mb-3">
         <table class="table table-striped table-hover">
             <thead>
             <tr class="text-center ">
