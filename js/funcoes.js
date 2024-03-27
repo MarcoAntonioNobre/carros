@@ -545,6 +545,8 @@ function imprimir(nomeTabela, tabela) {
     win.document.write(nomeTabela)
     win.document.write('</h3>')
     win.document.write(conteudo)
+    win.document.write('© StreetCar  '+new Date().getFullYear()+'  Todos os direitos reservados.')
+
     win.document.write('</body>')
     win.document.write('</html>')
 
