@@ -27,6 +27,14 @@
     min-height: 30vw;
 }
 
+.bi-printer{
+    color: #000000;
+}
+
+.bi-printer:hover{
+    color: white;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
