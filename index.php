@@ -41,7 +41,7 @@ include_once('navbar.php');
                     <h1>LOGIN</h1>
                     <div class="row">
                         <div class="col-12 text-center">
-                        <i class="bi bi-eye" id="btn-senha" onclick="mostrarsenha()"></i>
+                        <i class="bi bi-eye-slash" id="btn-senha" onclick="mostrarsenha()"></i>
                     </div>
 
                         </div>

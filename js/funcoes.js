@@ -532,10 +532,15 @@ function imprimir(nomeTabela, tabela) {
     estilo += "padding: 4px 8px; text-align: center;}"
     estilo += "</style>"
 
-    // const nomeTable = document.getElementById(nomeTabela)
-    const win = window.open('', '', 'height=700,width=1000');
 
-    win.document.write('<html>')
+let botao = '<button className="btn btn-outline-warning text-black"'
+    botao += ''
+    botao += 'IMPRIMA'
+    botao +='</button>'
+    // const nomeTable = document.getElementById(nomeTabela)
+    const win = window.open('', '_self', 'height=700,width=1000');
+
+    win.document.write('<!doctype html>')
     win.document.write('<head>')
     win.document.write('<title>Imprimir resultado</title>')
     win.document.write(estilo)
@@ -545,13 +550,18 @@ function imprimir(nomeTabela, tabela) {
     win.document.write(nomeTabela)
     win.document.write('</h3>')
     win.document.write(conteudo)
-    win.document.write('© StreetCar  '+new Date().getFullYear()+'  Todos os direitos reservados.')
+    win.document.write('© StreetCar  ' + new Date().getFullYear() + '  Todos os direitos reservados.')
+    win.document.write(botao)
 
     win.document.write('</body>')
     win.document.write('</html>')
 
     win.print();
 }
+
+// <button className="btn btn-outline-warning text-black" onClick="imprimir('Total de vendas','tabela')">
+// <i className="bi bi-printer"></i>
+// </button>
 
 function imprimirHistorico(nomeTabela, tabela, nome, contato, numeroCartao, valorCartao) {
     const conteudo = document.getElementById(tabela).innerHTML;
