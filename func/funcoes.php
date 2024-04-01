@@ -22,6 +22,29 @@ function listarTabela($campos, $tabela)
     $conn = null;
 }
 
+function contaLinha($cont, $tabela,$quando,$idquando)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlListaTabelas = $conn->prepare("SELECT $cont FROM $tabela WHERE $quando = $idquando");
+        //$sqlListaTabelas->bindValue(1, $campos, PDO::PARAM_INT);
+        $sqlListaTabelas->execute();
+        $conn->commit();
+        if ($sqlListaTabelas->rowCount() > 0) {
+            return $sqlListaTabelas->fetchAll(PDO::FETCH_OBJ);
+        }
+        return 'Vazio';
+    } catch
+    (PDOException $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    }
+    $conn = null;
+}
+
+
 function soma($campoSomar, $tabela, $idquando, $id)
 {
     $conn = conectar();
