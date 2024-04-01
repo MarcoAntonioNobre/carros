@@ -25,7 +25,7 @@
 <a id="ancora1"></a>
 <h2>Como testar nosso sistema</h2>
 
-<p>Antes de começar o teste certifique-se que tenha instalado o XAMPP e o Query Browser MySQL.</p>
+<p>Antes de começar o teste, certifique-se que tenha instalado o XAMPP e o Query Browser MySQL.</p>
 
 <p>Caso não tenha instalado temos um pequeno passo a passo de como instalar, se tiver pode pular essa parte.</p>
 
@@ -34,7 +34,7 @@
 <a id="ancora2"></a>
 <h2>Instalando o XAMPP</h2>
 
-<p>Para baixar o XAMPP acesse o link abaixo e baixe o XAMPP para a versão mais atual do PHP.</p>
+<p>Para baixar o <b>XAMPP</b> acesse o link abaixo e baixe o <b>XAMPP</b> para a versão mais atual do PHP.</p>
 
 https://www.apachefriends.org/pt_br/download.html
 
@@ -45,7 +45,7 @@ https://www.apachefriends.org/pt_br/download.html
 <a id="ancora3"></a>
 <h2>Instalando o Query Browser</h2>
 
-<p>Com o XAMPP instalado e inicializado, baixe o Query Browser pelo link abaixo e faça a instalação, como a do XAMPP.</p>
+<p>Com o <b>XAMPP</b> instalado e inicializado, baixe o Query Browser pelo link abaixo e faça a instalação, como a do <b>XAMPP</b>.</p>
 
 https://downloads.mysql.com/archives/query/
 
@@ -67,7 +67,7 @@ https://downloads.mysql.com/archives/query/
 
 <p>Schema: Nome de sua preferência.</p>
 
-<p>Clique em <b>"Apply"</b> e feche essa tela. Na primeira tela, vá no <b>STORAGE CONNECTION</b> e selecione a conexão que acabou de criar e clique em <b>"Ok"</b> e confirme a criação do banco.</p>
+<p>Clique em <b>"Apply"</b> e feche essa tela. Na primeira tela, vá no <b>Storage Connection</b> e selecione a conexão que acabou de criar e clique em <b>"Ok"</b> e confirme a criação do banco.</p>
 
 <br>
 
