@@ -82,6 +82,7 @@ https://downloads.mysql.com/archives/query/
 
 <p>Agora um passo importante, a restauração do banco.</p>
 
+<br>
 
 <a id="ancora5"></a>
 <h2>Restaurando o banco</h2>
@@ -97,6 +98,8 @@ https://downloads.mysql.com/archives/query/
 <p> <b> C: xampp > htdocs> carros </b>.</p>
 
 <p>Ao abrir a pasta <b>"carros"</b>, terá um arquivo <b>.sql</b>, selecione-o e depois clique em "Start Restore" que fica ao lado de "Open Backup File".</p>
+
+<br>
 
 <h2>Abrindo o sistema no navegador</h2>
 
