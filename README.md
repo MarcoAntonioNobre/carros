@@ -51,9 +51,9 @@ https://downloads.mysql.com/archives/query/
 
 <hr>
 
-<p>Abra-o e clique nos três pontos ao lado de "Storage Connection".</p>
+<p>Abra-o e clique nos três pontos ao lado de <b>"Storage Connection"</b>.</p>
 
-<p>Clique em "Add New Connection". E configure da seguinte forma.</p>
+<p>Clique em <b>"Add New Connection"</b>. E configure da seguinte forma.</p>
 
 <br>
 
