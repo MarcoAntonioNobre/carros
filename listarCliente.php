@@ -124,60 +124,72 @@
                                             ?>
                                         </div>
                                         <hr>
+                                        <div class="text-start">
+                                            <b>Total de compras:</b>
+                                            <?php
+                                            $totalCompras = contaLinha('COUNT(idcliente) AS totalCompras', 'compras', 'idcliente', "$idcliente");
+                                            if($totalCompras !== 'Vazio'){
+                                                foreach ($totalCompras as $numCompras){
+                                                    $numeroCompras = $numCompras -> totalCompras;
+                                                }
+                                                echo $numeroCompras;
+                                            }
+                                            ?>
+                                        </div>
                                     </div>
                                     <div class="mt-4">
                                         <div class="text-start">
                                             <div class="d-flex justify-content-between">
                                                 <h5>Histórico</h5>
-                                              <!--  <button class="btn btn-ligth"
-                                                        onclick="imprimirHistorico('Histórico','historico','<?php// echo $nome ?>','<?php// echo $contato ?>', '<?php// echo $numCartao; ?>','<?php// echo 'R$ ' . $valorNoCartao; ?>')">
+                                                <!--  <button class="btn btn-ligth"
+                                                        onclick="imprimirHistorico('Histórico','historico','<? php// echo $nome ?>','<? php// echo $contato ?>', '<? php// echo $numCartao; ?>','<? php// echo 'R$ ' . $valorNoCartao; ?>')">
                                                     Imprimir
                                                 </button>-->
                                             </div>
                                             <hr>
-<!--                                            <div id="historico">-->
-                                                <table class="table vermaisTabela">
-                                                    <thead>
-                                                    <tr>
-                                                        <th scope="col">#</th>
-                                                        <th scope="col">Carro</th>
-                                                        <th scope="col">Quantidade</th>
-                                                        <th scope="col">Valor pago</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody class="vermaisTabela">
-                                                    <?php
-                                                    $contaHistorico = 1;
-                                                    $lista = listarTabelaInnerJoinTriploWhere('*', 'compras', 'cliente', 'carro', 'idcliente', 'idcliente', 'idcarro', 'idcarro', 'idcliente', "$idcliente", 'idcliente', 'DESC');
-                                                    if ($lista !== 'Vazio') {
-                                                        foreach ($lista as $historico) {
-                                                            $nomeCarro = $historico->nomeCarro;
-                                                            $qtd = $historico->qtdComprada;
-                                                            $valorPago = $historico->valorPago;
-                                                            ?>
-                                                            <tr>
-                                                                <th scope="row"><?php echo $contaHistorico ?></th>
-                                                                <td><?php echo $nomeCarro ?></td>
-                                                                <td><?php echo $qtd ?></td>
-                                                                <td>R$ <?php echo $valorPago ?></td>
-                                                            </tr>
-                                                            <?php
-                                                            ++$contaHistorico;
-                                                        }
-                                                    } else {
+                                            <!--                                            <div id="historico">-->
+                                            <table class="table vermaisTabela">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Carro</th>
+                                                    <th scope="col">Quantidade</th>
+                                                    <th scope="col">Valor pago</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="vermaisTabela">
+                                                <?php
+                                                $contaHistorico = 1;
+                                                $lista = listarTabelaInnerJoinTriploWhere('*', 'compras', 'cliente', 'carro', 'idcliente', 'idcliente', 'idcarro', 'idcarro', 'idcliente', "$idcliente", 'idcliente', 'DESC');
+                                                if ($lista !== 'Vazio') {
+                                                    foreach ($lista as $historico) {
+                                                        $nomeCarro = $historico->nomeCarro;
+                                                        $qtd = $historico->qtdComprada;
+                                                        $valorPago = $historico->valorPago;
                                                         ?>
-
                                                         <tr>
-                                                            <th scope="row" class="text-center" colspan="4">Nenhum dado
-                                                                encontrado!
-                                                            </th>
+                                                            <th scope="row"><?php echo $contaHistorico ?></th>
+                                                            <td><?php echo $nomeCarro ?></td>
+                                                            <td><?php echo $qtd ?></td>
+                                                            <td>R$ <?php echo $valorPago ?></td>
                                                         </tr>
                                                         <?php
+                                                        ++$contaHistorico;
                                                     }
+                                                } else {
                                                     ?>
-                                                    </tbody>
-                                                </table>
-<!--                                            </div>-->
+
+                                                    <tr>
+                                                        <th scope="row" class="text-center" colspan="4">Nenhum dado
+                                                            encontrado!
+                                                        </th>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                                ?>
+                                                </tbody>
+                                            </table>
+                                            <!--                                            </div>-->
                                         </div>
                                     </div>
                                 </div>
