@@ -25,7 +25,7 @@
 <a id="ancora1"></a>
 <h2>Como testar nosso sistema</h2>
 
-<p>Antes de começar o teste, certifique-se que tenha instalado o XAMPP e o Query Browser MySQL.</p>
+<p>Antes de começar o teste, certifique-se que tenha instalado o <b>XAMPP</b> e o <b>Query Browser MySQL</b>.</p>
 
 <p>Caso não tenha instalado temos um pequeno passo a passo de como instalar, se tiver pode pular essa parte.</p>
 
@@ -38,7 +38,7 @@
 
 https://www.apachefriends.org/pt_br/download.html
 
-<p>Após baixar inicie a instalação, aceite os termos e de NEXT nas próximas telas. Abra ele e dê Start no apache e no MySQL.</p>
+<p>Após baixar inicie a instalação, aceite os termos e de <b>Next</b> nas próximas telas. Abra ele e dê <b>Start</b> no <b>Apache</b> e no <b>MySQL</b>.</p>
 
 <br>
 
@@ -97,7 +97,7 @@ https://downloads.mysql.com/archives/query/
 
 <p> <b> C: xampp > htdocs> carros </b>.</p>
 
-<p>Ao abrir a pasta <b>"carros"</b>, terá um arquivo <b>.sql</b>, selecione-o e depois clique em "Start Restore" que fica ao lado de "Open Backup File".</p>
+<p>Ao abrir a pasta <b>"carros"</b>, terá um arquivo <b>.sql</b>, selecione-o e depois clique em <b>"Start Restore"</b> que fica ao lado de <b>"Open Backup File"</b>.</p>
 
 <br>
 
@@ -112,7 +112,7 @@ https://downloads.mysql.com/archives/query/
 <a id="ancora6"></a>
 <h2>Acessando o sistema</h2>
 
-<p>Para conseguir acessar o sistema você precisa digitar as credenciais, cpf e senha do ADM.</p>
+<p>Para conseguir acessar o sistema você precisa digitar as credenciais, cpf e senha do administrador.</p>
 
 <p>Os ADMs possuem um CPF com um único número repetido 11 vezes, por exemplo "111.111.111-11" até o número 5. A senha é sequencial de 1 a 8.</p>
 
