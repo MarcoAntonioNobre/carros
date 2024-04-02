@@ -144,9 +144,10 @@ https://downloads.mysql.com/archives/query/
 <a id="ancora9"></a>
 <h2>Nosso time</h2>
 
-- Arthur Prates (Desenvolvimento Back-end) : https://github.com/Arthur-Prates;
-- Clarisse (Desenvolvimento Back-End) : https://github.com/cclar13
-- Franciele Nobre (Desenvolvimento Front-end) : https://github.com/FrancieleNobre
-- Isadora (Design do Front-end) :
-- Marco Antônio (Desenvolvimento Back-end) : https://github.com/MarcoAntonioNobre
-- Rebeka (Design do Front-end) :
+- [Arthur Prates](https://github.com/Arthur-Prates) - Desenvolvedor(a) Back-end ;
+- [Clarisse](https://github.com/cclar13) - Desenvolvedor(a) Back-end ;
+- [Franciele Nobre](https://github.com/FrancieleNobre) - Desenvolvedor(a) Front-end ;
+- [Isadora](https://github.com/) - UX Design ;
+- [Marco Antônio](https://github.com/MarcoAntonioNobre) - Desenvolvedor(a) Back-end ;
+- [Rebeka](https://github.com/) - UI Design.
+
