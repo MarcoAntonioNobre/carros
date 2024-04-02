@@ -144,7 +144,7 @@ https://downloads.mysql.com/archives/query/
 <h2>Nosso time</h2>
 
 - Arthur Prates (Desenvolvimento Back-end) : https://github.com/Arthur-Prates;
-- Clarisse (Desenvolvimento Back-End) :
+- Clarisse (Desenvolvimento Back-End) : https://github.com/cclar13
 - Franciele Nobre (Desenvolvimento Front-end) : https://github.com/FrancieleNobre
 - Isadora (Design do Front-end) :
 - Marco Antônio (Desenvolvimento Back-end) : https://github.com/MarcoAntonioNobre
