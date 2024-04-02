@@ -1,16 +1,17 @@
-<h1>
 
+<h1 align="center" style="display: inline_block">
+  
   Bem vindo a StreetCar
 
 </h1>
 
-<p>Esse trabalho foi realizado em conjunto com a turma da Vale, ficamos resposáveis pela parte de criação do sistema que fará a venda dos carros criados por eles.</p>
+<p align="center" style="display: inline_block">Esse trabalho foi realizado em conjunto com a turma da Vale, <br> ficamos resposáveis pela parte de criação do sistema que fará a venda dos carros criados por eles.</p>
 
 <br>
 
-
 <a name="ancora"></a>
 # Sumário
+- [Tecnologias usadas](#ancora10)
 - [Como testar o sistema](#ancora1)
 - [Instalando o XAMPP](#ancora2)
 - [Instalando o Query Browser](#ancora3)
@@ -20,6 +21,17 @@
 - [Processo de desenvolvimento](#ancora7)
 - [Quem somos?](#ancora8)
 - [Nosso time](#ancora9)
+
+<br>
+
+<a id="ancora10"></a>
+<h2>Tecnologias usadas</h2>
+<p align="center">
+  <a>
+    <img src="https://skillicons.dev/icons?i=php,js,html,css,bootstrap" />
+  </a>
+</p>
+
 
 <br>
 
@@ -150,4 +162,3 @@ https://downloads.mysql.com/archives/query/
 - [Isadora](https://github.com/) - UX Design ;
 - [Marco Antônio](https://github.com/MarcoAntonioNobre) - Desenvolvedor(a) Back-end ;
 - [Rebeka](https://github.com/) - UI Design.
-
