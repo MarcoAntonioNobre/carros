@@ -8,8 +8,9 @@
 
 <br>
 
+
 <a name="ancora"></a>
-# 
+# Sumário
 - [Como testar o sistema](#ancora1)
 - [Instalando o XAMPP](#ancora2)
 - [Instalando o Query Browser](#ancora3)
