@@ -29,7 +29,7 @@
                 $nome = converterAcentuacao($nome);
             }
         } ?>
-        <div class="p">Adm <?php echo $nome; ?></div>
+        <div class="p"><?php echo 'ADM '.$nome; ?></div>
 
     <?php
     }
