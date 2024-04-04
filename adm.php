@@ -545,7 +545,7 @@ include_once 'footer.php';
                                         class="inputzz">
                                     <option selected>Selecione uma opção</option>
                                     <?php
-                                    $proprietarios = listarTabela('*', 'proprietario', 'nome');
+                                    $proprietarios = listarTabela('*', 'proprietario');
                                     if ($proprietarios !== 'Vazio') {
                                         foreach ($proprietarios as $proprietario) {
                                             $id = $proprietario->idproprietario;
@@ -576,7 +576,7 @@ include_once 'footer.php';
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar carro</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar carro</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="post" action="" name="frmEditCarro" id="frmEditCarro">
@@ -594,11 +594,7 @@ include_once 'footer.php';
                                 <input type="text" name="inpEditDiferenciais" id="inpEditDiferenciais"
                                        required="required" class="inputzz">
                             </div>
-                            <div>
-                                <label for="inpEditFotoCarro" class="label-control">Foto:</label>
-                                <input type="file" name="inpEditFotoCarro" id="inpEditFotoCarro" class="form-control"
-                                       required="required">
-                            </div>
+
                             <div>
                                 <label for="inpEditValor">Valor:</label>
                                 <input type="text" name="inpEditValor" id="inpEditValor" required="required"
@@ -610,9 +606,9 @@ include_once 'footer.php';
                                         class="inputzz">
                                     <option selected>Selecione uma opção</option>
                                     <?php
-                                    $proprietarios = listarTabela('*', 'proprietario', 'nome');
-                                    if ($proprietarios !== 'Vazio') {
-                                        foreach ($proprietarios as $proprietario) {
+                                    $proprietarioss = listarTabela('*', 'proprietario');
+                                    if ($proprietarioss !== 'Vazio') {
+                                        foreach ($proprietarioss as $proprietario) {
                                             $id = $proprietario->idproprietario;
                                             $nome = $proprietario->nomeProprietario;
                                             $nome = mb_strtolower($nome);

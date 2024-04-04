@@ -141,13 +141,10 @@
                                         <div class="text-start">
                                             <div class="d-flex justify-content-between">
                                                 <h5>Histórico</h5>
-                                                <!--  <button class="btn btn-ligth"
-                                                        onclick="imprimirHistorico('Histórico','historico','<? php// echo $nome ?>','<? php// echo $contato ?>', '<? php// echo $numCartao; ?>','<? php// echo 'R$ ' . $valorNoCartao; ?>')">
-                                                    Imprimir
-                                                </button>-->
+
                                             </div>
                                             <hr>
-                                            <!--                                            <div id="historico">-->
+
                                             <table class="table vermaisTabela">
                                                 <thead>
                                                 <tr>

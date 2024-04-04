@@ -187,7 +187,7 @@ const inpEditCarro = document.getElementById('inpNomeEditCarro');
 const btnEditCarro = document.getElementById('btnEditCarro');
 
 if (carroEditModal) {
-    const formCarro = document.getElementById('frmEditCarro');
+    const form = document.getElementById('frmEditCarro');
 
     carroEditModal.addEventListener('shown.bs.modal', () => {
         inpEditCarro.focus();
@@ -197,8 +197,6 @@ if (carroEditModal) {
             const form = event.target;
             const formData = new FormData(form);
             formData.append('controle', 'carroEdit');
-            const fileInput = document.getElementById('inpEditFotoCarro')
-            formData.append('foto', fileInput.files[0]);
             fetch('controle.php', {
                 method: 'POST',
                 body: formData,
@@ -208,7 +206,7 @@ if (carroEditModal) {
                     carroEditModalInstancia.hide();
                     if (data.success) {
                         addOuEditSucesso('Você', 'info', 'editou')
-                        form.removeEventListener('submit', submitHandler)
+
                         btnEditCarro.disabled = false;
 
                         carroEditModalInstancia.hide();
@@ -221,7 +219,7 @@ if (carroEditModal) {
                 })
         }
 
-        formCarro.addEventListener('submit', submitHandler);
+        form.addEventListener('submit', submitHandler);
     })
 }
 
@@ -533,10 +531,7 @@ function imprimir(nomeTabela, tabela) {
     estilo += "</style>"
 
 
-let botao = '<button className="btn btn-outline-warning text-black"'
-    botao += ''
-    botao += 'IMPRIMA'
-    botao +='</button>'
+
     // const nomeTable = document.getElementById(nomeTabela)
     const win = window.open('', '_self', 'height=700,width=1000');
 
@@ -551,7 +546,6 @@ let botao = '<button className="btn btn-outline-warning text-black"'
     win.document.write('</h3>')
     win.document.write(conteudo)
     win.document.write('© StreetCar  ' + new Date().getFullYear() + '  Todos os direitos reservados.')
-    win.document.write(botao)
 
     win.document.write('</body>')
     win.document.write('</html>')

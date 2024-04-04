@@ -70,13 +70,6 @@
                         echo 'R$ ' . $vlrPago;
                         ?>
                     </td>
-                    <!--<td>
-                        <button name="excluirVenda" id="excluirVenda" class="btn btn-outline-danger"
-                                data-bs-toggle="modal"
-                                onclick="abrirModalJsVenda('<? php// echo $id ?>', 'idDeleteVenda', 'mdlDeleteVenda','nao','A', 'btnDeleteVenda', 'deleteVenda', 'nao', 'nao', 'frmDeleteVenda')">
-                            Excluir
-                        </button>
-                    </td>-->
                 </tr>
                 <?php
                 ++$cont;
