@@ -161,4 +161,4 @@ https://downloads.mysql.com/archives/query/
 - [Franciele Nobre](https://github.com/FrancieleNobre) - Desenvolvedor(a) Front-end ;
 - [Isadora](https://github.com/) - UX Design ;
 - [Marco Antônio](https://github.com/MarcoAntonioNobre) - Desenvolvedor(a) Back-end ;
-- [Rebeka](https://github.com/) - UI Design.
+- [Rebeka](https://github.com/Rebekabraga) - UI Design.
