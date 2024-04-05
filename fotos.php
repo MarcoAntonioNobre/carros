@@ -5,7 +5,7 @@
         Cadastrar
     </button>
 </div>
-<div class="">
+<div class="overflowTable">
     <?php
     $contar = 1;
     $foto = listarTabelaInnerJoinTriplo('*', 'foto', 'carro', 'proprietario', 'idcarro', 'idcarro', 'idproprietario', 'idproprietario', 'idfoto', 'desc');

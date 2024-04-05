@@ -4,7 +4,7 @@
         <button class="btn btn-outline-warning text-black" onclick="imprimir('Vendas','vendas')"><i class="bi bi-printer"></i></button>
     </div>
 </div>
-<div class="card-body">
+<div class="overflowTable">
     <?php
     $listarVenda = listarTabelaInnerJoin('*', 'compras', 'carro', 'idcarro', 'idcarro', 't.idcompras', 'DESC');
 
