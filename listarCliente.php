@@ -5,7 +5,7 @@
         Cadastrar
     </button>
 </div>
-<div class="">
+<div class="overflowTable">
     <?php
     $listarCliente = listarTabela('*', 'cliente');
 

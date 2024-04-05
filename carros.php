@@ -9,7 +9,7 @@
     #Carros
     <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#mdlCadCarro">Cadastrar</button>
 </div>
-<div>
+<div class="overflowTable">
     <?php
     $contar = 1;
     $carros = listarTabelaInnerJoin('*', 'carro', 'proprietario', 'idproprietario', 'idproprietario', 'nomeCarro', 'ASC');

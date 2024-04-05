@@ -13,7 +13,7 @@
 
 </div>
 
-<div class="">
+<div class="overflowTable">
     <?php
     $contar = 1;
     $grupos = listarTabela('*', 'proprietario');

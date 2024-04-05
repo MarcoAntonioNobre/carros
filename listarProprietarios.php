@@ -6,7 +6,7 @@
     </button>
 
 </div>
-<div class="">
+<div class="overflowTable">
     <?php
     $proprietarios = listarTabela('*', 'proprietario', 'nomeProprietario');
     if ($proprietarios !== 'Vazio') {
