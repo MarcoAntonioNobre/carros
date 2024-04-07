@@ -1,14 +1,8 @@
-<!--<div class="card mt-3">-->
-<!---->
-<!---->
-<!--    </div>-->
-<!--</div>-->
-
-
 <div class="tableEnfeite espaco fs-3">
     # Total de vendas
     <div class="d-flex justify-content-end align-items-center">
-        <button class="btn btn-outline-warning text-black" onclick="imprimir('Total de vendas','tabela')"><i class="bi bi-printer"></i></button>
+        <button class="btn btn-outline-warning text-black" onclick="imprimir('Total de vendas','tabela')"><i
+                    class="bi bi-printer"></i></button>
     </div>
 
 </div>
@@ -20,6 +14,7 @@
     $RODARODA = 1;
     $RODARODAnome = 1;
     $mario = 0;
+
     if ($grupos !== 'Vazio') {
     ?>
     <div id="tabela" class="mb-3">
@@ -34,17 +29,16 @@
             <tbody>
 
             <?php
-            foreach ($grupos
-
-                     as $grupo) {
+            foreach ($grupos as $grupo) {
             $id = $grupo->idproprietario;
             $nome = $grupo->nomeProprietario;
-
+            $nome = mb_strtolower($nome);
+            $nome = converterAcentuacao($nome);
             ?>
             <tr class="text-center">
 
                 <?php
-                $total = listarTabelaInnerJoinTriploValorPago('valorPago', 'carro', 'proprietario', 'compras', 'idproprietario', 'idproprietario', 'idcarro', 'idcarro', 't.idcarro', $RODARODA);
+                $total = listarTabelaInnerJoinTriploValorPago('valorPago', 'carro', 'proprietario', 'compras', 'idproprietario', 'idproprietario', 'idcarro', 'idcarro', 't.idproprietario', $RODARODA);
                 foreach ($total as $to) {
                     $testando2 = $to->soma;
                     $marioMaior[] = $testando2;
@@ -53,11 +47,9 @@
                 }
 
                 arsort($marioMaior);
-                foreach ($marioMaior
+                foreach ($marioMaior as $ordem => $val) {
 
-                as $ordem => $val) {
                 ?>
-
                 <th scope="row" class="text-center">
                     <?php
                     echo $contar
@@ -70,6 +62,8 @@
                     $pessoaUnica = listarItemExpecificoPessoa($idpessoa);
                     foreach ($pessoaUnica as $pessoas) {
                         $nomePessoa = $pessoas->nomeProprietario;
+                        $nomePessoa = mb_strtolower($nomePessoa);
+                        $nomePessoa = converterAcentuacao($nomePessoa);
                         echo $nomePessoa;
                     }
                     ?>
@@ -102,13 +96,5 @@
         </table>
     </div>
 </div>
-
-    <!--SELECT sum(c.valorPago) FROM carro t-->
-    <!--INNER JOIN proprietario y-->
-    <!--ON t.idproprietario = y.idproprietario-->
-    <!--inner JOIN compras c-->
-    <!--ON t.idcarro = c.idcarro-->
-    <!--where y.idproprietario = 4-->
-
 
 

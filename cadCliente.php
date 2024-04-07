@@ -9,10 +9,10 @@ $conn = conectar();
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if (isset($dados) && !empty($dados)) {
-    $nome = isset($dados['inpNome']) ? addslashes(mb_strtoupper($dados['inpNome'], 'UTF-8')) : '';
-    $contato = isset($dados['inpContato']) ? addslashes(mb_strtoupper($dados['inpContato'], 'UTF-8')) : '';
-    $numeroCartao = isset($dados['inpValorUnitario']) ? addslashes(mb_strtoupper($dados['inpValorUnitario'], 'UTF-8')) : '';
-    $valorCartao = isset($dados['inpValorCartao']) ? addslashes(mb_strtoupper($dados['inpValorCartao'], 'UTF-8')) : '';
+    $nome = isset($dados['inpNome']) ? addslashes($dados['inpNome']) : '';
+    $contato = isset($dados['inpContato']) ? addslashes($dados['inpContato']) : '';
+    $numeroCartao = isset($dados['inpValorUnitario']) ? addslashes($dados['inpValorUnitario']) : '';
+    $valorCartao = isset($dados['inpValorCartao']) ? addslashes($dados['inpValorCartao']) : '';
 
     $retornoInsert = insertGlobal5('cliente', 'nomeCliente, contato, numeroCartao, valorCartao, cadastro', "$nome", "$contato", "$numeroCartao", "$valorCartao", DATATIMEATUAL);
     if ($retornoInsert > 0) {

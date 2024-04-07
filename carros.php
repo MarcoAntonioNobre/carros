@@ -40,6 +40,12 @@
             $foto = $carro->fotoPerfil;
             $nomeCarro = mb_strtolower($nomeCarro);
             $nomeCarro = converterAcentuacao($nomeCarro);
+
+            $proprietario = mb_strtolower($proprietario);
+            $proprietario = converterAcentuacao($proprietario);
+
+            $diferenciais = mb_strtolower($diferenciais);
+            $diferenciais = converterAcentuacao($diferenciais);
             ?>
             <tr class="text-center">
                 <th scope="row"><?php echo $contar

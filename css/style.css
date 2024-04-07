@@ -192,7 +192,12 @@ td strong .a:hover {
     background: #222222;
     color: #ffffff;
 }
-
+.wrapper .config:hover,
+.wrapper .config:hover .tooltip,
+.wrapper .config:hover .tooltip::before {
+    background: #ffffff;
+    color: #000000;
+}
 .wrapper .instagram:hover,
 .wrapper .instagram:hover .tooltip,
 .wrapper .instagram:hover .tooltip::before {

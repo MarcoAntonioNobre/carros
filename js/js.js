@@ -38,7 +38,6 @@ function fazerLogin() {
     })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data)
             if (data.success) {
                 setTimeout(function () {
                     window.location.href = "dashboard.php";

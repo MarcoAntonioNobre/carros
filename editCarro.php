@@ -8,8 +8,8 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if (isset($dados) && !empty($dados)) {
     $id = isset($dados['idEditCarro']) ? addslashes($dados['idEditCarro']) : '';
-    $carro = isset($dados['inpNomeEditCarro']) ? addslashes(mb_strtoupper($dados['inpNomeEditCarro'], 'UTF-8')) : '';
-    $diferenciais = isset($dados['inpEditDiferenciais']) ? addslashes(mb_strtoupper($dados['inpEditDiferenciais'], 'UTF-8')) : '';
+    $carro = isset($dados['inpNomeEditCarro']) ? addslashes($dados['inpNomeEditCarro']) : '';
+    $diferenciais = isset($dados['inpEditDiferenciais']) ? addslashes($dados['inpEditDiferenciais']) : '';
     $valor = isset($dados['inpEditValor']) ? addslashes($dados['inpEditValor']) : '';
     $proprietario = isset($dados['selectEditProprietario']) ? addslashes($dados['selectEditProprietario']) : '';
 

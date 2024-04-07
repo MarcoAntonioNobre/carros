@@ -163,6 +163,9 @@
                                                         $nomeCarro = $historico->nomeCarro;
                                                         $qtd = $historico->qtdComprada;
                                                         $valorPago = $historico->valorPago;
+
+                                                        $nomeCarro = mb_strtolower($nomeCarro);
+                                                        $nomeCarro = converterAcentuacao($nomeCarro);
                                                         ?>
                                                         <tr>
                                                             <th scope="row"><?php echo $contaHistorico ?></th>

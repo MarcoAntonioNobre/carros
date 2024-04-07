@@ -40,16 +40,23 @@ if ($_SESSION['idadm']) {
 
     <div class="container mt-5 text-center bg-black">
         <div class="pt-3 row">
-            <div class="col-md-1">
-                <a href="adm.php"><i class="fa-solid fa-gear text-white spinner is-animating"></i></a>
+            <div class="col-md-1 d-flex justify-content-center align-items-center">
+                <ul class="list-unstyled wrapper ">
+                    <a href="adm.php">
+                        <li class="icon config bg-black">
+                            <span class="tooltip">Administrador</span>
+                            <span><i class="fa-solid fa-gear text-white spinner is-animating"></i></span>
+                        </li>
+                    </a>
+                </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
                 <a href="dashboard.php" class="links text-white margem" onclick="carregarConteudo('listarCarros')">Ver
                     Todos</a>
             </div>
             <div class="col-md-3">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
                 <p class="d-inline-flex gap-1">
                     <a class="links text-white margem" data-bs-toggle="collapse" href="#collapseExample"
                        role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -107,7 +114,7 @@ if ($_SESSION['idadm']) {
                                     <div class="back">
                                         <div class="back-content">
 
-                                            <svg stroke="#ffffff" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            <svg stroke="#ffffff"
                                                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"
                                                  height="50px" width="50px" fill="#ffffff">
                                                 <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
@@ -146,7 +153,6 @@ if ($_SESSION['idadm']) {
                                                     </p>
                                                     <svg fill-rule="nonzero" height="15px" width="15px"
                                                          viewBox="0,0,256,256"
-                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
                                                          xmlns="http://www.w3.org/2000/svg">
                                                         <g style="mix-blend-mode: normal" text-anchor="none"
                                                            font-size="none" font-weight="none" font-family="none"
@@ -172,16 +178,6 @@ if ($_SESSION['idadm']) {
                                     </div>
                                 </div>
                             </div>
-                            <!--<div class="card mt-4">
-                                    <img src="./img/<?php //echo $foto; ?>" class="card-img-top" alt="<?php // // ?>">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title"><?php // echo $nomeCarro ?></h5>
-                                        <button type="submit" class="btn btn-outline-dark" data-bs-toggle="modal"
-                                            onclick="abrirModalCompra('<?php //echo $idcarro ?>','<?php //echo $preco ?>','<?php //echo $nomeCarro ?>','<?php //echo $diferenciais ?>')">
-                                            Ver Mais
-                                        </button>
-                                    </div>
-                                </div>-->
 
                         </div>
 
@@ -216,8 +212,6 @@ if ($_SESSION['idadm']) {
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="tituloCarro">Comprar
                     carro</h1>
-                <!--                    <button type="button" class="btn-close" data-bs-dismiss="modal"-->
-                <!--                            aria-label="Close"></button>-->
             </div>
             <div class="modal-body">
                 <div>

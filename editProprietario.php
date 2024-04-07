@@ -4,8 +4,8 @@ if (isset($Dados) && !empty($Dados)) {
 
 //    echo json_encode($Dados);
 
-    $nome = isset($Dados['nomeEditProprietario']) ? addslashes(mb_strtoupper($Dados['nomeEditProprietario'], 'UTF-8')) : '';
-    $id = isset($Dados['idEditProprietario']) ? addslashes(mb_strtoupper($Dados['idEditProprietario'], 'UTF-8')) : '';
+    $nome = isset($Dados['nomeEditProprietario']) ? addslashes($Dados['nomeEditProprietario']) : '';
+    $id = isset($Dados['idEditProprietario']) ? addslashes($Dados['idEditProprietario']) : '';
 
     $retornoInsert = alterarGlobal1('proprietario', 'nomeProprietario', $nome, 'idproprietario', $id);
 

@@ -171,16 +171,16 @@ if ($_SESSION['idadm']) {
                                 $valorPago = $pagamentoItem->valorPago;
                                 if ($cliente === 'null') {
                                     if ($valorPago !== 'null') {
-                                        $dinheiro = $valorPago+$dinheiro;
+                                        $dinheiro = $valorPago + $dinheiro;
                                     }
                                 } else {
                                     if ($valorPago !== 'null') {
-                                        $cartao = $valorPago+$cartao;
+                                        $cartao = $valorPago + $cartao;
                                     }
 
                                 }
                             }
-                        }else{
+                        } else {
                             $dinheiro = 0;
                             $cartao = 0;
                         }
@@ -224,9 +224,6 @@ if ($_SESSION['idadm']) {
                     </div>
                 </div>
             </div>
-
-
-
 
 
         </div>
@@ -275,7 +272,7 @@ include_once 'footer.php';
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-primary" id="btnEditProprietario">Editar Cadastro</button>
+                    <button type="submit" class="btn btn-primary" id="btnEditProprietario">Alterar</button>
                 </div>
             </form>
         </div>
@@ -328,7 +325,8 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpValorUnitario" class="label-control">Número do cartão:</label>
-                                <input type="number" name="inpValorUnitario" id="inpValorUnitario"  minlength="6" maxlength="6"
+                                <input type="number" name="inpValorUnitario" id="inpValorUnitario" minlength="6"
+                                       maxlength="6"
                                        class="inputzz cartao">
                             </div>
                             <div>
@@ -355,10 +353,10 @@ include_once 'footer.php';
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Editar cliente</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="card">
-                    <div class="card-body">
-                        <form method="post" action="" name="frmEditCliente" id="frmEditCliente">
+            <form method="post" action="" name="frmEditCliente" id="frmEditCliente">
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
                             <input type="text" id="inpEditId" name="inpEditId" hidden="hidden">
                             <div>
                                 <label for="inpEditNome" class="label-control">Nome:</label>
@@ -372,7 +370,8 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpEditValorUnitario" class="label-control">Número do cartão:</label>
-                                <input type="number" name="inpEditValorUnitario" id="inpEditValorUnitario"  minlength="6" maxlength="6"
+                                <input type="number" name="inpEditValorUnitario" id="inpEditValorUnitario" minlength="6"
+                                       maxlength="6"
                                        class="inputzz cartao">
                             </div>
                             <div>
@@ -380,13 +379,13 @@ include_once 'footer.php';
                                 <input type="text" name="inpEditValorCartao" id="inpEditValorCartao"
                                        class="inputzz"">
                             </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                <button type="submit" class="btn btn-primary" id="btnEditCliente">Editar</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-primary" id="btnEditCliente">Alterar</button>
+                </div>
             </form>
         </div>
     </div>
@@ -477,7 +476,7 @@ include_once 'footer.php';
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-primary" id="btnEditAdm">Editar Administrador</button>
+                    <button type="submit" class="btn btn-primary" id="btnEditAdm">Alterar</button>
                 </div>
             </form>
         </div>
@@ -565,7 +564,7 @@ include_once 'footer.php';
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-primary" id="btnCadCarro">Cadastrar</button>
+                    <button type="submit" class="btn btn-success" id="btnCadCarro">Cadastrar</button>
                 </div>
             </form>
         </div>
@@ -626,7 +625,7 @@ include_once 'footer.php';
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-primary" id="btnEditCarro">Cadastrar</button>
+                    <button type="submit" class="btn btn-primary" id="btnEditCarro">Alterar</button>
                 </div>
             </form>
         </div>
@@ -699,7 +698,7 @@ include_once 'footer.php';
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="submit" class="btn btn-primary" id="btnCadFoto">Cadastrar</button>
+                        <button type="submit" class="btn btn-success" id="btnCadFoto">Cadastrar</button>
                     </div>
                 </div>
             </form>
@@ -711,7 +710,7 @@ include_once 'footer.php';
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Foto</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Foto</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="post" action="" name="frmEditFoto" id="frmEditFoto">
@@ -807,7 +806,7 @@ include_once 'footer.php';
 
 
 <?php
-include_once ('teste.php')
+include_once('teste.php')
 ?>
 
 

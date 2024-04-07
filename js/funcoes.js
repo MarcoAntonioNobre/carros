@@ -68,7 +68,7 @@ function abrirFecharModalCompra(idModal, abrirOuFechar) {
                         .then(data => {
 
                             if (data.success) {
-                                console.log(data)
+
                                 btnCompra.disabled = false;
                                 addOuEditSucesso('Compra', 'success', ' efetuada')
                                 setTimeout(() => {
@@ -103,49 +103,51 @@ function abrirFecharModalCompra(idModal, abrirOuFechar) {
     }
 }
 
+if (document.getElementById('mdlCadCarro')) {
 
-const carroModalInstancia = new bootstrap.Modal(document.getElementById('mdlCadCarro'));
-const carroModal = document.getElementById('mdlCadCarro');
-const inpCarro = document.getElementById('inpNomeCarro');
-const btnCarro = document.getElementById('btnCadCarro');
 
-if (carroModal) {
-    const formCarro = document.getElementById('frmCadCarro');
+    const carroModalInstancia = new bootstrap.Modal(document.getElementById('mdlCadCarro'));
+    const carroModal = document.getElementById('mdlCadCarro');
+    const inpCarro = document.getElementById('inpNomeCarro');
+    const btnCarro = document.getElementById('btnCadCarro');
 
-    carroModal.addEventListener('shown.bs.modal', () => {
-        inpCarro.focus();
-        const submitHandler = function (event) {
-            event.preventDefault();
-            btnCarro.disabled = true;
-            carroModalInstancia.hide();
-            const form = event.target;
-            const formData = new FormData(form);
-            formData.append('controle', 'carroAdd');
-            const fileInput = document.getElementById('inpFotoCarro')
-            formData.append('foto', fileInput.files[0]);
-            fetch('controle.php', {
-                method: 'POST',
-                body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
+    if (carroModal) {
+        const formCarro = document.getElementById('frmCadCarro');
 
-                    if (data.success) {
-                        addOuEditSucesso('Você', 'success', 'adicionou')
-                        form.removeEventListener('submit', submitHandler)
-                        btnCarro.disabled = false;
-                        carregarConteudo('listarCarros');
-                    } else {
-                        btnCarro.disabled = false;
-                        //alert(data['message'])
-                        addErro()
-                    }
+        carroModal.addEventListener('shown.bs.modal', () => {
+            inpCarro.focus();
+            const submitHandler = function (event) {
+                event.preventDefault();
+                btnCarro.disabled = true;
+                carroModalInstancia.hide();
+                const form = event.target;
+                const formData = new FormData(form);
+                formData.append('controle', 'carroAdd');
+                const fileInput = document.getElementById('inpFotoCarro')
+                formData.append('foto', fileInput.files[0]);
+                fetch('controle.php', {
+                    method: 'POST',
+                    body: formData,
                 })
-        }
-        formCarro.addEventListener('submit', submitHandler);
-    })
-}
+                    .then(response => response.json())
+                    .then(data => {
 
+                        if (data.success) {
+                            addOuEditSucesso('Você', 'success', 'adicionou')
+                            form.removeEventListener('submit', submitHandler)
+                            btnCarro.disabled = false;
+                            carregarConteudo('listarCarros');
+                        } else {
+                            btnCarro.disabled = false;
+                            //alert(data['message'])
+                            addErro()
+                        }
+                    })
+            }
+            formCarro.addEventListener('submit', submitHandler);
+        })
+    }
+}
 
 function redireciona(link) {
     window.location.href = link + '.php';
@@ -181,46 +183,50 @@ function abrirFecharModalCarro(idModal, abrirOuFechar) {
     }
 }
 
-const carroEditModalInstancia = new bootstrap.Modal(document.getElementById('mdlEditCarro'));
-const carroEditModal = document.getElementById('mdlEditCarro');
-const inpEditCarro = document.getElementById('inpNomeEditCarro');
-const btnEditCarro = document.getElementById('btnEditCarro');
+if (document.getElementById('mdlEditCarro')) {
 
-if (carroEditModal) {
-    const form = document.getElementById('frmEditCarro');
 
-    carroEditModal.addEventListener('shown.bs.modal', () => {
-        inpEditCarro.focus();
-        const submitHandler = function (event) {
-            event.preventDefault();
-            btnEditCarro.disabled = true;
-            const form = event.target;
-            const formData = new FormData(form);
-            formData.append('controle', 'carroEdit');
-            fetch('controle.php', {
-                method: 'POST',
-                body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-                    carroEditModalInstancia.hide();
-                    if (data.success) {
-                        addOuEditSucesso('Você', 'info', 'editou')
+    const carroEditModalInstancia = new bootstrap.Modal(document.getElementById('mdlEditCarro'));
+    const carroEditModal = document.getElementById('mdlEditCarro');
+    const inpEditCarro = document.getElementById('inpNomeEditCarro');
+    const btnEditCarro = document.getElementById('btnEditCarro');
 
-                        btnEditCarro.disabled = false;
+    if (carroEditModal) {
+        const form = document.getElementById('frmEditCarro');
 
-                        carroEditModalInstancia.hide();
-                        carregarConteudo('listarCarros');
-                    } else {
-                        carroEditModalInstancia.hide();
-                        btnEditCarro.disabled = false;
-                        addErro()
-                    }
+        carroEditModal.addEventListener('shown.bs.modal', () => {
+            inpEditCarro.focus();
+            const submitHandler = function (event) {
+                event.preventDefault();
+                btnEditCarro.disabled = true;
+                const form = event.target;
+                const formData = new FormData(form);
+                formData.append('controle', 'carroEdit');
+                fetch('controle.php', {
+                    method: 'POST',
+                    body: formData,
                 })
-        }
+                    .then(response => response.json())
+                    .then(data => {
+                        carroEditModalInstancia.hide();
+                        if (data.success) {
+                            addOuEditSucesso('Você', 'info', 'editou')
 
-        form.addEventListener('submit', submitHandler);
-    })
+                            btnEditCarro.disabled = false;
+
+                            carroEditModalInstancia.hide();
+                            carregarConteudo('listarCarros');
+                        } else {
+                            carroEditModalInstancia.hide();
+                            btnEditCarro.disabled = false;
+                            addErro()
+                        }
+                    })
+            }
+
+            form.addEventListener('submit', submitHandler);
+        })
+    }
 }
 
 function abrirModalDeleteCarro(idDelCarro) {
@@ -238,66 +244,45 @@ function abrirFecharModalDeleteCarro(idModal, abrirOuFechar) {
     }
 }
 
+if (document.getElementById('mdlDeleteCarro')) {
 
-const modalDeleteCarroInstancia = new bootstrap.Modal(document.getElementById('mdlDeleteCarro'))
-const modalDeleteCarro = document.getElementById('mdlDeleteCarro')
-const btnDeleteCarro = document.getElementById('btnDeleteCarro')
 
-if (modalDeleteCarro) {
-    const formDelCarro = document.getElementById('frmDeleteCarro')
+    const modalDeleteCarroInstancia = new bootstrap.Modal(document.getElementById('mdlDeleteCarro'))
+    const modalDeleteCarro = document.getElementById('mdlDeleteCarro')
+    const btnDeleteCarro = document.getElementById('btnDeleteCarro')
 
-    modalDeleteCarro.addEventListener('show.bs.modal', () => {
-        const submitHandler = function (event) {
-            event.preventDefault();
-            btnDeleteCarro.disabled = true;
-            modalDeleteCarroInstancia.hide()
-            const form = event.target;
-            const formData = new FormData(form);
-            formData.append('controle', 'deleteCarro');
-            fetch('controle.php', {
-                method: 'POST',
-                body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.success) {
-                        addOuEditSucesso('Você', 'success', 'deletou')
-                        carregarConteudo('listarCarros')
-                    } else {
-                        addErro()
-                    }
+    if (modalDeleteCarro) {
+        const formDelCarro = document.getElementById('frmDeleteCarro')
+
+        modalDeleteCarro.addEventListener('show.bs.modal', () => {
+            const submitHandler = function (event) {
+                event.preventDefault();
+                btnDeleteCarro.disabled = true;
+                modalDeleteCarroInstancia.hide()
+                const form = event.target;
+                const formData = new FormData(form);
+                formData.append('controle', 'deleteCarro');
+                fetch('controle.php', {
+                    method: 'POST',
+                    body: formData,
                 })
-        }
-        formDelCarro.addEventListener('submit', submitHandler)
-    })
-}
-// function deletarCarro(controle, id) {
-//
-//     fetch('controle.php', {
-//         method: 'POST',
-//         body: 'controle=' + encodeURIComponent(controle) + '&idApagar=' + encodeURIComponent(id),
-//         headers: {
-//             'Content-Type': 'application/x-www-form-urlencoded',
-//         },
-//     })
-//         .then(response => response.json())
-//         .then(data => {
-//             if (data.success) {
-//                 addOuEditSucesso('Você', 'success', 'deletou')
-//
-//                 carregarConteudo('listarCarros')
-//             } else {
-//                 addErro()
-//
-//             }
-//         })
-//         .catch(error => console.error('Erro na requisição:', error));
-// }
+                    .then(response => response.json())
+                    .then(data => {
 
+                        if (data.success) {
+                            addOuEditSucesso('Você', 'success', 'deletou')
+                            carregarConteudo('listarCarros')
+                        } else {
+                            addErro()
+                        }
+                    })
+            }
+            formDelCarro.addEventListener('submit', submitHandler)
+        })
+    }
+}
 
 function abrirModalDelFoto(idDelfoto) {
-    console.log('Capturou o id deletar')
     document.getElementById('idDeleteFoto').value = idDelfoto
     abrirFecharModalDelFoto('mdlDeleteFoto', 'A');
 }
@@ -305,51 +290,54 @@ function abrirModalDelFoto(idDelfoto) {
 function abrirFecharModalDelFoto(idModal, abrirOuFechar) {
     const modalInstancia = new bootstrap.Modal(document.getElementById(idModal));
     if (abrirOuFechar === 'A') {
-        console.log('Mostrou a modal deletar')
+
         modalInstancia.show();
     } else {
         modalInstancia.hide();
     }
 }
 
+if (document.getElementById('mdlDeleteFoto')) {
 
-const fotoDeleteModalInstancia = new bootstrap.Modal(document.getElementById('mdlDeleteFoto'));
-const fotoDeleteModal = document.getElementById('mdlDeleteFoto');
-const btnDelFoto = document.getElementById('btnDeleteFoto');
 
-if (fotoDeleteModal) {
-    const formFoto = document.getElementById('frmDeleteFoto');
+    const fotoDeleteModalInstancia = new bootstrap.Modal(document.getElementById('mdlDeleteFoto'));
+    const fotoDeleteModal = document.getElementById('mdlDeleteFoto');
+    const btnDelFoto = document.getElementById('btnDeleteFoto');
 
-    fotoDeleteModal.addEventListener('shown.bs.modal', () => {
+    if (fotoDeleteModal) {
+        const formFoto = document.getElementById('frmDeleteFoto');
 
-        const submitHandler = function (event) {
-            event.preventDefault();
-            btnDelFoto.disabled = true;
-            fotoDeleteModalInstancia.hide();
-            const form = event.target;
-            const formData = new FormData(form);
-            formData.append('controle', 'deleteFoto');
-            fetch('controle.php', {
-                method: 'POST',
-                body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.success) {
-                        addOuEditSucesso('Você', 'success', 'deletou')
-                        btnDelFoto.disabled = false;
-                        carregarConteudo('listarFoto');
-                    } else {
-                        btnDelFoto.disabled = false;
-                        addErro()
-                    }
+        fotoDeleteModal.addEventListener('shown.bs.modal', () => {
+
+            const submitHandler = function (event) {
+                event.preventDefault();
+                btnDelFoto.disabled = true;
+                fotoDeleteModalInstancia.hide();
+                const form = event.target;
+                const formData = new FormData(form);
+                formData.append('controle', 'deleteFoto');
+                fetch('controle.php', {
+                    method: 'POST',
+                    body: formData,
                 })
-        }
-        formFoto.addEventListener('submit', submitHandler);
-    })
-}
+                    .then(response => response.json())
+                    .then(data => {
 
+                        if (data.success) {
+                            addOuEditSucesso('Você', 'success', 'deletou')
+                            btnDelFoto.disabled = false;
+                            carregarConteudo('listarFoto');
+                        } else {
+                            btnDelFoto.disabled = false;
+                            addErro()
+                        }
+                    })
+            }
+            formFoto.addEventListener('submit', submitHandler);
+        })
+    }
+
+}
 
 function abrirModalEditFoto(idEditfoto) {
     const enderecoFoto = document.getElementById('inpEditFoto')
@@ -365,54 +353,55 @@ function abrirFecharModalEditFoto(idModal, abrirOuFechar) {
 
     if (abrirOuFechar === 'A') {
         modalInstancia.show();
-        //console.log('Mostrou a modal editar')
+
     } else {
         modalInstancia.hide();
     }
 }
 
+if (document.getElementById('mdlEditFoto')) {
 
-const fotoEditModalinstancia = new bootstrap.Modal(document.getElementById('mdlEditFoto'));
-const fotoEditModal = document.getElementById('mdlEditFoto');
-const btnEditFoto = document.getElementById('btnEditFoto');
+    const fotoEditModalinstancia = new bootstrap.Modal(document.getElementById('mdlEditFoto'));
+    const fotoEditModal = document.getElementById('mdlEditFoto');
+    const btnEditFoto = document.getElementById('btnEditFoto');
 
+    if (fotoEditModal) {
+        const formEditFoto = document.getElementById('frmEditFoto');
 
-if (fotoEditModal) {
-    const formEditFoto = document.getElementById('frmEditFoto');
+        fotoEditModal.addEventListener('shown.bs.modal', () => {
+            const submitHandler = function (event) {
+                event.preventDefault();
+                btnEditFoto.disabled = true;
+                fotoEditModalinstancia.hide();
+                const form = event.target;
+                const formData = new FormData(form);
+                formData.append('controle', 'editFoto');
+                const fileInput = document.getElementById('inpEditFoto');
+                formData.append('foto', fileInput.files[0]);
+                fetch('controle.php', {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then(response => response.json())
+                    .then(data => {
 
-    fotoEditModal.addEventListener('shown.bs.modal', () => {
-        const submitHandler = function (event) {
-            event.preventDefault();
-            btnEditFoto.disabled = true;
-            fotoEditModalinstancia.hide();
-            const form = event.target;
-            const formData = new FormData(form);
-            formData.append('controle', 'editFoto');
-            const fileInput = document.getElementById('inpEditFoto');
-            formData.append('foto', fileInput.files[0]);
-            fetch('controle.php', {
-                method: 'POST',
-                body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.success) {
-                        btnEditFoto.disabled = false
-                        addOuEditSucesso('Você', 'info', 'editou');
-                        form.removeEventListener('submit', submitHandler);
-                        carregarConteudo('listarFoto');
-                    } else {
-                        btnEditFoto.disabled = false
-                        addErro();
-                    }
-                });
-        };
-        formEditFoto.addEventListener('submit', submitHandler);
-    });
+                        if (data.success) {
+                            btnEditFoto.disabled = false
+                            addOuEditSucesso('Você', 'info', 'editou');
+                            form.removeEventListener('submit', submitHandler);
+                            carregarConteudo('listarFoto');
+                        } else {
+                            btnEditFoto.disabled = false
+                            addErro();
+                        }
+                    });
+            };
+            formEditFoto.addEventListener('submit', submitHandler);
+        });
+
+    }
 
 }
-
 
 function deletar(controle, id) {
 
@@ -531,7 +520,6 @@ function imprimir(nomeTabela, tabela) {
     estilo += "</style>"
 
 
-
     // const nomeTable = document.getElementById(nomeTabela)
     const win = window.open('', '_self', 'height=700,width=1000');
 
@@ -553,13 +541,9 @@ function imprimir(nomeTabela, tabela) {
     win.print();
 }
 
-// <button className="btn btn-outline-warning text-black" onClick="imprimir('Total de vendas','tabela')">
-// <i className="bi bi-printer"></i>
-// </button>
-
 function imprimirHistorico(nomeTabela, tabela, nome, contato, numeroCartao, valorCartao) {
     const conteudo = document.getElementById(tabela).innerHTML;
-//alert('hey')
+
     let estilo = "<style>";
     estilo += "table {width: 100%; font: 20px Calibri;}"
     estilo += "th{border: solid 2px #000;}"
@@ -567,7 +551,6 @@ function imprimirHistorico(nomeTabela, tabela, nome, contato, numeroCartao, valo
     estilo += "padding: 4px 8px; text-align: center;}"
     estilo += "</style>"
 
-    // const nomeTable = document.getElementById(nomeTabela)
     const win = window.open('', '', 'width=600');
 
     win.document.write('<html>')
