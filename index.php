@@ -113,36 +113,13 @@ include_once('navbar.php');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js"
         integrity="sha512-oJCa6FS2+zO3EitUSj+xeiEN9UTr+AjqlBZO58OPadb2RfqwxHpjTU8ckIC8F4nKvom7iru2s8Jwdo+Z8zm0Vg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!--    </script>-->
-<!--    </head>-->
 
-<script src="http://www.geradorcpf.com/scripts.js"></script>
-<script src="http://www.geradorcpf.com/jquery-1.2.6.pack.js"></script>
-<script src="http://www.geradorcpf.com/jquery.maskedinput-1.1.4.pack.js"></script>
+
 <script src="./js/mobile-navbar.js"></script>
 <script src="./js/formatacoes.js"></script>
 <script src="./js/script.js"></script>
 <script src="js/js.js"></script>
 
-<!--    </script>-->
-
-<!--    <script type="text/javascript">-->
-<!--        $(document).ready(function() {-->
-<!--            $(".cpf").mask("999.999.999-99");-->
-<!---->
-<!--            $("#cpf").blur(function() {-->
-<!--                if ($("#cpf").val() == '') {-->
-<!--                    $("#saida").html("Informe um CPF");-->
-<!--                    return false;-->
-<!--                }-->
-<!--                if (validarCPF($("#cpf").val())) {-->
-<!--                    $(".cpf").css('border-color', 'limegreen');-->
-<!--                } else {-->
-<!--                    $(".cpf").css('border-color', 'red');-->
-<!--                }-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
 </body>
 
 </html>

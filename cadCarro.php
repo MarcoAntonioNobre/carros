@@ -9,8 +9,8 @@ $conn = conectar();
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if (isset($dados) && !empty($dados)) {
-    $carro = isset($dados['inpNomeCarro']) ? addslashes(mb_strtoupper($dados['inpNomeCarro'], 'UTF-8')) : '';
-    $diferenciais = isset($dados['inpDiferenciais']) ? addslashes(mb_strtoupper($dados['inpDiferenciais'], 'UTF-8')) : '';
+    $carro = isset($dados['inpNomeCarro']) ? addslashes($dados['inpNomeCarro']) : '';
+    $diferenciais = isset($dados['inpDiferenciais']) ? addslashes($dados['inpDiferenciais']) : '';
     $valor = isset($dados['inpValor']) ? addslashes($dados['inpValor']) : '';
     $proprietario = isset($dados['selectProprietario']) ? addslashes($dados['selectProprietario']) : '';
 }
@@ -34,17 +34,3 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
 } else {
     echo 'Nenhuma imagem enviada!!';
 }
-
-//echo json_encode($dados);
-
-//    $retornoInsert = insertGlobal6('carro', 'idproprietario, nomeCarro, diferenciais, fotoPerfil, preco, cadastro',$proprietario, $carro, $diferenciais, $foto, $valor, DATATIMEATUAL);
-//    if ($retornoInsert > 0) {
-//        echo json_encode(['success' => true, 'message' => "Carro $modelo cadastrado com sucesso"]);
-//    } else {
-//        echo json_encode(['success' => false, 'message' => "Carro não cadastrado!"]);
-//    }
-//} else {
-//    echo json_encode((['success' => false, 'message' => 'Carro não encontrado!']));
-//}
-
-//echo json_encode($dados);

@@ -254,10 +254,10 @@ function abrirModalJsVenda(id, inID, nomeModal, dataTime, abrirModal = 'A', bota
             })
                 .then(response => response.json())
                 .then(data => {
-                    // console.log(data)
+
                     if (data.success) {
                         carregarConteudo("listarVenda");
-                        console.log(data)
+
                         switch (addEditDel) {
                             case 'addVenda':
                                 addOuEditSucesso('Você', 'success', 'adicionou')
@@ -350,7 +350,7 @@ function abrirModalJsADM(id, inID, nome, inNome, dataTime, cpf, inCpf, senha, in
 
                     if (data.success) {
                         carregarConteudo("listarAdm");
-                        form.removeEventListener('submit',submitHandler)
+                        form.removeEventListener('submit', submitHandler)
                         switch (addEditDel) {
                             case 'addAdm':
                                 addOuEditSucesso('Você', 'success', 'adicionou')
@@ -391,7 +391,7 @@ function abrirModalJsADM(id, inID, nome, inNome, dataTime, cpf, inCpf, senha, in
 
 }
 
-function abrirModalJsFoto(id, inID, idCarroFoto, inCarroFoto, idPropFoto, inPropFoto,inpfoto, dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
+function abrirModalJsFoto(id, inID, idCarroFoto, inCarroFoto, idPropFoto, inPropFoto, inpfoto, dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
 
     var botoes = document.getElementById(`${botao}`);
@@ -613,7 +613,7 @@ function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
         })
             .then(response => response.json())
             .then(data => {
-                // console.log(data)
+
                 const mostrar = document.getElementById('mostrar');
                 if (data.success) {
 
@@ -686,7 +686,7 @@ function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
                     divPreco.classList.add("ms-5");
                     divPreco.classList.add("me-3");
                     divPreco.appendChild(h5)
-                    h5.innerHTML = "R$" +data.preco ;
+                    h5.innerHTML = "R$" + data.preco;
 
                     divCol3.appendChild(divBotao)
                     divBotao.classList.add("d-flex");
@@ -705,16 +705,16 @@ function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
 
                 } else {
                     addErroCompra(data.message)
-                   // const algumnome = document.createElement("h1");
-                   // algumnome.innerHTML = "Nenhum carrro encontrado";
+                    // const algumnome = document.createElement("h1");
+                    // algumnome.innerHTML = "Nenhum carrro encontrado";
 
                 }
             })
-            // .catch(error => {
-            //
-            //
-            //     console.error('Erro na requisição:', error);
-            // });
+        // .catch(error => {
+        //
+        //
+        //     console.error('Erro na requisição:', error);
+        // });
 
 
     }

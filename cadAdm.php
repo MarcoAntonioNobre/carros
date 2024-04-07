@@ -4,10 +4,10 @@ if (isset($Dados) && !empty($Dados)) {
 
 //    echo json_encode($Dados);
 
-    $nome = isset($Dados['nomeAdm']) ? addslashes(mb_strtoupper($Dados['nomeAdm'], 'UTF-8')) : '';
-    $dataHora = isset($Dados['dataTime']) ? addslashes(mb_strtoupper($Dados['dataTime'], 'UTF-8')) : '';
-    $senha = isset($Dados['senhaAdm']) ? addslashes(mb_strtoupper($Dados['senhaAdm'], 'UTF-8')) : '';
-    $cpf = isset($Dados['cpfAdm']) ? addslashes(mb_strtoupper($Dados['cpfAdm'], 'UTF-8')) : '';
+    $nome = isset($Dados['nomeAdm']) ? addslashes($Dados['nomeAdm']) : '';
+    $dataHora = isset($Dados['dataTime']) ? addslashes($Dados['dataTime']) : '';
+    $senha = isset($Dados['senhaAdm']) ? addslashes($Dados['senhaAdm']) : '';
+    $cpf = isset($Dados['cpfAdm']) ? addslashes($Dados['cpfAdm']) : '';
     $senhaHash = criarSenhaHash($senha);
     $retornoInsert = insertGlobal4('adm', 'nomeAdm,cpf,senha,cadastro', $nome, $cpf,$senhaHash,$dataHora);
 

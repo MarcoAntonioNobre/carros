@@ -8,7 +8,7 @@ $conn = conectar();
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if (isset($dados) && !empty($dados)) {
-    $id = isset($dados['idDeleteCarro']) ? addslashes(mb_strtoupper($dados['idDeleteCarro'], 'UTF-8')) : '';
+    $id = isset($dados['idDeleteCarro']) ? addslashes($dados['idDeleteCarro']) : '';
 
     $retornoInsert = deletecadastro('carro','idcarro', $id);
     if ($retornoInsert > 0) {
