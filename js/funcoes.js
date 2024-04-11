@@ -208,7 +208,6 @@ if (document.getElementById('mdlEditCarro')) {
                 })
                     .then(response => response.json())
                     .then(data => {
-                        carroEditModalInstancia.hide();
                         if (data.success) {
                             addOuEditSucesso('Você', 'info', 'editou')
 

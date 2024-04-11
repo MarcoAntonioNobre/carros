@@ -105,7 +105,7 @@ if ($_SESSION['idadm']) {
 
                         $while = 1;
                         while ($while <= 5) {
-                            $total = listarTabelaInnerJoinTriploValorPago('valorPago', 'carro', 'proprietario', 'compras', 'idproprietario', 'idproprietario', 'idcarro', 'idcarro', 't.idcarro', $RODARODA);
+                            $total = listarTabelaInnerJoinTriploValorPago('valorPago', 'carro', 'proprietario', 'compras', 'idproprietario', 'idproprietario', 'idcarro', 'idcarro', 't.idproprietario', $RODARODA);
                             foreach ($total as $to) {
                                 $testando2 = $to->soma;
                                 $marioMaior[] = $testando2;
