@@ -100,7 +100,7 @@ if ($_SESSION['idadm']) {
                         $nomeCarro = $carro->nomeCarro;
                         $foto = $carro->fotoPerfil;
                         $preco = $carro->preco;
-                        $precoConvertido = conversorDBNum($preco);
+
                         $diferenciais = $carro->diferenciais;
                         $nomeCarro = mb_strtolower($nomeCarro);
                         $nomeCarro = converterAcentuacao($nomeCarro);

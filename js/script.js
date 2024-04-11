@@ -1,6 +1,7 @@
 $('.cpf').mask('000.000.000-00');
 $('.cartao').mask('000000');
-$('.dinheiro').mask('000.000.000.000.000,00', {reverse: true});
+$('.dinheiro').mask('000000000000000.00', {reverse: true});
+
 
 var options = {
     onKeyPress: function (tell, e, field, options) {

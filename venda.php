@@ -34,8 +34,8 @@
                 $qtd = $venda->qtdComprada;
                 $pgto = $venda->idcliente;
                 $vlrPago = $venda->valorPago;
-                $nomeCarro = mb_strtoupper($nomeCarro);
-//                $nomeCarro = converterAcentuacao($nomeCarro);
+                $nomeCarro = mb_strtolower($nomeCarro);
+                $nomeCarro = converterAcentuacao($nomeCarro);
                 ?>
                 <tr>
                     <th scope="row"><?php echo $cont; ?></th>

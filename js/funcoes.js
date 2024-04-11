@@ -220,6 +220,8 @@ if (document.getElementById('mdlEditCarro')) {
                             btnEditCarro.disabled = false;
                             addErro()
                         }
+
+                        // carroEditModal.aria-hidden="true"
                     })
             }
 

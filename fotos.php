@@ -30,6 +30,12 @@
             $nomeCarro = $fotos->nomeCarro;
             $nomeProp = $fotos->nomeProprietario;
             $fotoCarro = $fotos->foto;
+
+            $nomeProp = mb_strtolower($nomeProp);
+            $nomeProp = converterAcentuacao($nomeProp);
+            $nomeCarro = mb_strtolower($nomeCarro);
+            $nomeCarro = converterAcentuacao($nomeCarro);
+
             ?>
             <tr class="text-center">
                 <th scope="row">
@@ -39,12 +45,12 @@
                 </th>
                 <th>
                     <?php
-                    echo $nomeCarro;
+                    echo $nomeProp;
                     ?>
                 </th>
                 <td>
                     <?php
-                    echo $nomeProp;
+                    echo $nomeCarro;
                     ?>
                 </td>
                 <td>

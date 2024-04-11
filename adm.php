@@ -237,7 +237,7 @@ include_once 'footer.php';
 <div class="modal fade" id="cadProprietario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-success text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de proprietário</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -259,7 +259,7 @@ include_once 'footer.php';
 <div class="modal fade" id="editProprietario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-primary text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Edição de proprietário</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -307,7 +307,7 @@ include_once 'footer.php';
 <div class="modal fade" id="mdlCadCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-success text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar cliente</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -349,7 +349,7 @@ include_once 'footer.php';
 <div class="modal fade" id="mdlEditCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-primary text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Editar cliente</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -419,7 +419,7 @@ include_once 'footer.php';
 <div class="modal fade" id="cadAdm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-sucess text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de administrador</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -452,7 +452,7 @@ include_once 'footer.php';
 <div class="modal fade" id="editAdm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-primary text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Edição de administrador</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -511,7 +511,7 @@ include_once 'footer.php';
 <div class="modal fade" id="mdlCadCarro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-success text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar carro</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -536,7 +536,7 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpValor">Valor:</label>
-                                <input type="text" name="inpValor" id="inpValor" required="required" class="inputzz">
+                                <input type="text" name="inpValor" id="inpValor" required="required" class="dinheiro inputzz">
                             </div>
                             <div>
                                 <label for="selectProprietario">Selecione o proprietário:</label>
@@ -574,7 +574,7 @@ include_once 'footer.php';
 <div class="modal fade" id="mdlEditCarro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-primary text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Editar carro</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -597,7 +597,7 @@ include_once 'footer.php';
                             <div>
                                 <label for="inpEditValor">Valor:</label>
                                 <input type="text" name="inpEditValor" id="inpEditValor" required="required"
-                                       class="inputzz">
+                                       class="dinheiro inputzz">
                             </div>
                             <div>
                                 <label for="selectEditProprietario">Selecione o proprietário:</label>
@@ -660,7 +660,7 @@ include_once 'footer.php';
 <div class="modal fade" id="mdlCadFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-success text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Foto</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -709,7 +709,7 @@ include_once 'footer.php';
 <div class="modal fade" id="mdlEditFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-primary text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Foto</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
