@@ -377,7 +377,7 @@ include_once 'footer.php';
                             <div>
                                 <label for="inpEditValorCartao" class="label-control">Valor em cartão:</label>
                                 <input type="text" name="inpEditValorCartao" id="inpEditValorCartao"
-                                       class="inputzz"">
+                                       class="inputzz">
                             </div>
                         </div>
                     </div>
