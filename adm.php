@@ -245,7 +245,7 @@ include_once 'footer.php';
                 <div class="modal-body">
 
                     <label for="nomeProprietario">Nome:</label>
-                    <input type="text" class="inputzz" name="nomeProprietario" id="nomeProprietario">
+                    <input type="text" class="inputzz" name="nomeProprietario" id="nomeProprietario" required="required">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
@@ -267,7 +267,7 @@ include_once 'footer.php';
                 <div class="modal-body">
                     <input type="text" name="idEditProprietario" id="idEditProprietario" hidden="hidden">
                     <label for="nomeEditProprietario">Nome:</label>
-                    <input type="text" name="nomeEditProprietario" id="nomeEditProprietario" class="inputzz">
+                    <input type="text" name="nomeEditProprietario" id="nomeEditProprietario" class="inputzz" required="required">
 
                 </div>
                 <div class="modal-footer">
@@ -317,22 +317,22 @@ include_once 'footer.php';
                         <form method="post" action="" name="frmCadCliente" id="frmCadCliente">
                             <div>
                                 <label for="inpNome" class="label-control">Nome:</label>
-                                <input type="text" name="inpNome" id="inpNome" class="inputzz" required="required">
+                                <input type="text" name="inpNome" id="inpNome" class="inputzz" required="required" autofocus>
                             </div>
                             <div>
                                 <label for="inpContato" class="label-control">Contato:</label>
-                                <input type="text" name="inpContato" id="inpContato" class="inputzz telefoneBR">
+                                <input type="text" name="inpContato" id="inpContato" class="inputzz telefoneBR" required="required">
                             </div>
                             <div>
                                 <label for="inpValorUnitario" class="label-control">Número do cartão:</label>
                                 <input type="number" name="inpValorUnitario" id="inpValorUnitario" minlength="6"
                                        maxlength="6"
-                                       class="inputzz cartao">
+                                       class="inputzz cartao" required="required">
                             </div>
                             <div>
                                 <label for="inpValorCartao" class="label-control">Valor em cartão:</label>
                                 <input type="text" name="inpValorCartao" id="inpValorCartao"
-                                       class="inputzz">
+                                       class="inputzz" required="required">
                             </div>
                     </div>
                 </div>
@@ -366,18 +366,18 @@ include_once 'footer.php';
                             <div>
                                 <label for="inpEditContato" class="label-control">Contato:</label>
                                 <input type="text" name="inpEditContato" id="inpEditContato"
-                                       class="inputzz telefoneBR">
+                                       class="inputzz telefoneBR" required="required">
                             </div>
                             <div>
                                 <label for="inpEditValorUnitario" class="label-control">Número do cartão:</label>
                                 <input type="number" name="inpEditValorUnitario" id="inpEditValorUnitario" minlength="6"
                                        maxlength="6"
-                                       class="inputzz cartao">
+                                       class="inputzz cartao" required="required">
                             </div>
                             <div>
                                 <label for="inpEditValorCartao" class="label-control">Valor em cartão:</label>
                                 <input type="text" name="inpEditValorCartao" id="inpEditValorCartao"
-                                       class="inputzz">
+                                       class="inputzz" required="required">
                             </div>
                         </div>
                     </div>
@@ -427,7 +427,7 @@ include_once 'footer.php';
                 <div class="modal-body">
                     <div>
                         <label for="nomeAdm">Nome:</label>
-                        <input type="text" name="nomeAdm" id="nomeAdm" required="required" class="inputzz">
+                        <input type="text" name="nomeAdm" id="nomeAdm" required="required" class="inputzz" >
                     </div>
                     <div>
                         <label for="cpfAdm">CPF:</label>
