@@ -28,8 +28,8 @@
         foreach ($proprietarios as $proprietario) {
             $idprop = $proprietario->idproprietario;
             $nome = $proprietario->nomeProprietario;
-            $nome = mb_strtolower($nome);
-            $nome = converterAcentuacao($nome);
+//            $nome = mb_strtolower($nome);
+//            $nome = converterAcentuacao($nome);
 
             ?>
 
