@@ -325,7 +325,7 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpValorUnitario" class="label-control">Número do cartão:</label>
-                                <input type="number" name="inpValorUnitario" id="inpValorUnitario" minlength="6"
+                                <input type="number" name="inpValorUnitario" id="inpValorUnitario" minlength="5"
                                        maxlength="6"
                                        class="inputzz cartao" required="required">
                             </div>
@@ -370,7 +370,7 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpEditValorUnitario" class="label-control">Número do cartão:</label>
-                                <input type="number" name="inpEditValorUnitario" id="inpEditValorUnitario" minlength="6"
+                                <input type="number" name="inpEditValorUnitario" id="inpEditValorUnitario" minlength="5"
                                        maxlength="6"
                                        class="inputzz cartao" required="required">
                             </div>
