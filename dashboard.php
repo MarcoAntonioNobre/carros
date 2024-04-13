@@ -243,7 +243,7 @@ if ($_SESSION['idadm']) {
                             </div>
                             <div class="mt-3" id="cartaoCod" style="display: none">
                                 <div class="wave-group">
-                                    <input minlength="6" maxlength="6" type="text" class="input"
+                                    <input minlength="5" maxlength="6" type="text" class="input"
                                            name="codCartao" id="codCartao">
                                     <span class="bar"></span>
                                     <label class="label">
