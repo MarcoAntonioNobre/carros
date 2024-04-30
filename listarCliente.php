@@ -67,8 +67,9 @@
                 </td>
                 <td>
                     <?php
-                    $valorNoCartao = conversorDBNum($cartao);
-                    if ($valorNoCartao !== '') {
+//                    $valorNoCartao = conversorDBNum($cartao);
+                    if ($cartao !== '') {
+                        $valorNoCartao = conversorDBNum($cartao);
                         echo 'R$ ' . $valorNoCartao;
                     } else {
                         echo 'Sem limite';
@@ -115,8 +116,8 @@
                                         <div class="text-start">
                                             <b>Valor no cartão:</b>
                                             <?php
-                                            $valorNoCartao = conversorDBNum($cartao);
-                                            if ($valorNoCartao !== '') {
+                                            if ($cartao !== '') {
+                                                $valorNoCartao = conversorDBNum($cartao);
                                                 echo 'R$ ' . $valorNoCartao;
                                             } else {
                                                 echo 'Sem limite';

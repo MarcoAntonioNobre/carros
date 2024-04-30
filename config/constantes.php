@@ -19,8 +19,8 @@ if ($servidorLocal) {
     define('PASS', '');
     define('DBNAME', 'concessionaria');
 } else {
-    define('HOST', '192.168.1.1');
-    define('USER', 'root');
-    define('PASS', '');
+    define('HOST', '15.235.55.95');
+    define('USER', 'uarthur');
+    define('PASS', 'Wold51@2');
     define('DBNAME', 'concessionaria');
 }
