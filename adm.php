@@ -8,7 +8,14 @@ $adm = 1;
 
 if ($_SESSION['idadm']) {
     $idUsuario = $_SESSION['idadm'];
-    //echo '<p class="text-white">'.$idUsuario.'</p>';
+    $senhaAdm = $_SESSION['senhaAdm'];
+
+    $resultadoSenha = verificarSenhaAutomatica($idUsuario, $senhaAdm);
+
+    if ($resultadoSenha !== 'deBOA') {
+        session_destroy();
+        header('location: index.php?error=404');
+    }
 } else {
     session_destroy();
     header('location: index.php?error=404');
@@ -536,7 +543,8 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpValor">Valor:</label>
-                                <input type="text" name="inpValor" id="inpValor" required="required" class="dinheiro inputzz">
+                                <input type="text" name="inpValor" id="inpValor" required="required"
+                                       class="dinheiro inputzz">
                             </div>
                             <div>
                                 <label for="selectProprietario">Selecione o proprietário:</label>

@@ -25,6 +25,7 @@
 
 
         <?php
+
         foreach ($adm as $admin) {
             $id = $admin->idadm;
             $nome = $admin->nomeAdm;

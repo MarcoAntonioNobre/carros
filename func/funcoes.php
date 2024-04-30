@@ -22,7 +22,7 @@ function listarTabela($campos, $tabela)
     $conn = null;
 }
 
-function contaLinha($cont, $tabela,$quando,$idquando)
+function contaLinha($cont, $tabela, $quando, $idquando)
 {
     $conn = conectar();
     try {
@@ -169,6 +169,7 @@ function listarItemExpecificoPesquisa($valorCampo)
     $conn = null;
 }
 
+
 function listarItemExpecificoPessoa($valorCampo)
 {
     $conn = conectar();
@@ -259,7 +260,7 @@ function listarTabelaInnerJoinTriplo($campos, $tabela1, $tabela2, $tabela3, $id1
     $conn = null;
 }
 
-function listarTabelaInnerJoinTriploWhere($campos, $tabela1, $tabela2, $tabela3, $id1, $id2, $id3, $id4,$quando,$idquando, $ordem, $tipoOrdem)
+function listarTabelaInnerJoinTriploWhere($campos, $tabela1, $tabela2, $tabela3, $id1, $id2, $id3, $id4, $quando, $idquando, $ordem, $tipoOrdem)
 {
     $conn = conectar();
     try {
@@ -279,7 +280,6 @@ function listarTabelaInnerJoinTriploWhere($campos, $tabela1, $tabela2, $tabela3,
     }
     $conn = null;
 }
-
 
 
 function listarTabelaInnerJoinTriploValorPago($camposSomar, $tabela1, $tabela2, $tabela3, $id1, $id2, $id3, $id4, $identificadorWhere, $idWhere)
@@ -601,6 +601,39 @@ function alterarGlobal3($tabela, $campo1, $campo2, $campo3, $valor, $valor2, $va
     $conn = null;
 }
 
+function verificarSenhaAutomatica($valorIdAdm, $valorSenha)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlverificar = $conn->prepare("SELECT * FROM adm WHERE idadm = ?");
+        $sqlverificar->bindValue(1, $valorIdAdm, PDO::PARAM_STR);
+//        $sqlverificar->bindValue(2, $valorSenha, PDO::PARAM_STR);
+        $sqlverificar->execute();
+        $conn->commit();
+        if ($sqlverificar->rowCount() > 0) {
+            $retornoSql = $sqlverificar->fetch(PDO::FETCH_OBJ);
+            $senha_hash = $retornoSql->senha;
+            if (password_verify($valorSenha, $senha_hash)) {
+                return 'deBOA';
+            }
+            return 'invasor';
+
+        } else {
+            return 'Vazio';
+        }
+    } catch (Throwable $e) {
+        $error_message = 'Throwable: ' . $e->getMessage() . PHP_EOL;
+        $error_message .= 'File: ' . $e->getFile() . PHP_EOL;
+        $error_message .= 'Line: ' . $e->getLine() . PHP_EOL;
+        error_log($error_message, 3, 'log/arquivo_de_log.txt');
+        $conn->rollback();
+        return 'Exception -> ' . $e->getMessage();
+    } finally {
+        $conn = null;
+    }
+}
+
 function verificarSenhaCriptografada($campos, $tabela, $campoBdEmail, $campoEmail, $campoBdSenha, $campoSenha, $campoBdAtivo, $campoAtivo)
 {
     $conn = conectar();
@@ -656,7 +689,7 @@ function dataHoraGlobal($data, $hora = 'S', $pais = 'BR')
 function conversorDBNum($numm)
 {
     $numero = $numm;
-    $numero = number_format($numero, 2, ',', '');
+    $numero = number_format($numero, 2, ',', '.');
     return $numero;
 }
 
