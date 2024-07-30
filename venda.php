@@ -21,6 +21,7 @@
                 <th scope="col" class="bg-black text-light legenda">Forma de Pagamento</th>
                 <th scope="col" class="bg-black text-light legenda">Quantidade comprada</th>
                 <th scope="col" class="bg-black text-light legenda">Valor pago</th>
+                <!--                <th scope="col" class="bg-black text-light legenda">Ação</th>-->
             </tr>
             </thead>
             <tbody>

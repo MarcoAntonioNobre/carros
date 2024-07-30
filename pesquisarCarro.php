@@ -1,10 +1,11 @@
 <?php
 $Dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 if (isset($Dados) && !empty($Dados)) {
+//    echo json_encode($Dados);
 
-    $inputPesquisa = isset($Dados['inputPesquisa']) ? addslashes($Dados['inputPesquisa']) : '';
+    $inputPesquisa = isset($Dados['inputPesquisa']) ? addslashes(mb_strtoupper($Dados['inputPesquisa'], 'UTF-8')) : '';
     $retornoInsert = listarItemExpecificoPesquisa($inputPesquisa);
-
+//    print_r($retornoInsert);
 
     if ($retornoInsert !== 'Vazio') {
 
@@ -32,3 +33,19 @@ if (isset($Dados) && !empty($Dados)) {
     echo json_encode(['success' => false, 'message' => "Não encontramos! Error Variável"], JSON_THROW_ON_ERROR);
 }
 
+
+
+//    foreach ($retornoInsert as $carroRet){
+//      $idcarro = $carroRet ->idcarro;
+//      $nomeCarro = $carroRet ->nomeCarro;
+//      $preco = $carroRet ->preco;
+//    }
+//<div class='row d-flex justify-content-center align-items-center'>
+//<div class='col-lg-4 col-md-4 col-12 '>
+//<div class='card mt-4' >
+//<div class='card-body text-center'>
+//<h5 class='card-title'>j</h5>
+//<button type='submit' class='btn btn-outline-dark' data-bs-toggle='modal' onclick='abrirModalCompra('>','')'>
+//Ver Mais
+//</button>
+//</div></div></div></div>

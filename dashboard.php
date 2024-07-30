@@ -6,6 +6,7 @@ $adm = 0;
 
 if ($_SESSION['idadm']) {
     $idUsuario = $_SESSION['idadm'];
+    //echo '<p class="text-white">'.$idUsuario.'</p>';
 } else {
     session_destroy();
     header('location: index.php?error=404');
