@@ -66,12 +66,6 @@ if ($_SESSION['idadm']) {
                     </svg>
                     Cliente
                 </button>
-                <button class="value" onclick="carregarConteudo('listarFoto')">
-                    <svg id="svg8" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                        <i class="bi bi-file-earmark-image"></i>
-                    </svg>
-                    Fotos
-                </button>
                 <button class="value" onclick="carregarConteudo('listarTotal')">
                     <svg fill="none" viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
                         <i class="bi bi-cash-coin"></i>
@@ -234,7 +228,7 @@ include_once 'footer.php';
 ?>
 
 <!-- Modal de cadastro de PROPRIETÁRIO -->
-<div class="modal fade" id="cadProprietario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="cadProprietario" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-success text-white">
@@ -245,18 +239,19 @@ include_once 'footer.php';
                 <div class="modal-body">
 
                     <label for="nomeProprietario">Nome:</label>
-                    <input type="text" class="inputzz" name="nomeProprietario" id="nomeProprietario" required="required">
+                    <input type="text" class="inputzz" name="nomeProprietario" id="nomeProprietario"
+                           required="required">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-success" id="btnAddProprietario">Criar Cadastro</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" id="btnFecharMdlCadProp">Voltar</button>
+                    <button type="submit" class="btn btn-sm btn-success" id="btnAddProprietario">Cadastrar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!-- Modal de Edit de PROPRIETÁRIO -->
-<div class="modal fade" id="editProprietario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editProprietario" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
@@ -267,19 +262,20 @@ include_once 'footer.php';
                 <div class="modal-body">
                     <input type="text" name="idEditProprietario" id="idEditProprietario" hidden="hidden">
                     <label for="nomeEditProprietario">Nome:</label>
-                    <input type="text" name="nomeEditProprietario" id="nomeEditProprietario" class="inputzz" required="required">
+                    <input type="text" name="nomeEditProprietario" id="nomeEditProprietario" class="inputzz"
+                           required="required">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-primary" id="btnEditProprietario">Alterar</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" id="btnFecharMdlAlterarProp">Voltar</button>
+                    <button type="submit" class="btn btn-sm btn-primary" id="btnEditProprietario">Alterar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!-- Modal de Delete de PROPRIETÁRIO -->
-<div class="modal fade" id="deleteProprietario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteProprietario" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
@@ -294,8 +290,9 @@ include_once 'footer.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteProprietario">Deletar</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" id="btnFecharMdlDeletarProp">Voltar</button>
+                    <button type="submit" class="btn btn-sm btn-outline-danger" id="btnDeleteProprietario">Deletar
+                    </button>
                 </div>
             </form>
         </div>
@@ -304,20 +301,21 @@ include_once 'footer.php';
 
 
 <!-- Modal de cadastro de CLIENTE -->
-<div class="modal fade" id="mdlCadCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="mdlCadCliente" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-success text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar cliente</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="card">
-                    <div class="card-body">
-                        <form method="post" action="" name="frmCadCliente" id="frmCadCliente">
+            <form method="post" action="" name="frmCadCliente" id="frmCadCliente">
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
                             <div>
                                 <label for="inpNome" class="label-control">Nome:</label>
-                                <input type="text" name="inpNome" id="inpNome" class="inputzz" required="required" autofocus>
+                                <input type="text" name="inpNome" id="inpNome" class="inputzz" required="required"
+                                       autofocus>
                             </div>
                             <div>
                                 <label for="inpContato" class="label-control">Contato:</label>
@@ -334,19 +332,19 @@ include_once 'footer.php';
                                 <input type="text" name="inpValorCartao" id="inpValorCartao"
                                        class="inputzz" required="required">
                             </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                <button type="submit" class="btn btn-success" id="btnCadCliente">Cadastrar</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" id="btnFecharMdlCadCliente">Voltar</button>
+                    <button type="submit" class="btn btn-sm btn-success" id="btnCadCliente">Cadastrar</button>
+                </div>
             </form>
         </div>
     </div>
 </div>
 <!-- Modal de edit de CLIENTE -->
-<div class="modal fade" id="mdlEditCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="mdlEditCliente" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
@@ -357,7 +355,7 @@ include_once 'footer.php';
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <input type="text" id="inpEditId" name="inpEditId" hidden="hidden">
+                            <input type="hidden" id="inpEditId" name="inpEditId">
                             <div>
                                 <label for="inpEditNome" class="label-control">Nome:</label>
                                 <input type="text" name="inpEditNome" id="inpEditNome" class="inputzz"
@@ -383,15 +381,15 @@ include_once 'footer.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-primary" id="btnEditCliente">Alterar</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" id="btnFecharMdlAlterarCliente">Voltar</button>
+                    <button type="submit" class="btn btn-sm btn-primary" id="btnEditCliente">Alterar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!-- Modal de Delete de CLIENTE -->
-<div class="modal fade" id="mdlDeleteCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="mdlDeleteCliente" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-danger text-light">
@@ -406,8 +404,8 @@ include_once 'footer.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteCliente">Deletar</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" id="btnFecharMdlDeletarCliente">Voltar</button>
+                    <button type="submit" class="btn btn-sm btn-outline-danger" id="btnDeleteCliente">Deletar</button>
                 </div>
             </form>
         </div>
@@ -416,7 +414,7 @@ include_once 'footer.php';
 
 
 <!-- Modal de cadastro de ADM -->
-<div class="modal fade" id="cadAdm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="cadAdm" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-sucess text-white">
@@ -427,7 +425,7 @@ include_once 'footer.php';
                 <div class="modal-body">
                     <div>
                         <label for="nomeAdm">Nome:</label>
-                        <input type="text" name="nomeAdm" id="nomeAdm" required="required" class="inputzz" >
+                        <input type="text" name="nomeAdm" id="nomeAdm" required="required" class="inputzz">
                     </div>
                     <div>
                         <label for="cpfAdm">CPF:</label>
@@ -441,15 +439,15 @@ include_once 'footer.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-success" id="btnAddAdm">Criar Administrador</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" id="btnFecharMdlCadAdm">Voltar</button>
+                    <button type="submit" class="btn btn-sm btn-success" id="btnAddAdm">Cadastrar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!-- Modal de Edit de ADM -->
-<div class="modal fade" id="editAdm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editAdm" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
@@ -475,15 +473,15 @@ include_once 'footer.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-primary" id="btnEditAdm">Alterar</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" id="btnFecharMdlAlterarAdm">Voltar</button>
+                    <button type="submit" class="btn btn-sm btn-primary" id="btnEditAdm">Alterar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!-- Modal de Delete de ADM -->
-<div class="modal fade" id="deleteAdm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteAdm" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header  bg-danger text-light">
@@ -498,8 +496,8 @@ include_once 'footer.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteAdm">Deletar</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" id="btnFecharMdlDeletarAdm">Voltar</button>
+                    <button type="submit" class="btn btn-sm btn-outline-danger" id="btnDeleteAdm">Deletar</button>
                 </div>
             </form>
         </div>
@@ -508,7 +506,8 @@ include_once 'footer.php';
 
 
 <!-- Modal de cadastro de CARRO -->
-<div class="modal fade" id="mdlCadCarro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="mdlCadCarro" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-success text-white">
@@ -536,7 +535,8 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpValor">Valor:</label>
-                                <input type="text" name="inpValor" id="inpValor" required="required" class="dinheiro inputzz">
+                                <input type="text" name="inpValor" id="inpValor" required="required"
+                                       class="dinheiro inputzz">
                             </div>
                             <div>
                                 <label for="selectProprietario">Selecione o proprietário:</label>
@@ -563,15 +563,16 @@ include_once 'footer.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-success" id="btnCadCarro">Cadastrar</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" id="btnFecharMdlCadCarro">Voltar</button>
+                    <button type="submit" class="btn btn-sm btn-success" id="btnCadCarro">Cadastrar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!--Modal de edicao de carro-->
-<div class="modal fade" id="mdlEditCarro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="mdlEditCarro" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
@@ -600,6 +601,11 @@ include_once 'footer.php';
                                        class="dinheiro inputzz">
                             </div>
                             <div>
+                                <label for="inpEditFotoCarro" class="label-control">Foto:</label>
+                                <input type="file" name="inpEditFotoCarro" id="inpEditFotoCarro" class="form-control"
+                                       required="required">
+                            </div>
+                            <div>
                                 <label for="selectEditProprietario">Selecione o proprietário:</label>
                                 <select name="selectEditProprietario" id="selectEditProprietario" required="required"
                                         class="inputzz">
@@ -624,15 +630,16 @@ include_once 'footer.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-primary" id="btnEditCarro">Alterar</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" id="btnFecharMdlEditCarro">Voltar</button>
+                    <button type="submit" class="btn btn-sm btn-primary" id="btnEditCarro">Alterar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!--Modal de apagar carro-->
-<div class="modal fade" id="mdlDeleteCarro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="mdlDeleteCarro" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header  bg-danger text-light">
@@ -647,157 +654,10 @@ include_once 'footer.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteCarro">Deletar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-<!--Modal de cadastro de FOTO-->
-<div class="modal fade" id="mdlCadFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-success text-white">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Foto</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form method="post" action="" name="frmCadFoto" id="frmCadFoto">
-                <div class="modal-body">
-                    <div class="card">
-                        <div class="card-body">
-                            <div>
-                                <div>
-                                    <label for="inpGrupo" class="label-control">Selecione o grupo:</label>
-                                    <select name="inpGrupo" id="inpGrupo" required="required" class="inputzz">
-                                        <option selected>Selecione uma opção</option>
-                                        <?php
-                                        $proprietario = listarTabela('*', 'proprietario');
-                                        if ($proprietario !== 'Vazio') {
-                                            foreach ($proprietario as $proprietarios) {
-                                                $id = $proprietarios->idproprietario;
-                                                $nome = $proprietarios->nomeProprietario;
-                                                ?>
-                                                <option value="<?php echo $id ?>"><?php echo $nome ?></option>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="inpFoto" class="label-control">Foto:</label>
-                                    <input type="file" name="inpFoto" id="inpFoto" class="form-control"
-                                           required="required">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="submit" class="btn btn-success" id="btnCadFoto">Cadastrar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!--Modal de edição de foto-->
-<div class="modal fade" id="mdlEditFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Foto</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form method="post" action="" name="frmEditFoto" id="frmEditFoto">
-                <div class="modal-body">
-                    <div class="card">
-                        <div class="card-body">
-                            <div>
-                                <input type="hidden" name="idEditFoto" id="idEditFoto">
-                                <div>
-                                    <label for="inpEditGrupo" class="label-control">Selecione o grupo:</label>
-                                    <select name="inpEditGrupo" id="inpEditGrupo" class="inputzz"
-                                            required="required">
-                                        <option selected>Selecione uma opção</option>
-                                        <?php
-                                        $proprietario = listarTabela('*', 'proprietario');
-                                        if ($proprietario !== 'Vazio') {
-                                            foreach ($proprietario as $proprietarios) {
-                                                $id = $proprietarios->idproprietario;
-                                                $nome = $proprietarios->nomeProprietario;
-                                                ?>
-                                                <option value="<?php echo $id ?>"><?php echo $nome ?></option>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="inpEditFoto" class="label-control">Foto:</label>
-                                    <input type="file" name="inpEditFoto" id="inpEditFoto" class="form-control"
-                                           required="required">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="submit" class="btn btn-primary" id="btnEditFoto">Alterar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!--Modal de apagar de FOTO-->
-<div class="modal fade" id="mdlDeleteFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header  bg-danger text-light">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Apagar foto</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="post" name="frmDeleteFoto" id="frmDeleteFoto">
-                <div class="modal-body">
-                    <input type="hidden" name="idDeleteFoto" id="idDeleteFoto">
-                    <div class="alert alert-danger">
-                        Tem certeza que deseja apagar essa foto?
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteFoto">Deletar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!--Modal de deletar Venda-->
-<div class="modal fade" id="mdlDeleteVenda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header  bg-danger text-light">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Apagar venda</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="#" name="frmDeleteVenda" id="frmDeleteVenda">
-                <div class="modal-body">
-                    <input type="text" name="idDeleteVenda" id="idDeleteVenda" hidden="hidden">
-                    <div class="alert alert-danger">
-                        Tem certeza?
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="submit" class="btn btn-outline-danger" id="btnDeleteVenda">Deletar</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"
+                            id="btnVoltarMdlDeletarCarro">Voltar
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-outline-danger" id="btnDeleteCarro">Deletar</button>
                 </div>
             </form>
         </div>
@@ -806,7 +666,7 @@ include_once 'footer.php';
 
 
 <?php
-include_once('teste.php')
+include_once('navbarsm.php')
 ?>
 
 

@@ -7,7 +7,10 @@
 
 <div class="espaco fs-3 tableEnfeite">
     #Carros
-    <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#mdlCadCarro">Cadastrar</button>
+    <button class="btn btn-outline-dark" data-bs-toggle="modal"
+            onclick="abrirModalJsCarro('nao', 'nao', 'nao', 'nao', 'nao', 'nao', 'nao', 'nao','nao','nao', 'inpFotoCarro','nao', 'mdlCadCarro', 'A', 'btnCadCarro', 'carroAdd', 'nao', 'nao', 'frmCadCarro')">
+        Cadastrar
+    </button>
 </div>
 <div class="overflowTable">
     <?php
@@ -45,7 +48,8 @@
                 <th scope="row"><?php echo $contar
                     ?></th>
                 <td>
-                    <img src="./img/<?php echo $foto?>" alt="<?php echo $nomeCarro?>" title="<?php echo $nomeCarro?>" width="50px">
+                    <img src="./img/<?php echo $foto ?>" alt="<?php echo $nomeCarro ?>" title="<?php echo $nomeCarro ?>"
+                         width="50px">
 
                 </td>
                 <td><?php echo $proprietario
@@ -59,8 +63,14 @@
                     ?>
                 </td>
                 <td>
-                    <button class="btn btn-outline-primary" onclick="abrirModalCarro('<?php echo $idcarro?>','<?php echo $nomeCarro?>','<?php echo $diferenciais?>','<?php echo $valor?>','<?php echo $proprietario?>')">Alterar</button>
-                    <button class="btn btn-outline-danger" onclick="abrirModalDeleteCarro(<?php echo $idcarro?>)">Excluir</button>
+                    <button class="btn btn-outline-primary"
+                            onclick="abrirModalJsCarro('<?php echo $idcarro ?>', 'idEditCarro', 'nao', 'nao', 'nao', 'nao', 'nao', 'nao','nao','nao','inpEditFotoCarro', 'nao', 'mdlEditCarro', 'A', 'btnEditCarro', 'carroEdit', 'nao', 'nao', 'frmEditCarro')">
+                        Alterar
+                    </button>
+                    <button class="btn btn-outline-danger"
+                            onclick="abrirModalJsCarro('<?php echo $idcarro ?>', 'idDeleteCarro', 'nao', 'nao', 'nao', 'nao', 'nao', 'nao','nao','nao','nao', 'nao', 'mdlDeleteCarro', 'A', 'btnDeleteCarro', 'deleteCarro', 'nao', 'nao', 'frmDeleteCarro')">
+                        Excluir
+                    </button>
                 </td>
             </tr>
 

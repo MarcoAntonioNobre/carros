@@ -34,17 +34,3 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
 } else {
     echo 'Nenhuma imagem enviada!!';
 }
-
-//echo json_encode($dados);
-
-//    $retornoInsert = insertGlobal6('carro', 'idproprietario, nomeCarro, diferenciais, fotoPerfil, preco, cadastro',$proprietario, $carro, $diferenciais, $foto, $valor, DATATIMEATUAL);
-//    if ($retornoInsert > 0) {
-//        echo json_encode(['success' => true, 'message' => "Carro $modelo cadastrado com sucesso"]);
-//    } else {
-//        echo json_encode(['success' => false, 'message' => "Carro não cadastrado!"]);
-//    }
-//} else {
-//    echo json_encode((['success' => false, 'message' => 'Carro não encontrado!']));
-//}
-
-//echo json_encode($dados);
