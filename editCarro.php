@@ -13,16 +13,32 @@ if (isset($dados) && !empty($dados)) {
     $valor = isset($dados['inpEditValor']) ? addslashes($dados['inpEditValor']) : '';
     $proprietario = isset($dados['selectEditProprietario']) ? addslashes($dados['selectEditProprietario']) : '';
 
-    $retornoInsert = alterarGlobal4('carro', 'idproprietario', 'nomeCarro', 'diferenciais', 'preco', "$proprietario", "$carro", "$diferenciais", "$valor",'idcarro',"$id" );
+    if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+        $fotoTmpName = $_FILES['foto']['tmp_name'];
+        $fotoName = $_FILES['foto']['name'];
+        $uploadDir = 'img';
+        $fotoPath = uniqid() . '_' . $fotoName;
 
-    if ($retornoInsert > 0) {
-        echo json_encode(['success' => true, 'message' => "Carro $carro alterado com sucesso"]);
+        if (move_uploaded_file($fotoTmpName, $uploadDir . '/' . $fotoPath)) {
+//        $retornoInsert = insertGlobal6('carro', 'idproprietario, nomeCarro, diferenciais, fotoPerfil, preco, cadastro', $proprietario, $carro, $diferenciais, $fotoPath, $valor, DATATIMEATUAL);
+            $retornoInsert = alterarGlobal5('carro', 'idproprietario', 'nomeCarro', 'diferenciais', 'preco', 'fotoPerfil', "$proprietario", "$carro", "$diferenciais", "$valor", "$fotoPath", 'idcarro', "$id");
+            if ($retornoInsert > 0) {
+                echo json_encode(['success' => true, 'message' => "Carro $carro alterado com sucesso"]);
+            } else {
+                echo json_encode(['success' => false, 'message' => "Carro não alterado!"]);
+            }
+        } else {
+            echo json_encode((['success' => false, 'message' => 'Carro não encontrado!']));
+        }
     } else {
-        echo json_encode(['success' => false, 'message' => "Carro não alterado!"]);
-    }
-} else {
-    echo json_encode((['success' => false, 'message' => 'Carro não encontrado!']));
-}
+        $retornoInsert = alterarGlobal4('carro', 'idproprietario', 'nomeCarro', 'diferenciais', 'preco', "$proprietario", "$carro", "$diferenciais", "$valor", 'idcarro', "$id");
 
+        if ($retornoInsert > 0) {
+            echo json_encode(['success' => true, 'message' => "Carro $carro alterado com sucesso"]);
+        } else {
+            echo json_encode(['success' => false, 'message' => "Carro não alterado!"]);
+        }
+    }
+}
 
 //echo json_encode($dados);

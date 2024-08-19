@@ -425,6 +425,23 @@ function abrirModalJsCarro(id, inID, Carro, inCarro, Prop, inProp, diferenciais,
         if (Prop !== 'nao') {
             idProp.value = Prop;
         }
+        const nomeCarro = document.getElementById(`${inCarro}`);
+        if (Carro !== 'nao') {
+            nomeCarro.value = Carro;
+        }
+        const diferenciaisDocarro = document.getElementById(`${inDiferenciais}`);
+        if (diferenciais !== 'nao') {
+            diferenciaisDocarro.value = diferenciais;
+        }
+        const valorDoCarro = document.getElementById(`${inValor}`);
+        if (valor !== 'nao') {
+            valorDoCarro.value = valor;
+        }
+        // const idProp = document.getElementById(`${inProp}`);
+        // if (Prop !== 'nao') {
+        //     idProp.value = Prop;
+        // }
+
 
         const submitHandler = function (event) {
             event.preventDefault();
@@ -445,14 +462,17 @@ function abrirModalJsCarro(id, inID, Carro, inCarro, Prop, inProp, diferenciais,
             })
                 .then(response => response.json())
                 .then(data => {
+                    // console.log(data)
                     if (data.success) {
                         addOuEditSucesso('Carro','success', 'deletado');
                         carregarConteudo("listarCarros");
                         ModalInstancia.hide();
+                        botoes.disabled = false;
                     } else {
                         addErro()
                         ModalInstancia.hide();
                         carregarConteudo("listarCarros");
+                        botoes.disabled = false;
                     }
                 })
             .catch(error => {

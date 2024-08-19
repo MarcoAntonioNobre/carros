@@ -602,8 +602,7 @@ include_once 'footer.php';
                             </div>
                             <div>
                                 <label for="inpEditFotoCarro" class="label-control">Foto:</label>
-                                <input type="file" name="inpEditFotoCarro" id="inpEditFotoCarro" class="form-control"
-                                       required="required">
+                                <input type="file" name="inpEditFotoCarro" id="inpEditFotoCarro" class="form-control">
                             </div>
                             <div>
                                 <label for="selectEditProprietario">Selecione o proprietário:</label>

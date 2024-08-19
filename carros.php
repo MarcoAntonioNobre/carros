@@ -64,7 +64,7 @@
                 </td>
                 <td>
                     <button class="btn btn-outline-primary"
-                            onclick="abrirModalJsCarro('<?php echo $idcarro ?>', 'idEditCarro', 'nao', 'nao', 'nao', 'nao', 'nao', 'nao','nao','nao','inpEditFotoCarro', 'nao', 'mdlEditCarro', 'A', 'btnEditCarro', 'carroEdit', 'nao', 'nao', 'frmEditCarro')">
+                            onclick="abrirModalJsCarro('<?php echo $idcarro ?>', 'idEditCarro', '<?php echo $nomeCarro?>','inpNomeEditCarro','<?php echo $proprietario?>','selectEditProprietario',  '<?php echo $diferenciais?>', 'inpEditDiferenciais', '<?php echo $valor?>', 'inpEditValor','inpEditFotoCarro', 'nao', 'mdlEditCarro', 'A', 'btnEditCarro', 'carroEdit', 'nao', 'nao', 'frmEditCarro')">
                         Alterar
                     </button>
                     <button class="btn btn-outline-danger"
@@ -75,6 +75,8 @@
             </tr>
 
             <?php
+
+
             ++$contar;
         }
         } else {
