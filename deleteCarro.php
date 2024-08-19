@@ -6,15 +6,16 @@ include_once("./func/funcoes.php");
 $conn = conectar();
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+//echo json_encode($dados);
 
 if (isset($dados) && !empty($dados)) {
     $id = isset($dados['idDeleteCarro']) ? addslashes(mb_strtoupper($dados['idDeleteCarro'], 'UTF-8')) : '';
 
     $retornoInsert = deletecadastro('carro','idcarro', $id);
     if ($retornoInsert > 0) {
-        echo json_encode(['success' => true, 'message' => "Carro deletado com sucesso!"]);
+        echo json_encode(['success' => true, 'message' => "Carro deletado com sucesso! $retornoInsert"]);
     } else {
-        echo json_encode(['success' => false, 'message' => "Carro não deletado!"]);
+        echo json_encode(['success' => false, 'message' => "Carro não deletado! $retornoInsert"]);
     }
 } else {
     echo json_encode((['success' => false, 'message' => 'Carro não encontrada!']));

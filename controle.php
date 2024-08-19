@@ -48,18 +48,6 @@ if (!empty($controle) && isset($controle)) {
         case 'deleteCliente';
             include_once('deleteCliente.php');
             break;
-        case 'listarFoto';
-            include_once('fotos.php');
-            break;
-        case 'addFoto';
-            include_once('cadFoto.php');
-            break;
-        case 'editFoto';
-            include_once('editFoto.php');
-            break;
-        case 'deleteFoto';
-            include_once('deletarFoto.php');
-            break;
         case 'listarAdm';
             include_once('listarAdm.php');
             break;

@@ -17,12 +17,6 @@
     min-height: 87vh;
 }
 
-/*@media only screen and (max-width: 768px) {*/
-/*    #nav {*/
-/*        min-height:80vh !important;*/
-/*    }*/
-/*}*/
-
 .alturaDash{
     min-height: 30vw;
 }
@@ -528,7 +522,7 @@ td strong .a:hover {
         border-radius: 5px;
         position: relative;
         /*top: 0;*/
-        transform: translateY(50%);
+        transform: translateY(15%);
     }
 
     .value {

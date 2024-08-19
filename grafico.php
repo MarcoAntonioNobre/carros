@@ -1,8 +1,6 @@
 <?php
 ?>
 
-
-
 <div>
     <canvas id="myChart"></canvas>
 </div>

@@ -32,11 +32,11 @@ function carregarConteudo(controle) {
 
 function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
-
     var botoes = document.getElementById(`${botao}`);
-    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    const ModalInstancia = new bootstrap.Modal(document.getElementById(`${nomeModal}`));
+
     if (abrirModal === 'A') {
-        ModalInstacia.show();
+        ModalInstancia.show();
 
         const inputFocar = document.getElementById(`${inFocus}`);
         if (inFocusValue !== 'nao') {
@@ -51,10 +51,8 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, dataTime, nome
             inputid.value = id;
         }
 
-
         const submitHandler = function (event) {
             event.preventDefault();
-
             botoes.disabled = true;
 
             const form = event.target;
@@ -72,9 +70,9 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, dataTime, nome
             })
                 .then(response => response.json())
                 .then(data => {
+                    formDados.removeEventListener('submit', submitHandler);
                     if (data.success) {
                         carregarConteudo("listarProprietarios");
-
                         switch (addEditDel) {
                             case 'addProprietario':
                                 addOuEditSucesso('Você', 'success', 'adicionou')
@@ -88,16 +86,16 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, dataTime, nome
                                 botoes.disabled = false;
                                 break;
                         }
-                        ModalInstacia.hide();
+                        ModalInstancia.hide();
                     } else {
                         addErro()
-                        ModalInstacia.hide();
+                        ModalInstancia.hide();
                         carregarConteudo("listarProprietarios");
                     }
                 })
                 .catch(error => {
                     botoes.disabled = false;
-                    ModalInstacia.hide();
+                    ModalInstancia.hide();
                     addErro()
                     carregarConteudo("listarProprietarios");
                     console.error('Erro na requisição:', error);
@@ -105,24 +103,53 @@ function abrirModalJsProprietario(id, inID, nomeProp, inNomeProp, dataTime, nome
 
 
         }
-        formDados.addEventListener('submit', submitHandler);
 
+        const fecharModalCadProp = document.getElementById('btnFecharMdlCadProp');
+        if (fecharModalCadProp) {
+            fecharModalCadProp.addEventListener('click', function () {
+                ModalInstancia.hide();
+                formDados.reset()
+                formDados.removeEventListener('submit', submitHandler);
+            });
+        } else {
+            console.error('ID do botão de fechar a modal está errado!');
+        }
+        const fecharModalAltProp = document.getElementById('btnFecharMdlAlterarProp');
+        if (fecharModalAltProp) {
+            fecharModalAltProp.addEventListener('click', function () {
+                ModalInstancia.hide();
+                formDados.reset()
+                formDados.removeEventListener('submit', submitHandler);
+            });
+        } else {
+            console.error('ID do botão de fechar a modal está errado!');
+        }
+        const fecharModalDelProp = document.getElementById('btnFecharMdlDeletarProp');
+        if (fecharModalDelProp) {
+            fecharModalDelProp.addEventListener('click', function () {
+                ModalInstancia.hide();
+                formDados.reset()
+                formDados.removeEventListener('submit', submitHandler);
+            });
+        } else {
+            console.error('ID do botão de fechar a modal está errado!');
+        }
+
+        formDados.addEventListener('submit', submitHandler);
 
     } else {
         botoes.disabled = false;
-        ModalInstacia.hide();
+        ModalInstancia.hide();
     }
 
 }
 
 function abrirModalJsCliente(id, inID, nome, inNome, dataTime, contato, inContato, uni, inUNI, cartao, inCartao, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
-
     var botoes = document.getElementById(`${botao}`);
-    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    const ModalInstancia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
     if (abrirModal === 'A') {
-        ModalInstacia.show();
-
+        ModalInstancia.show();
         const inputFocar = document.getElementById(`${inFocus}`);
         if (inFocusValue !== 'nao') {
             inputFocar.value = inFocusValue;
@@ -173,7 +200,7 @@ function abrirModalJsCliente(id, inID, nome, inNome, dataTime, contato, inContat
                 .then(data => {
                     if (data.success) {
                         carregarConteudo("listarCliente");
-
+                        formDados.removeEventListener('submit', submitHandler);
                         switch (addEditDel) {
                             case 'addCliente':
                                 addOuEditSucesso('Você', 'success', 'adicionou')
@@ -187,16 +214,16 @@ function abrirModalJsCliente(id, inID, nome, inNome, dataTime, contato, inContat
                                 botoes.disabled = false;
                                 break;
                         }
-                        ModalInstacia.hide();
+                        ModalInstancia.hide();
                     } else {
                         addErro()
-                        ModalInstacia.hide();
+                        ModalInstancia.hide();
                         carregarConteudo("listarCliente");
                     }
                 })
                 .catch(error => {
                     botoes.disabled = false;
-                    ModalInstacia.hide();
+                    ModalInstancia.hide();
                     addErro()
                     carregarConteudo("listarCliente");
                     console.error('Erro na requisição:', error);
@@ -204,97 +231,46 @@ function abrirModalJsCliente(id, inID, nome, inNome, dataTime, contato, inContat
 
 
         }
+
+        const fecharmodalCadCliente = document.getElementById('btnFecharMdlCadCliente');
+        if (fecharmodalCadCliente) {
+            fecharmodalCadCliente.addEventListener('click', function () {
+                ModalInstancia.hide();
+                formDados.reset()
+                formDados.removeEventListener('submit', submitHandler);
+            });
+        } else {
+            console.error('ID do botão de fechar a modal está errado!');
+        }
+
+        const fecharModalEditCliente = document.getElementById('btnFecharMdlAlterarCliente');
+        if (fecharModalEditCliente) {
+            fecharModalEditCliente.addEventListener('click', function () {
+                ModalInstancia.hide();
+                formDados.reset()
+                formDados.removeEventListener('submit', submitHandler);
+            });
+        } else {
+            console.error('ID do botão de fechar a modal está errado!');
+        }
+
+        const fecharModalDeletarCliente = document.getElementById('btnFecharMdlDeletarCliente');
+        if (fecharModalDeletarCliente) {
+            fecharModalDeletarCliente.addEventListener('click', function () {
+                ModalInstancia.hide();
+                formDados.reset()
+                formDados.removeEventListener('submit', submitHandler);
+            });
+        } else {
+            console.error('ID do botão de fechar a modal está errado!');
+        }
+
         formDados.addEventListener('submit', submitHandler);
 
 
     } else {
         botoes.disabled = false;
-        ModalInstacia.hide();
-    }
-
-}
-
-
-function abrirModalJsVenda(id, inID, nomeModal, dataTime, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
-    const formDados = document.getElementById(`${formulario}`)
-
-    var botoes = document.getElementById(`${botao}`);
-    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
-    if (abrirModal === 'A') {
-        ModalInstacia.show();
-
-        const inputFocar = document.getElementById(`${inFocus}`);
-        if (inFocusValue !== 'nao') {
-            inputFocar.value = inFocusValue;
-            setTimeout(function () {
-                inputFocar.focus();
-
-            }, 500);
-        }
-        const ID = document.getElementById(`${inID}`);
-        if (inID !== 'nao') {
-            ID.value = id;
-        }
-
-
-        const submitHandler = function (event) {
-            event.preventDefault();
-
-            botoes.disabled = true;
-
-            const form = event.target;
-            const formData = new FormData(form);
-
-            if (dataTime !== 'nao') {
-                formData.append('dataTime', `${dataTime}`)
-            }
-            formData.append('controle', `${addEditDel}`)
-
-            fetch('controle.php', {
-                method: 'POST', body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-
-                    if (data.success) {
-                        carregarConteudo("listarVenda");
-
-                        switch (addEditDel) {
-                            case 'addVenda':
-                                addOuEditSucesso('Você', 'success', 'adicionou')
-                                break;
-                            case 'editVenda':
-                                addOuEditSucesso('Você', 'info', 'editou')
-                                botoes.disabled = false;
-                                break;
-                            case 'deleteVenda':
-                                addOuEditSucesso('Você', 'success', 'deletou')
-                                botoes.disabled = false;
-                                break;
-                        }
-                        ModalInstacia.hide();
-                    } else {
-                        addErro()
-                        ModalInstacia.hide();
-                        carregarConteudo("listarVenda");
-                    }
-                })
-                .catch(error => {
-                    botoes.disabled = false;
-                    ModalInstacia.hide();
-                    addErro()
-                    carregarConteudo("listarVenda");
-                    console.error('Erro na requisição:', error);
-                });
-
-
-        }
-        formDados.addEventListener('submit', submitHandler);
-
-
-    } else {
-        botoes.disabled = false;
-        ModalInstacia.hide();
+        ModalInstancia.hide();
     }
 
 }
@@ -304,9 +280,9 @@ function abrirModalJsADM(id, inID, nome, inNome, dataTime, cpf, inCpf, senha, in
     const formDados = document.getElementById(`${formulario}`)
 
     var botoes = document.getElementById(`${botao}`);
-    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    const ModalInstancia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
     if (abrirModal === 'A') {
-        ModalInstacia.show();
+        ModalInstancia.show();
 
         const inputFocar = document.getElementById(`${inFocus}`);
         if (inFocusValue !== 'nao') {
@@ -348,10 +324,9 @@ function abrirModalJsADM(id, inID, nome, inNome, dataTime, cpf, inCpf, senha, in
             })
                 .then(response => response.json())
                 .then(data => {
-
                     if (data.success) {
                         carregarConteudo("listarAdm");
-                        form.removeEventListener('submit', submitHandler)
+                        formDados.removeEventListener('submit', submitHandler);
                         switch (addEditDel) {
                             case 'addAdm':
                                 addOuEditSucesso('Você', 'success', 'adicionou')
@@ -365,17 +340,17 @@ function abrirModalJsADM(id, inID, nome, inNome, dataTime, cpf, inCpf, senha, in
                                 botoes.disabled = false;
                                 break;
                         }
-                        ModalInstacia.hide();
+                        ModalInstancia.hide();
                     } else {
                         addErro()
-                        ModalInstacia.hide();
+                        ModalInstancia.hide();
                         carregarConteudo("listarAdm");
                     }
                 })
                 .catch(error => {
 
                     botoes.disabled = false;
-                    ModalInstacia.hide();
+                    ModalInstancia.hide();
                     addErro()
                     carregarConteudo("listarAdm");
                     console.error('Erro na requisição:', error);
@@ -383,22 +358,56 @@ function abrirModalJsADM(id, inID, nome, inNome, dataTime, cpf, inCpf, senha, in
 
 
         }
+        const fecharmodalCadAdm = document.getElementById('btnFecharMdlCadAdm');
+        if (fecharmodalCadAdm) {
+            fecharmodalCadAdm.addEventListener('click', function () {
+                ModalInstancia.hide();
+                formDados.reset()
+                formDados.removeEventListener('submit', submitHandler);
+            });
+        } else {
+            console.error('ID do botão de fechar a modal está errado!');
+        }
+
+        const fecharModalEditAdm = document.getElementById('btnFecharMdlAlterarAdm');
+        if (fecharModalEditAdm) {
+            fecharModalEditAdm.addEventListener('click', function () {
+                ModalInstancia.hide();
+                formDados.reset()
+                formDados.removeEventListener('submit', submitHandler);
+            });
+        } else {
+            console.error('ID do botão de fechar a modal está errado!');
+        }
+
+        const fecharModalDeletarAdm = document.getElementById('btnFecharMdlDeletarAdm');
+        if (fecharModalDeletarAdm) {
+            fecharModalDeletarAdm.addEventListener('click', function () {
+                ModalInstancia.hide();
+                formDados.reset()
+                formDados.removeEventListener('submit', submitHandler);
+            });
+        } else {
+            console.error('ID do botão de fechar a modal está errado!');
+        }
+
         formDados.addEventListener('submit', submitHandler);
 
 
     } else {
-        ModalInstacia.hide();
+        ModalInstancia.hide();
     }
 
 }
 
-function abrirModalJsFoto(id, inID, idCarroFoto, inCarroFoto, idPropFoto, inPropFoto, inpfoto, dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
-    const formDados = document.getElementById(`${formulario}`)
 
+function abrirModalJsCarro(id, inID, Carro, inCarro, Prop, inProp, diferenciais, inDiferenciais, valor, inValor, inFoto, dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
+    const formDados = document.getElementById(`${formulario}`)
     var botoes = document.getElementById(`${botao}`);
-    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    const ModalInstancia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+
     if (abrirModal === 'A') {
-        ModalInstacia.show();
+        ModalInstancia.show();
 
         const inputFocar = document.getElementById(`${inFocus}`);
         if (inFocusValue !== 'nao') {
@@ -412,173 +421,85 @@ function abrirModalJsFoto(id, inID, idCarroFoto, inCarroFoto, idPropFoto, inProp
         if (inID !== 'nao') {
             ID.value = id;
         }
-        const idCarro = document.getElementById(`${inCarroFoto}`);
-        if (inCarroFoto !== 'nao') {
-            idCarro.value = idCarroFoto;
+        const idProp = document.getElementById(`${inProp}`);
+        if (Prop !== 'nao') {
+            idProp.value = Prop;
         }
-        const idProp = document.getElementById(`${inPropFoto}`);
-        if (inPropFoto !== 'nao') {
-            idProp.value = idPropFoto;
-        }
-
 
         const submitHandler = function (event) {
             event.preventDefault();
-
             botoes.disabled = true;
-
             const form = event.target;
             const formData = new FormData(form);
 
             if (dataTime !== 'nao') {
                 formData.append('dataTime', `${dataTime}`)
             }
-            const fileInput = document.getElementById(`${inpfoto}`)
-            formData.append('foto', fileInput.files[0]);
-
             formData.append('controle', `${addEditDel}`)
-
-            fetch('controle.php', {
-                method: 'POST', body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-
-                    if (data.success) {
-                        carregarConteudo("listarFoto");
-
-                        switch (addEditDel) {
-                            case 'addFoto':
-                                addOuEditSucesso('Você', 'success', 'adicionou')
-                                form.removeEventListener('submit', submitHandler)
-                                break;
-                            case 'editFoto':
-                                addOuEditSucesso('Você', 'info', 'editou')
-                                botoes.disabled = false;
-                                break;
-                            case 'deleteFoto':
-                                addOuEditSucesso('Você', 'success', 'deletou')
-                                botoes.disabled = false;
-                                break;
-                        }
-                        ModalInstacia.hide();
-                    } else {
-                        addErro()
-                        ModalInstacia.hide();
-                        carregarConteudo("listarFoto");
-                    }
-                })
-                .catch(error => {
-
-                    botoes.disabled = false;
-                    ModalInstacia.hide();
-                    addErro()
-                    carregarConteudo("listarFoto");
-                    console.error('Erro na requisição:', error);
-                });
-
-
-        }
-        formDados.addEventListener('submit', submitHandler);
-
-
-    } else {
-        ModalInstacia.hide();
-    }
-
-}
-
-
-function abrirModalJsCarro(id, inID, Carro, inCarro, Prop, inProp, diferenciais, inDiferenciais, dataTime, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
-    const formDados = document.getElementById(`${formulario}`)
-
-    var botoes = document.getElementById(`${botao}`);
-    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
-    if (abrirModal === 'A') {
-        ModalInstacia.show();
-
-        const inputFocar = document.getElementById(`${inFocus}`);
-        if (inFocusValue !== 'nao') {
-            inputFocar.value = inFocusValue;
-            setTimeout(function () {
-                inputFocar.focus();
-
-            }, 500);
-        }
-        const ID = document.getElementById(`${inID}`);
-        if (inID !== 'nao') {
-            ID.value = id;
-        }
-        const idCarro = document.getElementById(`${inCarroFoto}`);
-        if (inCarroFoto !== 'nao') {
-            idCarro.value = idCarroFoto;
-        }
-        const idProp = document.getElementById(`${inPropFoto}`);
-        if (inPropFoto !== 'nao') {
-            idProp.value = idPropFoto;
-        }
-
-
-        const submitHandler = function (event) {
-            event.preventDefault();
-
-            botoes.disabled = true;
-
-            const form = event.target;
-            const formData = new FormData(form);
-
-            if (dataTime !== 'nao') {
-                formData.append('dataTime', `${dataTime}`)
+            if (inFoto !== 'nao') {
+                const fileInput = document.getElementById(`${inFoto}`)
+                formData.append('foto', fileInput.files[0]);
             }
-            const fileInput = document.getElementById('inpFoto')
-            formData.append('foto', fileInput.files[0]);
-            formData.append('controle', `${addEditDel}`)
-
             fetch('controle.php', {
                 method: 'POST', body: formData,
             })
                 .then(response => response.json())
                 .then(data => {
-
                     if (data.success) {
-                        carregarConteudo("listarCarro");
-
-                        switch (addEditDel) {
-                            case 'addFoto':
-                                addOuEditSucesso('Você', 'success', 'adicionou')
-                                break;
-                            case 'editFoto':
-                                addOuEditSucesso('Você', 'info', 'editou')
-                                botoes.disabled = false;
-                                break;
-                            case 'deleteFoto':
-                                addOuEditSucesso('Você', 'success', 'deletou')
-                                botoes.disabled = false;
-                                break;
-                        }
-                        ModalInstacia.hide();
+                        addOuEditSucesso('Carro','success', 'deletado');
+                        carregarConteudo("listarCarros");
+                        ModalInstancia.hide();
                     } else {
                         addErro()
-                        ModalInstacia.hide();
-                        carregarConteudo("listarFoto");
+                        ModalInstancia.hide();
+                        carregarConteudo("listarCarros");
                     }
                 })
-                .catch(error => {
-
-                    botoes.disabled = false;
-                    ModalInstacia.hide();
-                    addErro()
-                    carregarConteudo("listarFoto");
-                    console.error('Erro na requisição:', error);
-                });
-
-
+            .catch(error => {
+                console.log('Catch')
+                botoes.disabled = false;
+                ModalInstancia.hide();
+                addErro()
+                carregarConteudo("listarCarros");
+                console.error('Erro na requisição:', error);
+            });
         }
+        const fecharmodalCadCarro = document.getElementById('btnFecharMdlCadCarro');
+        if (fecharmodalCadCarro) {
+            fecharmodalCadCarro.addEventListener('click', function () {
+                ModalInstancia.hide();
+                formDados.reset()
+                formDados.removeEventListener('submit', submitHandler);
+            });
+        } else {
+            console.error('ID do botão de fechar a modal está errado!');
+        }
+
+        const fecharModalEditCarro = document.getElementById('btnFecharMdlEditCarro');
+        if (fecharModalEditCarro) {
+            fecharModalEditCarro.addEventListener('click', function () {
+                ModalInstancia.hide();
+                formDados.reset()
+                formDados.removeEventListener('submit', submitHandler);
+            });
+        } else {
+            console.error('ID do botão de fechar a modal está errado!');
+        }
+
+        const fecharModalDeletarCarro = document.getElementById('btnVoltarMdlDeletarCarro');
+        if (fecharModalDeletarCarro) {
+            fecharModalDeletarCarro.addEventListener('click', function () {
+                ModalInstancia.hide();
+                formDados.reset()
+                formDados.removeEventListener('submit', submitHandler);
+            });
+        } else {
+            console.error('ID do botão de fechar a modal está errado!');
+        }
+        
         formDados.addEventListener('submit', submitHandler);
-
-
     } else {
-        ModalInstacia.hide();
+        ModalInstancia.hide();
     }
 
 }
@@ -695,7 +616,6 @@ function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
                     divBotao.classList.add("justify-content-center");
                     divBotao.appendChild(buttonCard)
 
-                    //  dasdas
                     buttonCard.setAttribute('onclick', 'abrirModalCompra(\'' + data.idcarro + '\',\'' + data.preco + '\',\'' + data.nomeCarro + '\',\'' + data.diferenciais + '\')')
 
                     buttonCard.type = 'submit';
@@ -711,17 +631,11 @@ function pesquisarCarros(botao, addEditDel, inFocus, inFocusValue, formulario) {
 
                 }
             })
-        // .catch(error => {
-        //
-        //
-        //     console.error('Erro na requisição:', error);
-        // });
-
-
+            .catch(error => {
+                console.error('Erro na requisição:', error);
+            });
     }
     formDados.addEventListener('submit', submitHandler);
-
-
 }
 
 function addOuEditSucesso(UserAlter, icon, addOuEditOuDelete) {

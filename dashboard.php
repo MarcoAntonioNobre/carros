@@ -265,7 +265,7 @@ if ($_SESSION['idadm']) {
                                            name="inQuantidade"
                                            id="inQuantidade">
                                     <span class="bar"></span>
-                                    <label class="label">
+                                    <label class="label" for="inQuantidade">
                                         <span class="label-char" style="--index: 0">Q</span>
                                         <span class="label-char" style="--index: 1">u</span>
                                         <span class="label-char" style="--index: 2">a</span>
@@ -282,9 +282,6 @@ if ($_SESSION['idadm']) {
                             </div>
                             <div class="mt-3">
                                 <p>Valor total: <b id="valorTotal">R$ 0,00</b></p>
-                                <button type="button" id="calcular" name="calcular"
-                                        class="btn btn-outline-secondary">Calcular total
-                                </button>
                             </div>
 
                         </div>
@@ -304,7 +301,7 @@ if ($_SESSION['idadm']) {
 
 
 <?php
-include_once('teste.php')
+include_once('navbarsm.php')
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
